@@ -6,6 +6,12 @@ module.exports = {
     extend: {
       colors: {
         primary: "rgb(46 213 115)",
+        gray: {
+          DEFAULT: "#1C1C28",
+        },
+        slate: {
+          DEFAULT: "rgb(74 75 109)"
+        }
       },
       spacing: {
         100: "100px",

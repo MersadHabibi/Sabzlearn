@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,7 @@
     <script src="../tailwind.config.js"></script>
     <title>Document</title>
   </head>
-  <body>
+  <body class="bg-gray-100 dark:bg-gray">
     <svg class="hidden">
       <symbol
         id="chevron-down"
@@ -114,7 +114,8 @@
       </symbol>
     </svg>
     <!-- Header -->
-    <header class="flex justify-between items-center w-full h-[88px] md:h-32 px-8 md:px-16 lg:px-6 xl:px-12 bg-white">
+    <header
+      class="flex justify-between items-center w-full h-[88px] md:h-32 px-8 md:px-16 lg:px-6 xl:px-12 bg-white dark:bg-gray dark:border-b dark:border-gray-700">
       <!-- Mobile Menu Btn -->
       <div class="lg:hidden">
         <svg class="w-9 h-9 dark:text-gray-500">
@@ -129,7 +130,8 @@
           </a>
         </div>
         <!-- Menu -->
-        <ul class="hidden lg:flex items-center gap-x-5 text-zinc-700 child-hover:text-primary child:transition-all">
+        <ul
+          class="hidden lg:flex items-center gap-x-5 text-zinc-700 dark:text-white child-hover:text-primary child:transition-all">
           <li class="relative group">
             <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
               فرانت اند
@@ -139,7 +141,7 @@
             </a>
             <!-- SubMenu -->
             <ul
-              class="-z-10 group-hover:z-20 opacity-0 group-hover:opacity-100 transition-all absolute top-full right-0 child:line-clamp-1 child:cursor-pointer p-5 w-64 bg-white rounded-2xl space-y-5 text-zinc-700 shadow-light child-hover:text-primary child:transition-colors">
+              class="-z-10 group-hover:z-20 opacity-0 group-hover:opacity-100 transition-all absolute top-8 right-0 child:line-clamp-1 child:cursor-pointer p-5 w-64 bg-white dark:bg-gray-700 dark:text-white rounded-2xl space-y-5 text-zinc-700 shadow-light child-hover:text-primary child:transition-colors">
               <li>
                 <a href="#">آموزش HTML</a>
               </li>
@@ -187,7 +189,7 @@
             </a>
             <!-- SubMenu -->
             <ul
-              class="-z-10 group-hover:z-20 opacity-0 group-hover:opacity-100 transition-all absolute top-full right-0 child:line-clamp-1 child:cursor-pointer p-5 w-64 bg-white rounded-2xl space-y-5 text-zinc-700 shadow-light child-hover:text-primary child:transition-colors">
+              class="-z-10 group-hover:z-20 opacity-0 group-hover:opacity-100 transition-all absolute top-8 right-0 child:line-clamp-1 child:cursor-pointer p-5 w-64 bg-white dark:bg-gray-700 dark:text-white rounded-2xl space-y-5 text-zinc-700 shadow-light child-hover:text-primary child:transition-colors">
               <li>
                 <a href="#">نقشه راه وروی به دنیای هک و امنیت</a>
               </li>
@@ -223,7 +225,7 @@
             </a>
             <!-- SubMenu -->
             <ul
-              class="-z-10 group-hover:z-20 opacity-0 group-hover:opacity-100 transition-all absolute top-full right-0 child:line-clamp-1 child:cursor-pointer p-5 w-64 bg-white rounded-2xl space-y-5 text-zinc-700 shadow-light child-hover:text-primary child:transition-colors">
+              class="-z-10 group-hover:z-20 opacity-0 group-hover:opacity-100 transition-all absolute top-8 right-0 child:line-clamp-1 child:cursor-pointer p-5 w-64 bg-white dark:bg-gray-700 dark:text-white rounded-2xl space-y-5 text-zinc-700 shadow-light child-hover:text-primary child:transition-colors">
               <li>
                 <a href="#">دوره آموزش پایتون</a>
               </li>
@@ -253,7 +255,7 @@
             </a>
             <!-- SubMenu -->
             <ul
-              class="-z-10 group-hover:z-20 opacity-0 group-hover:opacity-100 transition-all absolute top-full right-0 child:line-clamp-1 child:cursor-pointer p-5 w-64 bg-white rounded-2xl space-y-5 text-zinc-700 shadow-light child-hover:text-primary child:transition-colors">
+              class="-z-10 group-hover:z-20 opacity-0 group-hover:opacity-100 transition-all absolute top-8 right-0 child:line-clamp-1 child:cursor-pointer p-5 w-64 bg-white dark:bg-gray-700 dark:text-white rounded-2xl space-y-5 text-zinc-700 shadow-light child-hover:text-primary child:transition-colors">
               <li>
                 <a href="#">اچ تی ام ال</a>
               </li>
@@ -276,13 +278,14 @@
       <!-- Header Left -->
       <div class="flex gap-x-5 child:flex child:justify-center child:items-center">
         <!-- Search Btn -->
-        <div class="!hidden lg:!flex search-btn relative h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+        <div
+          class="!hidden lg:!flex search-btn relative h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray dark:border dark:border-gray-700 dark:hover:border-gray-500 transition-all cursor-pointer">
           <svg class="w-6 h-6 text-slate-500">
             <use href="#magnifying-glass"></use>
           </svg>
           <!-- Search Box -->
           <div
-            class="search-box hidden absolute top-[70px] left-0 bg-gray-100 h-14 w-60 rounded-full overflow-hidden transition-all z-20">
+            class="search-box hidden absolute top-[70px] left-0 bg-gray-100 dark:bg-gray-700 h-14 w-60 rounded-full overflow-hidden transition-all z-20">
             <div class="relative w-full h-full">
               <input
                 type="text"
@@ -295,7 +298,8 @@
           </div>
         </div>
         <!-- Change Theme -->
-        <div class="!hidden lg:!flex change-theme-btn h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+        <div
+          class="toggle-theme !hidden lg:!flex change-theme-btn h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray dark:border dark:border-gray-700 dark:hover:border-gray-500 transition-all cursor-pointer">
           <svg class="inline-block dark:hidden w-6 h-6 text-slate-500">
             <use href="#moon"></use>
           </svg>
@@ -317,7 +321,8 @@
               <img src="images/user-profile.png" alt="" />
             </div>
             <!-- SubMenu Profile -->
-            <div class="profile-menu hidden absolute top-16 left-0 w-[278px] p-5 z-20 bg-white rounded-2xl">
+            <div
+              class="profile-menu hidden absolute top-16 left-0 w-[278px] p-5 z-20 bg-white dark:bg-gray-700 dark:text-white rounded-2xl">
               <div class="flex items-center gap-3 mb-5">
                 <div class="w-14 h-14 rounded-full overflow-hidden">
                   <img src="images/user-profile.png" alt="" />
@@ -328,7 +333,7 @@
                 </div>
               </div>
               <ul
-                class="py-2 border-y border-y-gray-200 child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
+                class="py-2 border-y border-y-gray-200 dark:border-y-slate child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
                 <a class="hover:bg-gray-100" href="#">
                   <svg class="w-5 h-5">
                     <use href="#home"></use>
@@ -365,5 +370,6 @@
     <div class="cover fixed top-0 left-0 w-full h-full bg-black/30 backdrop-blur-md opacity-0 -z-10 transition-all"></div>
     <script src="scripts/index.js"></script>
     <script src="scripts/header.js" type="module"></script>
+    <script src="scripts/share.js" type="module"></script>
   </body>
 </html>

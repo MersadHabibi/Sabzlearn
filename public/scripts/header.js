@@ -8,7 +8,6 @@ let isProfileMenuOpen = false;
 const searchBtn = $.querySelector(".search-btn");
 const searchBox = $.querySelector(".search-box");
 const cover = $.querySelector(".cover");
-const changeThemeBtn = $.querySelector(".change-theme-btn");
 const profileMenuBtn = $.querySelector(".profile-menu-btn");
 const profileMenu = $.querySelector(".profile-menu");
 
@@ -34,10 +33,6 @@ const closeSearchBox = () => {
   isSearchOpen = false;
 };
 
-const switchTheme = () => {
-  _changeClasses("toggle", document.documentElement, ["dark"]);
-};
-
 const openProfileMenu = () => {
   openCover();
   _changeClasses("remove", profileMenu, ["hidden"]);
@@ -58,8 +53,6 @@ searchBtn.addEventListener("click", () => {
     openSearchBox();
   }
 });
-
-changeThemeBtn.addEventListener("click", switchTheme);
 
 profileMenuBtn.addEventListener("click", () => {
   if (isProfileMenuOpen) {

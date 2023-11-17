@@ -632,6 +632,10 @@ body {
   top: 100%;
 }
 
+.top-8 {
+  top: 2rem;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -668,12 +672,12 @@ body {
   display: none;
 }
 
-.h-14 {
-  height: 3.5rem;
+.h-12 {
+  height: 3rem;
 }
 
-.h-32 {
-  height: 8rem;
+.h-14 {
+  height: 3.5rem;
 }
 
 .h-4 {
@@ -692,24 +696,16 @@ body {
   height: 2.25rem;
 }
 
-.h-full {
-  height: 100%;
-}
-
-.h-\[\] {
-  height: ;
-}
-
 .h-\[88px\] {
   height: 88px;
 }
 
-.h-1\/2 {
-  height: 50%;
+.h-full {
+  height: 100%;
 }
 
-.h-12 {
-  height: 3rem;
+.w-12 {
+  width: 3rem;
 }
 
 .w-14 {
@@ -758,10 +754,6 @@ body {
 
 .w-full {
   width: 100%;
-}
-
-.w-12 {
-  width: 3rem;
 }
 
 .cursor-pointer {
@@ -860,29 +852,14 @@ body {
   padding: 1.25rem;
 }
 
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}
-
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .pl-12 {
@@ -1069,9 +1046,33 @@ body {
   display: none;
 }
 
+:is(.dark .dark\:border) {
+  border-width: 1px;
+}
+
+:is(.dark .dark\:border-b) {
+  border-bottom-width: 1px;
+}
+
 :is(.dark .dark\:border-gray-700) {
   --tw-border-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:border-y-slate) {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(74 75 109 / var(--tw-border-opacity));
+  border-bottom-color: rgb(74 75 109 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:bg-gray) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 28 40 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-gray-700) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
 :is(.dark .dark\:text-gray-500) {
@@ -1079,25 +1080,31 @@ body {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
-@media (min-width: 768px) {
-  .md\:h-32 {
-    height: 8rem;
-  }
+:is(.dark .dark\:text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 
+:is(.dark .dark\:hover\:border-gray-500:hover) {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
+@media (min-width: 768px) {
   .md\:h-14 {
     height: 3.5rem;
   }
 
-  .md\:w-\[104px\] {
-    width: 104px;
+  .md\:h-32 {
+    height: 8rem;
   }
 
   .md\:w-14 {
     width: 3.5rem;
   }
 
-  .md\:cursor-pointer {
-    cursor: pointer;
+  .md\:w-\[104px\] {
+    width: 104px;
   }
 
   .md\:px-16 {
