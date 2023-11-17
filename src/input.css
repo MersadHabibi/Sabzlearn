@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: "Dana";
+      src: local("Dana"), url(../fonts/Dana/DanaFaNum-Regular.woff2);
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Dana Medium";
+      src: local("DanaMedium"), url(../fonts/Dana/DanaFaNum-Medium.woff2);
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Dana DemiBold";
+      src: local("DanaDemiBold"), url(../fonts/Dana/DanaFaNum-DemiBold.woff2);
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Morabba Light";
+      src: local("MorabbaLight"), url(../fonts/Morabba/Morabba-Light.woff2);
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Morabba Medium";
+      src: local("MorabbaMedium"), url(../fonts/Morabba/Morabba-Medium.woff2);
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Morabba Bold";
+      src: local("MorabbaBold"), url(../fonts/Morabba/Morabba-Bold.woff2);
+      font-display: swap;
+    }
+    body {
+      @apply font-Dana text-zinc-700;
+    }
+  }
