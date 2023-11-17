@@ -103,20 +103,35 @@
           stroke-linejoin="round"
           d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
       </symbol>
+      <symbol
+        id="menu"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </symbol>
     </svg>
     <!-- Header -->
-    <header class="flex justify-between items-center w-full h-32 px-12 bg-white">
+    <header class="flex justify-between items-center w-full h-[88px] md:h-32 px-8 md:px-16 lg:px-6 xl:px-12 bg-white">
+      <!-- Mobile Menu Btn -->
+      <div class="lg:hidden">
+        <svg class="w-9 h-9 dark:text-gray-500">
+          <use href="#menu"></use>
+        </svg>
+      </div>
       <!-- Header Right -->
       <div class="flex">
-        <div class="pl-5 ml-5 border-l border-gray-100 dark:border-gray-700">
+        <div class="lg:pl-5 lg:ml-5 lg:border-l border-gray-100 dark:border-gray-700">
           <a href="#">
             <img src="images/logo.webp" class="w-20 md:w-[104px]" alt="logo" />
           </a>
         </div>
         <!-- Menu -->
-        <ul class="flex items-center gap-x-5 text-zinc-700 child-hover:text-primary child:transition-all">
+        <ul class="hidden lg:flex items-center gap-x-5 text-zinc-700 child-hover:text-primary child:transition-all">
           <li class="relative group">
-            <a href="#" class="flex items-center gap-x-1 text-lg">
+            <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
               فرانت اند
               <svg class="w-4 h-4">
                 <use href="#chevron-down"></use>
@@ -164,7 +179,7 @@
             </ul>
           </li>
           <li class="relative group">
-            <a href="#" class="flex items-center gap-x-1 text-lg">
+            <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
               امنیت
               <svg class="w-4 h-4">
                 <use href="#chevron-down"></use>
@@ -200,7 +215,7 @@
             </ul>
           </li>
           <li class="relative group">
-            <a href="#" class="flex items-center gap-x-1 text-lg">
+            <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
               پایتون
               <svg class="w-4 h-4">
                 <use href="#chevron-down"></use>
@@ -227,10 +242,10 @@
             </ul>
           </li>
           <li class="">
-            <a href="#" class="flex items-center gap-x-1 text-lg"> مهارت های نرم </a>
+            <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg"> مهارت های نرم </a>
           </li>
           <li class="relative group">
-            <a href="#" class="flex items-center gap-x-1 text-lg">
+            <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
               مقالات
               <svg class="w-4 h-4">
                 <use href="#chevron-down"></use>
@@ -261,7 +276,7 @@
       <!-- Header Left -->
       <div class="flex gap-x-5 child:flex child:justify-center child:items-center">
         <!-- Search Btn -->
-        <div class="search-btn relative h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+        <div class="!hidden lg:!flex search-btn relative h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
           <svg class="w-6 h-6 text-slate-500">
             <use href="#magnifying-glass"></use>
           </svg>
@@ -280,7 +295,7 @@
           </div>
         </div>
         <!-- Change Theme -->
-        <div class="change-theme-btn h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
+        <div class="!hidden lg:!flex change-theme-btn h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer">
           <svg class="inline-block dark:hidden w-6 h-6 text-slate-500">
             <use href="#moon"></use>
           </svg>
@@ -289,7 +304,7 @@
           </svg>
         </div>
         <!-- Profile -->
-        <div class="h-14 w-auto rounded-full cursor-pointer">
+        <div class="h-12 md:h-14 w-auto rounded-full cursor-pointer">
           <!-- Login & Register -->
           <div
             class="hidden relative flex items-center justify-between w-[155px] h-full text-white child:w-100 child:h-full child:flex child:items-center child:rounded-full">
@@ -298,7 +313,7 @@
           </div>
           <!-- Profile Photo -->
           <div class="profile-menu-btn relative h-full w-14">
-            <div class="w-14 h-14 rounded-full overflow-hidden">
+            <div class="w-12 md:w-14 h-12 md:h-14 rounded-full overflow-hidden">
               <img src="images/user-profile.png" alt="" />
             </div>
             <!-- SubMenu Profile -->
