@@ -6,7 +6,7 @@
   @apply hidden;
 }
 .menu__item.menu__item--active .submenu {
-  @apply block;
+  @apply flex;
 }
 .menu__item.menu__item--active .mobile__submenu-btn {
   @apply rotate-180;

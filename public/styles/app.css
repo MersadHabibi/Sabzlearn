@@ -1068,7 +1068,7 @@ body {
 }
 
 .menu__item.menu__item--active .submenu {
-  display: block;
+  display: flex;
 }
 
 .menu__item.menu__item--active .mobile__submenu-btn {
