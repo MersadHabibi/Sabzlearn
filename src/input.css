@@ -2,25 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-.submenu--active .mobile__submenu-btn {
-  @apply rotate-180 transition-all;
-}
-.submenu {
+.menu__item .submenu {
   @apply hidden;
 }
-.submenu--active .submenu {
-  @apply !flex;
+.menu__item.menu__item--active .submenu {
+  @apply block;
+}
+.menu__item.menu__item--active .mobile__submenu-btn {
+  @apply rotate-180;
 }
 
-.mobile__menu {
+.mobile-menu {
   @apply -right-64;
 }
-.mobile__menu--open {
+.mobile-menu--open {
   @apply !right-0;
 }
 
-.cover--active {
-  @apply !z-20 !opacity-100;
+.search-btn.search-btn--active {
+  @apply z-20;
+}
+.search-box {
+  @apply hidden;
+}
+.search-btn--active .search-box {
+  @apply !block;
+}
+
+.profile--active {
+  @apply z-20;
+}
+.profile__menu {
+  @apply hidden;
+}
+.profile--active .profile__menu {
+  @apply block;
+}
+
+.overlay {
+  @apply -z-10 opacity-0;
+}
+.overlay.show {
+  @apply z-10 opacity-100 sm:backdrop-blur-md;
 }
 
 @layer base {

@@ -345,13 +345,13 @@
       <div class="flex gap-x-5 child:flex child:justify-center child:items-center">
         <!-- Search Btn -->
         <div
-          class="!hidden lg:!flex search-btn relative h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray dark:border dark:border-gray-700 dark:hover:border-gray-500 transition-all cursor-pointer">
+          class="search-btn !hidden lg:!flex relative h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray dark:border dark:border-gray-700 dark:hover:border-gray-500 transition-all cursor-pointer">
           <svg class="w-6 h-6 text-slate-500">
             <use href="#magnifying-glass"></use>
           </svg>
           <!-- Search Box -->
           <div
-            class="search-box hidden absolute top-[70px] left-0 bg-gray-100 dark:bg-gray-700 h-14 w-60 rounded-full overflow-hidden transition-all z-20">
+            class="search-box absolute top-[70px] left-0 bg-gray-100 dark:bg-gray-700 h-14 w-60 rounded-full overflow-hidden transition-all z-20">
             <div class="relative w-full h-full">
               <input
                 type="text"
@@ -382,13 +382,13 @@
             <a href="#" class="absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block">عضویت</a>
           </div>
           <!-- Profile Photo -->
-          <div class="profile-menu-btn relative h-full w-14">
+          <div class="profile relative h-full w-14">
             <div class="w-12 md:w-14 h-12 md:h-14 rounded-full overflow-hidden">
               <img src="images/user-profile.png" alt="" />
             </div>
             <!-- SubMenu Profile -->
             <div
-              class="profile-menu hidden absolute top-16 left-0 w-[278px] p-5 z-20 bg-white dark:bg-gray-700 dark:text-white rounded-2xl">
+              class="profile__menu absolute top-16 left-0 w-[278px] p-5 z-20 bg-white dark:bg-gray-700 dark:text-white rounded-2xl">
               <div class="flex items-center gap-3 mb-5">
                 <div class="w-14 h-14 rounded-full overflow-hidden">
                   <img src="images/user-profile.png" alt="" />
@@ -435,7 +435,7 @@
 
     <!-- Mobile Menu -->
     <div
-      class="mobile__menu fixed top-0 w-64 text-slate-500 h-screen overflow-y-scroll bg-white dark:bg-[#32334D] px-7 pb-20 shadow-light transition-all z-30">
+      class="mobile-menu fixed top-0 w-64 text-slate-500 h-screen overflow-y-scroll bg-white dark:bg-[#32334D] px-7 pb-20 shadow-light transition-all z-30">
       <!-- Top -->
       <div class="flex items-center justify-between mt-5 pb-5">
         <div class="flex items-center gap-x-2">
@@ -459,10 +459,10 @@
           </svg>
         </div>
         <ul class="space-y-4 dark:text-slate-400">
-          <li class="w-full">
+          <li class="menu__item w-full">
             <div class="flex justify-between items-center w-full h-7">
               <a href="#">فرانت اند</a>
-              <svg class="mobile__submenu-btn rotate-0 w-4 h-4">
+              <svg class="mobile__submenu-btn rotate-0 w-4 h-4 transition-all">
                 <use href="#chevron-down"></use>
               </svg>
             </div>
@@ -481,10 +481,10 @@
               <a href="#">آموزش NPM</a>
             </ul>
           </li>
-          <li class="w-full">
+          <li class="menu__item w-full">
             <div class="flex justify-between items-center w-full h-7">
               <a href="#">امنیت</a>
-              <svg class="mobile__submenu-btn rotate-0 w-4 h-4">
+              <svg class="mobile__submenu-btn rotate-0 w-4 h-4 transition-all">
                 <use href="#chevron-down"></use>
               </svg>
             </div>
@@ -499,10 +499,10 @@
               <a href="#">آموزش جاوااسکریپت سیاه</a>
             </ul>
           </li>
-          <li class="w-full">
+          <li class="menu__item w-full">
             <div class="flex justify-between items-center w-full h-7">
               <a href="#">پایتون</a>
-              <svg class="mobile__submenu-btn rotate-0 w-4 h-4">
+              <svg class="mobile__submenu-btn rotate-0 w-4 h-4 transition-all">
                 <use href="#chevron-down"></use>
               </svg>
             </div>
@@ -514,15 +514,15 @@
               <a href="#">مصور سازی داده با پایتون</a>
             </ul>
           </li>
-          <li class="w-full">
+          <li class="menu__item w-full">
             <div class="flex justify-between items-center w-full h-7">
               <a href="#">مهارت های نرم</a>
             </div>
           </li>
-          <li class="w-full">
+          <li class="menu__item w-full">
             <div class="flex justify-between items-center w-full h-7">
               <a href="#">مقالات</a>
-              <svg class="mobile__submenu-btn rotate-0 w-4 h-4">
+              <svg class="mobile__submenu-btn rotate-0 w-4 h-4 transition-all">
                 <use href="#chevron-down"></use>
               </svg>
             </div>
@@ -554,7 +554,7 @@
       </div>
     </div>
 
-    <div class="cover fixed top-0 left-0 w-full h-full bg-black/30 backdrop-blur-md opacity-0 -z-10 transition-all"></div>
+    <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/index.js"></script>
     <script src="scripts/header.js" type="module"></script>
     <script src="scripts/share.js" type="module"></script>
