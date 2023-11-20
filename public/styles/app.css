@@ -696,6 +696,10 @@ body {
   margin-bottom: 1.25rem;
 }
 
+.mb-\[4500px\] {
+  margin-bottom: 4500px;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -1239,6 +1243,40 @@ body {
     --tw-backdrop-blur: blur(12px);
     -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
             backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  }
+}
+
+/* Scroll Bar Styles */
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --scroll-track-color: #e5e7eb;
+    --scroll-thumb-color: rgb(148, 163, 184, 0.5);
+  }
+
+  :root.dark {
+    --scroll-track-color: #1f2937;
+    --scroll-thumb-color: rgb(74 75 109);
+  }
+
+  /* width */
+
+  @media (min-width: 1024px) {
+    ::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+  }
+
+  /* Track */
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--scroll-track-color);
+  }
+
+  /* Handle */
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-color);
   }
 }
 

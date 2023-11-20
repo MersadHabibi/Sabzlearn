@@ -46,6 +46,34 @@
   @apply z-10 opacity-100 sm:backdrop-blur-md;
 }
 
+/* Scroll Bar Styles */
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --scroll-track-color: #e5e7eb;
+    --scroll-thumb-color: rgb(148, 163, 184, 0.5);
+  }
+  :root.dark {
+    --scroll-track-color: #1f2937;
+    --scroll-thumb-color: rgb(74 75 109);
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    @apply lg:w-2;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: var(--scroll-track-color);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-color);
+  }
+}
+
 @layer base {
   @font-face {
     font-family: "Dana";
