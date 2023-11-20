@@ -4,11 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/app.css" />
-    <link rel="shortcut icon" href="images/logo.webp" type="image/webp" />
+    <link rel="shortcut icon" href="images/icon.png" type="image/png" />
     <script src="../tailwind.config.js"></script>
-    <title>Document</title>
+    <title>سبز لرن</title>
   </head>
   <body class="relative bg-gray-100 dark:bg-gray">
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
     <svg class="hidden">
       <symbol
         id="chevron-down"
@@ -169,7 +179,7 @@
           </g>
         </g>
       </symbol>
-      <svg
+      <symbol
         id="close"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -177,7 +187,13 @@
         stroke-width="1.5"
         stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
+      </symbol>
+      <symbol id="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+          clip-rule="evenodd" />
+      </symbol>
     </svg>
     <!-- Header -->
     <header
@@ -346,7 +362,7 @@
         <!-- Search Btn -->
         <div
           class="search-btn !hidden lg:!flex relative h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray dark:border dark:border-gray-700 dark:hover:border-gray-500 transition-all cursor-pointer">
-          <svg class="w-6 h-6 text-slate-500">
+          <svg class="w-7 h-7 text-slate-500">
             <use href="#magnifying-glass"></use>
           </svg>
           <!-- Search Box -->
@@ -366,10 +382,10 @@
         <!-- Change Theme -->
         <div
           class="toggle-theme !hidden lg:!flex change-theme-btn h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray dark:border dark:border-gray-700 dark:hover:border-gray-500 transition-all cursor-pointer">
-          <svg class="inline-block dark:hidden w-6 h-6 text-slate-500">
+          <svg class="inline-block dark:hidden w-7 h-7 text-slate-500">
             <use href="#moon"></use>
           </svg>
-          <svg class="hidden dark:inline-block w-6 h-6 text-slate-500">
+          <svg class="hidden dark:inline-block w-7 h-7 text-slate-500">
             <use href="#sun"></use>
           </svg>
         </div>
@@ -432,7 +448,6 @@
         </div>
       </div>
     </header>
-
     <!-- Mobile Menu -->
     <div
       class="mobile-menu fixed top-0 w-64 text-slate-500 h-screen overflow-y-scroll bg-white dark:bg-[#32334D] px-7 pb-20 shadow-light transition-all z-30">
@@ -553,6 +568,44 @@
         </p>
       </div>
     </div>
+    <!-- Main -->
+    <main>
+      <!-- land section -->
+      <section class="pt-10 lg:pt-25">
+        <div class="container">
+          <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-y-10 lg:gap-0">
+            <div class="xl:w-1/2 dark:text-white text-center lg:text-right">
+              <h1 class="font-MorabbaBold text-5xl/[80px] lg:text-6xl/[96px]">
+                ما به هر قیمتی <br />
+                دوره تولید نمی کنیم!
+              </h1>
+              <h2 class="text-xl lg:text-2xl max-w-[500px] mb-10 mt-8">
+                با آکادمی خصوصی سبزلرن، علم برنامه نویسی رو با خیال راحت یاد بگیر و پیشرفت کن
+              </h2>
+              <div class="flex flex-wrap items-center justify-center gap-y-5 lg:justify-start text-base sm:text-xl gap-x-7">
+                <a
+                  href="#"
+                  class="flex items-center justify-center rounded-full text-white bg-sky-500 dark:bg-sky-600 sm:w-48 sm:h-14 w-36 h-10"
+                  >از اینجا شورع کن</a
+                >
+                <a href="#" class="flex items-center justify-center gap-x-3">
+                  <div class="flex items-center justify-center rounded-full bg-green-400 sm:h-14 sm:w-14 h-10 w-10">
+                    <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white">
+                      <use href="#play"></use>
+                    </svg>
+                  </div>
+                  <span class="text-slate-500 dark:text-slate-400">ما کی هستیم؟</span>
+                </a>
+              </div>
+            </div>
+            <div class="max-w-[443px] lg:max-w-none lg:h-[490px] xl:h-[560px]">
+              <img src="images/svgs/boy-dark.svg" class="hidden dark:block w-full lg:w-auto lg:h-full" alt="boy-dark" />
+              <img src="images/svgs/boy-light.svg" class="block dark:hidden w-full lg:w-auto lg:h-full" alt="boy-light" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/index.js"></script>

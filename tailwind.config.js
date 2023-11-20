@@ -10,10 +10,11 @@ module.exports = {
           DEFAULT: "#1C1C28",
         },
         slate: {
-          DEFAULT: "rgb(74 75 109)"
-        }
+          DEFAULT: "rgb(74 75 109)",
+        },
       },
       spacing: {
+        25: "6.25rem",
         100: "100px",
       },
       fontFamily: {
