@@ -13,7 +13,7 @@
 }
 
 .mobile-menu {
-  @apply -right-64;
+  @apply -right-72;
 }
 .mobile-menu--open {
   @apply !right-0;
