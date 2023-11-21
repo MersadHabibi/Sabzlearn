@@ -54,13 +54,13 @@
     --scroll-thumb-color: rgb(148, 163, 184, 0.5);
   }
   :root.dark {
-    --scroll-track-color: #1f2937;
+    --scroll-track-color: #28293d;
     --scroll-thumb-color: rgb(74 75 109);
   }
 
   /* width */
   ::-webkit-scrollbar {
-    @apply lg:w-2;
+    @apply w-2;
   }
 
   /* Track */

@@ -6,8 +6,11 @@ module.exports = {
     extend: {
       colors: {
         primary: "rgb(46 213 115)",
+        secondary: "#4e81fb",
         gray: {
           DEFAULT: "#1C1C28",
+          800: "#28293d",
+          700: "#32334d",
         },
         slate: {
           DEFAULT: "rgb(74 75 109)",
