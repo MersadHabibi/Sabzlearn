@@ -672,6 +672,14 @@ body {
   top: 70px;
 }
 
+.top-2 {
+  top: 0.5rem;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -722,6 +730,10 @@ body {
   margin-top: 0.375rem;
 }
 
+.mt-22 {
+  margin-top: 5.5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -732,10 +744,6 @@ body {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mt-\[124px\] {
-  margin-top: 124px;
 }
 
 .line-clamp-2 {
@@ -789,6 +797,10 @@ body {
   height: 1rem;
 }
 
+.h-42 {
+  height: 10.5rem;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -823,6 +835,10 @@ body {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-8 {
+  height: 2rem;
 }
 
 .w-10 {
@@ -1139,6 +1155,11 @@ body {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(46 213 115 / var(--tw-bg-opacity));
+}
+
 .fill-\[\#3a3a3a\] {
   fill: #3a3a3a;
 }
@@ -1189,6 +1210,21 @@ body {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .pb-2 {
@@ -1597,7 +1633,11 @@ body {
 }
 
 .child\:w-100 > * {
-  width: 100px;
+  width: 6.25rem;
+}
+
+.child\:w-25 > * {
+  width: 6.25rem;
 }
 
 .child\:cursor-pointer > * {
@@ -1790,6 +1830,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:mt-40 {
+    margin-top: 10rem;
+  }
+
   .sm\:h-14 {
     height: 3.5rem;
   }

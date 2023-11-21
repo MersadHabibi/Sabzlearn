@@ -17,8 +17,10 @@ module.exports = {
         },
       },
       spacing: {
+        22: "5.5rem",
         25: "6.25rem",
-        100: "100px",
+        42: "10.5rem",
+        100: "6.25rem",
       },
       fontFamily: {
         Dana: "Dana",
