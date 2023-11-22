@@ -40,6 +40,9 @@ module.exports = {
       boxShadow: {
         light: "0 1px 60px rgba(0,0,0,.05)",
       },
+      backgroundImage: {
+        "conic-gradient": "conic-gradient(var(--tw-gradient-stops))",
+      },
     },
     screens: {
       xs: "480px",
