@@ -741,6 +741,11 @@ body {
   margin: auto;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -783,12 +788,12 @@ body {
   margin-top: 0.375rem;
 }
 
-.mt-22 {
-  margin-top: 5.5rem;
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
-.mt-24 {
-  margin-top: 6rem;
+.mt-22 {
+  margin-top: 5.5rem;
 }
 
 .mt-25 {
@@ -1029,6 +1034,10 @@ body {
   width: 100%;
 }
 
+.max-w-\[1720px\] {
+  max-width: 1720px;
+}
+
 .max-w-\[443px\] {
   max-width: 443px;
 }
@@ -1236,6 +1245,14 @@ body {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-y-visible {
+  overflow-y: visible;
 }
 
 .overflow-y-scroll {
@@ -1590,6 +1607,10 @@ body {
   padding-bottom: 1.25rem;
 }
 
+.pb-14 {
+  padding-bottom: 3.5rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -1897,6 +1918,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Clear Cursor On Mobile */
+
+@media screen and (max-width: 768px) {
+  a {
+    cursor: default;
+  }
+
+  .cursor-pointer {
+    cursor: default;
+  }
 }
 
 /* Scroll Bar Styles */

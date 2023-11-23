@@ -1,4 +1,5 @@
-const toggleThemeBtns = document.querySelectorAll(".toggle-theme");
+const $ = document;
+const toggleThemeBtns = $.querySelectorAll(".toggle-theme");
 
 toggleThemeBtns.forEach((toggleThemeBtn) => {
   toggleThemeBtn.addEventListener("click", () => {

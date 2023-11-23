@@ -61,6 +61,17 @@
   align-items: center;
 }
 
+/* Clear Cursor On Mobile */
+
+@media screen and (max-width: 768px) {
+  a {
+    @apply cursor-default;
+  }
+  .cursor-pointer {
+    @apply cursor-default;
+  }
+}
+
 /* Scroll Bar Styles */
 
 @media screen and (min-width: 1024px) {
@@ -120,7 +131,7 @@
     src: local("MorabbaBold"), url(../fonts/Morabba/Morabba-Bold.woff2);
     font-display: swap;
   }
-  html{
+  html {
     @apply overflow-x-hidden;
   }
   body {
