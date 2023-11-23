@@ -120,8 +120,11 @@
     src: local("MorabbaBold"), url(../fonts/Morabba/Morabba-Bold.woff2);
     font-display: swap;
   }
+  html{
+    @apply overflow-x-hidden;
+  }
   body {
-    @apply font-Dana text-zinc-700;
+    @apply font-Dana text-zinc-700 overflow-x-hidden;
   }
 }
 @layer components {
