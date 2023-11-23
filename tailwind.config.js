@@ -13,7 +13,7 @@ module.exports = {
           700: "#32334d",
         },
         slate: {
-          DEFAULT: "rgb(74 75 109)",
+          DEFAULT: "#4a4b6d",
         },
       },
       spacing: {

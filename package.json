@@ -4,5 +4,15 @@
   },
   "scripts": {
     "build": "npx tailwindcss -i ./src/input.css -o ./public/styles/app.css --watch"
-  }
+  },
+  "dependencies": {
+    "swiper": "^11.0.5"
+  },
+  "name": "sabzlearn-website",
+  "version": "1.0.0",
+  "main": "public/index.html",
+  "keywords": [],
+  "author": "mersad",
+  "license": "ISC",
+  "description": ""
 }
