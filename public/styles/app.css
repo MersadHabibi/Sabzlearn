@@ -738,10 +738,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -1323,10 +1319,6 @@ body {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
 
-.bg-instagram-section {
-  background-image: url('../images/section-pattern.png'), linear-gradient(to right, #502ED6, #CD2F6A, #FFE354);
-}
-
 .bg-instagram-section-br {
   background-image: url('../images/section-pattern.png'), linear-gradient(to bottom right, #502ED6, #CD2F6A, #FFE354);
 }
@@ -1564,10 +1556,6 @@ body {
 
 .font-MorabbaBold {
   font-family: Morabba Bold;
-}
-
-.font-MorabbaMedium {
-  font-family: Morabba Medium;
 }
 
 .text-2xl {
@@ -1864,10 +1852,6 @@ body {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
   background-color: rgb(251 191 36 / var(--tw-bg-opacity));
-}
-
-.hover\:border:hover {
-  border-width: 1px;
 }
 
 .hover\:border-white:hover {
@@ -2274,10 +2258,6 @@ body {
   .sm\:bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  }
-
-  .sm\:bg-instagram-section-br {
-    background-image: url('../images/section-pattern.png'), linear-gradient(to bottom right, #502ED6, #CD2F6A, #FFE354);
   }
 
   .sm\:bg-instagram-section {
