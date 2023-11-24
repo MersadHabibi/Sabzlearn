@@ -795,6 +795,10 @@ html.dark .toggle__marker::before {
   top: 70px;
 }
 
+.top-auto {
+  top: auto;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -1406,6 +1410,11 @@ html.dark .toggle__marker::before {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-t-2xl {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .border {
@@ -2170,6 +2179,23 @@ html.dark .toggle__marker::before {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+/* Mobile Sort Modifire */
+
+.mobile-sort__value.active {
+  font-family: Dana Medium;
+  --tw-text-opacity: 1;
+  color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+:is(.dark .mobile-sort__value.active) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.mobile-sort__value.active svg {
+  display: inline-block;
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
@@ -2381,6 +2407,11 @@ html.dark .toggle__marker::before {
 :is(.dark .dark\:divide-gray-700) > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(50 51 77 / var(--tw-divide-opacity));
+}
+
+:is(.dark .dark\:divide-slate) > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(74 75 109 / var(--tw-divide-opacity));
 }
 
 :is(.dark .dark\:border) {

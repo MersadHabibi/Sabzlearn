@@ -106,6 +106,16 @@
   @apply font-DanaMedium text-zinc-700 bg-gray-100 dark:bg-gray-700 dark:text-white;
 }
 
+/* Mobile Sort Modifire */
+
+.mobile-sort__value.active {
+  @apply text-zinc-700 dark:text-white font-DanaMedium;
+}
+
+.mobile-sort__value.active svg {
+  @apply inline-block;
+}
+
 @layer base {
   @font-face {
     font-family: "Dana";
