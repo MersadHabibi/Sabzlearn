@@ -483,11 +483,9 @@ video {
 }
 
 html {
-  overflow-x: hidden;
 }
 
 body {
-  overflow-x: hidden;
   font-family: Dana;
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
@@ -633,6 +631,70 @@ body {
   }
 }
 
+/* Filter Toggles */
+
+.toggle {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.toggle__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.toggle__marker {
+  height: 1.5rem;
+  width: 46px;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  position: absolute;
+  top: -12px;
+  left: 0;
+  transition: all 100ms;
+}
+
+.toggle__marker::before {
+  content: " ";
+  position: absolute;
+  background-color: white;
+  right: 4px;
+  top: 0;
+  bottom: 0;
+  border-radius: 9999px;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  transition: all 100ms ease-in;
+}
+
+html.dark .toggle__marker {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 28 40 / var(--tw-bg-opacity));
+}
+
+html.dark .toggle__marker::before {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 51 77 / var(--tw-bg-opacity));
+}
+
+.toggle .toggle__input:checked ~ .toggle__marker {
+  background-color: #2196f3;
+}
+
+.toggle .toggle__input:checked ~ .toggle__marker::before {
+  right: 26px;
+  background-color: white;
+}
+
 .fixed {
   position: fixed;
 }
@@ -685,6 +747,10 @@ body {
   left: 1rem;
 }
 
+.left-5 {
+  left: 1.25rem;
+}
+
 .right-0 {
   right: 0px;
 }
@@ -707,6 +773,10 @@ body {
 
 .top-2\.5 {
   top: 0.625rem;
+}
+
+.top-5 {
+  top: 1.25rem;
 }
 
 .top-6 {
@@ -792,6 +862,10 @@ body {
   margin-top: 2.5rem;
 }
 
+.mt-15 {
+  margin-top: 3.75rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -826,6 +900,10 @@ body {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-9 {
+  margin-top: 2.25rem;
 }
 
 .line-clamp-2 {
@@ -884,6 +962,18 @@ body {
 
 .h-14 {
   height: 3.5rem;
+}
+
+.h-17 {
+  height: 4.25rem;
+}
+
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-2\.5 {
+  height: 0.625rem;
 }
 
 .h-20 {
@@ -950,14 +1040,6 @@ body {
   height: 100vh;
 }
 
-.h-96 {
-  height: 24rem;
-}
-
-.h-\[2000px\] {
-  height: 2000px;
-}
-
 .w-10 {
   width: 2.5rem;
 }
@@ -992,6 +1074,10 @@ body {
 
 .w-5 {
   width: 1.25rem;
+}
+
+.w-52 {
+  width: 13rem;
 }
 
 .w-6 {
@@ -1113,6 +1199,14 @@ body {
   cursor: pointer;
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
+
 .grid-rows-2 {
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
@@ -1161,6 +1255,10 @@ body {
   gap: 0.75rem;
 }
 
+.gap-3\.5 {
+  gap: 0.875rem;
+}
+
 .gap-5 {
   gap: 1.25rem;
 }
@@ -1192,6 +1290,11 @@ body {
 .gap-x-3 {
   -moz-column-gap: 0.75rem;
        column-gap: 0.75rem;
+}
+
+.gap-x-3\.5 {
+  -moz-column-gap: 0.875rem;
+       column-gap: 0.875rem;
 }
 
 .gap-x-4 {
@@ -1285,6 +1388,14 @@ body {
 
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .rounded-xl {
@@ -1389,6 +1500,11 @@ body {
 .bg-primary {
   --tw-bg-opacity: 1;
   background-color: rgb(46 213 115 / var(--tw-bg-opacity));
+}
+
+.bg-rose-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 63 94 / var(--tw-bg-opacity));
 }
 
 .bg-sky-300 {
@@ -1618,6 +1734,11 @@ body {
   padding-bottom: 0.5rem;
 }
 
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -1655,6 +1776,10 @@ body {
   padding-left: 3rem;
 }
 
+.pl-14 {
+  padding-left: 3.5rem;
+}
+
 .pr-2 {
   padding-right: 0.5rem;
 }
@@ -1669,6 +1794,10 @@ body {
 
 .pr-6 {
   padding-right: 1.5rem;
+}
+
+.pr-7 {
+  padding-right: 1.75rem;
 }
 
 .pt-10 {
@@ -1789,6 +1918,11 @@ body {
   color: rgb(251 191 36 / var(--tw-text-opacity));
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .text-primary {
   --tw-text-opacity: 1;
   color: rgb(46 213 115 / var(--tw-text-opacity));
@@ -1797,6 +1931,11 @@ body {
 .text-sky-500 {
   --tw-text-opacity: 1;
   color: rgb(14 165 233 / var(--tw-text-opacity));
+}
+
+.text-slate-400 {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 .text-slate-500 {
@@ -1978,6 +2117,23 @@ body {
   ::-webkit-scrollbar-thumb {
     background-color: var(--scroll-thumb-color);
   }
+}
+
+/* Sort Modifire */
+
+.sort__value.active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  font-family: Dana Medium;
+  --tw-text-opacity: 1;
+  color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+:is(.dark .sort__value.active) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 51 77 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .before\:absolute::before {
@@ -2393,6 +2549,10 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:mt-24 {
+    margin-top: 6rem;
+  }
+
   .sm\:mt-40 {
     margin-top: 10rem;
   }
@@ -2401,12 +2561,24 @@ body {
     display: flex;
   }
 
+  .sm\:grid {
+    display: grid;
+  }
+
+  .sm\:hidden {
+    display: none;
+  }
+
   .sm\:h-14 {
     height: 3.5rem;
   }
 
   .sm\:h-8 {
     height: 2rem;
+  }
+
+  .sm\:w-10 {
+    width: 2.5rem;
   }
 
   .sm\:w-14 {
@@ -2441,6 +2613,10 @@ body {
     align-items: center;
   }
 
+  .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+
   .sm\:self-auto {
     align-self: auto;
   }
@@ -2465,6 +2641,11 @@ body {
   .sm\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+
+  .sm\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 
   .sm\:text-xl {
@@ -2528,12 +2709,20 @@ body {
 }
 
 @media (min-width: 1024px) {
+  .lg\:sticky {
+    position: sticky;
+  }
+
   .lg\:-left-\[400px\] {
     left: -400px;
   }
 
   .lg\:-right-\[400px\] {
     right: -400px;
+  }
+
+  .lg\:col-span-2 {
+    grid-column: span 2 / span 2;
   }
 
   .lg\:ml-5 {
@@ -2578,6 +2767,10 @@ body {
 
   .lg\:max-w-none {
     max-width: none;
+  }
+
+  .lg\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-3 {
@@ -2638,12 +2831,20 @@ body {
 }
 
 @media (min-width: 1280px) {
+  .xl\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
   .xl\:h-\[560px\] {
     height: 560px;
   }
 
   .xl\:w-1\/2 {
     width: 50%;
+  }
+
+  .xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .xl\:grid-cols-4 {
