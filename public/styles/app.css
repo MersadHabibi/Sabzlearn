@@ -792,6 +792,14 @@ body {
   margin-top: 2.5rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-2\.5 {
+  margin-top: 0.625rem;
+}
+
 .mt-22 {
   margin-top: 5.5rem;
 }
