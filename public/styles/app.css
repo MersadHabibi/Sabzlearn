@@ -950,6 +950,14 @@ body {
   height: 100vh;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
+.h-\[2000px\] {
+  height: 2000px;
+}
+
 .w-10 {
   width: 2.5rem;
 }
