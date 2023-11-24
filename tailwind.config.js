@@ -9,8 +9,8 @@ module.exports = {
         secondary: "#4e81fb",
         gray: {
           DEFAULT: "#1C1C28",
-          800: "#28293d",
           700: "#32334d",
+          800: "#28293d",
         },
         slate: {
           DEFAULT: "#4a4b6d",

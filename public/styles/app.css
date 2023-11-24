@@ -1358,6 +1358,12 @@ html.dark .toggle__marker::before {
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
+.divide-y-\[1px\] > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+
 .self-end {
   align-self: flex-end;
 }
@@ -1495,6 +1501,10 @@ html.dark .toggle__marker::before {
 .bg-pink-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(236 72 153 / var(--tw-bg-opacity));
+}
+
+.bg-pink-500\/10 {
+  background-color: rgb(236 72 153 / 0.1);
 }
 
 .bg-primary {
@@ -1690,6 +1700,10 @@ html.dark .toggle__marker::before {
   padding: 1.25rem;
 }
 
+.p-6 {
+  padding: 1.5rem;
+}
+
 .p-8 {
   padding: 2rem;
 }
@@ -1704,6 +1718,11 @@ html.dark .toggle__marker::before {
   padding-right: 0.375rem;
 }
 
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1712,6 +1731,11 @@ html.dark .toggle__marker::before {
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .px-7 {
@@ -1727,6 +1751,11 @@ html.dark .toggle__marker::before {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
 }
 
 .py-2 {
@@ -1921,6 +1950,11 @@ html.dark .toggle__marker::before {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-pink-500 {
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
 }
 
 .text-primary {
@@ -2344,6 +2378,11 @@ html.dark .toggle__marker::before {
   display: none;
 }
 
+:is(.dark .dark\:divide-gray-700) > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(50 51 77 / var(--tw-divide-opacity));
+}
+
 :is(.dark .dark\:border) {
   border-width: 1px;
 }
@@ -2395,6 +2434,10 @@ html.dark .toggle__marker::before {
 :is(.dark .dark\:bg-gray-800) {
   --tw-bg-opacity: 1;
   background-color: rgb(40 41 61 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-red-500\/10) {
+  background-color: rgb(239 68 68 / 0.1);
 }
 
 :is(.dark .dark\:bg-secondary) {
@@ -2462,6 +2505,11 @@ html.dark .toggle__marker::before {
 
 :is(.dark .dark\:text-inherit) {
   color: inherit;
+}
+
+:is(.dark .dark\:text-red-500) {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 :is(.dark .dark\:text-secondary) {

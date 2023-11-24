@@ -285,6 +285,18 @@
           stroke-linejoin="round"
           d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
       </symbol>
+      <symbol
+        id="trash"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+      </symbol>
     </svg>
     <!-- Header -->
     <header
@@ -661,7 +673,7 @@
         </p>
       </div>
     </div>
-
+    <!-- Main -->
     <main class="">
       <div class="container">
         <!-- Category Name -->
@@ -1799,6 +1811,57 @@
         </div>
       </div>
     </main>
+    <!-- Mobile Filters Menu -->
+    <div class="!hidden fixed sm:hidden inset-0 w-full h-full flex flex-col bg-white dark:bg-gray-800">
+      <!-- Header -->
+      <div class="flex items-center justify-between w-full px-6 py-5 bg-gray-100 dark:bg-gray-700 shrink-0">
+        <div class="flex items-center gap-x-3 font-DanaDemiBold text-lg">
+          <button class="text-slate-400">
+            <svg class="w-6 h-6">
+              <use href="#close"></use>
+            </svg>
+          </button>
+          <span class="mt-1 dark:text-white"> فیلتر </span>
+        </div>
+        <div
+          class="flex items-center gap-x-2 text-sm rounded-xl text-pink-500 dark:text-red-500 bg-pink-500/10 dark:bg-red-500/10 px-3 py-1.5">
+          <svg class="w-5 h-5">
+            <use href="#trash"></use>
+          </svg>
+          حذف فیلتر ها
+        </div>
+      </div>
+      <!-- Main -->
+      <div class="h-full w-full divide-y-[1px] dark:divide-gray-700 px-6 flex-grow">
+        <div class="flex justify-between items-center h-17 w-full text-zinc-700 dark:text-white">
+          <span class="text-sm">فقط دوره های رایگان</span>
+          <label class="toggle">
+            <input class="toggle__input" type="checkbox" name="only_free" value="yes" />
+            <span class="toggle__marker"></span>
+          </label>
+        </div>
+        <div class="flex justify-between items-center h-17 w-full text-zinc-700 dark:text-white">
+          <span class="text-sm">در حال پیش فروش</span>
+          <label class="toggle">
+            <input class="toggle__input" type="checkbox" name="only_free" value="yes" />
+            <span class="toggle__marker"></span>
+          </label>
+        </div>
+        <div class="flex justify-between items-center h-17 w-full text-zinc-700 dark:text-white">
+          <span class="text-sm">دوره های خریداری شده</span>
+          <label class="toggle">
+            <input class="toggle__input" type="checkbox" name="only_free" value="yes" />
+            <span class="toggle__marker"></span>
+          </label>
+        </div>
+      </div>
+      <!-- Footer ( Button ) -->
+      <div class="flex items-center justify-center w-full p-6">
+        <button class="flex items-center justify-center h-12 w-full bg-primary rounded-xl font-DanaDemiBold text-lg text-white">
+          اعمال فیلتر
+        </button>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="mt-25 pt-8 lg:pt-16 w-full bg-white dark:bg-transparent dark:border-t dark:border-gray-700">
