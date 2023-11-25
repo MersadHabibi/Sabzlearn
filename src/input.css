@@ -39,6 +39,8 @@
   @apply block;
 }
 
+/* Overlay */
+
 .overlay {
   @apply -z-10 opacity-0;
 }
@@ -114,6 +116,26 @@
 
 .mobile-sort__value.active svg {
   @apply inline-block;
+}
+
+/* Open Mobile Filters Menu */
+
+.mobile-filters-menu {
+  @apply -left-full;
+}
+
+.mobile-filters-menu.open {
+  @apply !left-0;
+}
+
+/* Open Mobile Sort Menu */
+
+.mobile-sort-menu {
+  @apply -bottom-full;
+}
+
+.mobile-sort-menu.open {
+  @apply bottom-0;
 }
 
 @layer base {

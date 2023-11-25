@@ -2085,6 +2085,8 @@ html.dark .toggle__marker::before {
   display: block;
 }
 
+/* Overlay */
+
 .overlay {
   z-index: -10;
   opacity: 0;
@@ -2194,6 +2196,26 @@ html.dark .toggle__marker::before {
 
 .mobile-sort__value.active svg {
   display: inline-block;
+}
+
+/* Open Mobile Filters Menu */
+
+.mobile-filters-menu {
+  left: -100%;
+}
+
+.mobile-filters-menu.open {
+  left: 0px !important;
+}
+
+/* Open Mobile Sort Menu */
+
+.mobile-sort-menu {
+  bottom: -100%;
+}
+
+.mobile-sort-menu.open {
+  bottom: 0px;
 }
 
 .before\:absolute::before {

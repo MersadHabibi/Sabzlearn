@@ -682,6 +682,7 @@
         </p>
       </div>
     </div>
+
     <!-- Main -->
     <main class="">
       <div class="container">
@@ -748,24 +749,24 @@
                 </svg>
                 مرتب سازی :
               </span>
-              <ul class="flex items-center text-slate-500 dark:text-slate-400 text-sm">
+              <ul class="flex items-center text-slate-500 dark:text-slate-400 text-sm child:transition-all">
                 <li class="sort__value px-4 py-2.5 rounded-lg cursor-pointer active">همه دوره ها</li>
                 <li class="sort__value px-4 py-2.5 rounded-lg cursor-pointer">ارزان ترین</li>
                 <li class="sort__value px-4 py-2.5 rounded-lg cursor-pointer">گران ترین</li>
                 <li class="sort__value px-4 py-2.5 rounded-lg cursor-pointer">پر مخاطب ها</li>
               </ul>
             </div>
-            <!-- Mobile Filters -->
+            <!-- Mobile Filters And Sort -->
             <div class="flex sm:hidden gap-x-3.5 text-sm">
               <div
-                class="flex items-center justify-center gap-x-1 w-full py-2 bg-white dark:bg-gray-800 shadow-light rounded-xl dark:text-white">
+                class="mobile-filters__open-btn flex items-center justify-center gap-x-1 w-full py-2 bg-white dark:bg-gray-800 shadow-light rounded-xl dark:text-white">
                 <svg class="w-6 h-6 text-slate-400">
                   <use href="#adjustments"></use>
                 </svg>
                 فیلتر
               </div>
               <div
-                class="flex items-center justify-center gap-x-1 w-full py-2 bg-white dark:bg-gray-800 shadow-light rounded-xl dark:text-white">
+                class="mobile-sort__open-btn flex items-center justify-center gap-x-1 w-full py-2 bg-white dark:bg-gray-800 shadow-light rounded-xl dark:text-white">
                 <svg class="w-6 h-6 text-slate-400">
                   <use href="#sort"></use>
                 </svg>
@@ -1820,12 +1821,15 @@
         </div>
       </div>
     </main>
+
     <!-- Mobile Filters Menu -->
-    <div class="!hidden fixed sm:hidden inset-0 w-full h-full flex flex-col bg-white dark:bg-gray-800 z-20">
+    <div
+      class="mobile-filters-menu fixed sm:hidden bottom-0 top-0 w-full h-full flex flex-col bg-white dark:bg-gray-800 z-20 transition-all">
       <!-- Header -->
       <div class="flex items-center justify-between w-full px-6 py-5 bg-gray-100 dark:bg-gray-700 shrink-0">
         <div class="flex items-center gap-x-3 font-DanaDemiBold text-lg">
-          <button class="text-slate-400">
+          <!-- Mobile Filters Menu Close Btn -->
+          <button class="mobile-filters-menu__close text-slate-400">
             <svg class="w-6 h-6">
               <use href="#close"></use>
             </svg>
@@ -1872,11 +1876,13 @@
       </div>
     </div>
     <!-- Mobile Sort Menu -->
-    <div class="!hidden fixed sm:hidden inset-0 top-auto w-full rounded-t-2xl bg-white dark:bg-gray-800 overflow-hidden z-20">
+    <div
+      class="mobile-sort-menu fixed sm:hidden right-0 left-0 top-auto w-full rounded-t-2xl bg-white dark:bg-gray-800 overflow-hidden z-20 transition-all">
       <!-- Header -->
       <div class="flex items-center justify-between w-full px-6 py-5 bg-gray-100 dark:bg-gray-700 shrink-0">
         <div class="flex items-center gap-x-3 font-DanaDemiBold text-lg">
-          <button class="text-slate-400">
+          <!-- Mobile Sort Menu Close Btn -->
+          <button class="mobile-sort-menu__close text-slate-400">
             <svg class="w-6 h-6">
               <use href="#close"></use>
             </svg>
@@ -1977,5 +1983,6 @@
     <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/header.js" type="module"></script>
     <script src="scripts/share.js" type="module"></script>
+    <script src="scripts/categories.js" type="module"></script>
   </body>
 </html>
