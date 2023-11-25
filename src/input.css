@@ -226,6 +226,28 @@
     right: 26px;
     background-color: white;
   }
+
+  /* Bread Crumb */
+
+  .breadcrumb {
+    @apply hidden md:flex items-center w-full h-[50px] bg-white dark:bg-gray-800 shadow-light text-zinc-700/90 dark:text-white rounded-2xl mt-7 overflow-hidden;
+  }
+
+  .breadcrumb__item {
+    @apply relative flex items-center justify-center pr-8 lg:pr-10 pl-6 h-full text-lg pt-1;
+  }
+  .breadcrumb__item:first-child {
+    @apply pr-8 before:!content-none after:!content-none pt-0;
+  }
+  .breadcrumb__item:last-child {
+    @apply font-DanaDemiBold text-zinc-700 dark:text-white;
+  }
+  .breadcrumb__item::before {
+    @apply content-[''] absolute right-0 -bottom-1 w-[5px] h-2/3 bg-gray-100 dark:bg-gray -rotate-[35deg];
+  }
+  .breadcrumb__item::after {
+    @apply content-[''] absolute right-0 -top-1 w-[5px] h-2/3 bg-gray-100 dark:bg-gray rotate-[35deg];
+  }
 }
 @layer utilities {
 }
