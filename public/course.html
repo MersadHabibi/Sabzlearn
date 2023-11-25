@@ -306,6 +306,11 @@
         stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
       </symbol>
+      <symbol id="shield-done" xmlns="http://www.w3.org/2000/svg" width="25" height="30" viewBox="0 0 25 30">
+        <path
+          d="M12.18,29.952C11.687,29.8.091,26.195.091,16.033c0-2.772-.036-4.8-.061-6.283l0-.086c-.068-3.75-.081-4.53.886-5.5C2.07,3.007,10.829,0,12.5,0S22.928,3.007,24.088,4.167c.967.967.952,1.746.886,5.486l0,.092c-.027,1.483-.062,3.512-.062,6.288,0,10.161-11.595,13.77-12.089,13.919A1.047,1.047,0,0,1,12.5,30,1.059,1.059,0,0,1,12.18,29.952ZM2.459,5.746c-.268.272-.278.74-.221,3.876l0,.1c.025,1.49.061,3.529.061,6.316,0,7.689,8.495,11.09,10.2,11.693,1.7-.606,10.2-4.02,10.2-11.693,0-2.888.04-5.011.065-6.416.056-3.134.045-3.6-.239-3.886-.906-.756-8.776-3.52-10.025-3.52S3.369,4.986,2.459,5.746Zm8.217,12.38L7.889,15.336a1.106,1.106,0,0,1,1.565-1.564l2,2.008,4.963-4.963a1.1,1.1,0,0,1,1.561,1.564L12.24,18.126a1.1,1.1,0,0,1-1.563,0Z"
+          fill="#fff"></path>
+      </symbol>
     </svg>
     <!-- Header -->
     <header
@@ -705,6 +710,88 @@
             <a href="#"> پیاده سازی داشبورد های حرفه ای با CSS و JS </a>
           </div>
         </div>
+        <!-- Course Header -->
+        <section
+          class="flex flex-col-reverse lg:flex-row justify-between items-center gap-y-2 lg:gap-y-0 lg:items-stretch lg:gap-x-5 xl:gap-x-10 my-5 sm:my-10 p-3.5 sm:p-0 bg-white dark:bg-gray-800 sm:bg-transparent sm:dark:bg-transparent rounded-2xl">
+          <!-- Header Right -->
+          <div class="flex flex-col justify-between w-full">
+            <!-- header right top -->
+            <div>
+              <h1 class="font-MorabbaBold text-2xl sm:text-3xl dark:text-white">پیاده سازی داشبورد های حرفه ای با CSS و JS</h1>
+              <p
+                class="text-lg sm:text-xl text-zinc-700/80 dark:text-white/90 mt-6 xl:mt-8 line-clamp-4 lg:line-clamp-2 xl:line-clamp-3">
+                این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست. با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ،
+                ابزارهای پیشرفته و کتابخونه ها، به دنیای داشبوردهای شگفت‌آور با HTML، CSS و JavaScript
+              </p>
+            </div>
+            <!-- header right bottom -->
+            <div class="mt-5 pt-5 sm:pt-0 xl:mt-0 border-t border-t-gray-100 dark:border-gray-700 sm:border-t-0">
+              <!-- Offer -->
+              <div
+                class="flex flex-col sm:flex-row items-center justify-between gap-y-3 sm:gap-y-0 w-full sm:bg-white sm:dark:bg-gray-700 sm:shadow-light h-[50px] rounded-xl sm:px-5">
+                <span class="text-primary font-MorabbaBold text-xl"><span class="ml-1">70%</span> پیشنهاد شگفت انگیز</span>
+                <div
+                  class="flex items-center justify-center sm:justify-start gap-x-2 text-sm text-slate-500 dark:text-slate-400 w-full sm:w-auto bg-gray-100 dark:bg-gray-700 sm:bg-transparent sm:dark:bg-transparent rounded-lg sm:rounded-none pb-1 pt-1.5 sm:py-0">
+                  <p><span class="text-2xl font-DanaDemiBold text-zinc-700 dark:text-white">0</span> روز</p>
+                  <p><span class="text-2xl font-DanaDemiBold text-zinc-700 dark:text-white">23</span> ساعت</p>
+                  <p><span class="text-2xl font-DanaDemiBold text-zinc-700 dark:text-white">13</span> دقیقه</p>
+                  <p><span class="text-primary text-2xl font-DanaDemiBold">7</span> ثانیه</p>
+                </div>
+              </div>
+              <!-- Price and Buy Btn -->
+              <div class="flex flex-col-reverse sm:flex-row items-center justify-between mt-6 sm:mt-3.5">
+                <a
+                  href="#"
+                  class="flex items-center justify-center sm:justify-start gap-x-2 h-[62px] w-full sm:w-auto px-5 rounded-xl bg-primary text-white font-DanaDemiBold text-2xl">
+                  <svg class="w-[25px] h-[30px]">
+                    <use href="#shield-done"></use>
+                  </svg>
+                  <span> شرکت در دوره </span>
+                </a>
+                <div class="my-5 sm:m-0">
+                  <!-- Course Price -->
+                  <!-- Normal Price -->
+                  <div class="!hidden flex gap-x-1 items-center font-DanaDemiBold dark:text-white">
+                    <span class="text-3xl mt-1">420,000</span>
+                    <svg class="w-6 h-6">
+                      <use href="#toman"></use>
+                    </svg>
+                  </div>
+                  <!-- Offer Price -->
+                  <div class="flex items-center gap-x-2">
+                    <span
+                      class="relative block text-slate-500 dark:text-slate-400 text-2xl -mb-1 pt-1.5 before:content-[''] before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-slate-500 dark:before:bg-slate-400"
+                      >420,000</span
+                    >
+                    <span class="flex items-center gap-x-1 font-DanaDemiBold mt-1 text-3xl dark:text-white">
+                      <span class="mt-2"> 300,000 </span>
+                      <svg class="w-6 h-6">
+                        <use href="#toman"></use>
+                      </svg>
+                    </span>
+                  </div>
+                  <!-- Free Price -->
+                  <div class="!hidden flex items-center gap-x-2">
+                    <span
+                      class="relative block text-slate-500 dark:text-slate-400 text-2xl -mb-1 pt-1.5 before:content-[''] before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-slate-500 dark:before:bg-slate-400"
+                      >420,000</span
+                    >
+                    <span class="font-DanaDemiBold mt-2 text-3xl dark:text-white"> رایگان! </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Header Left - Banner -->
+          <div
+            class="shrink-0 mb-3 sm:mb-6 lg:mb-0 w-full h-auto md:w-10/12 lg:w-[440px] lg:h-[270px] xl:w-[610px] xl:h-[360px] rounded-2xl sm:rounded-3xl overflow-hidden">
+            <img
+              src="https://sabzlearn.ir/wp-content/uploads/2023/11/Course-thumbnail-Dashboard2-1.webp"
+              class="w-full h-full object-cover"
+              alt="پیاده سازی داشبورد های حرفه ای با CSS و JS"
+              style="" />
+          </div>
+        </section>
       </div>
     </main>
 
