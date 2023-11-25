@@ -9,14 +9,16 @@ module.exports = {
         secondary: "#4e81fb",
         gray: {
           DEFAULT: "#1C1C28",
-          800: "#28293d",
           700: "#32334d",
+          800: "#28293d",
         },
         slate: {
           DEFAULT: "#4a4b6d",
         },
       },
       spacing: {
+        15: "3.75rem",
+        17: "4.25rem",
         22: "5.5rem",
         25: "6.25rem",
         42: "10.5rem",

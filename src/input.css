@@ -39,6 +39,8 @@
   @apply block;
 }
 
+/* Overlay */
+
 .overlay {
   @apply -z-10 opacity-0;
 }
@@ -100,6 +102,42 @@
   }
 }
 
+/* Sort Modifire */
+
+.sort__value.active {
+  @apply font-DanaMedium text-zinc-700 bg-gray-100 dark:bg-gray-700 dark:text-white;
+}
+
+/* Mobile Sort Modifire */
+
+.mobile-sort__value.active {
+  @apply text-zinc-700 dark:text-white font-DanaMedium;
+}
+
+.mobile-sort__value.active svg {
+  @apply inline-block;
+}
+
+/* Open Mobile Filters Menu */
+
+.mobile-filters-menu {
+  @apply -left-full;
+}
+
+.mobile-filters-menu.open {
+  @apply !left-0;
+}
+
+/* Open Mobile Sort Menu */
+
+.mobile-sort-menu {
+  @apply -bottom-full;
+}
+
+.mobile-sort-menu.open {
+  @apply bottom-0;
+}
+
 @layer base {
   @font-face {
     font-family: "Dana";
@@ -132,13 +170,62 @@
     font-display: swap;
   }
   html {
-    @apply overflow-x-hidden;
   }
   body {
-    @apply font-Dana text-zinc-700 overflow-x-hidden;
+    @apply font-Dana text-zinc-700;
   }
 }
 @layer components {
+  /* Filter Toggles */
+  .toggle {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .toggle__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  .toggle__marker {
+    @apply w-[46px] h-6 bg-gray-200 rounded-full;
+    position: absolute;
+    top: -12px;
+    left: 0;
+    transition: all 100ms;
+  }
+  .toggle__marker::before {
+    content: " ";
+    position: absolute;
+    background-color: white;
+    right: 4px;
+    top: 0;
+    bottom: 0;
+    border-radius: 9999px;
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    transition: all 100ms ease-in;
+  }
+  html.dark .toggle__marker {
+    @apply bg-gray;
+  }
+  html.dark .toggle__marker::before {
+    @apply bg-gray-700;
+  }
+  .toggle .toggle__input:checked ~ .toggle__marker {
+    background-color: #2196f3;
+  }
+  .toggle .toggle__input:checked ~ .toggle__marker::before {
+    right: 26px;
+    background-color: white;
+  }
 }
 @layer utilities {
 }
