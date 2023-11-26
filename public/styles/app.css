@@ -1018,6 +1018,10 @@ html.dark .toggle__marker::before {
   margin-bottom: 2.5rem;
 }
 
+.mb-11 {
+  margin-bottom: 2.75rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -1106,18 +1110,6 @@ html.dark .toggle__marker::before {
   margin-top: 2.25rem;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
-.mb-11 {
-  margin-bottom: 2.75rem;
-}
-
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -1142,10 +1134,6 @@ html.dark .toggle__marker::before {
 
 .flex {
   display: flex;
-}
-
-.\!flex {
-  display: flex !important;
 }
 
 .inline-flex {
@@ -1228,6 +1216,10 @@ html.dark .toggle__marker::before {
   height: 2.25rem;
 }
 
+.h-\[190px\] {
+  height: 190px;
+}
+
 .h-\[217px\] {
   height: 217px;
 }
@@ -1278,6 +1270,10 @@ html.dark .toggle__marker::before {
 
 .h-screen {
   height: 100vh;
+}
+
+.max-h-\[800px\] {
+  max-height: 800px;
 }
 
 .w-10 {
@@ -2075,6 +2071,11 @@ html.dark .toggle__marker::before {
   padding-bottom: 1.25rem;
 }
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -2179,10 +2180,6 @@ html.dark .toggle__marker::before {
   text-align: center;
 }
 
-.text-right {
-  text-align: right;
-}
-
 .font-DanaDemiBold {
   font-family: Dana DemiBold;
 }
@@ -2233,6 +2230,11 @@ html.dark .toggle__marker::before {
 .text-lg\/10 {
   font-size: 1.125rem;
   line-height: 2.5rem;
+}
+
+.text-lg\/8 {
+  font-size: 1.125rem;
+  line-height: 2rem;
 }
 
 .text-sm {
@@ -2595,6 +2597,11 @@ html.dark .toggle__marker::before {
   margin-bottom: auto;
 }
 
+.before\:h-10::before {
+  content: var(--tw-content);
+  height: 2.5rem;
+}
+
 .before\:h-2::before {
   content: var(--tw-content);
   height: 0.5rem;
@@ -2613,6 +2620,16 @@ html.dark .toggle__marker::before {
 .before\:h-\[1px\]::before {
   content: var(--tw-content);
   height: 1px;
+}
+
+.before\:w-2::before {
+  content: var(--tw-content);
+  width: 0.5rem;
+}
+
+.before\:w-2\.5::before {
+  content: var(--tw-content);
+  width: 0.625rem;
 }
 
 .before\:w-3::before {
@@ -2734,6 +2751,10 @@ html.dark .toggle__marker::before {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+}
+
+.child\:block > * {
+  display: block;
 }
 
 .child\:inline-block > * {
@@ -3019,6 +3040,12 @@ html.dark .toggle__marker::before {
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
+:is(.dark .dark\:before\:bg-yellow-400)::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+
 :is(.dark .dark\:hover\:border-gray-500:hover) {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
@@ -3068,6 +3095,10 @@ html.dark .toggle__marker::before {
     margin-bottom: 2.5rem;
   }
 
+  .sm\:mb-0 {
+    margin-bottom: 0px;
+  }
+
   .sm\:mb-6 {
     margin-bottom: 1.5rem;
   }
@@ -3086,10 +3117,6 @@ html.dark .toggle__marker::before {
 
   .sm\:mt-40 {
     margin-top: 10rem;
-  }
-
-  .sm\:mb-0 {
-    margin-bottom: 0px;
   }
 
   .sm\:flex {
@@ -3468,6 +3495,11 @@ html.dark .toggle__marker::before {
     line-height: 2rem;
   }
 
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .lg\:text-6xl\/\[96px\] {
     font-size: 3.75rem;
     line-height: 96px;
@@ -3543,5 +3575,10 @@ html.dark .toggle__marker::before {
   .xl\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .xl\:text-xl\/10 {
+    font-size: 1.25rem;
+    line-height: 2.5rem;
   }
 }
