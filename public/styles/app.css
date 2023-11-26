@@ -1106,6 +1106,18 @@ html.dark .toggle__marker::before {
   margin-top: 2.25rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-11 {
+  margin-bottom: 2.75rem;
+}
+
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -1130,6 +1142,10 @@ html.dark .toggle__marker::before {
 
 .flex {
   display: flex;
+}
+
+.\!flex {
+  display: flex !important;
 }
 
 .inline-flex {
@@ -2163,6 +2179,10 @@ html.dark .toggle__marker::before {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .font-DanaDemiBold {
   font-family: Dana DemiBold;
 }
@@ -2208,6 +2228,11 @@ html.dark .toggle__marker::before {
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+.text-lg\/10 {
+  font-size: 1.125rem;
+  line-height: 2.5rem;
 }
 
 .text-sm {
@@ -3063,6 +3088,10 @@ html.dark .toggle__marker::before {
     margin-top: 10rem;
   }
 
+  .sm\:mb-0 {
+    margin-bottom: 0px;
+  }
+
   .sm\:flex {
     display: flex;
   }
@@ -3109,6 +3138,10 @@ html.dark .toggle__marker::before {
 
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sm\:grid-rows-2 {
@@ -3269,6 +3302,10 @@ html.dark .toggle__marker::before {
     flex-direction: row;
   }
 
+  .md\:justify-start {
+    justify-content: flex-start;
+  }
+
   .md\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
@@ -3309,6 +3346,10 @@ html.dark .toggle__marker::before {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+  }
+
+  .lg\:block {
+    display: block;
   }
 
   .lg\:\!flex {
@@ -3483,6 +3524,10 @@ html.dark .toggle__marker::before {
 
   .xl\:grid-rows-1 {
     grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
+  .xl\:justify-between {
+    justify-content: space-between;
   }
 
   .xl\:gap-x-10 {
