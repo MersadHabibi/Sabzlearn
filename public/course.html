@@ -311,6 +311,28 @@
           d="M12.18,29.952C11.687,29.8.091,26.195.091,16.033c0-2.772-.036-4.8-.061-6.283l0-.086c-.068-3.75-.081-4.53.886-5.5C2.07,3.007,10.829,0,12.5,0S22.928,3.007,24.088,4.167c.967.967.952,1.746.886,5.486l0,.092c-.027,1.483-.062,3.512-.062,6.288,0,10.161-11.595,13.77-12.089,13.919A1.047,1.047,0,0,1,12.5,30,1.059,1.059,0,0,1,12.18,29.952ZM2.459,5.746c-.268.272-.278.74-.221,3.876l0,.1c.025,1.49.061,3.529.061,6.316,0,7.689,8.495,11.09,10.2,11.693,1.7-.606,10.2-4.02,10.2-11.693,0-2.888.04-5.011.065-6.416.056-3.134.045-3.6-.239-3.886-.906-.756-8.776-3.52-10.025-3.52S3.369,4.986,2.459,5.746Zm8.217,12.38L7.889,15.336a1.106,1.106,0,0,1,1.565-1.564l2,2.008,4.963-4.963a1.1,1.1,0,0,1,1.561,1.564L12.24,18.126a1.1,1.1,0,0,1-1.563,0Z"
           fill="#fff"></path>
       </symbol>
+      <symbol id="users-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+      </symbol>
+      <symbol id="star-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+          clip-rule="evenodd" />
+      </symbol>
+      <symbol
+        id="clipboard-document"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 00-9-9z" />
+      </symbol>
     </svg>
     <!-- Header -->
     <header
@@ -791,6 +813,72 @@
               alt="پیاده سازی داشبورد های حرفه ای با CSS و JS"
               style="" />
           </div>
+        </section>
+        <!-- Course Main -->
+        <section class="flex gap-5 items-start">
+          <div class="w-full"></div>
+          <aside class="w-80 xl:w-96 shrink-0 space-y-5">
+            <!-- Side Top -->
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light">
+              <div class="flex gap-5">
+                <div class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
+                  <svg class="w-8 h-8 text-primary">
+                    <use href="#users-fill"></use>
+                  </svg>
+                  <div class="flex flex-col">
+                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white">175</span>
+                    <span class="text-sm text-slate-500 dark:text-slate-400">دانشجو</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
+                  <svg class="w-8 h-8 text-amber-400 dark:text-yellow-400">
+                    <use href="#star-fill"></use>
+                  </svg>
+                  <div class="flex flex-col">
+                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white">5.0</span>
+                    <span class="text-sm text-slate-500 dark:text-slate-400">رضایت</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center text-xl dark:text-white">
+                  <span class="mt-5 mb-4">درصد تکمیل دوره</span>
+                  <span>0%</span>
+                </div>
+                <progress value="0" max="100" class="w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
+              </div>
+            </div>
+            <!-- Side Main -->
+            <div class="flex flex-col items-center text-center p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light">
+              <div class="rounded-full w-[90px] h-[90px] overflow-hidden mb-1.5">
+                <img src="images/user-profile.png" class="" alt="" />
+              </div>
+              <h4 class="text-2xl dark:text-white">مهرشاد براتی</h4>
+              <a href="#" class="flex items-center gap-x-1 text-sm text-slate-500 dark:text-slate-400 mb-1.5 mt-1">
+                <span>مدرس دوره</span>
+                <svg class="w-5 h-5">
+                  <use href="#logout"></use>
+                </svg>
+              </a>
+              <p class="text-zinc-700/80 dark:text-white">
+                مهرشاد براتی هستم برنامه نویس و توسعه دهنده فول استک وب و دانشجوی ارشد رشته کامپیوتر گرایش نرم افزار
+              </p>
+            </div>
+            <!-- Side Footer -->
+            <div class="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light overflow-hidden">
+              <span
+                class="relative font-DanaDemiBold text-2xl pr-5 dark:text-white before:content-[''] before:absolute before:bg-sky-500 dark:before:bg-secondary before:w-8 before:h-2 before:rounded-sm before:top-0 before:bottom-0 before:right-4 before:my-auto"
+                >لینک کوتاه:</span
+              >
+              <div
+                class="flex justify-between gap-x-2 h-[65px] px-4 mt-4 text-slate-500 dark:text-slate-400 bg-gray-100 dark:bg-gray-700 border border-dashed rounded-xl border-gray-600/30 dark:border-gray-600/80">
+                <svg class="w-6 h-6 my-auto cursor-pointer">
+                  <use href="#clipboard-document"></use>
+                </svg>
+                <span class="truncate text-xl leading-[65px] mt-0.5" dir="ltr">https://sabzlearn.ir/?p=3018</span>
+              </div>
+            </div>
+          </aside>
         </section>
       </div>
     </main>
