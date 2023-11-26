@@ -138,6 +138,20 @@
   @apply bottom-0;
 }
 
+/* Course Topic */
+
+.course-topic.open .topic__header {
+  @apply bg-gray-200 dark:bg-slate;
+}
+
+.course-topic.open .topic__header svg {
+  @apply rotate-180;
+}
+
+.course-topic.open .topic__body {
+  @apply block;
+}
+
 @layer base {
   @font-face {
     font-family: "Dana";
