@@ -1110,6 +1110,10 @@ html.dark .toggle__marker::before {
   margin-top: 2.25rem;
 }
 
+.mb-3\.5 {
+  margin-bottom: 0.875rem;
+}
+
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -1276,6 +1280,10 @@ html.dark .toggle__marker::before {
   height: 100vh;
 }
 
+.h-15 {
+  height: 3.75rem;
+}
+
 .max-h-\[800px\] {
   max-height: 800px;
 }
@@ -1390,6 +1398,10 @@ html.dark .toggle__marker::before {
 
 .w-full {
   width: 100%;
+}
+
+.w-15 {
+  width: 3.75rem;
 }
 
 .max-w-\[1720px\] {
@@ -1603,6 +1615,11 @@ html.dark .toggle__marker::before {
 
 .gap-y-5 {
   row-gap: 1.25rem;
+}
+
+.gap-x-2\.5 {
+  -moz-column-gap: 0.625rem;
+       column-gap: 0.625rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -2036,6 +2053,10 @@ html.dark .toggle__marker::before {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .px-1 {
@@ -2985,6 +3006,11 @@ html.dark .toggle__marker::before {
   border-bottom-color: rgb(50 51 77 / var(--tw-border-opacity));
 }
 
+:is(.dark .dark\:border-b-slate) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(74 75 109 / var(--tw-border-opacity));
+}
+
 :is(.dark .dark\:bg-\[\#32334D\]) {
   --tw-bg-opacity: 1;
   background-color: rgb(50 51 77 / var(--tw-bg-opacity));
@@ -3185,6 +3211,11 @@ html.dark .toggle__marker::before {
 @media (min-width: 480px) {
   .xs\:flex-row {
     flex-direction: row;
+  }
+
+  .xs\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .xs\:text-right {
