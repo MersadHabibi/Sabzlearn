@@ -1,4 +1,4 @@
-import { _changeClasses } from "./funcs/utils.js";
+import { _changeClasses, createTimer } from "./funcs/utils.js";
 
 const $ = document;
 
@@ -22,6 +22,13 @@ const openNewCommentBtn = $.querySelector(".open-new-comment-btn");
 const cancelNewCommentBtn = $.querySelector(".cancel-new-comment");
 const replayCommentBtn = $.querySelectorAll(".comment-reply-btn");
 const commentTo = $.querySelector(".comment-to");
+
+// Offer Elements
+
+const offerDay = $.querySelector(".offer__day");
+const offerHur = $.querySelector(".offer__hur");
+const offerMin = $.querySelector(".offer__min");
+const offerSec = $.querySelector(".offer__sec");
 
 // Course Description - show & hide
 
@@ -66,3 +73,7 @@ replayCommentBtn.forEach((replayBtn) => {
     _changeClasses("add", courseComments, ["show-new-comment-form"]);
   });
 });
+
+// Create Timer
+
+createTimer(offerDay, offerHur, offerMin, offerSec, "0:14:10:3", false);
