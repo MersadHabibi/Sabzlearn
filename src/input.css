@@ -152,6 +152,44 @@
   @apply block;
 }
 
+/* Course Description */
+
+.course-description.show .course-description__overlay {
+  @apply hidden;
+}
+
+.course-description.show .course-description__content {
+  @apply max-h-none;
+}
+
+.course-description.show .course-description__btn svg {
+  @apply rotate-180;
+}
+
+.course-description.show .course-description__btn .course-description__btn-dont-show-text {
+  @apply hidden;
+}
+
+.course-description.show .course-description__btn .course-description__btn-show-text {
+  @apply inline-block;
+}
+
+/* Course Topics */
+
+.course-topic.open .topic__header {
+  @apply bg-gray-200 dark:bg-slate;
+}
+
+.course-topic.open .topic__body {
+  @apply h-auto;
+}
+
+/* New Comment */
+
+.course-comments.show-new-comment-form .new-comment-form {
+  @apply block;
+}
+
 @layer base {
   @font-face {
     font-family: "Dana";

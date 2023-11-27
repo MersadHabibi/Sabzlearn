@@ -963,15 +963,16 @@
               </a>
             </div>
             <!-- Course Description -->
-            <div class="bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
+            <div class="course-description bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
               <div class="flex justify-between items-center mb-5">
                 <h3
                   class="relative font-MorabbaBold text-2xl lg:text-3xl dark:text-white pr-6 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:bg-amber-400 dark:before:bg-yellow-400 before:rounded-sm before:w-2.5 before:h-10 before:m-auto">
                   توضیحات
                 </h3>
               </div>
-              <div class="relative overflow-hidden text-lg/8 xl:text-xl/10 text-zinc-700/80 dark:text-white max-h-[800px] pt-5">
-                <div class="child:block">
+              <div
+                class="course-description__content relative overflow-hidden text-lg/8 xl:text-xl/10 text-zinc-700/80 dark:text-white max-h-[800px] pt-5 transition-all">
+                <div class="">
                   <p class="p1" dir="rtl">
                     پنل ادمین نقش بسیار حیاتی در موفقیت و مدیریت بهتر هر پروژه وب دارد. و خیلی مهم هست یک برنامه نویس فرانت اند
                     دانش طراحی داشبورد یا پنل ادمین های حرفه ای رو داشته باشه که هدف ما در این دوره حرفه ای همین هست که افراد رو
@@ -1015,13 +1016,32 @@
                     به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای، تجربه کاربران خود را به سطح بالاتری برسانید و
                     وب‌سایت‌تان را به یک سطح جدید از عملکرد و جذابیت برسانید
                   </p>
+                  <ol>
+                    <li class="p1" dir="rtl">طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین روش‌های موجود</li>
+                    <li class="p1" dir="rtl">بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه</li>
+                    <li class="p1" dir="rtl">
+                      آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد استفاده در داشبورد‌های حرفه‌ای
+                    </li>
+                    <li class="p1" dir="rtl">ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های مهم</li>
+                  </ol>
+                  <p class="p1" dir="rtl">
+                    این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید
+                    به کار بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش
+                    داده می‌شود.
+                  </p>
+                  <p class="p1" dir="rtl">
+                    به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای، تجربه کاربران خود را به سطح بالاتری برسانید و
+                    وب‌سایت‌تان را به یک سطح جدید از عملکرد و جذابیت برسانید
+                  </p>
                 </div>
+                <!-- Overlay -->
                 <div
-                  class="absolute bottom-0 left-0 right-0 w-full h-[190px] bg-gradient-to-t from-white dark:from-gray-800"></div>
+                  class="course-description__overlay absolute bottom-0 left-0 right-0 w-full h-[190px] bg-gradient-to-t from-white dark:from-gray-800"></div>
               </div>
               <button
-                class="flex justify-center items-center gap-x-2 text-xl text-white rounded-full bg-primary hover:bg-green-500 px-7 h-14 mx-auto mt-10 transition-colors">
-                <span>مشاهده بیشتر</span>
+                class="course-description__btn flex justify-center items-center gap-x-2 text-xl text-white rounded-full bg-primary hover:bg-green-500 px-7 h-14 mx-auto mt-10 transition-colors">
+                <span class="course-description__btn-dont-show-text">مشاهده بیشتر</span>
+                <span class="course-description__btn-show-text hidden">مشاهده کمتر</span>
                 <svg class="w-5 h-5">
                   <use href="#chevron-down"></use>
                 </svg>
@@ -1048,7 +1068,175 @@
                     </svg>
                   </div>
                   <!-- Topic Body -->
-                  <div class="topic__body hidden bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
+                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
+                    <div
+                      class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
+                      <a
+                        href="https://sabzlearn.ir/lesson/48-23816"
+                        class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
+                        <span
+                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
+                          >1</span
+                        >
+                        <h4
+                          class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
+                          معرفی دوره + نگاه کلی به پروژه دوره
+                        </h4>
+                      </a>
+                      <div class="flex items-center w-full justify-between">
+                        <span
+                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
+                          >جلسه رایگان</span
+                        >
+                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
+                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <svg
+                            class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
+                            <use xlink:href="#play-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
+                      <a
+                        href="https://sabzlearn.ir/lesson/48-23816"
+                        class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
+                        <span
+                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
+                          >1</span
+                        >
+                        <h4
+                          class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
+                          معرفی دوره + نگاه کلی به پروژه دوره
+                        </h4>
+                      </a>
+                      <div class="flex items-center w-full justify-between">
+                        <span
+                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
+                          >جلسه رایگان</span
+                        >
+                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
+                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <svg
+                            class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
+                            <use xlink:href="#play-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
+                      <a
+                        href="https://sabzlearn.ir/lesson/48-23816"
+                        class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
+                        <span
+                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
+                          >1</span
+                        >
+                        <h4
+                          class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
+                          معرفی دوره + نگاه کلی به پروژه دوره
+                        </h4>
+                      </a>
+                      <div class="flex items-center w-full justify-between">
+                        <span
+                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
+                          >جلسه رایگان</span
+                        >
+                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
+                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <svg
+                            class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
+                            <use xlink:href="#play-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
+                      <a
+                        href="https://sabzlearn.ir/lesson/48-23816"
+                        class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
+                        <span
+                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
+                          >1</span
+                        >
+                        <h4
+                          class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
+                          معرفی دوره + نگاه کلی به پروژه دوره
+                        </h4>
+                      </a>
+                      <div class="flex items-center w-full justify-between">
+                        <span
+                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
+                          >جلسه رایگان</span
+                        >
+                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
+                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <svg
+                            class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
+                            <use xlink:href="#play-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
+                      <a
+                        href="https://sabzlearn.ir/lesson/48-23816"
+                        class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
+                        <span
+                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
+                          >1</span
+                        >
+                        <h4
+                          class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
+                          معرفی دوره + نگاه کلی به پروژه دوره
+                        </h4>
+                      </a>
+                      <div class="flex items-center w-full justify-between">
+                        <span
+                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
+                          >جلسه رایگان</span
+                        >
+                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
+                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <svg
+                            class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
+                            <use xlink:href="#play-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
+                      <a
+                        href="https://sabzlearn.ir/lesson/48-23816"
+                        class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
+                        <span
+                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
+                          >1</span
+                        >
+                        <h4
+                          class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
+                          معرفی دوره + نگاه کلی به پروژه دوره
+                        </h4>
+                      </a>
+                      <div class="flex items-center w-full justify-between">
+                        <span
+                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
+                          >جلسه رایگان</span
+                        >
+                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
+                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <svg
+                            class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
+                            <use xlink:href="#play-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                     <div
                       class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
                       <a
@@ -1089,7 +1277,7 @@
                     </svg>
                   </div>
                   <!-- Topic Body -->
-                  <div class="topic__body hidden bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
+                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
                     <div
                       class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
                       <a
@@ -1130,7 +1318,7 @@
                     </svg>
                   </div>
                   <!-- Topic Body -->
-                  <div class="topic__body hidden bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
+                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
                     <div
                       class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
                       <a
@@ -1163,25 +1351,28 @@
                 </div>
               </div>
             </div>
+
             <!-- Course Comments -->
-            <div class="bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
+            <div class="course-comments bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
               <!-- Comments Header -->
               <div class="flex justify-between items-center mb-5">
                 <h3
                   class="relative font-MorabbaBold text-2xl lg:text-3xl dark:text-white pr-6 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:bg-pink-500 dark:before:bg-rose-500 before:rounded-sm before:w-2.5 before:h-10 before:m-auto">
                   نظرات
                 </h3>
-                <button class="bg-primary hover:bg-green-500 h-10 rounded-xl text-white px-[18px]" type="button">
+                <button
+                  class="open-new-comment-btn bg-primary hover:bg-green-500 h-10 rounded-xl text-white px-[18px]"
+                  type="button">
                   ایجاد نظر جدید
                 </button>
               </div>
               <!-- New Comment -->
-              <div class="mb-5">
+              <div class="new-comment-form hidden mb-5">
                 <div class="flex gap-x-2 mb-3">
                   <img class="block w-10 h-10 md:w-14 md:h-14 object-cover rounded-full shrink-0" src="images/user-profile.png" />
                   <div class="flex flex-col">
                     <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">Darcy</span>
-                    <span class="text-slate-500 dark:text-gray-500 text-sm" id="comment-to">ثبت نظر جدید</span>
+                    <span class="comment-to text-slate-500 dark:text-gray-500 text-sm">ثبت نظر جدید</span>
                   </div>
                 </div>
                 <textarea
@@ -1191,8 +1382,7 @@
                   placeholder="نظر خود را بنویسید ..."></textarea>
                 <div class="flex gap-x-2 justify-end mt-2.5">
                   <button
-                    class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-10 px-[18px] rounded-xl transition-colors"
-                    id="comment-cancel-btn">
+                    class="cancel-new-comment bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-10 px-[18px] rounded-xl transition-colors">
                     لغو
                   </button>
                   <button
@@ -1235,10 +1425,7 @@
                             </div>
                           </div>
                         </div>
-                        <button
-                          class="comment__reply-btn w-6 h-5 text-slate-500 dark:text-gray-500"
-                          onclick="replyComment(47408, 'Pe_f');"
-                          type="button">
+                        <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
                           <svg class="w-6 h-5">
                             <use xlink:href="#reply"></use>
                           </svg>
@@ -1273,7 +1460,7 @@
                             class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
                             src="https://secure.gravatar.com/avatar/0370e6d965555e9194c47fdb9be67d76?s=96&amp;d=mm&amp;r=g" />
                           <div class="shrink-0">
-                            <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">Pe_f</span>
+                            <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">mersad</span>
                             <div class="flex items-center gap-x-1.5 mt-1">
                               <div
                                 class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
@@ -1283,10 +1470,7 @@
                             </div>
                           </div>
                         </div>
-                        <button
-                          class="comment__reply-btn w-6 h-5 text-slate-500 dark:text-gray-500"
-                          onclick="replyComment(47408, 'Pe_f');"
-                          type="button">
+                        <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
                           <svg class="w-6 h-5">
                             <use xlink:href="#reply"></use>
                           </svg>
@@ -1410,7 +1594,7 @@
               >
               <div
                 class="flex justify-between gap-x-2 h-[65px] px-4 mt-4 text-slate-500 dark:text-slate-400 bg-gray-100 dark:bg-gray-700 border border-dashed rounded-xl border-gray-600/30 dark:border-gray-600/80">
-                <svg class="w-6 h-6 my-auto cursor-pointer">
+                <svg class="copy-link-btn w-6 h-6 my-auto cursor-pointer">
                   <use href="#clipboard-document"></use>
                 </svg>
                 <span class="truncate text-xl leading-[65px] mt-0.5" dir="ltr">https://sabzlearn.ir/?p=3018</span>
@@ -1485,6 +1669,6 @@
     <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/header.js" type="module"></script>
     <script src="scripts/share.js" type="module"></script>
-    <script src="scripts/categories.js" type="module"></script>
+    <script src="scripts/course.js" type="module"></script>
   </body>
 </html>

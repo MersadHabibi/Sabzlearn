@@ -1164,6 +1164,10 @@ html.dark .toggle__marker::before {
   display: none;
 }
 
+.h-0 {
+  height: 0px;
+}
+
 .h-10 {
   height: 2.5rem;
 }
@@ -1290,18 +1294,6 @@ html.dark .toggle__marker::before {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[\] {
-  height: ;
-}
-
-.h-\[1000px\] {
-  height: 1000px;
-}
-
-.h-\[4000px\] {
-  height: 4000px;
 }
 
 .max-h-\[800px\] {
@@ -2703,6 +2695,51 @@ html.dark .toggle__marker::before {
   display: block;
 }
 
+/* Course Description */
+
+.course-description.show .course-description__overlay {
+  display: none;
+}
+
+.course-description.show .course-description__content {
+  max-height: none;
+}
+
+.course-description.show .course-description__btn svg {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.course-description.show .course-description__btn .course-description__btn-dont-show-text {
+  display: none;
+}
+
+.course-description.show .course-description__btn .course-description__btn-show-text {
+  display: inline-block;
+}
+
+/* Course Topics */
+
+.course-topic.open .topic__header {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+:is(.dark .course-topic.open .topic__header) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 75 109 / var(--tw-bg-opacity));
+}
+
+.course-topic.open .topic__body {
+  height: auto;
+}
+
+/* New Comment */
+
+.course-comments.show-new-comment-form .new-comment-form {
+  display: block;
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
@@ -2938,10 +2975,6 @@ html.dark .toggle__marker::before {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-}
-
-.child\:block > * {
-  display: block;
 }
 
 .child\:inline-block > * {
@@ -3768,10 +3801,6 @@ html.dark .toggle__marker::before {
 
   .lg\:flex-row {
     flex-direction: row;
-  }
-
-  .lg\:flex-nowrap {
-    flex-wrap: nowrap;
   }
 
   .lg\:items-stretch {
