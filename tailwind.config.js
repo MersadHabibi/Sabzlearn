@@ -9,6 +9,7 @@ module.exports = {
         secondary: "#4e81fb",
         gray: {
           DEFAULT: "#1C1C28",
+          500: "#94a3b8",
           700: "#32334d",
           800: "#28293d",
         },

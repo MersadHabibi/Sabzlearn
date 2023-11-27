@@ -138,6 +138,58 @@
   @apply bottom-0;
 }
 
+/* Course Topic */
+
+.course-topic.open .topic__header {
+  @apply bg-gray-200 dark:bg-slate;
+}
+
+.course-topic.open .topic__header svg {
+  @apply rotate-180;
+}
+
+.course-topic.open .topic__body {
+  @apply block;
+}
+
+/* Course Description */
+
+.course-description.show .course-description__overlay {
+  @apply hidden;
+}
+
+.course-description.show .course-description__content {
+  @apply max-h-none;
+}
+
+.course-description.show .course-description__btn svg {
+  @apply rotate-180;
+}
+
+.course-description.show .course-description__btn .course-description__btn-dont-show-text {
+  @apply hidden;
+}
+
+.course-description.show .course-description__btn .course-description__btn-show-text {
+  @apply inline-block;
+}
+
+/* Course Topics */
+
+.course-topic.open .topic__header {
+  @apply bg-gray-200 dark:bg-slate;
+}
+
+.course-topic.open .topic__body {
+  @apply h-auto;
+}
+
+/* New Comment */
+
+.course-comments.show-new-comment-form .new-comment-form {
+  @apply block;
+}
+
 @layer base {
   @font-face {
     font-family: "Dana";
@@ -173,6 +225,18 @@
   }
   body {
     @apply font-Dana text-zinc-700;
+  }
+  progress {
+    @apply bg-gray-100 dark:bg-gray;
+  }
+  progress::-webkit-progress-bar {
+    @apply bg-gray-100 dark:bg-gray;
+  }
+  progress::-webkit-progress-value {
+    @apply bg-gray-100 dark:bg-gray;
+  }
+  progress::-moz-progress-bar {
+    @apply bg-gray-100 dark:bg-gray;
   }
 }
 @layer components {
@@ -225,6 +289,36 @@
   .toggle .toggle__input:checked ~ .toggle__marker::before {
     right: 26px;
     background-color: white;
+  }
+
+  /* Bread Crumb */
+
+  .breadcrumb {
+    @apply hidden md:flex items-center w-full h-[50px] bg-white dark:bg-gray-800 shadow-light text-zinc-700/90 dark:text-white rounded-2xl mt-7 overflow-hidden;
+  }
+
+  .breadcrumb__item {
+    @apply relative flex items-center justify-center pr-8 lg:pr-10 pl-6 h-full text-lg pt-1;
+  }
+  .breadcrumb__item:first-child {
+    @apply pr-8 before:!content-none after:!content-none pt-0;
+  }
+  .breadcrumb__item:last-child {
+    @apply font-DanaDemiBold text-zinc-700 dark:text-white;
+  }
+  .breadcrumb__item::before {
+    @apply content-[''] absolute right-0 -bottom-1 w-[5px] h-2/3 bg-gray-100 dark:bg-gray -rotate-[35deg];
+  }
+  .breadcrumb__item::after {
+    @apply content-[''] absolute right-0 -top-1 w-[5px] h-2/3 bg-gray-100 dark:bg-gray rotate-[35deg];
+  }
+
+  /* Truncate */
+
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 @layer utilities {
