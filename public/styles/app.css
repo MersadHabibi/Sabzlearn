@@ -869,6 +869,10 @@ html.dark .toggle__marker::before {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .inset-0 {
   inset: 0px;
 }
@@ -1286,6 +1290,18 @@ html.dark .toggle__marker::before {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[\] {
+  height: ;
+}
+
+.h-\[1000px\] {
+  height: 1000px;
+}
+
+.h-\[4000px\] {
+  height: 4000px;
 }
 
 .max-h-\[800px\] {
@@ -3752,6 +3768,10 @@ html.dark .toggle__marker::before {
 
   .lg\:flex-row {
     flex-direction: row;
+  }
+
+  .lg\:flex-nowrap {
+    flex-wrap: nowrap;
   }
 
   .lg\:items-stretch {
