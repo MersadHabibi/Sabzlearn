@@ -248,7 +248,166 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
       </symbol>
     </svg>
-    <div class="content"></div>
+    <main class="bg-white dark:bg-gray-800 flex gap-x-10 w-full lg:p-7">
+      <div class="w-full lg:container">
+        <div class="flex gap-x-10">
+          <aside
+            class="panel-menu__container fixed -right-full top-0 bottom-0 lg:static shrink-0 px-7 py-5 md:py-0 md:px-0 md:pt-10 bg-white dark:bg-gray-800 z-20 md:-z-0 transition-all">
+            <div class="flex items-center gap-x-7 mb-12">
+              <div class="flex items-center gap-x-2">
+                <img src="images/logo.webp" class="h-10 md:h-14" alt="logo" />
+                <svg class="w-[86px] h-10 md:w-32 md:h-[57px] text-white dark:text-slate-600">
+                  <use href="#logo-type"></use>
+                </svg>
+              </div>
+              <div class="mobile-aside__close md:hidden">
+                <svg class="w-5 h-5 text-slate-500 dark:text-slate-400">
+                  <use href="#close"></use>
+                </svg>
+              </div>
+            </div>
+            <ul class="panel-menu flex flex-col gap-y-4 dark:text-white">
+              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg active">
+                <svg class="w-6 h-6">
+                  <use href="#home"></use>
+                </svg>
+                <span> پیشخوان </span>
+              </a>
+              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg">
+                <svg class="w-6 h-6">
+                  <use href="#folder"></use>
+                </svg>
+                <span> دوره های من </span>
+              </a>
+              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg">
+                <svg class="w-6 h-6">
+                  <use href="#chat-bubble"></use>
+                </svg>
+                <span> تیکت ها </span>
+              </a>
+              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg">
+                <svg class="w-6 h-6">
+                  <use href="#user"></use>
+                </svg>
+                <span> جزئیات حساب </span>
+              </a>
+              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg">
+                <svg class="w-6 h-6">
+                  <use href="#logout"></use>
+                </svg>
+                <span> خروج </span>
+              </a>
+            </ul>
+          </aside>
+          <section class="w-full bg-gray-100 dark:bg-gray lg:rounded-3xl md:p-10">
+            <!-- Header -->
+            <div
+              class="flex justify-between bg-white dark:bg-transparent md:bg-transparent p-5 md:p-0 dark:border-b md:border-none border-b-gray-700 mb-5">
+              <div class="flex items-center">
+                <div class="moblie-aside__open flex md:hidden gap-x-1 font-DanaMedium dark:text-white">
+                  <svg class="w-5 h-5">
+                    <use href="#bars-3-bottom-right"></use>
+                  </svg>
+                  <span>پیشخوان</span>
+                </div>
+                <p class="font-DanaDemiBold text-2xl dark:text-white hidden md:inline-block">
+                  <span>مرصاد حبیبی</span> عزیز؛ خوش اومدی 🙌
+                </p>
+              </div>
+              <div class="flex gap-x-3 md:gap-x-8">
+                <!-- notif Btn -->
+                <div
+                  class="search-btn flex items-center justify-center relative h-12 w-12 md:h-14 md:w-14 rounded-full bg-gray-100 dark:bg-gray-800 md:bg-white md:dark:bg-gray-800 cursor-pointer">
+                  <svg class="w-6 md:w-7 h-6 md:h-7 text-slate-500">
+                    <use href="#bell"></use>
+                  </svg>
+                  <!-- notif Box -->
+                  <div
+                    class="search-box absolute top-[70px] -left-[115px] bg-white dark:bg-gray-800 w-80 md:w-96 rounded-2xl overflow-hidden transition-all z-20 py-5 px-5">
+                    <div
+                      class="font-DanaMedium text-xl dark:text-white pb-3.5 mb-3.5 border-b border-gray-200 dark:border-slate-500">
+                      <p>اعلان ها</p>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-xl text-center p-3">
+                      <p class="dark:text-white">اعلان جدیدی وجود ندارد.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Change Theme -->
+                <div
+                  class="toggle-theme change-theme-btn flex items-center justify-center h-12 w-12 md:h-14 md:w-14 rounded-full bg-gray-100 dark:bg-gray-800 md:bg-white md:dark:bg-gray-800 transition-all cursor-pointer">
+                  <svg class="inline-block dark:hidden w-6 md:w-7 h-6 md:h-7 text-slate-500">
+                    <use href="#moon"></use>
+                  </svg>
+                  <svg class="hidden dark:inline-block w-6 md:w-7 h-6 md:h-7 text-slate-500">
+                    <use href="#sun"></use>
+                  </svg>
+                </div>
+                <!-- Profile -->
+                <div class="h-12 md:h-14 w-auto rounded-full cursor-pointer">
+                  <!-- Login & Register -->
+                  <div
+                    class="hidden relative flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
+                    <a href="#" class="absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 block">ورود</a>
+                    <a href="#" class="absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block">عضویت</a>
+                  </div>
+                  <!-- Profile Photo -->
+                  <div class="profile relative h-full w-12 md:w-14">
+                    <div class="w-12 md:w-14 h-12 md:h-14 rounded-full overflow-hidden">
+                      <img src="images/user-profile.png" alt="" />
+                    </div>
+                    <!-- SubMenu Profile -->
+                    <div
+                      class="profile__menu absolute top-16 left-0 w-[278px] p-5 z-20 bg-white dark:bg-[#32334D] dark:text-white rounded-2xl">
+                      <div class="flex items-center gap-3 mb-5">
+                        <div class="w-14 h-14 rounded-full overflow-hidden">
+                          <img src="images/user-profile.png" alt="" />
+                        </div>
+                        <div>
+                          <p class="text-lg">مرصاد حبیبی</p>
+                          <p class="font-DanaMedium text-sm text-sky-500">موجودی: 0 تومان</p>
+                        </div>
+                      </div>
+                      <ul
+                        class="py-2 border-y border-y-gray-200 dark:border-y-slate child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
+                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                          <svg class="w-5 h-5">
+                            <use href="#home"></use>
+                          </svg>
+                          پیشخوان
+                        </a>
+                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                          <svg class="w-5 h-5">
+                            <use href="#folder"></use>
+                          </svg>
+                          دوره های من
+                        </a>
+                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                          <svg class="w-5 h-5">
+                            <use href="#chat-bubble"></use>
+                          </svg>
+                          تیکت های پشتیبانی
+                        </a>
+                      </ul>
+                      <div class="pt-2 child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
+                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                          <svg class="w-5 h-5">
+                            <use href="#logout"></use>
+                          </svg>
+                          خروج
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Body -->
+            <div class="content p-5 pt-0 md:p-0"></div>
+          </section>
+        </div>
+      </div>
+    </main>
     <script src="scripts/panel-content.js"></script>
     <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/header.js" type="module"></script>
