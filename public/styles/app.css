@@ -1595,6 +1595,10 @@ html.dark .toggle__marker::before {
   gap: 1.5rem;
 }
 
+.gap-7 {
+  gap: 1.75rem;
+}
+
 .gap-x-0 {
   -moz-column-gap: 0px;
        column-gap: 0px;
@@ -1709,6 +1713,12 @@ html.dark .toggle__marker::before {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-7 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -1943,6 +1953,10 @@ html.dark .toggle__marker::before {
 
 .bg-white\/30 {
   background-color: rgb(255 255 255 / 0.3);
+}
+
+.bg-slate-500\/10 {
+  background-color: rgb(100 116 139 / 0.1);
 }
 
 .bg-conic-gradient {
@@ -2832,6 +2846,14 @@ html.dark .toggle__marker::before {
   right: 0px;
 }
 
+@media (min-width: 640px) {
+  .sm\:truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 @media (min-width: 1024px) {
   .lg\:container {
     width: 100%;
@@ -3473,6 +3495,11 @@ html.dark .toggle__marker::before {
   background-color: rgb(74 75 109 / var(--tw-bg-opacity));
 }
 
+:is(.dark .dark\:hover\:bg-gray-700:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 51 77 / var(--tw-bg-opacity));
+}
+
 :is(.dark .dark\:hover\:text-primary:hover) {
   --tw-text-opacity: 1;
   color: rgb(46 213 115 / var(--tw-text-opacity));
@@ -3598,6 +3625,10 @@ html.dark .toggle__marker::before {
     max-width: 20rem;
   }
 
+  .sm\:max-w-sm {
+    max-width: 24rem;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3632,6 +3663,12 @@ html.dark .toggle__marker::before {
 
   .sm\:self-auto {
     align-self: auto;
+  }
+
+  .sm\:truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .sm\:rounded-3xl {
@@ -3927,6 +3964,21 @@ html.dark .toggle__marker::before {
   .md\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+  }
+
+  .md\:py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .md\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 
   .md\:pl-2 {
