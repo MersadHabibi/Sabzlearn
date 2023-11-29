@@ -512,13 +512,9 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
+  border-radius: 9999px;
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-:is(.dark progress)::-webkit-progress-value {
-  --tw-bg-opacity: 1;
-  background-color: rgb(28 28 40 / var(--tw-bg-opacity));
+  background-color: rgb(46 213 115 / var(--tw-bg-opacity));
 }
 
 progress::-moz-progress-bar {
@@ -1018,6 +1014,10 @@ html.dark .toggle__marker::before {
   margin-bottom: -0.25rem;
 }
 
+.-mt-5 {
+  margin-top: -1.25rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1064,6 +1064,10 @@ html.dark .toggle__marker::before {
 
 .ml-1 {
   margin-left: 0.25rem;
+}
+
+.mr-auto {
+  margin-right: auto;
 }
 
 .mt-0 {
@@ -1182,6 +1186,10 @@ html.dark .toggle__marker::before {
 
 .h-0 {
   height: 0px;
+}
+
+.h-1 {
+  height: 0.25rem;
 }
 
 .h-10 {
@@ -1436,14 +1444,6 @@ html.dark .toggle__marker::before {
   width: 100%;
 }
 
-.w-40 {
-  width: 10rem;
-}
-
-.w-48 {
-  width: 12rem;
-}
-
 .max-w-\[1720px\] {
   max-width: 1720px;
 }
@@ -1505,6 +1505,10 @@ html.dark .toggle__marker::before {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .grid-cols-2 {
@@ -2266,6 +2270,10 @@ html.dark .toggle__marker::before {
   padding-left: 3.5rem;
 }
 
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
 .pr-2 {
   padding-right: 0.5rem;
 }
@@ -2284,6 +2292,10 @@ html.dark .toggle__marker::before {
 
 .pr-7 {
   padding-right: 1.75rem;
+}
+
+.pt-0 {
+  padding-top: 0px;
 }
 
 .pt-1 {
@@ -2324,18 +2336,6 @@ html.dark .toggle__marker::before {
 
 .pt-\[1px\] {
   padding-top: 1px;
-}
-
-.pl-4 {
-  padding-left: 1rem;
-}
-
-.pl-5 {
-  padding-left: 1.25rem;
-}
-
-.pt-0 {
-  padding-top: 0px;
 }
 
 .text-center {
@@ -2412,6 +2412,11 @@ html.dark .toggle__marker::before {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-xl\/10 {
+  font-size: 1.25rem;
+  line-height: 2.5rem;
 }
 
 .text-xs {
@@ -3226,6 +3231,11 @@ html.dark .toggle__marker::before {
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
 }
 
+:is(.dark .dark\:border-gray-600) {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
+}
+
 :is(.dark .dark\:border-y-slate) {
   --tw-border-opacity: 1;
   border-top-color: rgb(74 75 109 / var(--tw-border-opacity));
@@ -3270,6 +3280,11 @@ html.dark .toggle__marker::before {
   background-color: rgb(239 68 68 / 0.1);
 }
 
+:is(.dark .dark\:bg-rose-500) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 63 94 / var(--tw-bg-opacity));
+}
+
 :is(.dark .dark\:bg-secondary) {
   --tw-bg-opacity: 1;
   background-color: rgb(78 129 251 / var(--tw-bg-opacity));
@@ -3295,16 +3310,6 @@ html.dark .toggle__marker::before {
 
 :is(.dark .dark\:bg-yellow-400\/10) {
   background-color: rgb(250 204 21 / 0.1);
-}
-
-:is(.dark .dark\:bg-yellow-500) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
-}
-
-:is(.dark .dark\:bg-rose-500) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(244 63 94 / var(--tw-bg-opacity));
 }
 
 :is(.dark .dark\:from-gray-800) {
@@ -3489,6 +3494,10 @@ html.dark .toggle__marker::before {
 }
 
 @media (min-width: 480px) {
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .xs\:flex-row {
     flex-direction: row;
   }
@@ -3799,6 +3808,10 @@ html.dark .toggle__marker::before {
     width: 1.5rem;
   }
 
+  .md\:w-60 {
+    width: 15rem;
+  }
+
   .md\:w-7 {
     width: 1.75rem;
   }
@@ -3819,12 +3832,12 @@ html.dark .toggle__marker::before {
     width: 68px;
   }
 
-  .md\:w-60 {
-    width: 15rem;
-  }
-
   .md\:flex-grow-0 {
     flex-grow: 0;
+  }
+
+  .md\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   .md\:grid-cols-2 {
@@ -3852,11 +3865,6 @@ html.dark .toggle__marker::before {
   .md\:gap-x-8 {
     -moz-column-gap: 2rem;
          column-gap: 2rem;
-  }
-
-  .md\:gap-x-10 {
-    -moz-column-gap: 2.5rem;
-         column-gap: 2.5rem;
   }
 
   .md\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
@@ -3921,12 +3929,12 @@ html.dark .toggle__marker::before {
     padding-bottom: 1.5rem;
   }
 
-  .md\:pt-10 {
-    padding-top: 2.5rem;
-  }
-
   .md\:pl-2 {
     padding-left: 0.5rem;
+  }
+
+  .md\:pt-10 {
+    padding-top: 2.5rem;
   }
 
   .md\:pt-8 {
@@ -4050,6 +4058,10 @@ html.dark .toggle__marker::before {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -4171,6 +4183,10 @@ html.dark .toggle__marker::before {
 
   .xl\:w-\[610px\] {
     width: 610px;
+  }
+
+  .xl\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .xl\:grid-cols-3 {

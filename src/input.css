@@ -259,7 +259,7 @@
     @apply bg-gray-100 dark:bg-gray;
   }
   progress::-webkit-progress-value {
-    @apply bg-gray-100 dark:bg-gray;
+    @apply bg-primary rounded-full;
   }
   progress::-moz-progress-bar {
     @apply bg-gray-100 dark:bg-gray;
