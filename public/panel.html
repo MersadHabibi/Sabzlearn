@@ -306,36 +306,56 @@
               </div>
             </div>
             <ul class="panel-menu flex flex-col gap-y-4 dark:text-white">
-              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg active">
+              <button
+                type="button"
+                href="#"
+                class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg active transition-all"
+                data-panel-content="home">
                 <svg class="w-6 h-6">
                   <use href="#home"></use>
                 </svg>
                 <span> پیشخوان </span>
-              </a>
-              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg">
+              </button>
+              <button
+                type="button"
+                href="#"
+                class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg transition-all"
+                data-panel-content="courses">
                 <svg class="w-6 h-6">
                   <use href="#folder"></use>
                 </svg>
                 <span> دوره های من </span>
-              </a>
-              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg">
+              </button>
+              <button
+                type="button"
+                href="#"
+                class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg transition-all"
+                data-panel-content="tickets">
                 <svg class="w-6 h-6">
                   <use href="#chat-bubble"></use>
                 </svg>
                 <span> تیکت ها </span>
-              </a>
-              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg">
+              </button>
+              <button
+                type="button"
+                href="#"
+                class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg transition-all"
+                data-panel-content="user-details">
                 <svg class="w-6 h-6">
                   <use href="#user"></use>
                 </svg>
                 <span> جزئیات حساب </span>
-              </a>
-              <a href="#" class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg">
+              </button>
+              <button
+                type="button"
+                href="#"
+                class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg transition-all"
+                data-panel-content="close-acc">
                 <svg class="w-6 h-6">
                   <use href="#logout"></use>
                 </svg>
                 <span> خروج </span>
-              </a>
+              </button>
             </ul>
           </aside>
           <section class="w-full bg-gray-100 dark:bg-gray lg:rounded-3xl md:p-10">
@@ -347,7 +367,12 @@
                   <svg class="w-5 h-5">
                     <use href="#bars-3-bottom-right"></use>
                   </svg>
-                  <span>پیشخوان</span>
+                  <span class="panel-mobile-menu-text">
+                    <span class="hidden !block panel-mobile-menu-text__item" id="home">پیشخوان</span>
+                    <span class="hidden panel-mobile-menu-text__item" id="courses">دوره های من</span>
+                    <span class="hidden panel-mobile-menu-text__item" id="tickets">تیکت ها</span>
+                    <span class="hidden panel-mobile-menu-text__item" id="user-details">جزئیات حساب</span>
+                  </span>
                 </div>
                 <p class="font-DanaDemiBold text-2xl dark:text-white hidden md:inline-block">
                   <span>مرصاد حبیبی</span> عزیز؛ خوش اومدی 🙌
@@ -447,7 +472,7 @@
         </div>
       </div>
     </main>
-    <script src="scripts/panel-content.js"></script>
+    <script src="scripts/panel-content.js" type="module"></script>
     <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/header.js" type="module"></script>
     <script src="scripts/share.js" type="module"></script>

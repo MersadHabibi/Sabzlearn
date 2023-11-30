@@ -1237,6 +1237,10 @@ html.dark .toggle__marker::before {
   -webkit-line-clamp: 4;
 }
 
+.\!block {
+  display: block !important;
+}
+
 .block {
   display: block;
 }
