@@ -1,7 +1,7 @@
 const $ = document;
 const contentContainer = $.querySelector(".content");
 
-const whichContent = "new ticket";
+const whichContent = "user details";
 
 if (whichContent == "home") {
   contentContainer.innerHTML = `
@@ -628,7 +628,7 @@ if (whichContent == "new ticket") {
   contentContainer.innerHTML = `
   <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
               <!-- New Ticket -->
-              <div class="bg-white dark:bg-gray-800 p-3.5 md:p-5 rounded-2xl mt-15">
+              <div class="bg-white dark:bg-gray-800 p-3.5 md:p-5 rounded-2xl mt-10 md:mt-15">
                 <!-- New Ticket Header -->
                 <div
                   class="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-200 dark:border-b-gray-700">
@@ -663,7 +663,7 @@ if (whichContent == "new ticket") {
                     <label for="text" class="font-DanaDemiBold text-zinc-700 dark:text-white">متن تیکت</label>
                     <textarea
                       rows="8"
-                      class="mt-3.5 md:mt-4 w-full p-3 sm:p-5 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-gray-100 dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
+                      class="mt-3.5 md:mt-4 w-full p-3 sm:p-5 outline-none text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-gray-100 dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
                       id="text"
                       name="text"
                       required=""
@@ -676,5 +676,116 @@ if (whichContent == "new ticket") {
                   </div>
                 </form>
               </div>
+  `;
+}
+if (whichContent == "user details") {
+  contentContainer.innerHTML = `
+    
+  <p class="md:hidden font-DanaDemiBold font mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
+  <!-- User Details -->
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-10 md:mt-15">
+    <div class="xl:col-span-2 bg-white dark:bg-gray-800 p-5 rounded-2xl">
+      <div class="pb-5 border-b border-b-gray-200 dark:border-b-slate-500">
+        <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">جزییات حساب کاربری</span>
+      </div>
+      <form id="edit-account-info" class="p-3.5 pt-8">
+        <div class="relative mb-11">
+          <img src="images/user-profile.png" class="w-32 md:w-44 h-32 md:h-44 rounded-full" />
+          <a
+            href="https://gravatar.com/"
+            target="_blank"
+            title="برای تغییر پروفایل وارد وبسایت Gravatar.com شوید."
+            class="absolute bottom-0 right-0 flex items-center justify-center w-10 md:w-14 h-10 md:h-14 rounded-full bg-sky-600 dark:bg-secondary dark:hover:bg-blue-600 border-2 md:border-4 border-white dark:border-gray-800 cursor-pointer transition-colors">
+            <svg class="w-5 md:w-6 h-5 md:h-6 text-white">
+              <use href="#arrow-path-rounded-square-mini"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-6">
+          <div>
+            <label for="phone" class="font-DanaDemiBold text-zinc-700 dark:text-white">شماره موبایل</label>
+            <input
+              type="text"
+              id="phone"
+              class="text-ltr mt-3.5 md:mt-4 bg-gray-200 cursor-not-allowed"
+              value="09148906005"
+              disabled="" />
+          </div>
+          <div class="hidden md:block"></div>
+          <div>
+            <label for="first_name" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام</label>
+            <input type="text" class="mt-3.5 md:mt-4" id="first_name" name="first_name" required="" value="مرصاد" />
+          </div>
+          <div>
+            <label for="last_name" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام خانوادگی</label>
+            <input type="text" class="mt-3.5 md:mt-4" id="last_name" name="last_name" value="حبیبی" />
+          </div>
+          <div>
+            <label for="username" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام کاربری</label>
+            <input
+              type="text"
+              class="mt-3.5 md:mt-4 bg-gray-200 cursor-not-allowed"
+              disabled=""
+              id="username"
+              value="Darcy" />
+          </div>
+          <div>
+            <label for="email" class="font-DanaDemiBold text-zinc-700 dark:text-white">ایمیل</label>
+            <input
+              type="email"
+              class="mt-3.5 md:mt-4"
+              id="email"
+              name="email"
+              required=""
+              value="mersad.up@gmail.com" />
+          </div>
+        </div>
+        <input type="hidden" name="nonce" value="8c6668f0dc" />
+        <button
+          type="submit"
+          class="flex justify-center items-center bg-primary text-white h-14 p-7 text-xl rounded-xl mr-auto w-full md:w-auto mt-10">
+          ثبت اطلاعات
+        </button>
+      </form>
+    </div>
+    <div class="xl:col-span-1 bg-white dark:bg-gray-800 p-5 rounded-2xl">
+      <div class="pb-5 border-b border-b-gray-200 dark:border-b-slate-500">
+        <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">تغییر رمز عبور</span>
+      </div>
+      <form id="edit-account-password" class="p-3.5 pt-8">
+        <div class="space-y-5 md:space-y-6">
+          <div>
+            <label for="old_pass" class="font-DanaDemiBold text-zinc-700 dark:text-white">رمز عبور فعلی</label>
+            <input
+              type="password"
+              id="old_pass"
+              name="old_pass"
+              required=""
+              class="mt-3.5 md:mt-4 mb-3"
+              placeholder="رمز فعلی را وارد کنید" />
+            <a href="https://sabzlearn.ir/login/lost-password" class="text-slate-500 dark:text-slate-400 text-sm"
+              >رمز عبور را فراموش کرده اید؟</a
+            >
+          </div>
+          <div>
+            <label for="new_pass" class="font-DanaDemiBold text-zinc-700 dark:text-white">رمز عبور جدید</label>
+            <input
+              type="password"
+              class="mt-3.5 md:mt-4"
+              id="new_pass"
+              name="new_pass"
+              required=""
+              placeholder="رمز جدید را وارد کنید" />
+          </div>
+        </div>
+        <input type="hidden" name="nonce" value="0f25f8f35f" />
+        <button
+          type="submit"
+          class="flex justify-center items-center bg-primary text-white h-14 p-7 text-xl rounded-xl mr-auto w-full md:w-auto mt-10">
+          تغییر رمز
+        </button>
+      </form>
+    </div>
+  </div>
   `;
 }

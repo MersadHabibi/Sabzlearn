@@ -264,27 +264,9 @@
   progress::-moz-progress-bar {
     @apply bg-gray-100 dark:bg-gray;
   }
-  /* input {
-    height: 3rem;
-    width: 100%;
-    border-radius: 0.75rem;
-    border-width: 1px;
-    border-color: transparent;
-    --tw-bg-opacity: 1;
-    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    font-family: Dana Light;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    letter-spacing: -0.025em;
-    --tw-text-opacity: 1;
-    color: rgb(63 63 70 / var(--tw-text-opacity));
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-    font-size: inherit;
-  } */
+  input {
+    @apply mt-3.5 md:mt-4 w-full p-3 sm:p-5 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-gray-100 dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none;
+  }
 }
 @layer components {
   /* Filter Toggles */
