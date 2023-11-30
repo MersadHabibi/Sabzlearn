@@ -265,7 +265,7 @@
     @apply bg-gray-100 dark:bg-gray;
   }
   input {
-    @apply mt-3.5 md:mt-4 w-full p-3 sm:p-5 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-gray-100 dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none;
+    @apply w-full text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white  rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none;
   }
 }
 @layer components {
@@ -348,6 +348,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  /* User Detail Input */
+
+  .user-details input {
+    @apply mt-3.5 md:mt-4 p-3 sm:p-5 bg-gray-100 dark:bg-gray-700;
   }
 }
 @layer utilities {

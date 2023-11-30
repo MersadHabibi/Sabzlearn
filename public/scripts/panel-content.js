@@ -1,7 +1,7 @@
 const $ = document;
 const contentContainer = $.querySelector(".content");
 
-const whichContent = "user details";
+const whichContent = "new ticket";
 
 if (whichContent == "home") {
   contentContainer.innerHTML = `
@@ -683,7 +683,7 @@ if (whichContent == "user details") {
     
   <p class="md:hidden font-DanaDemiBold font mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
   <!-- User Details -->
-  <div class="grid grid-cols-1 xl:grid-cols-3 gap-10 md:mt-15">
+  <div class="user-details grid grid-cols-1 xl:grid-cols-3 gap-10 md:mt-15">
     <div class="xl:col-span-2 bg-white dark:bg-gray-800 p-5 rounded-2xl">
       <div class="pb-5 border-b border-b-gray-200 dark:border-b-slate-500">
         <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">جزییات حساب کاربری</span>

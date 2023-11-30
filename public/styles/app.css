@@ -528,14 +528,10 @@ progress::-moz-progress-bar {
 }
 
 input {
-  margin-top: 0.875rem;
   width: 100%;
   border-radius: 0.75rem;
   border-width: 1px;
   border-color: transparent;
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-  padding: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   letter-spacing: -0.025em;
@@ -564,8 +560,6 @@ input:focus {
 }
 
 :is(.dark input) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(50 51 77 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -587,15 +581,8 @@ input:focus {
 
 @media (min-width: 640px) {
   input {
-    padding: 1.25rem;
     font-size: 1rem;
     line-height: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  input {
-    margin-top: 1rem;
   }
 }
 
@@ -923,6 +910,32 @@ html.dark .toggle__marker::before {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* User Detail Input */
+
+.user-details input {
+  margin-top: 0.875rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  padding: 0.75rem;
+}
+
+:is(.dark .user-details input) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 51 77 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 640px) {
+  .user-details input {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .user-details input {
+    margin-top: 1rem;
+  }
 }
 
 .fixed {
