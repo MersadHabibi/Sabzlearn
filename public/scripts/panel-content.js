@@ -1,7 +1,7 @@
 const $ = document;
 const contentContainer = $.querySelector(".content");
 
-const whichContent = "courses";
+const whichContent = "new ticket";
 
 if (whichContent == "home") {
   contentContainer.innerHTML = `
@@ -449,4 +449,232 @@ if (whichContent == "courses") {
       </div>
     </div>
     `;
+}
+if (whichContent == "tickets") {
+  contentContainer.innerHTML = `
+  <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
+  <!-- Tags -->
+  <div class="flex flex-wrap items-center justify-start gap-x-5 md:gap-x-8 gap-y-3 md:pt-8">
+    <div
+      class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-amber-400 dark:bg-yellow-400 rounded-2xl flex-grow md:flex-grow-0">
+      <div class="flex items-center justify-center w-14 h-14 md:w-[68px] md:h-[68px] bg-white/20 rounded-2xl">
+        <svg class="w-8 h-8 md:w-9 md:h-9">
+          <use href="#ticket"></use>
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xs mb-1.5 md:mb-3">همه تیکت ها</span>
+        <span class="text-sm md:text-lg font-DanaMedium">4 عدد</span>
+      </div>
+    </div>
+    <div
+      class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-sky-500 dark:bg-secondary rounded-2xl flex-grow md:flex-grow-0">
+      <div class="flex items-center justify-center w-14 h-14 md:w-[68px] md:h-[68px] bg-white/20 rounded-2xl">
+        <svg class="w-8 h-8 md:w-9 md:h-9">
+          <use href="#envelope-open"></use>
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xs mb-1.5 md:mb-3">تیکت های باز</span>
+        <span class="text-sm md:text-lg font-DanaMedium">۰ دوره</span>
+      </div>
+    </div>
+    <div
+      class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-pink-500 dark:bg-rose-500 rounded-2xl flex-grow md:flex-grow-0">
+      <div class="flex items-center justify-center w-14 h-14 md:w-[68px] md:h-[68px] bg-white/20 rounded-2xl">
+        <svg class="w-8 h-8 md:w-9 md:h-9">
+          <use href="#chat-bubble-left-right"></use>
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xs mb-1.5 md:mb-3">بسته شده</span>
+        <span class="text-sm md:text-lg font-DanaMedium">4 تیکت</span>
+      </div>
+    </div>
+  </div>
+  <!-- New Ticket -->
+  <div class="flex mt-5">
+    <a
+      href="#"
+      class="flex items-center gap-x-3 w-full xs:w-auto bg-sky-500 dark:bg-secondary text-white rounded-2xl p-4 md:p-6 font-DanaDemiBold text-lg md:text-xl">
+      <svg class="w-8 h-8">
+        <use href="#plus-circle"></use>
+      </svg>
+      <span>تیکت جدید</span>
+    </a>
+  </div>
+  <!-- tickets -->
+  <div class="bg-white dark:bg-gray-800 p-3.5 md:p-4.5 rounded-2xl mt-10">
+    <div
+      class="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-200 dark:border-b-gray-700">
+      <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">تیکت ها</span>
+    </div>
+    <div>
+      <div
+        class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
+        <div class="flex items-center">
+          <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
+          <a
+            href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
+            class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
+            >استوری آقای سعیدی راد در مورد next js</a
+          >
+        </div>
+        <div class="flex items-center gap-5">
+          <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >پشتیبانی</span
+          >
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >بسته شده</span
+          >
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
+        <div class="flex items-center">
+          <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
+          <a
+            href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
+            class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
+            >استوری آقای سعیدی راد در مورد next js</a
+          >
+        </div>
+        <div class="flex items-center gap-5">
+          <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >پشتیبانی</span
+          >
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >بسته شده</span
+          >
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
+        <div class="flex items-center">
+          <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
+          <a
+            href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
+            class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
+            >استوری آقای سعیدی راد در مورد next js</a
+          >
+        </div>
+        <div class="flex items-center gap-5">
+          <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >پشتیبانی</span
+          >
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >بسته شده</span
+          >
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
+        <div class="flex items-center">
+          <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
+          <a
+            href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
+            class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
+            >استوری آقای سعیدی راد در مورد next js</a
+          >
+        </div>
+        <div class="flex items-center gap-5">
+          <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >پشتیبانی</span
+          >
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >بسته شده</span
+          >
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
+        <div class="flex items-center">
+          <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
+          <a
+            href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
+            class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
+            >استوری آقای سعیدی راد در مورد next js</a
+          >
+        </div>
+        <div class="flex items-center gap-5">
+          <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >پشتیبانی</span
+          >
+          <span
+            class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
+            >بسته شده</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+}
+if (whichContent == "new ticket") {
+  contentContainer.innerHTML = `
+  <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
+              <!-- New Ticket -->
+              <div class="bg-white dark:bg-gray-800 p-3.5 md:p-5 rounded-2xl mt-15">
+                <!-- New Ticket Header -->
+                <div
+                  class="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-200 dark:border-b-gray-700">
+                  <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">ارسال تیکت</span>
+                </div>
+                <form>
+                  <div>
+                    <label for="department" class="font-DanaDemiBold text-zinc-700 dark:text-white">دپارتمان</label>
+                    <select
+                      name="department"
+                      id="department"
+                      required=""
+                      class="mt-3.5 md:mt-4 w-full p-3 sm:p-5 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-gray-100 dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+                      <option value="">دپارتمان مورد نظر...</option>
+                      <option value="finance">مالی</option>
+                      <option value="management">ارتباط با مدیریت</option>
+                      <option value="support">پشتیبانی</option>
+                      <option value="counseling">مشاوره</option>
+                    </select>
+                  </div>
+                  <div class="mt-6">
+                    <label for="title" class="font-DanaDemiBold text-zinc-700 dark:text-white">موضوع تیکت</label>
+                    <input
+                      type="text"
+                      class="mt-3.5 md:mt-4 w-full p-3 sm:p-5 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-gray-100 dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none"
+                      id="title"
+                      name="title"
+                      required=""
+                      placeholder="موضوع تیکت خود را وارد کنید" />
+                  </div>
+                  <div class="mt-6">
+                    <label for="text" class="font-DanaDemiBold text-zinc-700 dark:text-white">متن تیکت</label>
+                    <textarea
+                      rows="8"
+                      class="mt-3.5 md:mt-4 w-full p-3 sm:p-5 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-gray-100 dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
+                      id="text"
+                      name="text"
+                      required=""
+                      placeholder="متن تیکت خود را وارد کنید"></textarea>
+                  </div>
+                  <div class="flex justify-between gap-5 flex-wrap mt-6">
+                    <div class="flex gap-x-3 mr-auto">
+                      <button class="bg-primary  text-white rounded-xl px-5 py-2" type="submit">ارسال</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+  `;
 }
