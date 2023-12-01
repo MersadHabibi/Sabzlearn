@@ -67,6 +67,7 @@ overlay.addEventListener("click", () => {
   } else {
     openCloseMobileMenu("close");
   }
+  _changeClasses("remove", document.documentElement, ["overflow-hidden"]);
 });
 
 mobileSubmenuBtns.forEach((btn) => {

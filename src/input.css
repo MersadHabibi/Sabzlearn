@@ -190,6 +190,32 @@
   @apply block;
 }
 
+/* Panel Aside */
+
+.panel-menu__item.active {
+  @apply bg-primary text-white;
+}
+
+/* Notif Btn */
+
+.search-btn.search-btn--active {
+  @apply z-20;
+}
+
+.search-box {
+  @apply hidden;
+}
+
+.search-btn--active .search-box {
+  @apply !block;
+}
+
+/* Panel Menu ( mobile ) */
+
+.panel-menu__container.open {
+  @apply right-0;
+}
+
 @layer base {
   @font-face {
     font-family: "Dana";
@@ -233,10 +259,13 @@
     @apply bg-gray-100 dark:bg-gray;
   }
   progress::-webkit-progress-value {
-    @apply bg-gray-100 dark:bg-gray;
+    @apply bg-primary rounded-full;
   }
   progress::-moz-progress-bar {
     @apply bg-gray-100 dark:bg-gray;
+  }
+  input {
+    @apply w-full text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white  rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none;
   }
 }
 @layer components {
@@ -319,6 +348,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  /* User Detail Input */
+
+  .user-details input {
+    @apply mt-3.5 md:mt-4 p-3 sm:p-5 bg-gray-100 dark:bg-gray-700;
   }
 }
 @layer utilities {
