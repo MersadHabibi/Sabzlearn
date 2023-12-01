@@ -1,3 +1,5 @@
+const BackendApi = "http://localhost:4000/v1";
+
 // Change Class
 
 const _changeClasses = (action, element, className) => {
@@ -47,4 +49,4 @@ const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", h
     [dayElem.innerHTML, hourElem.innerHTML, minElem.innerHTML, secElem.innerHTML] = time;
   }, 1000);
 };
-export { _changeClasses, createTimer };
+export { _changeClasses, createTimer , BackendApi };
