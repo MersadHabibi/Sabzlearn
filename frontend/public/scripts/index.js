@@ -163,9 +163,7 @@ const getCoursesForLastCourseSection = async () => {
         </div>
     `
     );
-    console.log(course.shortName);
   });
 
-  console.log(courses.slice(0, 8));
 };
 getCoursesForLastCourseSection();
