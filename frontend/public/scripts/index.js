@@ -64,6 +64,7 @@ const getCoursesForLastCourseSection = async () => {
   const courses = await res.json();
 
   courses.slice(0, 12).forEach((course) => {
+    console.log(course);
     lastCoursesContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -72,23 +73,39 @@ const getCoursesForLastCourseSection = async () => {
           <!-- Course Head -->
           <a href=./course.html?courseName=${course.shortName} class="relative block h-42 w-full overflow-hidden">
             ${
-              course.discount
+              !course.price
                 ? `
                 <span
-                  class="flex items-center justify-center w-12 h-6 absolute top-2 right-2 text-sm text-white bg-primary rounded-full"
-                > ${course.discount}% </span
-            >`
+                  class="flex items-center justify-center w-12 h-6 absolute top-2 right-2 text-sm text-white bg-primary rounded-full">
+                  100% </span>`
+                : course.discount
+                ? `
+                <span
+                  class="flex items-center justify-center w-12 h-6 absolute top-2 right-2 text-sm text-white bg-primary rounded-full">
+                  ${course.discount}% </span>`
                 : ""
             }
-            <img src="images/course-1.webp" class="w-full h-full object-cover rounded-2xl" alt="" />
+            <img src=images/${course.cover} class="w-full h-full object-cover rounded-2xl" alt="" />
           </a>
           <!-- Course Body -->
           <div class="px-5 pt-2.5 pb-3.5 flex-grow">
             <div class="flex justify-start items-center gap-1">
               <a
-                href="#"
+                href=./categories.html?value=${course.categoryID.name}
                 class="inline-flex items-center justify-center text-xs py-1 px-1.5 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded"
-                >فرانت اند</a
+                > ${
+                  course.categoryID.name == "frontend"
+                    ? "فرانت اند"
+                    : course.categoryID.name == "backend"
+                    ? "بک اند"
+                    : course.categoryID.name == "python"
+                    ? "پایتون"
+                    : course.categoryID.name == "security"
+                    ? "امنیت"
+                    : course.categoryID.name == "softskills"
+                    ? "مهارت های نرم"
+                    : null
+                } </a
               >
             </div>
             <a href=./course.html?courseName=${course.shortName} class="font-DanaMedium dark:text-white line-clamp-2 my-2.5"> ${
@@ -149,7 +166,7 @@ const getCoursesForLastCourseSection = async () => {
                     </div>`
                   : `
                   <div class="flex gap-x-1 items-center">
-                    <span class="text-xl">420,000</span>
+                    <span class="font-DanaMedium text-xl">420,000</span>
                     <svg class="w-4 h-4">
                       <use href="#toman"></use>
                     </svg>
@@ -164,6 +181,5 @@ const getCoursesForLastCourseSection = async () => {
     `
     );
   });
-
 };
 getCoursesForLastCourseSection();
