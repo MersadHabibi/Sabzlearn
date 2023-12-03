@@ -1269,6 +1269,10 @@ html.dark .toggle__marker::before {
   display: none;
 }
 
+.\!h-\[415px\] {
+  height: 415px !important;
+}
+
 .h-0 {
   height: 0px;
 }
@@ -1373,6 +1377,10 @@ html.dark .toggle__marker::before {
   height: 38px;
 }
 
+.h-\[415px\] {
+  height: 415px;
+}
+
 .h-\[500px\] {
   height: 500px;
 }
@@ -1409,12 +1417,32 @@ html.dark .toggle__marker::before {
   height: 100vh;
 }
 
+.h-\[\] {
+  height: ;
+}
+
+.h-\[40\] {
+  height: 40;
+}
+
+.h-\[403px\] {
+  height: 403px;
+}
+
 .max-h-\[800px\] {
   max-height: 800px;
 }
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-\[403px\] {
+  min-height: 403px;
+}
+
+.min-h-\[380px\] {
+  min-height: 380px;
 }
 
 .w-10 {
@@ -3782,6 +3810,14 @@ html.dark .toggle__marker::before {
 
   .sm\:h-8 {
     height: 2rem;
+  }
+
+  .sm\:h-\[415px\] {
+    height: 415px;
+  }
+
+  .sm\:h-12 {
+    height: 3rem;
   }
 
   .sm\:w-10 {
