@@ -49,4 +49,14 @@ const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", h
     [dayElem.innerHTML, hourElem.innerHTML, minElem.innerHTML, secElem.innerHTML] = time;
   }, 1000);
 };
-export { _changeClasses, createTimer , BackendApi };
+
+// Get Courses
+
+const getCourses = async () => {
+  const res = await fetch(`${BackendApi}/courses`);
+  const courses = await res.json();
+
+  return courses;
+};
+
+export { _changeClasses, createTimer , getCourses , BackendApi };

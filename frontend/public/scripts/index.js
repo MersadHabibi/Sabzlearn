@@ -1,4 +1,4 @@
-import { BackendApi } from "./funcs/utils.js";
+import { getCourses } from "./funcs/utils.js";
 
 const $ = document;
 
@@ -58,14 +58,7 @@ presellCoursesSliderPrevBtn.addEventListener("click", () => {
   presellCoursesSlider.slidePrev();
 });
 
-// Get Courses
 
-const getCourses = async () => {
-  const res = await fetch(`${BackendApi}/courses`);
-  const courses = await res.json();
-
-  return courses;
-};
 
 // Get and Show Courses Random - Last Courses Section
 
@@ -179,7 +172,7 @@ const getAndShowCoursesForLastCourseSection = async () => {
                     </div>`
                   : `
                   <div class="flex gap-x-1 items-center">
-                    <span class="font-DanaMedium text-xl">420,000</span>
+                    <span class="font-DanaMedium text-xl"> ${course.price} </span>
                     <svg class="w-4 h-4">
                       <use href="#toman"></use>
                     </svg>
@@ -318,7 +311,7 @@ const getAndShowNewCourses = async () => {
                   </div>`
                 : `
                 <div class="flex gap-x-1 items-center">
-                  <span class="font-DanaMedium text-xl">420,000</span>
+                  <span class="font-DanaMedium text-xl">${course.price}</span>
                   <svg class="w-4 h-4">
                     <use href="#toman"></use>
                   </svg>
@@ -455,7 +448,7 @@ const getAndShowPresellCourses = async () => {
                   </div>`
                 : `
                 <div class="flex gap-x-1 items-center">
-                  <span class="font-DanaMedium text-xl">420,000</span>
+                  <span class="font-DanaMedium text-xl">${course.price}</span>
                   <svg class="w-4 h-4">
                     <use href="#toman"></use>
                   </svg>
@@ -587,7 +580,7 @@ const getAndShowPopularCourses = async () => {
                 </div>`
               : `
               <div class="flex gap-x-1 items-center">
-                <span class="font-DanaMedium text-xl">420,000</span>
+                <span class="font-DanaMedium text-xl">${course.price}</span>
                 <svg class="w-4 h-4">
                   <use href="#toman"></use>
                 </svg>
