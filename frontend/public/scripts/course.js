@@ -15,6 +15,8 @@ const getAndShowCourse = async () => {
     return e.shortName == targetCourseQuery;
   })[0];
 
+  console.log(targetCourse);
+
   // breadcrumb
   $.querySelectorAll(".breadcrumb__item")[2].innerHTML =
     targetCourse.categoryID.name == "frontend"
@@ -26,6 +28,8 @@ const getAndShowCourse = async () => {
       : targetCourse.categoryID.name == "softskills"
       ? "مهارت های نرم"
       : "";
+  $.querySelectorAll(".breadcrumb__item")[2].href = `./categories.html?value=${targetCourse.categoryID.name}`;
+  $.querySelectorAll(".breadcrumb__item")[3].href = `./course.html?courseName=${targetCourse.shortName}`;
   $.querySelectorAll(".breadcrumb__item")[3].innerHTML = targetCourse.name;
 
   // Header
@@ -78,6 +82,13 @@ const getAndShowCourse = async () => {
   `
   );
   $.querySelector(".course__cover").src = `images/${targetCourse.cover}`;
+
+  // Aside
+  $.querySelector(".course__registers").innerText = targetCourse.registers;
+  $.querySelector(".course__star").innerText = targetCourse.courseAverageScore + ".0";
+  $.querySelector(".course__creator").innerText = targetCourse.creator;
+  $.querySelector(".course__complete-prog").value = targetCourse.isComplete ? 100 : 0;
+  $.querySelector(".course__complete-percent").innerText = targetCourse.isComplete ? "100%" : "0%";
 
   console.log(targetCourse.categoryID.name);
 };

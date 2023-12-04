@@ -462,25 +462,17 @@
 
     <!-- Main -->
     <main>
-      <div class="course-container container">
+      <div class="container">
         <!-- breadCrumb -->
         <div class="breadcrumb">
-          <div class="breadcrumb__item">
-            <a href="#">
-              <svg class="w-6 h-6">
-                <use href="#home"></use>
-              </svg>
-            </a>
-          </div>
-          <div class="breadcrumb__item">
-            <a href="#"> دوره ها </a>
-          </div>
-          <div class="breadcrumb__item">
-            <a href="#"> </a>
-          </div>
-          <div class="breadcrumb__item">
-            <a href="#"> </a>
-          </div>
+          <a href="./index.html" class="breadcrumb__item">
+            <svg class="w-6 h-6">
+              <use href="#home"></use>
+            </svg>
+          </a>
+          <a href="./categories.html" class="breadcrumb__item"> دوره ها </a>
+          <a href="#" class="breadcrumb__item"> </a>
+          <a href="#" class="breadcrumb__item"> </a>
         </div>
         <!-- Course Header -->
         <section
@@ -489,14 +481,9 @@
           <div class="flex flex-col justify-center xl:justify-between w-full">
             <!-- header right top -->
             <div>
-              <h1 class="course__name font-MorabbaBold text-2xl sm:text-3xl dark:text-white">
-                پیاده سازی داشبورد های حرفه ای با CSS و JS
-              </h1>
+              <h1 class="course__name font-MorabbaBold text-2xl sm:text-3xl dark:text-white"></h1>
               <p
-                class="course__description text-lg sm:text-xl text-zinc-700/80 dark:text-white/90 mt-6 xl:mt-8 line-clamp-4 lg:line-clamp-2 xl:line-clamp-3">
-                این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست. با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ،
-                ابزارهای پیشرفته و کتابخونه ها، به دنیای داشبوردهای شگفت‌آور با HTML، CSS و JavaScript
-              </p>
+                class="course__description text-lg sm:text-xl text-zinc-700/80 dark:text-white/90 mt-6 xl:mt-8 line-clamp-4 lg:line-clamp-2 xl:line-clamp-3"></p>
             </div>
             <!-- header right bottom -->
             <div class="mt-5 pt-5 sm:pt-0 xl:mt-0 border-t border-t-gray-100 dark:border-gray-700 sm:border-t-0">
@@ -1252,7 +1239,7 @@
                     <use href="#users-fill"></use>
                   </svg>
                   <div class="flex flex-col">
-                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white">175</span>
+                    <span class="course__registers text-2xl/8 font-DanaDemiBold dark:text-white"></span>
                     <span class="text-sm text-slate-500 dark:text-slate-400">دانشجو</span>
                   </div>
                 </div>
@@ -1261,7 +1248,7 @@
                     <use href="#star-fill"></use>
                   </svg>
                   <div class="flex flex-col">
-                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white">5.0</span>
+                    <span class="course__star text-2xl/8 font-DanaDemiBold dark:text-white"></span>
                     <span class="text-sm text-slate-500 dark:text-slate-400">رضایت</span>
                   </div>
                 </div>
@@ -1269,9 +1256,12 @@
               <div>
                 <div class="flex justify-between items-center text-xl dark:text-white mt-5 mb-4">
                   <span class="">درصد تکمیل دوره</span>
-                  <span>0%</span>
+                  <span class="course__complete-percent">0%</span>
                 </div>
-                <progress value="0" max="100" class="w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
+                <progress
+                  value="0"
+                  max="100"
+                  class="course__complete-prog w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
               </div>
             </div>
             <!-- Side Main -->
@@ -1279,7 +1269,7 @@
               <div class="rounded-full w-[90px] h-[90px] overflow-hidden mb-1.5">
                 <img src="images/user-profile.png" class="" alt="" />
               </div>
-              <h4 class="text-2xl dark:text-white">مهرشاد براتی</h4>
+              <h4 class="course__creator text-2xl dark:text-white"></h4>
               <a href="#" class="flex items-center gap-x-1 text-sm text-slate-500 dark:text-slate-400 mb-1.5 mt-1">
                 <span>مدرس دوره</span>
                 <svg class="w-5 h-5">
