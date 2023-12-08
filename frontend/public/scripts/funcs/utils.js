@@ -59,4 +59,21 @@ const getCourses = async () => {
   return courses;
 };
 
-export { _changeClasses, createTimer , getCourses , BackendApi };
+// Get Time
+
+const getTime = () => {
+  const minute = 1000 * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+  const year = day * 365;
+
+  // Divide Time with a year
+  const d = new Date("2022-10-20T00:11:07.408Z");
+  let years = Math.round(d.getTime() / year);
+
+  return years;
+};
+
+console.log(getTime());
+
+export { _changeClasses, createTimer, getCourses, BackendApi };

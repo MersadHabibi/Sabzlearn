@@ -1,4 +1,4 @@
-import { _changeClasses, createTimer, getCourses } from "./funcs/utils.js";
+import { BackendApi, _changeClasses, createTimer, getCourses } from "./funcs/utils.js";
 
 const $ = document;
 
@@ -245,7 +245,7 @@ const getAndShowCourse = async () => {
               <use href="#users-fill"></use>
             </svg>
             <div class="flex flex-col">
-              <span class="text-2xl/8 font-DanaDemiBold dark:text-white">175</span>
+              <span class="text-2xl/8 font-DanaDemiBold dark:text-white"> ${targetCourse.registers} </span>
               <span class="text-sm text-slate-500 dark:text-slate-400">دانشجو</span>
             </div>
           </div>
@@ -254,7 +254,7 @@ const getAndShowCourse = async () => {
               <use href="#star-fill"></use>
             </svg>
             <div class="flex flex-col">
-              <span class="text-2xl/8 font-DanaDemiBold dark:text-white">5.0</span>
+              <span class="text-2xl/8 font-DanaDemiBold dark:text-white"> ${targetCourse.courseAverageScore}.0</span>
               <span class="text-sm text-slate-500 dark:text-slate-400">رضایت</span>
             </div>
           </div>
@@ -262,9 +262,11 @@ const getAndShowCourse = async () => {
         <div>
           <div class="flex justify-between items-center text-xl dark:text-white mt-5 mb-4">
             <span class="">درصد تکمیل دوره</span>
-            <span>0%</span>
+            <span>${targetCourse.isComplete ? 100 : 0}%</span>
           </div>
-          <progress value="0" max="100" class="w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
+          <progress value=${
+            targetCourse.isComplete ? 100 : 0
+          } max="100" class="w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
         </div>
       </div>
       <!-- Side Main ( Mobile ) -->
@@ -299,68 +301,11 @@ const getAndShowCourse = async () => {
         </div>
         <div
           class="course-description__content relative overflow-hidden text-lg/8 xl:text-xl/10 text-zinc-700/80 dark:text-white max-h-[800px] pt-5 transition-all">
-          <div class="">
-            <p class="p1" dir="rtl">
-              پنل ادمین نقش بسیار حیاتی در موفقیت و مدیریت بهتر هر پروژه وب دارد. و خیلی مهم هست یک برنامه نویس فرانت اند
-              دانش طراحی داشبورد یا پنل ادمین های حرفه ای رو داشته باشه که هدف ما در این دوره حرفه ای همین هست که افراد رو
-              به سطحی برسونیم که طراحی هر پنل ادمین و داشبورد سایت براشون خیلی راحت باشه ، این دوره شما را در سفری جذاب از
-              مبتدی تا حرفه‌ای همراهی می‌کند تا بتوانید داشبوردهای شگفت‌آوری با استفاده از HTML، CSS و JavaScript طراحی
-              کنید.
-            </p>
-            <p class="p1" dir="rtl">در این دوره شما با مفاهیم پیشرفته ایجاد رابط‌های کاربری آشنا می‌شوید. از جمله:</p>
-            <ol>
-              <li class="p1" dir="rtl">طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین روش‌های موجود</li>
-              <li class="p1" dir="rtl">بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه</li>
-              <li class="p1" dir="rtl">
-                آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد استفاده در داشبورد‌های حرفه‌ای
-              </li>
-              <li class="p1" dir="rtl">ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های مهم</li>
-            </ol>
-            <p class="p1" dir="rtl">
-              این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید
-              به کار بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش
-              داده می‌شود.
-            </p>
-            <p class="p1" dir="rtl">
-              به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای، تجربه کاربران خود را به سطح بالاتری برسانید و
-              وب‌سایت‌تان را به یک سطح جدید از عملکرد و جذابیت برسانید
-            </p>
-            <p class="p1" dir="rtl">در این دوره شما با مفاهیم پیشرفته ایجاد رابط‌های کاربری آشنا می‌شوید. از جمله:</p>
-            <ol>
-              <li class="p1" dir="rtl">طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین روش‌های موجود</li>
-              <li class="p1" dir="rtl">بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه</li>
-              <li class="p1" dir="rtl">
-                آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد استفاده در داشبورد‌های حرفه‌ای
-              </li>
-              <li class="p1" dir="rtl">ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های مهم</li>
-            </ol>
-            <p class="p1" dir="rtl">
-              این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید
-              به کار بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش
-              داده می‌شود.
-            </p>
-            <p class="p1" dir="rtl">
-              به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای، تجربه کاربران خود را به سطح بالاتری برسانید و
-              وب‌سایت‌تان را به یک سطح جدید از عملکرد و جذابیت برسانید
-            </p>
-            <ol>
-              <li class="p1" dir="rtl">طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین روش‌های موجود</li>
-              <li class="p1" dir="rtl">بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه</li>
-              <li class="p1" dir="rtl">
-                آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد استفاده در داشبورد‌های حرفه‌ای
-              </li>
-              <li class="p1" dir="rtl">ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های مهم</li>
-            </ol>
-            <p class="p1" dir="rtl">
-              این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید
-              به کار بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش
-              داده می‌شود.
-            </p>
-            <p class="p1" dir="rtl">
-              به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای، تجربه کاربران خود را به سطح بالاتری برسانید و
-              وب‌سایت‌تان را به یک سطح جدید از عملکرد و جذابیت برسانید
-            </p>
-          </div>
+              ${targetCourse.description}
+              <br/>
+              <br/>
+              <br/>
+              <br/>
           <!-- Overlay -->
           <div
             class="course-description__overlay absolute bottom-0 left-0 right-0 w-full h-[190px] bg-gradient-to-t from-white dark:from-gray-800"></div>
@@ -719,140 +664,8 @@ const getAndShowCourse = async () => {
           </div>
         </div>
         <!-- Comments Container -->
-        <div class="space-y-5">
-          <!-- Comment -->
-          <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
-            <!-- Comment Body -->
-            <div class="flex gap-x-5 items-start">
-              <!-- Comment Right User Picture & flag (desktop version) -->
-              <div class="hidden md:flex flex-col gap-y-2 shrink-0">
-                <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="images/user-profile.png" />
-                <div
-                  class="text-xs w-full rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
-                  دانشجو
-                </div>
-              </div>
-              <!-- Comment Left Reply comment, text, author, data, flag, reply btn -->
-              <div class="w-full">
-                <!-- Comment Head -->
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-x-2">
-                    <img
-                      class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
-                      src="https://secure.gravatar.com/avatar/0370e6d965555e9194c47fdb9be67d76?s=96&amp;d=mm&amp;r=g" />
-                    <div class="shrink-0">
-                      <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">Pe_f</span>
-                      <div class="flex items-center gap-x-1.5 mt-1">
-                        <div
-                          class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
-                          دانشجو
-                        </div>
-                        <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
-                    <svg class="w-6 h-5">
-                      <use xlink:href="#reply"></use>
-                    </svg>
-                  </button>
-                </div>
-                <!-- Comment Text -->
-                <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
-                  سلام ببخشید پشتیبانی دوره به چه صورتی هست؟<br />
-                  <br />
-                </div>
-                <!-- Comment Replies -->
-              </div>
-            </div>
-          </div>
-          <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
-            <!-- Comment Body -->
-            <div class="flex gap-x-5 items-start">
-              <!-- Comment Right User Picture & flag (desktop version) -->
-              <div class="hidden md:flex flex-col gap-y-2 shrink-0">
-                <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="images/user-profile.png" />
-                <div
-                  class="text-xs w-full rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
-                  دانشجو
-                </div>
-              </div>
-              <!-- Comment Left Reply comment, text, author, data, flag, reply btn -->
-              <div class="w-full">
-                <!-- Comment Head -->
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-x-2">
-                    <img
-                      class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
-                      src="https://secure.gravatar.com/avatar/0370e6d965555e9194c47fdb9be67d76?s=96&amp;d=mm&amp;r=g" />
-                    <div class="shrink-0">
-                      <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">mersad</span>
-                      <div class="flex items-center gap-x-1.5 mt-1">
-                        <div
-                          class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
-                          دانشجو
-                        </div>
-                        <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
-                    <svg class="w-6 h-5">
-                      <use xlink:href="#reply"></use>
-                    </svg>
-                  </button>
-                </div>
-                <!-- Comment Text -->
-                <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
-                  سلام ببخشید پشتیبانی دوره به چه صورتی هست؟<br />
-                  <br />
-                </div>
-                <!-- Comment Replies -->
-                <div class="mt-7 space-y-3.5 md:space-y-5">
-                  <div id="comment-47416" class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
-                    <div class="flex gap-x-5 items-start">
-                      <!-- Comment Right User Picture & flag (desktop version) -->
-                      <div class="hidden md:flex flex-col shrink-0 gap-y-2">
-                        <img
-                          class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full"
-                          src="https://secure.gravatar.com/avatar/213e0cf344b8c216b7048477622c195a?s=96&amp;d=mm&amp;r=g" />
-                        <div
-                          class="text-xs w-full rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">
-                          مدیریت
-                        </div>
-                      </div>
-                      <!-- Comment Left Text, author, data, flag, reply btn -->
-                      <div class="w-full">
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center gap-x-2">
-                            <img
-                              class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
-                              src="https://secure.gravatar.com/avatar/213e0cf344b8c216b7048477622c195a?s=96&amp;d=mm&amp;r=g" />
-                            <div class="shrink-0">
-                              <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
-                                >قدیر یلمه</span
-                              >
-                              <div class="flex items-center gap-x-1.5 mt-1">
-                                <div
-                                  class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">
-                                  مدیریت
-                                </div>
-                                <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- Comment Text -->
-                        <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
-                          بصورت آنلاین در قسمت مشاهده آنلاین جلسات هست
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="comments__container space-y-5">
+          
         </div>
         <!-- More Btn -->
         <button
@@ -883,7 +696,9 @@ const getAndShowCourse = async () => {
               <use href="#star-fill"></use>
             </svg>
             <div class="flex flex-col">
-              <span class="course__star text-2xl/8 font-DanaDemiBold dark:text-white"> ${targetCourse.registers}.0 </span>
+              <span class="course__star text-2xl/8 font-DanaDemiBold dark:text-white"> ${
+                targetCourse.courseAverageScore
+              }.0 </span>
               <span class="text-sm text-slate-500 dark:text-slate-400">رضایت</span>
             </div>
           </div>
@@ -934,17 +749,180 @@ const getAndShowCourse = async () => {
   `
   );
 
-  // Aside
-  $.querySelector(".course__registers").innerText = targetCourse.registers;
-  $.querySelector(".course__star").innerText = targetCourse.courseAverageScore + ".0";
-  $.querySelector(".course__creator").innerText = targetCourse.creator;
-  $.querySelector(".course__complete-prog").value = targetCourse.isComplete ? 100 : 0;
-  $.querySelector(".course__complete-percent").innerText = targetCourse.isComplete ? "100%" : "0%";
+  // Create Timer
 
-  // course info
-  $.querySelector(".course__registers").innerText = targetCourse.registers;
+  const offerDay = $.querySelector(".offer__day");
+  const offerHur = $.querySelector(".offer__hur");
+  const offerMin = $.querySelector(".offer__min");
+  const offerSec = $.querySelector(".offer__sec");
+  if (targetCourse.discount) createTimer(offerDay, offerHur, offerMin, offerSec, "0:24:0:0", false);
+
+  await getAndShowComments(targetCourse);
 
   console.log(targetCourse.categoryID.name);
+};
+
+// Get Reply Comments
+
+const getAndShowReplyComments = (answerContent) => {
+  return `
+  <div class="mt-7 space-y-3.5 md:space-y-5">
+    <div id="comment-47416" class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
+      <div class="flex gap-x-5 items-start">
+        <!-- Comment Right User Picture & flag (desktop version) -->
+        <div class="hidden md:flex flex-col shrink-0 gap-y-2">
+          <img
+            class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full"
+            src="https://secure.gravatar.com/avatar/213e0cf344b8c216b7048477622c195a?s=96&amp;d=mm&amp;r=g" />
+            ${
+              !answerContent.creator.role == "ADMIN"
+                ? `
+                <div
+                class="text-xs w-full rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
+                دانشجو
+              </div>
+            `
+                : `
+            <div
+              class="text-xs w-full rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">
+              مدیریت
+            </div>
+                `
+            }
+        </div>
+        <!-- Comment Left Text, author, data, flag, reply btn -->
+        <div class="w-full">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-x-2">
+              <img
+                class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
+                src="https://secure.gravatar.com/avatar/213e0cf344b8c216b7048477622c195a?s=96&amp;d=mm&amp;r=g" />
+              <div class="shrink-0">
+                <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
+                  > ${answerContent.creator.name} </span
+                >
+                <div class="flex items-center gap-x-1.5 mt-1">
+                ${
+                  !answerContent.creator.role == "ADMIN"
+                    ? `
+                <div
+                  class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
+                  دانشجو
+                </div> 
+                `
+                    : `
+                <div
+                  class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">
+                  مدیریت
+                </div>
+                    `
+                }
+                  <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Comment Text -->
+          <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
+            ${answerContent.body}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  `;
+};
+// Get Comments
+
+const getAndShowComments = async (targetCourse) => {
+  const commentsContainer = $.querySelector(".comments__container");
+
+  const res = await fetch(`${BackendApi}/comments`);
+  const comments = await res.json();
+
+  const targetComments = comments.filter((e) => {
+    return e.course == targetCourse.name;
+  });
+
+  targetComments.forEach((comment) => {
+    console.log(comment);
+    commentsContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
+        <!-- Comment Body -->
+        <div class="flex gap-x-5 items-start">
+          <!-- Comment Right User Picture & flag (desktop version) -->
+          <div class="hidden md:flex flex-col gap-y-2 shrink-0">
+            <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="images/user-profile.png" />
+            ${
+              !comment.creator.role == "ADMIN"
+                ? `
+                <div
+                class="text-xs w-full rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
+                دانشجو
+              </div>
+            `
+                : `
+            <div
+              class="text-xs w-full rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">
+              مدیریت
+            </div>
+                `
+            }
+          </div>
+          <!-- Comment Left Reply comment, text, author, data, flag, reply btn -->
+          <div class="w-full">
+            <!-- Comment Head -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-x-2">
+                <img
+                  class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
+                  src="https://secure.gravatar.com/avatar/0370e6d965555e9194c47fdb9be67d76?s=96&amp;d=mm&amp;r=g" />
+                <div class="shrink-0">
+                  <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"> ${
+                    comment.creator.name
+                  } </span>
+                  <div class="flex items-center gap-x-1.5 mt-1">
+                  ${
+                    !comment.creator.role == "ADMIN"
+                      ? `
+                  <div
+                    class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
+                    دانشجو
+                  </div> 
+                  `
+                      : `
+                  <div
+                    class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">
+                    مدیریت
+                  </div>
+                      `
+                  }
+                    
+                    <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
+                  </div>
+                </div>
+              </div>
+              <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
+                <svg class="w-6 h-5">
+                  <use xlink:href="#reply"></use>
+                </svg>
+              </button>
+            </div>
+            <!-- Comment Text -->
+            <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
+              ${comment.body} <br />
+              <br />
+            </div>
+            <!-- Comment Replies -->
+            ${comment.answerContent ? getAndShowReplyComments(comment.answerContent) : ""}
+          </div>
+        </div>
+      </div>
+    `
+    );
+  });
 };
 
 window.addEventListener("load", async () => {
@@ -970,13 +948,6 @@ window.addEventListener("load", async () => {
   const cancelNewCommentBtn = $.querySelector(".cancel-new-comment");
   const replayCommentBtn = $.querySelectorAll(".comment-reply-btn");
   const commentTo = $.querySelector(".comment-to");
-
-  // Offer Elements
-
-  const offerDay = $.querySelector(".offer__day");
-  const offerHur = $.querySelector(".offer__hur");
-  const offerMin = $.querySelector(".offer__min");
-  const offerSec = $.querySelector(".offer__sec");
 
   // Course Description - show & hide
 
@@ -1021,8 +992,4 @@ window.addEventListener("load", async () => {
       _changeClasses("add", courseComments, ["show-new-comment-form"]);
     });
   });
-
-  // Create Timer
-
-  createTimer(offerDay, offerHur, offerMin, offerSec, "0:24:0:0", false);
 });
