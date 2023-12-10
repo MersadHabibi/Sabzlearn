@@ -76,4 +76,4 @@ panelMenuItem.forEach((e) => {
   e.addEventListener("click", (event) => {
     ChangeContent(event, e);
   });
-});
+}); 

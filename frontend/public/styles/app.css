@@ -1409,6 +1409,10 @@ html.dark .toggle__marker::before {
   height: 100vh;
 }
 
+.h-\[403px\] {
+  height: 403px;
+}
+
 .max-h-\[800px\] {
   max-height: 800px;
 }
@@ -2695,6 +2699,10 @@ html.dark .toggle__marker::before {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -3782,6 +3790,10 @@ html.dark .toggle__marker::before {
 
   .sm\:h-8 {
     height: 2rem;
+  }
+
+  .sm\:h-\[415px\] {
+    height: 415px;
   }
 
   .sm\:w-10 {
