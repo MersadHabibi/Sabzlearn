@@ -2107,6 +2107,11 @@ html.dark .toggle__marker::before {
   background-color: rgb(255 255 255 / 0.3);
 }
 
+.\!bg-gray-100 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity)) !important;
+}
+
 .bg-conic-gradient {
   background-image: conic-gradient(var(--tw-gradient-stops));
 }
@@ -3544,6 +3549,11 @@ html.dark .toggle__marker::before {
   background-color: rgb(250 204 21 / 0.1);
 }
 
+:is(.dark .dark\:\!bg-gray-700) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(50 51 77 / var(--tw-bg-opacity)) !important;
+}
+
 :is(.dark .dark\:from-gray-800) {
   --tw-gradient-from: #28293d var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(40 41 61 / 0) var(--tw-gradient-to-position);
@@ -3754,14 +3764,6 @@ html.dark .toggle__marker::before {
     width: auto;
   }
 
-  .xs\:w-100 {
-    width: 6.25rem;
-  }
-
-  .xs\:w-10 {
-    width: 2.5rem;
-  }
-
   .xs\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3770,18 +3772,14 @@ html.dark .toggle__marker::before {
     flex-direction: row;
   }
 
-  .xs\:p-0 {
-    padding: 0px;
+  .xs\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .xs\:px-5 {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-  }
-
-  .xs\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 
   .xs\:text-right {

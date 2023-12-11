@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/app.css" />
+    <link rel="stylesheet" href="../node_modules/izitoast/dist/css/iziToast.min.css" />
     <link rel="shortcut icon" href="images/icon.png" type="image/png" />
     <title>panel</title>
   </head>
@@ -125,7 +126,36 @@
           d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
       </symbol>
     </svg>
-    <style></style>
+    <style>
+      .iziToast {
+        box-shadow: 0 1px 60px rgba(0, 0, 0, 0.1);
+      }
+      .iziToast::after {
+        content: none;
+      }
+      .iziToast-texts {
+        display: flex !important;
+        flex-direction: column;
+      }
+      .iziToast-title {
+        font-family: "Dana DemiBold";
+        margin-bottom: 4px !important;
+      }
+      .iziToast-message {
+        font-family: "Dana";
+        margin-bottom: 2px !important;
+        max-width: 200px;
+        line-height: 1.5 !important;
+      }
+      /* .iziToast-icon{
+        width: 36px !important;
+        height: 36px !important;
+      } */
+      .iziToast-cover {
+        background-color: transparent !important;
+        margin-right: 10px !important;
+      }
+    </style>
 
     <main class="flex flex-col items-center gap-y-10 py-10 px-5 xs:px-0">
       <!-- Logo -->
@@ -143,9 +173,10 @@
           <p class="text-lg text-gray-500">قبلا ثبت نام کرده‌اید؟ <a href="#" class="text-primary"> وارد شوید</a></p>
         </div>
         <!-- Form -->
-        <form action="" class="space-y-2.5 sm:space-y-3.5">
+        <form method="post" class="space-y-2.5 sm:space-y-3.5">
           <div class="relative">
             <input
+              id="form__username"
               type="text"
               class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
               placeholder="نام کاربری" />
@@ -156,6 +187,7 @@
           </div>
           <div class="relative">
             <input
+              id="form__phone-number"
               type="text"
               class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
               placeholder="شماره موبایل" />
@@ -166,7 +198,8 @@
           </div>
           <div class="relative">
             <input
-              type="text"
+              id="form__email-address"
+              type="email"
               class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
               placeholder="آدرس ایمیل" />
             <svg
@@ -176,7 +209,8 @@
           </div>
           <div class="relative">
             <input
-              type="text"
+              id="form__password"
+              type="password"
               class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
               placeholder="رمز عبور" />
             <svg
@@ -197,6 +231,8 @@
       </p>
     </main>
 
+    <script src="../node_modules/izitoast/dist/js/iziToast.min.js" type="text/javascript"></script>
     <script src="scripts/share.js" type="module"></script>
+    <script src="scripts/register.js" type="module"></script>
   </body>
 </html>
