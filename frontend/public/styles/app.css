@@ -998,6 +998,10 @@ html.dark .toggle__marker::before {
   left: 0.625rem;
 }
 
+.left-3 {
+  left: 0.75rem;
+}
+
 .left-4 {
   left: 1rem;
 }
@@ -1141,6 +1145,10 @@ html.dark .toggle__marker::before {
 
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+
+.mb-7 {
+  margin-bottom: 1.75rem;
 }
 
 .ml-1 {
@@ -1389,6 +1397,10 @@ html.dark .toggle__marker::before {
   height: 65px;
 }
 
+.h-\[67px\] {
+  height: 67px;
+}
+
 .h-\[88px\] {
   height: 88px;
 }
@@ -1407,10 +1419,6 @@ html.dark .toggle__marker::before {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[403px\] {
-  height: 403px;
 }
 
 .max-h-\[800px\] {
@@ -1495,6 +1503,14 @@ html.dark .toggle__marker::before {
 
 .w-9 {
   width: 2.25rem;
+}
+
+.w-\[104px\] {
+  width: 104px;
+}
+
+.w-\[143px\] {
+  width: 143px;
 }
 
 .w-\[155px\] {
@@ -2355,6 +2371,11 @@ html.dark .toggle__marker::before {
   padding-bottom: 0.375rem;
 }
 
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -2424,8 +2445,16 @@ html.dark .toggle__marker::before {
   padding-left: 1.25rem;
 }
 
+.pl-9 {
+  padding-left: 2.25rem;
+}
+
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.pr-3 {
+  padding-right: 0.75rem;
 }
 
 .pr-4 {
@@ -2506,6 +2535,10 @@ html.dark .toggle__marker::before {
 
 .font-MorabbaBold {
   font-family: Morabba Bold;
+}
+
+.font-MorabbaMedium {
+  font-family: Morabba Medium;
 }
 
 .text-2xl {
@@ -2628,6 +2661,11 @@ html.dark .toggle__marker::before {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+
 .text-pink-500 {
   --tw-text-opacity: 1;
   color: rgb(236 72 153 / var(--tw-text-opacity));
@@ -2696,10 +2734,6 @@ html.dark .toggle__marker::before {
 
 .blur-2xl {
   --tw-blur: blur(40px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -3712,8 +3746,20 @@ html.dark .toggle__marker::before {
 }
 
 @media (min-width: 480px) {
+  .xs\:w-\[400px\] {
+    width: 400px;
+  }
+
   .xs\:w-auto {
     width: auto;
+  }
+
+  .xs\:w-100 {
+    width: 6.25rem;
+  }
+
+  .xs\:w-10 {
+    width: 2.5rem;
   }
 
   .xs\:grid-cols-2 {
@@ -3724,9 +3770,18 @@ html.dark .toggle__marker::before {
     flex-direction: row;
   }
 
+  .xs\:p-0 {
+    padding: 0px;
+  }
+
   .xs\:px-5 {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  .xs\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .xs\:text-right {
@@ -3735,6 +3790,10 @@ html.dark .toggle__marker::before {
 }
 
 @media (min-width: 640px) {
+  .sm\:left-4 {
+    left: 1rem;
+  }
+
   .sm\:m-0 {
     margin: 0px;
   }
@@ -3748,8 +3807,16 @@ html.dark .toggle__marker::before {
     margin-bottom: 0px;
   }
 
+  .sm\:mb-3 {
+    margin-bottom: 0.75rem;
+  }
+
   .sm\:mb-6 {
     margin-bottom: 1.5rem;
+  }
+
+  .sm\:mb-9 {
+    margin-bottom: 2.25rem;
   }
 
   .sm\:mt-24 {
@@ -3784,16 +3851,16 @@ html.dark .toggle__marker::before {
     height: 3.5rem;
   }
 
+  .sm\:h-5 {
+    height: 1.25rem;
+  }
+
   .sm\:h-6 {
     height: 1.5rem;
   }
 
   .sm\:h-8 {
     height: 2rem;
-  }
-
-  .sm\:h-\[415px\] {
-    height: 415px;
   }
 
   .sm\:w-10 {
@@ -3806,6 +3873,10 @@ html.dark .toggle__marker::before {
 
   .sm\:w-48 {
     width: 12rem;
+  }
+
+  .sm\:w-5 {
+    width: 1.25rem;
   }
 
   .sm\:w-6 {
@@ -3864,6 +3935,18 @@ html.dark .toggle__marker::before {
     row-gap: 0px;
   }
 
+  .sm\:space-y-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+  }
+
+  .sm\:space-y-3\.5 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.875rem * var(--tw-space-y-reverse));
+  }
+
   .sm\:self-auto {
     align-self: auto;
   }
@@ -3912,9 +3995,27 @@ html.dark .toggle__marker::before {
     padding-right: 1.25rem;
   }
 
+  .sm\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .sm\:py-0 {
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+
+  .sm\:py-9 {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .sm\:pl-12 {
+    padding-left: 3rem;
+  }
+
+  .sm\:pr-5 {
+    padding-right: 1.25rem;
   }
 
   .sm\:pr-7 {
@@ -3942,6 +4043,11 @@ html.dark .toggle__marker::before {
   .sm\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .sm\:text-xl {
