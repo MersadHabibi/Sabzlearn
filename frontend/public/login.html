@@ -78,30 +78,6 @@
         </g>
       </symbol>
       <symbol
-        id="user"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-      </symbol>
-      <symbol
-        id="phone"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-      </symbol>
-      <symbol
         id="envelope"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -157,7 +133,7 @@
       }
     </style>
 
-    <main class="flex flex-col items-center gap-y-10 py-10 px-5 xs:px-0">
+    <main class="flex flex-col items-center gap-y-10 pt-20 px-5 xs:px-0">
       <!-- Logo -->
       <div class="flex items-center gap-x-2">
         <img src="images/logo.webp" class="w-[104px]" alt="logo" />
@@ -169,39 +145,18 @@
       <div class="w-full xs:w-[400px] p-7 sm:px-8 sm:py-9 bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl">
         <!-- main header -->
         <div class="flex flex-col items-center mb-7 sm:mb-9">
-          <span class="font-MorabbaMedium text-3xl mb-2 sm:mb-3 dark:text-white">عضویت</span>
-          <p class="text-lg text-gray-500">قبلا ثبت نام کرده‌اید؟ <a href="./login.html" class="text-primary"> وارد شوید</a></p>
+          <span class="font-MorabbaMedium text-3xl mb-2 sm:mb-3 dark:text-white">ورود</span>
+          <p class="text-lg text-gray-500">حساب کاربری ندارید؟<a href="./register.html" class="text-primary"> ثبت نام </a></p>
         </div>
         <!-- Form -->
         <form method="post" class="space-y-2.5 sm:space-y-3.5">
           <div class="relative">
             <input
-              id="form__username"
-              type="text"
-              class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
-              placeholder="نام کاربری" />
-            <svg
-              class="absolute left-3 sm:left-4 top-0 bottom-0 my-auto w-4 sm:w-5 h-4 sm:h-5 text-slate-500 dark:text-slate-400">
-              <use href="#user"></use>
-            </svg>
-          </div>
-          <div class="relative">
-            <input
-              id="form__phone-number"
-              type="text"
-              class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
-              placeholder="شماره موبایل" />
-            <svg
-              class="absolute left-3 sm:left-4 top-0 bottom-0 my-auto w-4 sm:w-5 h-4 sm:h-5 text-slate-500 dark:text-slate-400">
-              <use href="#phone"></use>
-            </svg>
-          </div>
-          <div class="relative">
-            <input
               id="form__email-address"
               type="email"
               class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
-              placeholder="آدرس ایمیل" />
+              placeholder="آدرس ایمیل"
+              required />
             <svg
               class="absolute left-3 sm:left-4 top-0 bottom-0 my-auto w-4 sm:w-5 h-4 sm:h-5 text-slate-500 dark:text-slate-400">
               <use href="#envelope"></use>
@@ -212,7 +167,8 @@
               id="form__password"
               type="password"
               class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
-              placeholder="رمز عبور" />
+              placeholder="رمز عبور"
+              required />
             <svg
               class="absolute left-3 sm:left-4 top-0 bottom-0 my-auto w-4 sm:w-5 h-4 sm:h-5 text-slate-500 dark:text-slate-400">
               <use href="#lock"></use>
@@ -221,18 +177,25 @@
           <button
             type="submit"
             class="h-12 sm:h-14 w-full text-center rounded-xl bg-primary text-white text-xl hover:bg-green-500 transition-colors">
-            ادامه
+            ورود
           </button>
         </form>
+        <!-- Main Footer -->
+        <div class="flex justify-between mt-5">
+          <div class="flex gap-x-2">
+            <label class="dont-forget">
+              <input class="dont-forget__input" type="checkbox" name="only_free" value="yes" />
+              <span class="dont-forget__marker"></span>
+            </label>
+            <span class="text-sm dark:text-white">مرا فراموش مکن</span>
+          </div>
+          <a class="text-sm text-slate-500 dark:text-slate-400" href="#">فراموشی رمز عبور</a>
+        </div>
       </div>
-      <!-- Footer -->
-      <p class="sm:text-lg text-center text-slate-500 dark:text-gray-500">
-        با عضویت در سایت، تمامی <a href="#" class="text-primary">قوانین و شرایط</a> استفاده از خدمت سبزلرن را پذیرفته اید.
-      </p>
     </main>
 
     <script src="../node_modules/izitoast/dist/js/iziToast.min.js" type="text/javascript"></script>
     <script src="scripts/share.js" type="module"></script>
-    <script src="scripts/register.js" type="module"></script>
+    <script src="./scripts/login.js"></script>
   </body>
 </html>

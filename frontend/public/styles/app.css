@@ -790,6 +790,58 @@ html.dark .toggle__marker::before {
   background-color: white;
 }
 
+/* Dont Forget Check Box */
+
+.dont-forget {
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.dont-forget__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.dont-forget__marker {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.125rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  position: absolute;
+  top: 1px;
+  left: 0;
+  transition: all 100ms;
+}
+
+html.dark .dont-forget__marker {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 28 40 / var(--tw-bg-opacity));
+}
+
+html.dark .dont-forget__marker::before {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 51 77 / var(--tw-bg-opacity));
+}
+
+.dont-forget .dont-forget__input:checked ~ .dont-forget__marker {
+  background-color: #2196f3;
+}
+
+.dont-forget .dont-forget__input:checked ~ .dont-forget__marker::before {
+  right: 26px;
+  background-color: white;
+}
+
 /* Bread Crumb */
 
 .breadcrumb {
@@ -2107,11 +2159,6 @@ html.dark .toggle__marker::before {
   background-color: rgb(255 255 255 / 0.3);
 }
 
-.\!bg-gray-100 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity)) !important;
-}
-
 .bg-conic-gradient {
   background-image: conic-gradient(var(--tw-gradient-stops));
 }
@@ -2500,6 +2547,10 @@ html.dark .toggle__marker::before {
 
 .pt-2\.5 {
   padding-top: 0.625rem;
+}
+
+.pt-20 {
+  padding-top: 5rem;
 }
 
 .pt-3 {
@@ -3547,11 +3598,6 @@ html.dark .toggle__marker::before {
 
 :is(.dark .dark\:bg-yellow-400\/10) {
   background-color: rgb(250 204 21 / 0.1);
-}
-
-:is(.dark .dark\:\!bg-gray-700) {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(50 51 77 / var(--tw-bg-opacity)) !important;
 }
 
 :is(.dark .dark\:from-gray-800) {

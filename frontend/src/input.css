@@ -320,6 +320,48 @@
     background-color: white;
   }
 
+  /* Dont Forget Check Box */
+
+  .dont-forget {
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .dont-forget__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  .dont-forget__marker {
+    @apply w-4 h-4 bg-gray-200 rounded-sm;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    transition: all 100ms;
+  }
+  
+  html.dark .dont-forget__marker {
+    @apply bg-gray;
+  }
+  html.dark .dont-forget__marker::before {
+    @apply bg-gray-700;
+  }
+  .dont-forget .dont-forget__input:checked ~ .dont-forget__marker {
+    background-color: #2196f3;
+  }
+  .dont-forget .dont-forget__input:checked ~ .dont-forget__marker::before {
+    right: 26px;
+    background-color: white;
+  }
+
   /* Bread Crumb */
 
   .breadcrumb {
