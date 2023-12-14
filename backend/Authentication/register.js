@@ -33,10 +33,14 @@ function register(req, res) {
                   username,
                   address,
                   phoneNumber,
+                  hash,
+                  comments: {},
                 },
               })
               .then((user) => {
                 console.log(user);
+                delete user.hash;
+                delete user.role;
                 res.json(user);
               })
               .catch((err) => {
@@ -44,6 +48,8 @@ function register(req, res) {
                   res.status(403).json({
                     message: `error in creating user with this emailAddress.`,
                   });
+                } else {
+                  console.log(err);
                 }
               });
           });

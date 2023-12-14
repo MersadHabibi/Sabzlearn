@@ -11,15 +11,15 @@ datasource db {
 }
 
 model Users {
-  id           String     @id @default(auto()) @map("_id") @db.ObjectId
-  username     String     @unique
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  username     String  @unique
   phoneNumber  String
   address      String
-  email        String     @unique
+  email        String  @unique
   hash         String
-  imageProfile String
+  imageProfile String?
   comments     Comments[]
-  role         String     @default("student")
+  role         String? @default("student")
 }
 
 model Course {
