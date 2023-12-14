@@ -38,6 +38,7 @@ model Course {
   teacher       String
   comments      Comments[]
   subjects      Subjects[]
+  shortName     String
 }
 
 model Comments {
