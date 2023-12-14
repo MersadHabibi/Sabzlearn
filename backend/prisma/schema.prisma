@@ -11,10 +11,54 @@ datasource db {
 }
 
 model Users {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  username    String @unique
-  phoneNumber String
-  address     String
-  email       String @unique
-  hash        String
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  username     String     @unique
+  phoneNumber  String
+  address      String
+  email        String     @unique
+  hash         String
+  imageProfile String
+  comments     Comments[]
+  role         String     @default("student")
+}
+
+model Course {
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String
+  category      String[]
+  price         Int
+  discount      Int
+  discountPrice Int
+  isFree        Boolean    @default(false)
+  status        String[]
+  time          String
+  studentsCount Int
+  rank          Float
+  teacher       String
+  comments      Comments[]
+  subjects      Subjects[]
+}
+
+model Comments {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  Course   Course? @relation(fields: [courseId], references: [id])
+  courseId String? @db.ObjectId
+  Users    Users?  @relation(fields: [usersId], references: [id])
+  usersId  String? @db.ObjectId
+}
+
+model Subjects {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  isFree   Boolean
+  episodes Json[]
+  Course   Course? @relation(fields: [courseId], references: [id])
+  courseId String? @db.ObjectId
+}
+
+model Menues {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  data Json[]
 }

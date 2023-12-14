@@ -64,7 +64,7 @@ const ChangeContent = (event, element) => {
   loadPanelContent(content);
   closeMobileAside();
 
-  window.history.pushState("", "", `http://127.0.0.1:5500/public/panel.html?content=${content}`);
+  window.history.pushState("", "", `http://127.0.0.1:5500/frontend/public/panel.html?content=${content}`);
 
   panelMenuItem.forEach((e) => {
     _changeClasses("remove", e, ["active"]);
@@ -76,4 +76,4 @@ panelMenuItem.forEach((e) => {
   e.addEventListener("click", (event) => {
     ChangeContent(event, e);
   });
-});
+}); 
