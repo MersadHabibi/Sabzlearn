@@ -11,8 +11,8 @@ function register(req, res) {
   const registerSchema = Joi.object({
     username: Joi.string().required().min(1),
     email: Joi.string().email().required().min(1),
-    phoneNumber: Joi.string().email().required().min(1),
-    address: Joi.string().email().required().min(1),
+    phoneNumber: Joi.string().required().min(1),
+    address: Joi.string().required().min(1),
     password: Joi.string().alphanum().required().min(1),
     repeat_password: Joi.ref("password"),
   }).with("password", "repeat_password");
