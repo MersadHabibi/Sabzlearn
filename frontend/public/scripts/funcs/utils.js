@@ -1,3 +1,5 @@
+const api = "http://localhost:3000/api/";
+
 // Change Class
 
 const _changeClasses = (action, element, className) => {
@@ -16,9 +18,21 @@ const _changeClasses = (action, element, className) => {
 
 // Timer
 
-const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", haveZero = false) => {
+const createTimer = (
+  dayElem,
+  hourElem,
+  minElem,
+  secElem,
+  time = "2:10:20:30",
+  haveZero = false
+) => {
   time = time.split(":");
-  [dayElem.innerHTML, hourElem.innerHTML, minElem.innerHTML, secElem.innerHTML] = time;
+  [
+    dayElem.innerHTML,
+    hourElem.innerHTML,
+    minElem.innerHTML,
+    secElem.innerHTML,
+  ] = time;
   let interVal = setInterval(() => {
     time[3] = time[3] - 1;
     if (time[3] < 0) {
@@ -44,7 +58,73 @@ const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", h
       time[3] = time[3].toString().length == 1 ? `0${time[3]}` : time[3];
     }
 
-    [dayElem.innerHTML, hourElem.innerHTML, minElem.innerHTML, secElem.innerHTML] = time;
+    [
+      dayElem.innerHTML,
+      hourElem.innerHTML,
+      minElem.innerHTML,
+      secElem.innerHTML,
+    ] = time;
   }, 1000);
 };
-export { _changeClasses, createTimer };
+
+// Notif Function
+
+const showNotif = (massage, status = "error") => {
+  if (status == "error") {
+    if (document.documentElement.classList.contains("dark")) {
+      iziToast.show({
+        backgroundColor: "#4A4B6D",
+        title: "خطا",
+        titleSize: "16px",
+        message: massage,
+        position: "topLeft",
+        image: "./images/svgs/check-circle-dark.svg",
+        rtl: true,
+        close: false,
+        progressBarColor: "#F43F5E",
+        theme: "dark",
+      });
+    } else {
+      iziToast.show({
+        backgroundColor: "white",
+        title: "خطا",
+        titleSize: "16px",
+        message: massage,
+        position: "topLeft",
+        image: "./images/svgs/check-circle.svg",
+        rtl: true,
+        close: false,
+        progressBarColor: "#EC4899",
+      });
+    }
+  } else if (status == "success") {
+    if (document.documentElement.classList.contains("dark")) {
+      iziToast.show({
+        backgroundColor: "#4A4B6D",
+        title: "موفق",
+        titleSize: "16px",
+        message: massage,
+        position: "topLeft",
+        image: "./images/svgs/check-circle-success-dark.svg",
+        rtl: true,
+        close: false,
+        progressBarColor: "#22c55e",
+        theme: "dark",
+      });
+    } else {
+      iziToast.show({
+        backgroundColor: "white",
+        title: "خطا",
+        titleSize: "16px",
+        message: massage,
+        position: "topLeft",
+        image: "./images/svgs/check-circle-success.svg",
+        rtl: true,
+        close: false,
+        progressBarColor: "#22c55e",
+      });
+    }
+  }
+};
+
+export { api, _changeClasses, createTimer, showNotif };

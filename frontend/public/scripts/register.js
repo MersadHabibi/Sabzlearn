@@ -1,3 +1,5 @@
+import { api, showNotif } from "./funcs/utils.js";
+
 const $ = document;
 
 const form = $.querySelector("form");
@@ -8,42 +10,63 @@ const passwordInput = $.querySelector("#form__password");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (!usernameInput.value || !phoneNumberInput.value || !emailAddressInput.value || !passwordInput) {
+  if (
+    !usernameInput.value ||
+    !phoneNumberInput.value ||
+    !emailAddressInput.value ||
+    !passwordInput
+  ) {
     showNotif(
-      ` لطفا ${!usernameInput.value ? "نام کاربری ," : ""} ${!phoneNumberInput.value ? "شماره موبایل ," : ""} ${
-        !emailAddressInput.value ? "ایمیل ," : ""
-      } ${!passwordInput.value ? "رمز عبور " : ""} را به درستی وارد کنید.`
+      ` لطفا ${!usernameInput.value ? "نام کاربری ," : ""} ${
+        !phoneNumberInput.value ? "شماره موبایل ," : ""
+      } ${!emailAddressInput.value ? "ایمیل ," : ""} ${
+        !passwordInput.value ? "رمز عبور " : ""
+      } را به درستی وارد کنید.`
+    );
+  } else {
+    register(
+      emailAddressInput.value,
+      usernameInput.value,
+      phoneNumberInput.value,
+      passwordInput.value
     );
   }
 });
 
-// Notif Function
+const register = async (
+  email,
+  username,
+  phoneNumber,
+  password,
+  address = " "
+) => {
+  const newUser = {
+    email,
+    username,
+    phoneNumber,
+    password,
+    repeat_password: password,
+    address,
+  };
 
-const showNotif = (massage) => {
-  if (document.documentElement.classList.contains("dark")) {
-    iziToast.show({
-      backgroundColor: "#4A4B6D",
-      title: "خطا",
-      titleSize: "16px",
-      message: massage,
-      position: "topLeft",
-      image: "./images/svgs/check-circle-dark.svg",
-      rtl: true,
-      close: false,
-      progressBarColor: "#F43F5E",
-      theme: "dark",
+  console.log(newUser);
+
+  await fetch(`${api}register`, {
+    method: "POST",
+    body: JSON.stringify(newUser),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.details) {
+        showNotif("ساخت حساب با مشکل مواجه شد");
+      } else if (res.message) {
+        showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
+      } else {
+        showNotif("اکانت شما با موفقیت ساخته شد", "success");
+        location.href = "index.html";
+      }
     });
-  } else {
-    iziToast.show({
-      backgroundColor: "white",
-      title: "خطا",
-      titleSize: "16px",
-      message: massage,
-      position: "topLeft",
-      image: "./images/svgs/check-circle.svg",
-      rtl: true,
-      close: false,
-      progressBarColor: "#EC4899",
-    });
-  }
 };
