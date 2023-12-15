@@ -990,6 +990,30 @@ html.dark .dont-forget__marker::before {
   }
 }
 
+/* File Input */
+
+input[type="file"]::file-selector-button {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #6c5ce7;
+  padding: 5px 12px;
+  margin-left: 10px;
+  border-radius: 0.2em;
+  background-color: white;
+  transition: all 200ms;
+}
+
+html.dark .custom-file-upload {
+  background-color: #32334d;
+  color: white;
+}
+
+.custom-file-upload:hover {
+  border: 1px solid #00cec9;
+}
+
 .fixed {
   position: fixed;
 }
@@ -1020,10 +1044,6 @@ html.dark .dont-forget__marker::before {
 
 .-left-\[115px\] {
   left: -115px;
-}
-
-.-left-\[30px\] {
-  left: -30px;
 }
 
 .-left-\[320px\] {
@@ -1118,10 +1138,6 @@ html.dark .dont-forget__marker::before {
   top: auto;
 }
 
-.-right-0 {
-  right: -0px;
-}
-
 .-z-10 {
   z-index: -10;
 }
@@ -1213,10 +1229,6 @@ html.dark .dont-forget__marker::before {
 
 .mb-7 {
   margin-bottom: 1.75rem;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
 }
 
 .ml-1 {
@@ -2022,6 +2034,10 @@ html.dark .dont-forget__marker::before {
   border-style: dashed;
 }
 
+.border-none {
+  border-style: none;
+}
+
 .border-gray-100 {
   --tw-border-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
@@ -2477,13 +2493,12 @@ html.dark .dont-forget__marker::before {
   padding-bottom: 1.75rem;
 }
 
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
 .pb-1 {
   padding-bottom: 0.25rem;
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem;
 }
 
 .pb-14 {
@@ -2594,6 +2609,10 @@ html.dark .dont-forget__marker::before {
   padding-top: 1.25rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .pt-7 {
   padding-top: 1.75rem;
 }
@@ -2604,18 +2623,6 @@ html.dark .dont-forget__marker::before {
 
 .pt-\[1px\] {
   padding-top: 1px;
-}
-
-.pb-8 {
-  padding-bottom: 2rem;
-}
-
-.pb-10 {
-  padding-bottom: 2.5rem;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
 }
 
 .text-center {
@@ -2746,22 +2753,6 @@ html.dark .dont-forget__marker::before {
 
 .leading-\[65px\] {
   line-height: 65px;
-}
-
-.leading-3 {
-  line-height: .75rem;
-}
-
-.leading-4 {
-  line-height: 1rem;
-}
-
-.leading-5 {
-  line-height: 1.25rem;
-}
-
-.leading-6 {
-  line-height: 1.5rem;
 }
 
 .tracking-tight {
@@ -3086,11 +3077,15 @@ html.dark .dont-forget__marker::before {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.course-description.show .course-description__btn .course-description__btn-dont-show-text {
+.course-description.show
+  .course-description__btn
+  .course-description__btn-dont-show-text {
   display: none;
 }
 
-.course-description.show .course-description__btn .course-description__btn-show-text {
+.course-description.show
+  .course-description__btn
+  .course-description__btn-show-text {
   display: inline-block;
 }
 
@@ -3863,6 +3858,10 @@ html.dark .dont-forget__marker::before {
 }
 
 @media (min-width: 480px) {
+  .xs\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .xs\:w-\[400px\] {
     width: 400px;
   }
@@ -3889,8 +3888,23 @@ html.dark .dont-forget__marker::before {
     padding-right: 1.25rem;
   }
 
+  .xs\:px-7 {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .xs\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
   .xs\:text-right {
     text-align: right;
+  }
+
+  .xs\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -4204,16 +4218,16 @@ html.dark .dont-forget__marker::before {
     margin-bottom: 1.75rem;
   }
 
+  .md\:mb-8 {
+    margin-bottom: 2rem;
+  }
+
   .md\:mt-15 {
     margin-top: 3.75rem;
   }
 
   .md\:mt-4 {
     margin-top: 1rem;
-  }
-
-  .md\:mb-8 {
-    margin-bottom: 2rem;
   }
 
   .md\:block {
@@ -4276,10 +4290,6 @@ html.dark .dont-forget__marker::before {
     height: 75px;
   }
 
-  .md\:h-12 {
-    height: 3rem;
-  }
-
   .md\:min-h-screen {
     min-height: 100vh;
   }
@@ -4338,10 +4348,6 @@ html.dark .dont-forget__marker::before {
 
   .md\:w-auto {
     width: auto;
-  }
-
-  .md\:w-12 {
-    width: 3rem;
   }
 
   .md\:flex-grow-0 {
@@ -4499,6 +4505,11 @@ html.dark .dont-forget__marker::before {
     text-align: right;
   }
 
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -4512,11 +4523,6 @@ html.dark .dont-forget__marker::before {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   :is(.dark .md\:dark\:bg-gray-800) {
@@ -4544,6 +4550,10 @@ html.dark .dont-forget__marker::before {
 
   .lg\:col-span-2 {
     grid-column: span 2 / span 2;
+  }
+
+  .lg\:col-span-3 {
+    grid-column: span 3 / span 3;
   }
 
   .lg\:mb-0 {
@@ -4648,6 +4658,10 @@ html.dark .dont-forget__marker::before {
 
   .lg\:gap-y-0 {
     row-gap: 0px;
+  }
+
+  .lg\:gap-y-5 {
+    row-gap: 1.25rem;
   }
 
   .lg\:rounded-3xl {
@@ -4777,9 +4791,18 @@ html.dark .dont-forget__marker::before {
          column-gap: 2.5rem;
   }
 
+  .xl\:gap-x-8 {
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
+  }
+
   .xl\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  .xl\:pr-7 {
+    padding-right: 1.75rem;
   }
 
   .xl\:text-lg {
