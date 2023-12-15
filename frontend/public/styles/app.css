@@ -1142,6 +1142,10 @@ html.dark .custom-file-upload {
   z-index: -10;
 }
 
+.-z-20 {
+  z-index: -20;
+}
+
 .z-20 {
   z-index: 20;
 }
@@ -1756,6 +1760,10 @@ html.dark .custom-file-upload {
   align-items: center;
 }
 
+.items-stretch {
+  align-items: stretch;
+}
+
 .justify-start {
   justify-content: flex-start;
 }
@@ -1770,6 +1778,10 @@ html.dark .custom-file-upload {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-stretch {
+  justify-content: stretch;
 }
 
 .gap-1 {
