@@ -2,7 +2,6 @@ import { Router } from "express";
 
 import { createCourseUploader } from "../utils/createCourseUploadImage.js";
 import createCourse from "../controller/Admin/createCourse.js";
-import multer from "multer";
 import getCourses from "../controller/Admin/getCourses.js";
 const router = Router();
 

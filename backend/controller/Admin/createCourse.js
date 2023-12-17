@@ -17,8 +17,16 @@ function createCourse(req, res) {
   });
 
   if (!req.file) return res.json({ message: "you didnot provide image." });
-  const body = JSON.parse(req.body.data);
+
+  let body;
+  if (req.body.data) {
+    body = JSON.parse(req.body.data);
+  } else {
+    return res.json({ message: "you did not provide data." });
+  }
   //   console.log(req.file.path);
+  const reqFilePath = req?.file?.path?.replace(/\\/g, "/");
+  console.log(reqFilePath);
   courseSchema
     .validateAsync(body)
     .then((values) => {
@@ -29,7 +37,7 @@ function createCourse(req, res) {
         .create({
           data: {
             ...values,
-            image: req?.file?.path,
+            image: reqFilePath,
             isFree,
           },
         })
