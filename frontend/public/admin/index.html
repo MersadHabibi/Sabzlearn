@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/izitoast/dist/css/iziToast.min.css" />
     <link rel="stylesheet" href="../styles/app.css" />
     <link rel="shortcut icon" href="images/icon.png" type="image/png" />
     <title>admin</title>
@@ -220,6 +223,37 @@
         right: 0;
         z-index: 20;
       }
+
+      /* izi Toast */
+
+      .iziToast {
+        box-shadow: 0 1px 60px rgba(0, 0, 0, 0.1);
+      }
+      .iziToast::after {
+        content: none;
+      }
+      .iziToast-texts {
+        display: flex !important;
+        flex-direction: column;
+      }
+      .iziToast-title {
+        font-family: "Dana DemiBold";
+        margin-bottom: 4px !important;
+      }
+      .iziToast-message {
+        font-family: "Dana";
+        margin-bottom: 2px !important;
+        max-width: 200px;
+        line-height: 1.5 !important;
+      }
+      /* .iziToast-icon{
+        width: 36px !important;
+        height: 36px !important;
+      } */
+      .iziToast-cover {
+        background-color: transparent !important;
+        margin-right: 10px !important;
+      }
     </style>
 
     <div class="flex items-stretch justify-stretch">
@@ -249,8 +283,8 @@
           <button
             type="button"
             href="#"
-            class="panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg active transition-all"
-            data-panel-content="tickets">
+            class="menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg active transition-all"
+            data-content="tickets">
             <svg class="w-6 h-6">
               <use href="#chat-bubble"></use>
             </svg>
@@ -259,8 +293,8 @@
           <button
             type="button"
             href="#"
-            class="panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-panel-content="comments">
+            class="menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+            data-content="comments">
             <svg class="w-6 h-6">
               <use href="#chat-bubble-oval-left"></use>
             </svg>
@@ -269,8 +303,8 @@
           <button
             type="button"
             href="#"
-            class="panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-panel-content="accounts">
+            class="menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+            data-content="accounts">
             <svg class="w-6 h-6">
               <use href="#users"></use>
             </svg>
@@ -279,8 +313,8 @@
           <button
             type="button"
             href="#"
-            class="panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-panel-content="create-course">
+            class="menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+            data-content="create-course">
             <svg class="w-6 h-6">
               <use href="#plus-circle"></use>
             </svg>
@@ -289,8 +323,8 @@
           <button
             type="button"
             href="#"
-            class="panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-panel-content="edit-course">
+            class="menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+            data-content="edit-course">
             <svg class="w-6 h-6">
               <use href="#pencil-square"></use>
             </svg>
@@ -358,8 +392,97 @@
 
         <!-- Main body -->
 
-        <div class="content py-5">
-          <!-- JS -->
+        <div class="content-container py-5">
+          <div class="content create-course">
+            <form
+              id="create-course-form"
+              class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-x-3 lg:gap-x-5 xl:gap-x-8 gap-y-4 lg:gap-y-5">
+              <!-- course name -->
+              <input
+                id="title"
+                class="xs:col-span-2 lg:col-span-3 bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+                type="text"
+                placeholder="نام دوره" />
+              <!-- course description -->
+              <textarea
+                id="description"
+                rows="8"
+                class="xs:col-span-2 lg:col-span-3 w-full p-3 sm:p-5 outline-none text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
+                id="text"
+                name="text"
+                placeholder="توضیحات دوره"></textarea>
+              <!-- course price -->
+              <input
+                id="price"
+                class="bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+                type="text"
+                placeholder="قیمت دوره به تومان" />
+              <!-- course category -->
+              <select
+                id="category"
+                name=""
+                id=""
+                class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+                <option value="">دسته بندی مورد نظر...</option>
+                <option value="frontend">فرانت اند</option>
+                <option value="python">پایتون</option>
+                <option value="security">امنیت</option>
+                <option value="softskills">مهارت های نرم</option>
+              </select>
+              <!-- course status -->
+              <select
+                id="status"
+                name=""
+                id=""
+                class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+                <option value="">وضعیت دوره...</option>
+                <option value="presell">پیش فروش</option>
+                <option value="completing">در حال تکمیل</option>
+                <option value="completed">تکمیل شده</option>
+              </select>
+              <!-- course link -->
+              <input
+                id="short-name"
+                class="bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+                type="text"
+                placeholder="لینک دوره" />
+              <!-- course teacher -->
+              <select
+                id="teacher"
+                name=""
+                id=""
+                class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+                <option value="">مدرس دوره...</option>
+                <option value="SaeidiRad">محمد امین سعیدی راد</option>
+                <option value="ebadi">حمید رضا عبادی</option>
+                <option value="barati">مهرشاد براتی</option>
+              </select>
+              <!-- course cover -->
+              <div
+                id="image"
+                class="flex justify-center items-center xl:pr-7 text-sm md:text-base">
+                <label
+                  for="cover"
+                  class="custom-file-upload shrink-0 shadow-light dark:shadow-none">
+                  انتخاب عکس دوره
+                </label>
+                <input
+                  id="cover"
+                  class="w-auto border-none"
+                  type="file"
+                  multiple />
+              </div>
+              <!-- Submit btn -->
+              <div
+                class="flex justify-end xs:col-span-2 lg:col-span-3 border-t border-gray-200 dark:border-gray-800">
+                <button
+                  class="bg-primary hover:bg-green-500 text-white rounded-xl px-6 xs:px-7 py-2 xs:py-3 mt-5 mr-auto text-base xs:text-xl transition-colors"
+                  type="submit">
+                  ارسال
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </main>
     </div>
@@ -367,6 +490,9 @@
     <div
       class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
 
+    <script
+      src="../../node_modules/izitoast/dist/js/iziToast.min.js"
+      type="text/javascript"></script>
     <script src="../scripts/share.js"></script>
     <script src="scripts/index-content.js" type="module"></script>
     <script src="scripts/index.js" type="module"></script>

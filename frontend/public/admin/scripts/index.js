@@ -1,12 +1,13 @@
-import changeContent from "./index-content.js";
 import { _changeClasses } from "../../scripts/funcs/utils.js";
+import preparerCreateCourse from "./createCourse.js";
 
 const $ = document;
 
-let whichContent = "tickets";
-changeContent(whichContent);
+let activeContent = "tickets";
+let newCourseCover = null;
 
-const menuItems = $.querySelectorAll(".panel-menu__item");
+const menuItems = $.querySelectorAll(".menu__item");
+const contents = $.querySelectorAll(".content");
 const notifBtn = $.querySelector(".notif-btn");
 const notifBox = $.querySelector(".notif-box");
 const overlay = $.querySelector(".overlay");
@@ -25,17 +26,28 @@ menuItems.forEach((menuItem) => {
 // Menu Item Click Handler
 
 const menuItemClickHandler = (menuItem) => {
-  if (menuItem.dataset.panelContent == whichContent) {
-    return;
-  } else {
-    _changeClasses("remove", $.querySelector(".panel-menu__item.active"), [
+  const clickedMenu = menuItem.dataset.content;
+  if (clickedMenu != activeContent) {
+    _changeClasses("remove", $.querySelector(".menu__item .active"), [
       "active",
     ]);
-    _changeClasses("add", menuItem, ["active"]);
+    _changeClasses("add", menuItem, [".active"]);
 
-    changeContent(menuItem.dataset.panelContent);
-    whichContent = menuItem.dataset.panelContent;
+    changeContent(clickedMenu);
+
+    activeContent = clickedMenu;
   }
+};
+
+// Change Content
+
+const changeContent = (clickedMenu) => {
+  contents.forEach((content) => {
+    _changeClasses("add", content, ["hidden"]);
+  });
+  const targetContent = $.querySelector(`.${clickedMenu}`);
+  _changeClasses("remove", targetContent, ["hidden"]);
+  console.log(targetContent, clickedMenu);
 };
 
 // Open Mobile Menu
@@ -68,4 +80,8 @@ overlay.addEventListener("click", () => {
   _changeClasses("remove", notifBtn, ["show"]);
   _changeClasses("remove", overlay, ["show"]);
   _changeClasses("remove", menuContainer, ["show"]);
+});
+
+window.addEventListener("load", () => {
+  preparerCreateCourse();
 });
