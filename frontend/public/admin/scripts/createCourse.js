@@ -1,15 +1,9 @@
-import { showNotif } from "../../scripts/funcs/utils.js";
+import { showNotif, api } from "../../scripts/funcs/utils.js";
 
 const $ = document;
-let newCourseCover = null;
 
 const preparerCreateCourse = () => {
-  const newCourseCoverElem = $.querySelector("#create-course-form #cover");
   const newCourseform = $.querySelector("#create-course-form");
-
-  newCourseCoverElem.addEventListener("change", (event) => {
-    newCourseCover = event.target.files;
-  });
 
   newCourseform.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -17,7 +11,7 @@ const preparerCreateCourse = () => {
   });
 };
 
-const createCourse = (cover) => {
+const createCourse = () => {
   const newCourseTitle = $.querySelector("#create-course-form #title");
   const newCourseDescription = $.querySelector(
     "#create-course-form #description"
@@ -27,16 +21,8 @@ const createCourse = (cover) => {
   const newCourseStatus = $.querySelector("#create-course-form #status");
   const newCourseShortName = $.querySelector("#create-course-form #short-name");
   const newCourseTeacher = $.querySelector("#create-course-form #teacher");
-
-  const newCourseDatas = {
-    title: newCourseTitle.value.trim(),
-    description: newCourseDescription.value.trim(),
-    price: +newCoursePrice.value,
-    category: newCourseCategory.value,
-    status: newCourseStatus.value,
-    shortName: newCourseShortName.value.trim(),
-    teacher: newCourseTeacher.value.trim(),
-  };
+  const newCourseCoverElem = $.querySelector("#create-course-form #cover");
+  let newCourseCover = newCourseCoverElem.files[0];
 
   if (
     !newCourseTitle.value ||
@@ -49,14 +35,35 @@ const createCourse = (cover) => {
     !newCourseCover
   ) {
     showNotif("لطفا همه مقادیر را پر کنید");
-    console.log(newCourseDatas);
   } else {
-    console.log(newCourseDatas);
+    const newCourseDatas = {
+      title: newCourseTitle.value.trim(),
+      description: newCourseDescription.value.trim(),
+      price: +newCoursePrice.value,
+      category: newCourseCategory.value,
+      status: newCourseStatus.value,
+      shortName: newCourseShortName.value.trim(),
+      teacher: newCourseTeacher.value.trim(),
+      discount: 0,
+      discountPrice: 0,
+      time: "0",
+    };
 
     const formData = new FormData();
-    formData.append("data", newCourseDatas);
+    formData.append("data", JSON.stringify(newCourseDatas));
     formData.append("image", newCourseCover);
+    sentCreateCourseApi(formData);
   }
+};
+
+const sentCreateCourseApi = async (formData) => {
+  await fetch(`${api}admin/courses`, {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 export default preparerCreateCourse;

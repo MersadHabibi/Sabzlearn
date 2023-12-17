@@ -28,10 +28,8 @@ menuItems.forEach((menuItem) => {
 const menuItemClickHandler = (menuItem) => {
   const clickedMenu = menuItem.dataset.content;
   if (clickedMenu != activeContent) {
-    _changeClasses("remove", $.querySelector(".menu__item .active"), [
-      "active",
-    ]);
-    _changeClasses("add", menuItem, [".active"]);
+    _changeClasses("remove", $.querySelector(".menu__item.active"), ["active"]);
+    _changeClasses("add", menuItem, ["active"]);
 
     changeContent(clickedMenu);
 
@@ -47,7 +45,6 @@ const changeContent = (clickedMenu) => {
   });
   const targetContent = $.querySelector(`.${clickedMenu}`);
   _changeClasses("remove", targetContent, ["hidden"]);
-  console.log(targetContent, clickedMenu);
 };
 
 // Open Mobile Menu
