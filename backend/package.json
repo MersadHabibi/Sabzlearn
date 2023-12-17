@@ -20,7 +20,8 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.0.2",
-    "prisma": "^5.7.0"
+    "prisma": "^5.7.0",
+    "serve-index": "^1.9.1"
   },
   "dependencies": {
     "@prisma/client": "^5.7.0"

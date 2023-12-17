@@ -11,34 +11,35 @@ datasource db {
 }
 
 model Users {
-  id           String  @id @default(auto()) @map("_id") @db.ObjectId
-  username     String  @unique
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  username     String     @unique
   phoneNumber  String
   address      String
-  email        String  @unique
+  email        String     @unique
   hash         String
   imageProfile String?
   comments     Comments[]
-  role         String? @default("student")
+  role         String?    @default("student")
 }
 
 model Course {
   id            String     @id @default(auto()) @map("_id") @db.ObjectId
   title         String
   description   String
-  category      String[]
+  category      String
   price         Int
   discount      Int
   discountPrice Int
   isFree        Boolean    @default(false)
-  status        String[]
+  status        String     @default("active")
   time          String
-  studentsCount Int
-  rank          Float
+  studentsCount Int?       @default(0)
+  rank          Float?
   teacher       String
   comments      Comments[]
   subjects      Subjects[]
   shortName     String
+  image         String
 }
 
 model Comments {

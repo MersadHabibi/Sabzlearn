@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
@@ -41,12 +41,13 @@ function register(req, res) {
                 console.log(user);
                 delete user.hash;
                 delete user.role;
-                res.json(user);
+                const token = jwt.sign(user, process.env.SECRET_KEY);
+                res.json({ user, token });
               })
               .catch((err) => {
                 if (err.code == "P2002") {
                   res.status(403).json({
-                    message: `error in creating user with this emailAddress.`,
+                    message: `error in creating user with this emailAddress or username.`,
                   });
                 } else {
                   console.log(err);
