@@ -990,6 +990,30 @@ html.dark .dont-forget__marker::before {
   }
 }
 
+/* File Input */
+
+input[type="file"]::file-selector-button {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #6c5ce7;
+  padding: 5px 12px;
+  margin-left: 10px;
+  border-radius: 0.2em;
+  background-color: white;
+  transition: all 200ms;
+}
+
+html.dark .custom-file-upload {
+  background-color: #32334d;
+  color: white;
+}
+
+.custom-file-upload:hover {
+  border: 1px solid #00cec9;
+}
+
 .fixed {
   position: fixed;
 }
@@ -1102,6 +1126,10 @@ html.dark .dont-forget__marker::before {
   top: 2rem;
 }
 
+.top-\[65px\] {
+  top: 65px;
+}
+
 .top-\[70px\] {
   top: 70px;
 }
@@ -1112,6 +1140,10 @@ html.dark .dont-forget__marker::before {
 
 .-z-10 {
   z-index: -10;
+}
+
+.-z-20 {
+  z-index: -20;
 }
 
 .z-20 {
@@ -1573,6 +1605,10 @@ html.dark .dont-forget__marker::before {
   width: 25px;
 }
 
+.w-\[260px\] {
+  width: 260px;
+}
+
 .w-\[278px\] {
   width: 278px;
 }
@@ -1724,6 +1760,10 @@ html.dark .dont-forget__marker::before {
   align-items: center;
 }
 
+.items-stretch {
+  align-items: stretch;
+}
+
 .justify-start {
   justify-content: flex-start;
 }
@@ -1738,6 +1778,10 @@ html.dark .dont-forget__marker::before {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-stretch {
+  justify-content: stretch;
 }
 
 .gap-1 {
@@ -1922,6 +1966,10 @@ html.dark .dont-forget__marker::before {
   overflow: hidden;
 }
 
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
 .overflow-x-hidden {
   overflow-x: hidden;
 }
@@ -1996,6 +2044,10 @@ html.dark .dont-forget__marker::before {
 
 .border-dashed {
   border-style: dashed;
+}
+
+.border-none {
+  border-style: none;
 }
 
 .border-gray-100 {
@@ -2457,6 +2509,10 @@ html.dark .dont-forget__marker::before {
   padding-bottom: 0.25rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .pb-14 {
   padding-bottom: 3.5rem;
 }
@@ -2491,6 +2547,10 @@ html.dark .dont-forget__marker::before {
 
 .pl-14 {
   padding-left: 3.5rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
 }
 
 .pl-5 {
@@ -2559,6 +2619,10 @@ html.dark .dont-forget__marker::before {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .pt-7 {
@@ -3025,11 +3089,15 @@ html.dark .dont-forget__marker::before {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.course-description.show .course-description__btn .course-description__btn-dont-show-text {
+.course-description.show
+  .course-description__btn
+  .course-description__btn-dont-show-text {
   display: none;
 }
 
-.course-description.show .course-description__btn .course-description__btn-show-text {
+.course-description.show
+  .course-description__btn
+  .course-description__btn-show-text {
   display: inline-block;
 }
 
@@ -3802,6 +3870,10 @@ html.dark .dont-forget__marker::before {
 }
 
 @media (min-width: 480px) {
+  .xs\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .xs\:w-\[400px\] {
     width: 400px;
   }
@@ -3828,8 +3900,23 @@ html.dark .dont-forget__marker::before {
     padding-right: 1.25rem;
   }
 
+  .xs\:px-7 {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .xs\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
   .xs\:text-right {
     text-align: right;
+  }
+
+  .xs\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -4127,6 +4214,10 @@ html.dark .dont-forget__marker::before {
 }
 
 @media (min-width: 768px) {
+  .md\:static {
+    position: static;
+  }
+
   .md\:-z-0 {
     z-index: 0;
   }
@@ -4137,6 +4228,10 @@ html.dark .dont-forget__marker::before {
 
   .md\:mb-7 {
     margin-bottom: 1.75rem;
+  }
+
+  .md\:mb-8 {
+    margin-bottom: 2rem;
   }
 
   .md\:mt-15 {
@@ -4207,6 +4302,10 @@ html.dark .dont-forget__marker::before {
     height: 75px;
   }
 
+  .md\:min-h-screen {
+    min-height: 100vh;
+  }
+
   .md\:w-10\/12 {
     width: 83.333333%;
   }
@@ -4251,6 +4350,10 @@ html.dark .dont-forget__marker::before {
     width: 104px;
   }
 
+  .md\:w-\[300px\] {
+    width: 300px;
+  }
+
   .md\:w-\[68px\] {
     width: 68px;
   }
@@ -4277,6 +4380,10 @@ html.dark .dont-forget__marker::before {
 
   .md\:justify-start {
     justify-content: flex-start;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
   }
 
   .md\:gap-x-2 {
@@ -4375,6 +4482,11 @@ html.dark .dont-forget__marker::before {
     padding-bottom: 0px;
   }
 
+  .md\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
   .md\:py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
@@ -4403,6 +4515,11 @@ html.dark .dont-forget__marker::before {
 
   .md\:text-right {
     text-align: right;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:text-base {
@@ -4445,6 +4562,10 @@ html.dark .dont-forget__marker::before {
 
   .lg\:col-span-2 {
     grid-column: span 2 / span 2;
+  }
+
+  .lg\:col-span-3 {
+    grid-column: span 3 / span 3;
   }
 
   .lg\:mb-0 {
@@ -4549,6 +4670,10 @@ html.dark .dont-forget__marker::before {
 
   .lg\:gap-y-0 {
     row-gap: 0px;
+  }
+
+  .lg\:gap-y-5 {
+    row-gap: 1.25rem;
   }
 
   .lg\:rounded-3xl {
@@ -4678,9 +4803,18 @@ html.dark .dont-forget__marker::before {
          column-gap: 2.5rem;
   }
 
+  .xl\:gap-x-8 {
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
+  }
+
   .xl\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  .xl\:pr-7 {
+    padding-right: 1.75rem;
   }
 
   .xl\:text-lg {

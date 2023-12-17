@@ -166,11 +166,15 @@
   @apply rotate-180;
 }
 
-.course-description.show .course-description__btn .course-description__btn-dont-show-text {
+.course-description.show
+  .course-description__btn
+  .course-description__btn-dont-show-text {
   @apply hidden;
 }
 
-.course-description.show .course-description__btn .course-description__btn-show-text {
+.course-description.show
+  .course-description__btn
+  .course-description__btn-show-text {
   @apply inline-block;
 }
 
@@ -347,7 +351,7 @@
     left: 0;
     transition: all 100ms;
   }
-  
+
   html.dark .dont-forget__marker {
     @apply bg-gray;
   }
@@ -396,6 +400,30 @@
 
   .user-details input {
     @apply mt-3.5 md:mt-4 p-3 sm:p-5 bg-gray-100 dark:bg-gray-700;
+  }
+
+  /* File Input */
+
+  input[type="file"]::file-selector-button {
+    display: none;
+  }
+
+  .custom-file-upload {
+    border: 1px solid #6c5ce7;
+    padding: 5px 12px;
+    margin-left: 10px;
+    border-radius: 0.2em;
+    background-color: white;
+    transition: all 200ms;
+  }
+
+  html.dark .custom-file-upload {
+    background-color: #32334d;
+    color: white;
+  }
+
+  .custom-file-upload:hover {
+    border: 1px solid #00cec9;
   }
 }
 @layer utilities {
