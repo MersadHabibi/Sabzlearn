@@ -145,8 +145,6 @@ const getMe = async () => {
 
   if (res.status == 200) {
     return await res.json();
-  } else {
-    return false;
   }
 };
 

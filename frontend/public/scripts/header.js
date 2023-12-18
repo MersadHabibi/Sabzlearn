@@ -92,6 +92,15 @@ const setLinkForLoginAndRegisterBtn = () => {
 };
 setLinkForLoginAndRegisterBtn();
 
+// Logout Btn
+
+const logoutBtn = $.querySelector(".logout-btn");
+
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  location.reload();
+});
+
 // Check User Login
 
 let user = null;
