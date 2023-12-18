@@ -2879,6 +2879,14 @@ html.dark .custom-file-upload {
   transition-duration: 150ms;
 }
 
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .menu__item .submenu {
   display: none;
 }
@@ -3612,6 +3620,11 @@ html.dark .custom-file-upload {
   border-bottom-color: rgb(100 116 139 / var(--tw-border-opacity));
 }
 
+:is(.dark .dark\:bg-\[\#30457C\]) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 69 124 / var(--tw-bg-opacity));
+}
+
 :is(.dark .dark\:bg-\[\#32334D\]) {
   --tw-bg-opacity: 1;
   background-color: rgb(50 51 77 / var(--tw-bg-opacity));
@@ -3851,6 +3864,15 @@ html.dark .custom-file-upload {
 :is(.dark .dark\:hover\:bg-slate:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(74 75 109 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-secondary:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(78 129 251 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-secondary\/60:hover) {
+  background-color: rgb(78 129 251 / 0.6);
 }
 
 :is(.dark .dark\:hover\:text-primary:hover) {

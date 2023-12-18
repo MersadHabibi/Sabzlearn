@@ -127,4 +127,10 @@ const showNotif = (massage, status = "error") => {
   }
 };
 
-export { api, _changeClasses, createTimer, showNotif };
+// Get Token
+
+const getToken = () => {
+  return localStorage.getItem("token");
+};
+
+export { api, _changeClasses, createTimer, showNotif, getToken };

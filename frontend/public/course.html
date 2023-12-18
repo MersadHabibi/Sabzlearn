@@ -11,7 +11,8 @@
     <script>
       if (
         localStorage.theme === "dark" ||
-        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
         document.documentElement.classList.add("dark");
       } else {
@@ -26,7 +27,10 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
       </symbol>
       <symbol
         id="magnifying-glass"
@@ -119,9 +123,16 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </symbol>
-      <symbol id="logo-type" xmlns="http://www.w3.org/2000/svg" class="fill-[#3a3a3a] dark:fill-white" viewBox="0 0 739 344.219">
+      <symbol
+        id="logo-type"
+        xmlns="http://www.w3.org/2000/svg"
+        class="fill-[#3a3a3a] dark:fill-white"
+        viewBox="0 0 739 344.219">
         <g transform="translate(-168 -159)">
           <path
             d="M4277,469l-35,10-.038,46.04s-.644,12.671-15.155,12.671c-15.7,0-14.92-12.671-14.92-12.671V479.118h-35.858V525.04s1.019,12.876-14.45,12.876-14.7-12.876-14.7-12.876V479.118H4111.02V525.04s.318,13.109-24.273,13.109c-25.855,0-25.813-13.109-25.813-13.109V469.17h-37.015v55.87s-.108,6.226-3.954,9.523-11.431,3.664-11.431,3.664h-84.325l-20.014,20.015V469.17h-36.2V587.985l-19.33,19.33,25.895,25.895,29.638-29.638V572.779h104.34s10.642-.012,19.315-3.575,15.378-10.68,15.378-10.68a34.648,34.648,0,0,0,16.578,11.905c10.88,3.564,14.468,2.334,26.941,2.571,12.614-.157,12.813.615,23.288-2.571a56.489,56.489,0,0,0,18.612-10.392,42.57,42.57,0,0,0,14.609,9.982c8.453,3.186,19.2,2.761,19.2,2.761s9.581.2,17.634-2.761a49.155,49.155,0,0,0,14.577-9.092,42.813,42.813,0,0,0,14.28,9.092c8.253,2.963,9.02,2.828,18.731,2.761s18.2,1.883,34.005-13.452a49.579,49.579,0,0,0,15.2-34.287Z"
@@ -135,7 +146,9 @@
             d="M3657.909,469.262l-36.659-.106-.031,115.991s-.755,6.012-4.126,9.292-8.788,3.771-8.788,3.771H3579.61s-6.907-.491-10.559-3.771-3.821-9.3-3.821-9.3L3565.5,529H3529l.022,52.672a54.781,54.781,0,0,0,15.336,36.476,49.256,49.256,0,0,0,35.255,14.816h27.845s18.5,1.476,34.513-14.57a53.928,53.928,0,0,0,15.943-35.173Z"
             transform="translate(-3357.698 -250)"></path>
           <rect width="36" height="36" transform="translate(208 219)"></rect>
-          <g class="fill-[#5f5f5f] dark:fill-white" transform="translate(20.991 638.909)">
+          <g
+            class="fill-[#5f5f5f] dark:fill-white"
+            transform="translate(20.991 638.909)">
             <path
               d="M483.775-189.183c-.663.751-.707,2.827-.618,24.692l.133,23.941,1.1,1.06c1.988,1.988,8.084,3.4,15.46,3.666,9.674.353,14.489-1.1,18.6-5.477,3.048-3.269,4.02-6.184,4.285-13.031.4-11.4-2.871-17.978-10.16-20.54a25.178,25.178,0,0,0-11.971-.4c-3.49.8-8,3.313-9.365,5.257-.618.839-.663,0-.663-8.79,0-8.879-.088-9.806-.8-10.469C488.59-190.331,484.791-190.287,483.775-189.183Zm26.238,21.291c3.578,1.944,5.3,5.919,5.3,12.1,0,5.168-.928,7.907-3.49,10.425a10.721,10.721,0,0,1-4.285,2.65c-2.871.839-8.834.707-13.3-.265l-3.666-.8v-17.713l1.193-1.679a17.3,17.3,0,0,1,7.333-5.477C502.063-169.614,507.629-169.217,510.014-167.892Z"
               transform="translate(-187.644 0)"></path>
@@ -185,7 +198,10 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12" />
       </symbol>
       <symbol
         id="user"
@@ -206,9 +222,16 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
       </symbol>
-      <symbol id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <symbol
+        id="star"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
         <path
           fill-rule="evenodd"
           d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
@@ -236,36 +259,65 @@
         <g transform="translate(-4013.907 176.406)">
           <path
             d="M4068.117-146.108s3,8.61,1.066,11.035-4.839,1.921-11.736,1.921-10.552.731-12.355-1.6-2.288-7.952,2.547-9.55,7.877,3.5,7.877,9.231.668,5.874-.732,8.36c-1.858,2.6-10.917,3.915-10.917,3.915"></path>
-          <path d="M4069.56-152.461v3.969" transform="translate(0 -1.945)"></path>
-          <path d="M4069.56-152.461v3.969" transform="translate(-7 -1.945)"></path>
-          <path d="M4069.56-152.461v3.969" transform="translate(-7 -1.945)"></path>
+          <path
+            d="M4069.56-152.461v3.969"
+            transform="translate(0 -1.945)"></path>
+          <path
+            d="M4069.56-152.461v3.969"
+            transform="translate(-7 -1.945)"></path>
+          <path
+            d="M4069.56-152.461v3.969"
+            transform="translate(-7 -1.945)"></path>
           <path
             d="M4027.592-128.435s5.376,4.632,8.167,3.124a5.918,5.918,0,0,0,3.034-6.158c-.446-4.24-4.144-5.625-6.783-4.418s-4.016,5.866-4.016,5.866-1.857,4.934-6.114,4.934-4.928-2.6-5-4.934-.98-19.76-.98-19.76"></path>
-          <path d="M4069.56-152.461v3.969" transform="translate(-44 -23.945)"></path>
+          <path
+            d="M4069.56-152.461v3.969"
+            transform="translate(-44 -23.945)"></path>
           <path
             d="M4017.55-171.009s-3.525,12.094,2.454,15.619c5.623,3.035,12.585-.714,12.585-.714s3.473-2.1,3.436-4.864c-.089-3.883-1.651-12.986-1.651-12.986"></path>
         </g>
       </symbol>
-      <symbol id="instagram" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512">
+      <symbol
+        id="instagram"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 512 512">
         <path
           d="M349.33 69.33a93.62 93.62 0 0193.34 93.34v186.66a93.62 93.62 0 01-93.34 93.34H162.67a93.62 93.62 0 01-93.34-93.34V162.67a93.62 93.62 0 0193.34-93.34h186.66m0-37.33H162.67C90.8 32 32 90.8 32 162.67v186.66C32 421.2 90.8 480 162.67 480h186.66C421.2 480 480 421.2 480 349.33V162.67C480 90.8 421.2 32 349.33 32z" />
         <path
           d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z" />
       </symbol>
-      <symbol id="telegram" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 30 30">
+      <symbol
+        id="telegram"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 30 30">
         <path
           d="M 25.154297 3.984375 C 24.829241 3.998716 24.526384 4.0933979 24.259766 4.2011719 C 24.010014 4.3016357 23.055766 4.7109106 21.552734 5.3554688 C 20.048394 6.0005882 18.056479 6.855779 15.931641 7.7695312 C 11.681964 9.5970359 6.9042108 11.654169 4.4570312 12.707031 C 4.3650097 12.746607 4.0439208 12.849183 3.703125 13.115234 C 3.3623292 13.381286 3 13.932585 3 14.546875 C 3 15.042215 3.2360676 15.534319 3.5332031 15.828125 C 3.8303386 16.121931 4.144747 16.267067 4.4140625 16.376953 C 5.3912284 16.775666 8.4218473 18.015862 8.9941406 18.25 C 9.195546 18.866983 10.29249 22.222526 10.546875 23.044922 C 10.714568 23.587626 10.874198 23.927519 11.082031 24.197266 C 11.185948 24.332139 11.306743 24.45034 11.453125 24.542969 C 11.511635 24.579989 11.575789 24.608506 11.640625 24.634766 L 11.644531 24.636719 C 11.659471 24.642719 11.67235 24.652903 11.6875 24.658203 C 11.716082 24.668202 11.735202 24.669403 11.773438 24.677734 C 11.925762 24.726927 12.079549 24.757812 12.216797 24.757812 C 12.80196 24.757814 13.160156 24.435547 13.160156 24.435547 L 13.181641 24.419922 L 16.191406 21.816406 L 19.841797 25.269531 C 19.893193 25.342209 20.372542 26 21.429688 26 C 22.057386 26 22.555319 25.685026 22.875 25.349609 C 23.194681 25.014192 23.393848 24.661807 23.478516 24.21875 L 23.478516 24.216797 C 23.557706 23.798129 26.921875 6.5273437 26.921875 6.5273438 L 26.916016 6.5507812 C 27.014496 6.1012683 27.040303 5.6826405 26.931641 5.2695312 C 26.822973 4.8564222 26.536648 4.4608905 26.181641 4.2480469 C 25.826669 4.0352506 25.479353 3.9700339 25.154297 3.984375 z M 24.966797 6.0742188 C 24.961997 6.1034038 24.970391 6.0887279 24.962891 6.1230469 L 24.960938 6.1347656 L 24.958984 6.1464844 C 24.958984 6.1464844 21.636486 23.196371 21.513672 23.845703 C 21.522658 23.796665 21.481573 23.894167 21.439453 23.953125 C 21.379901 23.91208 21.257812 23.859375 21.257812 23.859375 L 21.238281 23.837891 L 16.251953 19.121094 L 12.726562 22.167969 L 13.775391 17.96875 C 13.775391 17.96875 20.331562 11.182109 20.726562 10.787109 C 21.044563 10.471109 21.111328 10.360953 21.111328 10.251953 C 21.111328 10.105953 21.035234 10 20.865234 10 C 20.712234 10 20.506484 10.14875 20.396484 10.21875 C 18.963383 11.132295 12.671823 14.799141 9.8515625 16.439453 C 9.4033769 16.256034 6.2896636 14.981472 5.234375 14.550781 C 5.242365 14.547281 5.2397349 14.548522 5.2480469 14.544922 C 7.6958673 13.491784 12.47163 11.434667 16.720703 9.6074219 C 18.84524 8.6937992 20.838669 7.8379587 22.341797 7.1933594 C 23.821781 6.5586849 24.850125 6.1218894 24.966797 6.0742188 z" />
       </symbol>
-      <symbol id="shield-done" xmlns="http://www.w3.org/2000/svg" width="25" height="30" viewBox="0 0 25 30">
+      <symbol
+        id="shield-done"
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="30"
+        viewBox="0 0 25 30">
         <path
           d="M12.18,29.952C11.687,29.8.091,26.195.091,16.033c0-2.772-.036-4.8-.061-6.283l0-.086c-.068-3.75-.081-4.53.886-5.5C2.07,3.007,10.829,0,12.5,0S22.928,3.007,24.088,4.167c.967.967.952,1.746.886,5.486l0,.092c-.027,1.483-.062,3.512-.062,6.288,0,10.161-11.595,13.77-12.089,13.919A1.047,1.047,0,0,1,12.5,30,1.059,1.059,0,0,1,12.18,29.952ZM2.459,5.746c-.268.272-.278.74-.221,3.876l0,.1c.025,1.49.061,3.529.061,6.316,0,7.689,8.495,11.09,10.2,11.693,1.7-.606,10.2-4.02,10.2-11.693,0-2.888.04-5.011.065-6.416.056-3.134.045-3.6-.239-3.886-.906-.756-8.776-3.52-10.025-3.52S3.369,4.986,2.459,5.746Zm8.217,12.38L7.889,15.336a1.106,1.106,0,0,1,1.565-1.564l2,2.008,4.963-4.963a1.1,1.1,0,0,1,1.561,1.564L12.24,18.126a1.1,1.1,0,0,1-1.563,0Z"
           fill="#fff"></path>
       </symbol>
-      <symbol id="users-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <symbol
+        id="users-fill"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
         <path
           d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
       </symbol>
-      <symbol id="star-fill" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <symbol
+        id="star-fill"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
         <path
           fill-rule="evenodd"
           d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
@@ -290,13 +342,22 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
       </symbol>
-      <symbol id="reply" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="20" viewBox="0 0 24 20">
+      <symbol
+        id="reply"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        width="24"
+        height="20"
+        viewBox="0 0 24 20">
         <path
           d="M10,7V2.75a.75.75,0,0,0-1.272-.538l-8.5,8.25a.749.749,0,0,0,0,1.076l8.5,8.25A.75.75,0,0,0,10,19.25V15h1.418a12.753,12.753,0,0,1,11.153,6.572l.021.038a.751.751,0,0,0,.658.39.74.74,0,0,0,.186-.023A.75.75,0,0,0,24,21.25,14.267,14.267,0,0,0,10,7Z"
           transform="translate(0 -2)"></path>
@@ -305,7 +366,8 @@
     <!-- Header -->
     <header
       class="w-full h-[88px] md:h-32 px-8 md:px-16 lg:px-6 xl:px-12 bg-white dark:bg-gray dark:border-b dark:border-gray-700">
-      <div class="flex justify-between items-center w-full h-full max-w-[1720px] mx-auto">
+      <div
+        class="flex justify-between items-center w-full h-full max-w-[1720px] mx-auto">
         <!-- Mobile Menu Btn -->
         <div class="mobile-menu__open-btn lg:hidden">
           <svg class="w-9 h-9 dark:text-gray-500">
@@ -314,16 +376,22 @@
         </div>
         <!-- Header Right -->
         <div class="flex">
-          <div class="lg:pl-5 lg:ml-5 lg:border-l border-gray-100 dark:border-gray-700">
+          <div
+            class="lg:pl-5 lg:ml-5 lg:border-l border-gray-100 dark:border-gray-700">
             <a href="#">
-              <img src="images/logo.webp" class="w-20 md:w-[104px]" alt="logo" />
+              <img
+                src="images/logo.webp"
+                class="w-20 md:w-[104px]"
+                alt="logo" />
             </a>
           </div>
           <!-- Menu -->
           <ul
             class="hidden lg:flex items-center gap-x-5 text-zinc-700 dark:text-white child-hover:text-primary child:transition-all">
             <li class="relative group">
-              <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
+              <a
+                href="#"
+                class="flex items-center gap-x-1 text-base xl:text-lg">
                 فرانت اند
                 <svg class="w-4 h-4">
                   <use href="#chevron-down"></use>
@@ -371,7 +439,9 @@
               </ul>
             </li>
             <li class="relative group">
-              <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
+              <a
+                href="#"
+                class="flex items-center gap-x-1 text-base xl:text-lg">
                 امنیت
                 <svg class="w-4 h-4">
                   <use href="#chevron-down"></use>
@@ -407,7 +477,9 @@
               </ul>
             </li>
             <li class="relative group">
-              <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
+              <a
+                href="#"
+                class="flex items-center gap-x-1 text-base xl:text-lg">
                 پایتون
                 <svg class="w-4 h-4">
                   <use href="#chevron-down"></use>
@@ -434,10 +506,16 @@
               </ul>
             </li>
             <li class="">
-              <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg"> مهارت های نرم </a>
+              <a
+                href="#"
+                class="flex items-center gap-x-1 text-base xl:text-lg">
+                مهارت های نرم
+              </a>
             </li>
             <li class="relative group">
-              <a href="#" class="flex items-center gap-x-1 text-base xl:text-lg">
+              <a
+                href="#"
+                class="flex items-center gap-x-1 text-base xl:text-lg">
                 مقالات
                 <svg class="w-4 h-4">
                   <use href="#chevron-down"></use>
@@ -466,7 +544,8 @@
           </ul>
         </div>
         <!-- Header Left -->
-        <div class="flex gap-x-5 child:flex child:justify-center child:items-center">
+        <div
+          class="flex gap-x-5 child:flex child:justify-center child:items-center">
           <!-- Search Btn -->
           <div
             class="search-btn !hidden lg:!flex relative h-14 w-14 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray dark:border dark:border-gray-700 dark:hover:border-gray-500 transition-all cursor-pointer">
@@ -481,7 +560,8 @@
                   type="text"
                   class="w-full h-full pr-4 pl-12 outline-none bg-transparent"
                   placeholder="جستجو در بین دوره ها" />
-                <svg class="absolute left-4 top-0 bottom-0 m-auto w-6 h-6 text-slate-500">
+                <svg
+                  class="absolute left-4 top-0 bottom-0 m-auto w-6 h-6 text-slate-500">
                   <use href="#magnifying-glass"></use>
                 </svg>
               </div>
@@ -501,13 +581,22 @@
           <div class="h-12 md:h-14 w-auto rounded-full cursor-pointer">
             <!-- Login & Register -->
             <div
-              class="hidden relative flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
-              <a href="#" class="absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 block">ورود</a>
-              <a href="#" class="absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block">عضویت</a>
+              class="relative flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
+              <a
+                href="#"
+                class="login-btn absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 dark:bg-[#30457C] dark:hover:bg-secondary/60 block transition-colors"
+                >ورود</a
+              >
+              <a
+                href="#"
+                class="register-btn absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block transition-colors"
+                >عضویت</a
+              >
             </div>
             <!-- Profile Photo -->
-            <div class="profile relative h-full w-14">
-              <div class="w-12 md:w-14 h-12 md:h-14 rounded-full overflow-hidden">
+            <div class="hidden profile relative h-full w-14">
+              <div
+                class="w-12 md:w-14 h-12 md:h-14 rounded-full overflow-hidden">
                 <img src="images/user-profile.png" alt="" />
               </div>
               <!-- SubMenu Profile -->
@@ -519,18 +608,24 @@
                   </div>
                   <div>
                     <p class="text-lg">مرصاد حبیبی</p>
-                    <p class="font-DanaMedium text-sm text-sky-500">موجودی: 0 تومان</p>
+                    <p class="font-DanaMedium text-sm text-sky-500">
+                      موجودی: 0 تومان
+                    </p>
                   </div>
                 </div>
                 <ul
                   class="py-2 border-y border-y-gray-200 dark:border-y-slate child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
-                  <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                  <a
+                    class="hover:bg-gray-100 dark:hover:bg-slate"
+                    href="./panel.html">
                     <svg class="w-5 h-5">
                       <use href="#home"></use>
                     </svg>
                     پیشخوان
                   </a>
-                  <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                  <a
+                    class="hover:bg-gray-100 dark:hover:bg-slate"
+                    href="./panel.html?content=courses">
                     <svg class="w-5 h-5">
                       <use href="#folder"></use>
                     </svg>
@@ -543,7 +638,8 @@
                     تیکت های پشتیبانی
                   </a>
                 </ul>
-                <div class="pt-2 child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
+                <div
+                  class="pt-2 child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
                   <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
                     <svg class="w-5 h-5">
                       <use href="#logout"></use>
@@ -576,8 +672,12 @@
       </div>
       <!-- Mid -->
       <div class="border-y border-gray-200 dark:border-slate pt-7 pb-5">
-        <div class="relative w-full h-12 rounded-xl bg-gray-100 dark:bg-gray-800 mb-5">
-          <input class="w-full h-full bg-transparent pr-5 pl-12 outline-none" type="text" placeholder="جستجو" />
+        <div
+          class="relative w-full h-12 rounded-xl bg-gray-100 dark:bg-gray-800 mb-5">
+          <input
+            class="w-full h-full bg-transparent pr-5 pl-12 outline-none"
+            type="text"
+            placeholder="جستجو" />
           <svg class="absolute left-4 top-0 bottom-0 m-auto w-6 h-6">
             <use href="#magnifying-glass"></use>
           </svg>
@@ -590,7 +690,8 @@
                 <use href="#chevron-down"></use>
               </svg>
             </div>
-            <ul class="submenu flex-col pt-3 pr-2 text-sm space-y-3 font-extralight child-hover:text-primary child:inline-block">
+            <ul
+              class="submenu flex-col pt-3 pr-2 text-sm space-y-3 font-extralight child-hover:text-primary child:inline-block">
               <a href="#">آموزش HTML</a>
               <a href="#">آموزش CSS</a>
               <a href="#">آموزش FlexBox</a>
@@ -612,7 +713,8 @@
                 <use href="#chevron-down"></use>
               </svg>
             </div>
-            <ul class="submenu flex-col pt-3 pr-2 text-sm space-y-3 font-extralight child-hover:text-primary child:inline-block">
+            <ul
+              class="submenu flex-col pt-3 pr-2 text-sm space-y-3 font-extralight child-hover:text-primary child:inline-block">
               <a href="#">نقشه راه وروی به دنیای هک و امنیت</a>
               <a href="#">شبکه با گرایش امنیت</a>
               <a href="#">لینوکس با گرایش امنیت</a>
@@ -630,7 +732,8 @@
                 <use href="#chevron-down"></use>
               </svg>
             </div>
-            <ul class="submenu flex-col pt-3 pr-2 text-sm space-y-3 font-extralight child-hover:text-primary child:inline-block">
+            <ul
+              class="submenu flex-col pt-3 pr-2 text-sm space-y-3 font-extralight child-hover:text-primary child:inline-block">
               <a href="#">دوره آموزش پایتون</a>
               <a href="#">پروژه های کاربردی با پایتون</a>
               <a href="#">ترفند های کاربردی با پایتون</a>
@@ -650,7 +753,8 @@
                 <use href="#chevron-down"></use>
               </svg>
             </div>
-            <ul class="submenu flex-col pt-3 pr-2 text-sm space-y-3 font-extralight child-hover:text-primary child:inline-block">
+            <ul
+              class="submenu flex-col pt-3 pr-2 text-sm space-y-3 font-extralight child-hover:text-primary child:inline-block">
               <a href="#">اچ تی ام ال</a>
               <a href="#">بوت استرپ</a>
               <a href="#">پروژه های برنامه نویسی</a>
@@ -661,13 +765,16 @@
         </ul>
       </div>
       <!-- bottom -->
-      <div class="toggle-theme flex items-center gap-x-3 mt-4 dark:text-slate-400">
+      <div
+        class="toggle-theme flex items-center gap-x-3 mt-4 dark:text-slate-400">
         <div
           class="flex items-center justify-center rounded-xl w-[38px] h-[38px] bg-gray-100 dark:bg-transparent dark:border dark:border-slate">
-          <svg class="inline-block dark:hidden w-6 h-6 text-slate-500 dark:text-inherit">
+          <svg
+            class="inline-block dark:hidden w-6 h-6 text-slate-500 dark:text-inherit">
             <use href="#moon"></use>
           </svg>
-          <svg class="hidden dark:inline-block w-6 h-6 text-slate-500 dark:text-inherit">
+          <svg
+            class="hidden dark:inline-block w-6 h-6 text-slate-500 dark:text-inherit">
             <use href="#sun"></use>
           </svg>
         </div>
@@ -707,30 +814,62 @@
           <div class="flex flex-col justify-center xl:justify-between w-full">
             <!-- header right top -->
             <div>
-              <h1 class="font-MorabbaBold text-2xl sm:text-3xl dark:text-white">پیاده سازی داشبورد های حرفه ای با CSS و JS</h1>
+              <h1 class="font-MorabbaBold text-2xl sm:text-3xl dark:text-white">
+                پیاده سازی داشبورد های حرفه ای با CSS و JS
+              </h1>
               <p
                 class="text-lg sm:text-xl text-zinc-700/80 dark:text-white/90 mt-6 xl:mt-8 line-clamp-4 lg:line-clamp-2 xl:line-clamp-3">
-                این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست. با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ،
-                ابزارهای پیشرفته و کتابخونه ها، به دنیای داشبوردهای شگفت‌آور با HTML، CSS و JavaScript
+                این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست.
+                با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ، ابزارهای پیشرفته و
+                کتابخونه ها، به دنیای داشبوردهای شگفت‌آور با HTML، CSS و
+                JavaScript
               </p>
             </div>
             <!-- header right bottom -->
-            <div class="mt-5 pt-5 sm:pt-0 xl:mt-0 border-t border-t-gray-100 dark:border-gray-700 sm:border-t-0">
+            <div
+              class="mt-5 pt-5 sm:pt-0 xl:mt-0 border-t border-t-gray-100 dark:border-gray-700 sm:border-t-0">
               <!-- Offer -->
               <div
                 class="flex flex-col sm:flex-row items-center justify-between gap-y-3 sm:gap-y-0 w-full sm:bg-white sm:dark:bg-gray-700 sm:shadow-light h-[50px] rounded-xl sm:px-5 mb-11 sm:mb-0">
-                <span class="text-primary font-MorabbaBold text-xl"><span class="ml-1">70%</span> پیشنهاد شگفت انگیز</span>
+                <span class="text-primary font-MorabbaBold text-xl"
+                  ><span class="ml-1">70%</span> پیشنهاد شگفت انگیز</span
+                >
                 <div
                   class="flex items-center justify-center sm:justify-start gap-x-2 text-sm text-slate-500 dark:text-slate-400 w-full sm:w-auto bg-gray-100 dark:bg-gray-700 sm:bg-transparent sm:dark:bg-transparent rounded-lg sm:rounded-none pb-1 pt-1.5 sm:py-0">
-                  <p><span class="offer__day text-2xl font-DanaDemiBold text-zinc-700 dark:text-white">0</span> روز</p>
-                  <p><span class="offer__hur text-2xl font-DanaDemiBold text-zinc-700 dark:text-white">23</span> ساعت</p>
-                  <p><span class="offer__min text-2xl font-DanaDemiBold text-zinc-700 dark:text-white">13</span> دقیقه</p>
-                  <p><span class="offer__sec text-primary text-2xl font-DanaDemiBold">7</span> ثانیه</p>
+                  <p>
+                    <span
+                      class="offer__day text-2xl font-DanaDemiBold text-zinc-700 dark:text-white"
+                      >0</span
+                    >
+                    روز
+                  </p>
+                  <p>
+                    <span
+                      class="offer__hur text-2xl font-DanaDemiBold text-zinc-700 dark:text-white"
+                      >23</span
+                    >
+                    ساعت
+                  </p>
+                  <p>
+                    <span
+                      class="offer__min text-2xl font-DanaDemiBold text-zinc-700 dark:text-white"
+                      >13</span
+                    >
+                    دقیقه
+                  </p>
+                  <p>
+                    <span
+                      class="offer__sec text-primary text-2xl font-DanaDemiBold"
+                      >7</span
+                    >
+                    ثانیه
+                  </p>
                 </div>
               </div>
 
               <!-- Price and Buy Btn -->
-              <div class="flex flex-col-reverse sm:flex-row items-center justify-between mt-6 sm:mt-3.5">
+              <div
+                class="flex flex-col-reverse sm:flex-row items-center justify-between mt-6 sm:mt-3.5">
                 <a
                   href="#"
                   class="flex items-center justify-center sm:justify-start gap-x-2 h-[62px] w-full sm:w-auto px-5 rounded-xl bg-primary hover:bg-green-500 text-white font-DanaDemiBold text-2xl transition-colors">
@@ -742,7 +881,8 @@
                 <div class="mb-5 sm:m-0">
                   <!-- Course Price -->
                   <!-- Normal Price -->
-                  <div class="!hidden flex gap-x-1 items-center font-DanaDemiBold dark:text-white">
+                  <div
+                    class="!hidden flex gap-x-1 items-center font-DanaDemiBold dark:text-white">
                     <span class="text-3xl mt-1">420,000</span>
                     <svg class="w-6 h-6">
                       <use href="#toman"></use>
@@ -754,7 +894,8 @@
                       class="relative block text-slate-500 dark:text-slate-400 text-2xl -mb-1 pt-1.5 before:content-[''] before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-slate-500 dark:before:bg-slate-400"
                       >420,000</span
                     >
-                    <span class="flex items-center gap-x-1 font-DanaDemiBold mt-1 text-3xl dark:text-white">
+                    <span
+                      class="flex items-center gap-x-1 font-DanaDemiBold mt-1 text-3xl dark:text-white">
                       <span class="mt-2"> 300,000 </span>
                       <svg class="w-6 h-6">
                         <use href="#toman"></use>
@@ -767,7 +908,10 @@
                       class="relative block text-slate-500 dark:text-slate-400 text-2xl -mb-1 pt-1.5 before:content-[''] before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-slate-500 dark:before:bg-slate-400"
                       >420,000</span
                     >
-                    <span class="font-DanaDemiBold mt-2 text-3xl dark:text-white"> رایگان! </span>
+                    <span
+                      class="font-DanaDemiBold mt-2 text-3xl dark:text-white">
+                      رایگان!
+                    </span>
                   </div>
                 </div>
               </div>
@@ -787,121 +931,192 @@
         <section class="flex gap-5 items-start">
           <div class="space-y-5 w-full">
             <!-- Course Info -->
-            <div class="grid grid-rows-2 grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-5">
+            <div
+              class="grid grid-rows-2 grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-5">
               <div
                 class="flex flex-col md:flex-row items-center justify-center md:justify-start shadow-light dark:shadow-none text-center md:text-right gap-y-2 gap-x-4 bg-white dark:bg-gray-800 py-4 px-5 w-full rounded-2xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="34"
+                  viewBox="0 0 34 34">
                   <path
                     d="M9.628,34C3.869,34,0,29.959,0,23.943V10.057C0,4.041,3.869,0,9.628,0h14.74C30.129,0,34,4.041,34,10.057V23.943C34,29.959,30.128,34,24.364,34ZM2.551,10.057V23.943c0,4.561,2.779,7.508,7.078,7.508H24.364c4.305,0,7.087-2.947,7.087-7.508V10.057c0-4.559-2.78-7.506-7.082-7.506H9.628C5.329,2.551,2.551,5.5,2.551,10.057ZM15.715,23.8V17a1.275,1.275,0,0,1,2.551,0v6.8a1.275,1.275,0,0,1-2.551,0Zm-.425-13.255a1.693,1.693,0,0,1,1.692-1.7H17a1.7,1.7,0,1,1-1.709,1.7Z"
                     fill="#2ed573"></path>
                 </svg>
                 <div class="flex flex-col">
-                  <span class="text-lg/10 font-DanaDemiBold dark:text-white">وضعیت دوره</span>
-                  <span class="text-xs text-slate-500 dark:text-slate-400">پیش فروش</span>
+                  <span class="text-lg/10 font-DanaDemiBold dark:text-white"
+                    >وضعیت دوره</span
+                  >
+                  <span class="text-xs text-slate-500 dark:text-slate-400"
+                    >پیش فروش</span
+                  >
                 </div>
               </div>
               <div
                 class="flex flex-col md:flex-row items-center justify-center md:justify-start shadow-light dark:shadow-none text-center md:text-right gap-y-2 gap-x-4 bg-white dark:bg-gray-800 py-4 px-5 w-full rounded-2xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" style="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="34"
+                  viewBox="0 0 34 34"
+                  style="">
                   <path
                     d="M9.63,34C3.869,34,0,29.959,0,23.943V10.057C0,4.041,3.869,0,9.63,0H24.369C30.129,0,34,4.041,34,10.057V23.943C34,29.959,30.129,34,24.367,34ZM2.551,10.057V23.943c0,4.561,2.779,7.508,7.079,7.508H24.367c4.3,0,7.084-2.947,7.084-7.508V10.057c0-4.559-2.78-7.506-7.082-7.506H9.63C5.329,2.551,2.551,5.5,2.551,10.057ZM22.11,21.527l-5.765-3.439a1.283,1.283,0,0,1-.621-1.1V9.578a1.275,1.275,0,1,1,2.549,0v6.691l5.145,3.065a1.276,1.276,0,0,1-.655,2.372A1.3,1.3,0,0,1,22.11,21.527Z"
                     fill="#2ed573"></path>
                 </svg>
                 <div class="flex flex-col">
-                  <span class="text-lg/10 font-DanaDemiBold dark:text-white">مدت زمان دوره</span>
-                  <span class="text-xs text-slate-500 dark:text-slate-400">0 ساعت</span>
+                  <span class="text-lg/10 font-DanaDemiBold dark:text-white"
+                    >مدت زمان دوره</span
+                  >
+                  <span class="text-xs text-slate-500 dark:text-slate-400"
+                    >0 ساعت</span
+                  >
                 </div>
               </div>
               <div
                 class="flex flex-col md:flex-row items-center justify-center md:justify-start shadow-light dark:shadow-none text-center md:text-right gap-y-2 gap-x-4 bg-white dark:bg-gray-800 py-4 px-5 w-full rounded-2xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30.891" height="35.833" viewBox="0 0 30.891 35.833">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30.891"
+                  height="35.833"
+                  viewBox="0 0 30.891 35.833">
                   <path
                     d="M8.745,35.833C3.35,35.833,0,32.335,0,26.7V11.622c0-5.237,2.989-8.6,7.866-8.958V1.25a1.19,1.19,0,1,1,2.377,0V2.633h10.42V1.25a1.189,1.189,0,1,1,2.375,0V2.664A8.319,8.319,0,0,1,28.632,5.1a9.239,9.239,0,0,1,2.258,6.53v15.2c0,5.553-3.352,9-8.747,9ZM2.377,26.7c0,4.275,2.261,6.63,6.369,6.63h13.4c4.107,0,6.37-2.31,6.37-6.5V14.841H2.377ZM28.514,12.34v-.718A6.641,6.641,0,0,0,26.95,6.864a5.976,5.976,0,0,0-3.912-1.693V6.735a1.189,1.189,0,1,1-2.375,0v-1.6H10.242v1.6a1.19,1.19,0,1,1-2.377,0V5.171c-3.549.313-5.489,2.575-5.489,6.451v.718ZM21.3,26.577a1.214,1.214,0,0,1,1.18-1.249H22.5A1.251,1.251,0,1,1,21.3,26.577Zm-7.029,0a1.214,1.214,0,0,1,1.18-1.249h.014a1.251,1.251,0,1,1-1.195,1.249Zm-7.046,0a1.215,1.215,0,0,1,1.182-1.249h.014a1.251,1.251,0,1,1-1.2,1.249ZM21.3,20.1a1.215,1.215,0,0,1,1.18-1.251H22.5A1.252,1.252,0,1,1,21.3,20.1Zm-7.029,0a1.215,1.215,0,0,1,1.18-1.251h.014A1.252,1.252,0,1,1,14.273,20.1Zm-7.046,0a1.217,1.217,0,0,1,1.182-1.251h.014a1.251,1.251,0,1,1-1.2,1.251Z"
                     fill="#2ed573"></path>
                 </svg>
                 <div class="flex flex-col">
-                  <span class="text-lg/10 font-DanaDemiBold dark:text-white">آخرین بروزرسانی</span>
-                  <span class="text-xs text-slate-500 dark:text-slate-400">1402/09/03</span>
+                  <span class="text-lg/10 font-DanaDemiBold dark:text-white"
+                    >آخرین بروزرسانی</span
+                  >
+                  <span class="text-xs text-slate-500 dark:text-slate-400"
+                    >1402/09/03</span
+                  >
                 </div>
               </div>
               <div
                 class="flex flex-col md:flex-row items-center justify-center md:justify-start shadow-light dark:shadow-none text-center md:text-right gap-y-2 gap-x-4 bg-white dark:bg-gray-800 py-4 px-5 w-full rounded-2xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="34"
+                  viewBox="0 0 34 34">
                   <path
                     d="M0,27.688c0-6.355,9.724-6.355,12.92-6.355,5.546,0,12.918.655,12.918,6.32C25.838,34,16.115,34,12.92,34,9.387,34,0,34,0,27.688Zm2.553,0c0,2.412,3.487,3.635,10.367,3.635s10.365-1.236,10.365-3.671c0-2.418-3.487-3.643-10.365-3.643C8.191,24.01,2.553,24.647,2.553,27.688ZM29.26,28.5A1.358,1.358,0,0,1,30,26.779c1.446-.575,1.446-1.277,1.446-1.575,0-1.012-1.143-1.705-3.394-2.055a1.334,1.334,0,0,1-1.075-1.522A1.306,1.306,0,0,1,28.43,20.5c4.605.723,5.57,2.958,5.57,4.7,0,1.3-.536,3.06-3.094,4.075a1.218,1.218,0,0,1-.453.088A1.28,1.28,0,0,1,29.26,28.5ZM12.92,18.322a8.968,8.968,0,0,1-8.74-9.16A8.969,8.969,0,0,1,12.92,0a8.967,8.967,0,0,1,8.737,9.162,9.279,9.279,0,0,1-2.53,6.461,8.445,8.445,0,0,1-6.151,2.7ZM6.733,9.162a6.347,6.347,0,0,0,6.187,6.484h.052a5.977,5.977,0,0,0,4.345-1.908,6.567,6.567,0,0,0,1.789-4.571,6.351,6.351,0,0,0-6.186-6.49A6.349,6.349,0,0,0,6.733,9.162ZM23.382,15.14a1.329,1.329,0,0,1,1.086-1.511,4.5,4.5,0,0,0,3.731-4.5,4.471,4.471,0,0,0-3.63-4.486,1.333,1.333,0,0,1-1.054-1.538,1.286,1.286,0,0,1,1.466-1.1A7.1,7.1,0,0,1,30.75,9.135a7.155,7.155,0,0,1-5.927,7.145,1.278,1.278,0,0,1-1.441-1.14Z"
                     fill="#2ed573"></path>
                 </svg>
                 <div class="flex flex-col">
-                  <span class="text-lg/10 font-DanaDemiBold dark:text-white">روش پشتیبانی</span>
-                  <span class="text-xs text-slate-500 dark:text-slate-400">آنلاین</span>
+                  <span class="text-lg/10 font-DanaDemiBold dark:text-white"
+                    >روش پشتیبانی</span
+                  >
+                  <span class="text-xs text-slate-500 dark:text-slate-400"
+                    >آنلاین</span
+                  >
                 </div>
               </div>
               <div
                 class="flex flex-col md:flex-row items-center justify-center md:justify-start shadow-light dark:shadow-none text-center md:text-right gap-y-2 gap-x-4 bg-white dark:bg-gray-800 py-4 px-5 w-full rounded-2xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="34"
+                  viewBox="0 0 34 34">
                   <path
                     d="M7.135,34A6.852,6.852,0,0,1,.367,27.643l-.323-4.32A1.289,1.289,0,0,1,1.22,21.935a1.3,1.3,0,0,1,1.37,1.192l.321,4.32a4.28,4.28,0,0,0,4.223,3.97h19.73a4.278,4.278,0,0,0,4.223-3.97l.323-4.32a1.307,1.307,0,0,1,1.369-1.192,1.289,1.289,0,0,1,1.176,1.387l-.323,4.32A6.854,6.854,0,0,1,26.865,34Zm8.589-8.721v-3.1A32.082,32.082,0,0,1,.631,18.046,1.3,1.3,0,0,1,0,16.933V10.991A6.52,6.52,0,0,1,6.48,4.444H9.812A5.066,5.066,0,0,1,14.806,0h4.389a5.066,5.066,0,0,1,4.993,4.444h3.349A6.521,6.521,0,0,1,34,11.008v5.925a1.3,1.3,0,0,1-.631,1.113,32.1,32.1,0,0,1-15.093,4.137v3.1a1.276,1.276,0,1,1-2.552,0ZM2.552,10.991v5.188A30.422,30.422,0,0,0,16.914,19.62l.086,0,.085,0a30.471,30.471,0,0,0,14.364-3.441V11.008a3.949,3.949,0,0,0-3.911-3.979H6.48A3.949,3.949,0,0,0,2.552,10.991Zm19.04-6.546a2.493,2.493,0,0,0-2.4-1.86H14.806a2.493,2.493,0,0,0-2.4,1.86Z"
                     fill="#2ed573"></path>
                 </svg>
                 <div class="flex flex-col">
-                  <span class="text-lg/10 font-DanaDemiBold dark:text-white">پیش نیاز</span>
-                  <span class="text-xs text-slate-500 dark:text-slate-400">CSS&JS</span>
+                  <span class="text-lg/10 font-DanaDemiBold dark:text-white"
+                    >پیش نیاز</span
+                  >
+                  <span class="text-xs text-slate-500 dark:text-slate-400"
+                    >CSS&JS</span
+                  >
                 </div>
               </div>
               <div
                 class="flex flex-col md:flex-row items-center justify-center md:justify-start shadow-light dark:shadow-none text-center md:text-right gap-y-2 gap-x-4 bg-white dark:bg-gray-800 py-4 px-5 w-full rounded-2xl">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35.475" height="27.774" viewBox="0 0 35.475 27.774">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="35.475"
+                  height="27.774"
+                  viewBox="0 0 35.475 27.774">
                   <path
                     d="M7.057,27.774A7.191,7.191,0,0,1,.024,21.066C.018,20.99,0,20.788.007,7.564a7.254,7.254,0,0,1,1.8-5.108A7.047,7.047,0,0,1,6.846.008C6.907,0,7.529,0,8.693,0c2.011,0,5.245.006,7.842.011l2.241,0C18.941,0,19.11,0,19.277,0a7.237,7.237,0,0,1,7.1,6.742c0,.041.005.273.008.7L29.916,4.4a3.243,3.243,0,0,1,3.614-.464,3.57,3.57,0,0,1,1.945,3.238l-.02,13.166a3.568,3.568,0,0,1-1.948,3.233A3.247,3.247,0,0,1,29.9,23.1L26.39,20.07q0,.063,0,.126a7.337,7.337,0,0,1-1.805,5.129,7.042,7.042,0,0,1-5.042,2.438c-.058,0-.622.006-1.677.006-2.156,0-5.911-.01-8.653-.016l-1.611,0c-.189.015-.366.023-.541.023Zm4.492-2.7h.014c2.556,0,5.085.008,6.57.008.812,0,1.244,0,1.32,0A4.531,4.531,0,0,0,22.7,23.507a4.583,4.583,0,0,0,1.134-3.225c0-.019,0-.039,0-.06,0-3,0-12.844-.009-13.314a4.606,4.606,0,0,0-4.578-4.222c-.126,0-.254.006-.38.016l-2.636,0c-2.995,0-6.221-.01-7.977-.01-.742,0-1.231,0-1.313,0A4.545,4.545,0,0,0,3.689,4.27,4.607,4.607,0,0,0,2.559,7.5c0,8.566,0,13.071.014,13.389a4.583,4.583,0,0,0,4.561,4.189c.124,0,.25,0,.374-.015Zm19.965-4.051a.785.785,0,0,0,.9.114.863.863,0,0,0,.486-.8l.02-13.168a.869.869,0,0,0-.484-.806.8.8,0,0,0-.9.118l-5.146,4.43q0,2.234,0,5.685Z"
                     fill="#2ed573"></path>
                 </svg>
                 <div class="flex flex-col">
-                  <span class="text-lg/10 font-DanaDemiBold dark:text-white">نوع مشاهده</span>
-                  <span class="text-xs text-slate-500 dark:text-slate-400">بصورت آنلاین</span>
+                  <span class="text-lg/10 font-DanaDemiBold dark:text-white"
+                    >نوع مشاهده</span
+                  >
+                  <span class="text-xs text-slate-500 dark:text-slate-400"
+                    >بصورت آنلاین</span
+                  >
                 </div>
               </div>
             </div>
             <!-- Side Top ( Mobile ) -->
-            <div class="lg:hidden p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-light">
+            <div
+              class="lg:hidden p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-light">
               <div class="flex gap-5">
-                <div class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
+                <div
+                  class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
                   <svg class="w-8 h-8 text-primary">
                     <use href="#users-fill"></use>
                   </svg>
                   <div class="flex flex-col">
-                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white">175</span>
-                    <span class="text-sm text-slate-500 dark:text-slate-400">دانشجو</span>
+                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white"
+                      >175</span
+                    >
+                    <span class="text-sm text-slate-500 dark:text-slate-400"
+                      >دانشجو</span
+                    >
                   </div>
                 </div>
-                <div class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
+                <div
+                  class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
                   <svg class="w-8 h-8 text-amber-400 dark:text-yellow-400">
                     <use href="#star-fill"></use>
                   </svg>
                   <div class="flex flex-col">
-                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white">5.0</span>
-                    <span class="text-sm text-slate-500 dark:text-slate-400">رضایت</span>
+                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white"
+                      >5.0</span
+                    >
+                    <span class="text-sm text-slate-500 dark:text-slate-400"
+                      >رضایت</span
+                    >
                   </div>
                 </div>
               </div>
               <div>
-                <div class="flex justify-between items-center text-xl dark:text-white mt-5 mb-4">
+                <div
+                  class="flex justify-between items-center text-xl dark:text-white mt-5 mb-4">
                   <span class="">درصد تکمیل دوره</span>
                   <span>0%</span>
                 </div>
-                <progress value="0" max="100" class="w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
+                <progress
+                  value="0"
+                  max="100"
+                  class="w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
               </div>
             </div>
             <!-- Side Main ( Mobile ) -->
             <div
               class="lg:hidden bg-white dark:bg-gray-800 pt-5 pb-3.5 px-3.5 xs:px-5 shadow-light dark:shadow-none rounded-2xl mt-4">
-              <div class="flex items-center justify-center gap-x-2.5 pb-5 border-b border-b-gray-100 dark:border-b-slate mb-3.5">
+              <div
+                class="flex items-center justify-center gap-x-2.5 pb-5 border-b border-b-gray-100 dark:border-b-slate mb-3.5">
                 <img
                   class="block w-15 h-15 object-cover rounded-full"
                   src="https://secure.gravatar.com/avatar/627b244a18ff36c0944ceab2e214211d?s=96&amp;d=mm&amp;r=g"
                   alt="مهرشاد براتی" />
                 <div>
-                  <h4 class="text-zinc-700 dark:text-white text-2xl mb-1 font-DanaDemiBold">مهرشاد براتی</h4>
-                  <p class="text-slate-500 dark:text-gray-500 text-sm mt-1.5">برنامه نویس و توسعه دهنده فول استک وب</p>
+                  <h4
+                    class="text-zinc-700 dark:text-white text-2xl mb-1 font-DanaDemiBold">
+                    مهرشاد براتی
+                  </h4>
+                  <p class="text-slate-500 dark:text-gray-500 text-sm mt-1.5">
+                    برنامه نویس و توسعه دهنده فول استک وب
+                  </p>
                 </div>
               </div>
               <a
@@ -914,7 +1129,8 @@
               </a>
             </div>
             <!-- Course Description -->
-            <div class="course-description bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
+            <div
+              class="course-description bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
               <div class="flex justify-between items-center mb-5">
                 <h3
                   class="relative font-MorabbaBold text-2xl lg:text-3xl dark:text-white pr-6 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:bg-amber-400 dark:before:bg-yellow-400 before:rounded-sm before:w-2.5 before:h-10 before:m-auto">
@@ -925,64 +1141,109 @@
                 class="course-description__content relative overflow-hidden text-lg/8 xl:text-xl/10 text-zinc-700/80 dark:text-white max-h-[800px] pt-5 transition-all">
                 <div class="">
                   <p class="p1" dir="rtl">
-                    پنل ادمین نقش بسیار حیاتی در موفقیت و مدیریت بهتر هر پروژه وب دارد. و خیلی مهم هست یک برنامه نویس فرانت اند
-                    دانش طراحی داشبورد یا پنل ادمین های حرفه ای رو داشته باشه که هدف ما در این دوره حرفه ای همین هست که افراد رو
-                    به سطحی برسونیم که طراحی هر پنل ادمین و داشبورد سایت براشون خیلی راحت باشه ، این دوره شما را در سفری جذاب از
-                    مبتدی تا حرفه‌ای همراهی می‌کند تا بتوانید داشبوردهای شگفت‌آوری با استفاده از HTML، CSS و JavaScript طراحی
-                    کنید.
-                  </p>
-                  <p class="p1" dir="rtl">در این دوره شما با مفاهیم پیشرفته ایجاد رابط‌های کاربری آشنا می‌شوید. از جمله:</p>
-                  <ol>
-                    <li class="p1" dir="rtl">طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین روش‌های موجود</li>
-                    <li class="p1" dir="rtl">بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه</li>
-                    <li class="p1" dir="rtl">
-                      آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد استفاده در داشبورد‌های حرفه‌ای
-                    </li>
-                    <li class="p1" dir="rtl">ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های مهم</li>
-                  </ol>
-                  <p class="p1" dir="rtl">
-                    این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید
-                    به کار بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش
-                    داده می‌شود.
+                    پنل ادمین نقش بسیار حیاتی در موفقیت و مدیریت بهتر هر پروژه
+                    وب دارد. و خیلی مهم هست یک برنامه نویس فرانت اند دانش طراحی
+                    داشبورد یا پنل ادمین های حرفه ای رو داشته باشه که هدف ما در
+                    این دوره حرفه ای همین هست که افراد رو به سطحی برسونیم که
+                    طراحی هر پنل ادمین و داشبورد سایت براشون خیلی راحت باشه ،
+                    این دوره شما را در سفری جذاب از مبتدی تا حرفه‌ای همراهی
+                    می‌کند تا بتوانید داشبوردهای شگفت‌آوری با استفاده از HTML،
+                    CSS و JavaScript طراحی کنید.
                   </p>
                   <p class="p1" dir="rtl">
-                    به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای، تجربه کاربران خود را به سطح بالاتری برسانید و
-                    وب‌سایت‌تان را به یک سطح جدید از عملکرد و جذابیت برسانید
-                  </p>
-                  <p class="p1" dir="rtl">در این دوره شما با مفاهیم پیشرفته ایجاد رابط‌های کاربری آشنا می‌شوید. از جمله:</p>
-                  <ol>
-                    <li class="p1" dir="rtl">طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین روش‌های موجود</li>
-                    <li class="p1" dir="rtl">بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه</li>
-                    <li class="p1" dir="rtl">
-                      آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد استفاده در داشبورد‌های حرفه‌ای
-                    </li>
-                    <li class="p1" dir="rtl">ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های مهم</li>
-                  </ol>
-                  <p class="p1" dir="rtl">
-                    این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید
-                    به کار بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش
-                    داده می‌شود.
-                  </p>
-                  <p class="p1" dir="rtl">
-                    به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای، تجربه کاربران خود را به سطح بالاتری برسانید و
-                    وب‌سایت‌تان را به یک سطح جدید از عملکرد و جذابیت برسانید
+                    در این دوره شما با مفاهیم پیشرفته ایجاد رابط‌های کاربری آشنا
+                    می‌شوید. از جمله:
                   </p>
                   <ol>
-                    <li class="p1" dir="rtl">طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین روش‌های موجود</li>
-                    <li class="p1" dir="rtl">بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه</li>
                     <li class="p1" dir="rtl">
-                      آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد استفاده در داشبورد‌های حرفه‌ای
+                      طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین
+                      روش‌های موجود
                     </li>
-                    <li class="p1" dir="rtl">ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های مهم</li>
+                    <li class="p1" dir="rtl">
+                      بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه
+                    </li>
+                    <li class="p1" dir="rtl">
+                      آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد
+                      استفاده در داشبورد‌های حرفه‌ای
+                    </li>
+                    <li class="p1" dir="rtl">
+                      ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های
+                      مهم
+                    </li>
                   </ol>
                   <p class="p1" dir="rtl">
-                    این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید
-                    به کار بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش
-                    داده می‌شود.
+                    این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه
+                    می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید به کار
+                    بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه
+                    داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش داده
+                    می‌شود.
                   </p>
                   <p class="p1" dir="rtl">
-                    به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای، تجربه کاربران خود را به سطح بالاتری برسانید و
-                    وب‌سایت‌تان را به یک سطح جدید از عملکرد و جذابیت برسانید
+                    به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای،
+                    تجربه کاربران خود را به سطح بالاتری برسانید و وب‌سایت‌تان را
+                    به یک سطح جدید از عملکرد و جذابیت برسانید
+                  </p>
+                  <p class="p1" dir="rtl">
+                    در این دوره شما با مفاهیم پیشرفته ایجاد رابط‌های کاربری آشنا
+                    می‌شوید. از جمله:
+                  </p>
+                  <ol>
+                    <li class="p1" dir="rtl">
+                      طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین
+                      روش‌های موجود
+                    </li>
+                    <li class="p1" dir="rtl">
+                      بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه
+                    </li>
+                    <li class="p1" dir="rtl">
+                      آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد
+                      استفاده در داشبورد‌های حرفه‌ای
+                    </li>
+                    <li class="p1" dir="rtl">
+                      ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های
+                      مهم
+                    </li>
+                  </ol>
+                  <p class="p1" dir="rtl">
+                    این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه
+                    می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید به کار
+                    بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه
+                    داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش داده
+                    می‌شود.
+                  </p>
+                  <p class="p1" dir="rtl">
+                    به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای،
+                    تجربه کاربران خود را به سطح بالاتری برسانید و وب‌سایت‌تان را
+                    به یک سطح جدید از عملکرد و جذابیت برسانید
+                  </p>
+                  <ol>
+                    <li class="p1" dir="rtl">
+                      طراحی و ساخت پنل‌های ادمین با طراحی واکنش‌گرا تازه‌ترین
+                      روش‌های موجود
+                    </li>
+                    <li class="p1" dir="rtl">
+                      بهبود تجربه کاربری با افزودن انیمیشن‌ها و اثرات ویژه
+                    </li>
+                    <li class="p1" dir="rtl">
+                      آشنایی با بهترین ابزارها و فریمورک‌ و کتابخونه های مورد
+                      استفاده در داشبورد‌های حرفه‌ای
+                    </li>
+                    <li class="p1" dir="rtl">
+                      ساخت پیشرفته‌ترین نمودارها و گزارش‌ها برای نمایش داده‌های
+                      مهم
+                    </li>
+                  </ol>
+                  <p class="p1" dir="rtl">
+                    این دوره علاوه بر توضیح تئوری، پروژه‌های عملی نیز ارائه
+                    می‌دهد که شما با تمامی مفاهیم یادگرفته شده، می‌توانید به کار
+                    بگیرید. همچنین، متدهای بهترین عمل و اصول طراحی و توسعه
+                    داشبورد‌های حرفه‌ای نیز در این دوره به شما آموزش داده
+                    می‌شود.
+                  </p>
+                  <p class="p1" dir="rtl">
+                    به ما بپیوندید تا با ایجاد داشبوردهای پیشرفته و حرفه‌ای،
+                    تجربه کاربران خود را به سطح بالاتری برسانید و وب‌سایت‌تان را
+                    به یک سطح جدید از عملکرد و جذابیت برسانید
                   </p>
                 </div>
                 <!-- Overlay -->
@@ -991,15 +1252,20 @@
               </div>
               <button
                 class="course-description__btn flex justify-center items-center gap-x-2 text-xl text-white rounded-full bg-primary hover:bg-green-500 px-7 h-14 mx-auto mt-10 transition-colors">
-                <span class="course-description__btn-dont-show-text">مشاهده بیشتر</span>
-                <span class="course-description__btn-show-text hidden">مشاهده کمتر</span>
+                <span class="course-description__btn-dont-show-text"
+                  >مشاهده بیشتر</span
+                >
+                <span class="course-description__btn-show-text hidden"
+                  >مشاهده کمتر</span
+                >
                 <svg class="w-5 h-5">
                   <use href="#chevron-down"></use>
                 </svg>
               </button>
             </div>
             <!-- Course Topics -->
-            <div class="bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
+            <div
+              class="bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
               <div class="flex justify-between items-center mb-5">
                 <h3
                   class="relative font-MorabbaBold text-2xl lg:text-3xl dark:text-white pr-6 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:bg-sky-500 dark:before:bg-secondary before:rounded-sm before:w-2.5 before:h-10 before:m-auto">
@@ -1009,17 +1275,22 @@
               </div>
               <div class="space-y-2.5">
                 <!-- Topic -->
-                <div class="course-topic rounded-xl overflow-hidden transition-all">
+                <div
+                  class="course-topic rounded-xl overflow-hidden transition-all">
                   <!-- Topic header -->
                   <div
                     class="topic__header flex justify-between items-center w-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-12 md:h-[75px] px-5 transition-colors cursor-pointer">
-                    <h4 class="font-DanaMedium text-sm md:text-xl">فصل اول - مباحث TailwindCss</h4>
-                    <svg class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
+                    <h4 class="font-DanaMedium text-sm md:text-xl">
+                      فصل اول - مباحث TailwindCss
+                    </h4>
+                    <svg
+                      class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
                       <use href="#chevron-down"></use>
                     </svg>
                   </div>
                   <!-- Topic Body -->
-                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
+                  <div
+                    class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
                     <div
                       class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
                       <a
@@ -1040,7 +1311,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1068,7 +1342,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1096,7 +1373,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1124,7 +1404,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1152,7 +1435,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1180,7 +1466,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1208,7 +1497,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1218,17 +1510,22 @@
                     </div>
                   </div>
                 </div>
-                <div class="course-topic rounded-xl overflow-hidden transition-all">
+                <div
+                  class="course-topic rounded-xl overflow-hidden transition-all">
                   <!-- Topic header -->
                   <div
                     class="topic__header flex justify-between items-center w-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-12 md:h-[75px] px-5 transition-colors cursor-pointer">
-                    <h4 class="font-DanaMedium text-sm md:text-xl">فصل اول - مباحث TailwindCss</h4>
-                    <svg class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
+                    <h4 class="font-DanaMedium text-sm md:text-xl">
+                      فصل اول - مباحث TailwindCss
+                    </h4>
+                    <svg
+                      class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
                       <use href="#chevron-down"></use>
                     </svg>
                   </div>
                   <!-- Topic Body -->
-                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
+                  <div
+                    class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
                     <div
                       class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
                       <a
@@ -1249,7 +1546,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1259,17 +1559,22 @@
                     </div>
                   </div>
                 </div>
-                <div class="course-topic rounded-xl overflow-hidden transition-all">
+                <div
+                  class="course-topic rounded-xl overflow-hidden transition-all">
                   <!-- Topic header -->
                   <div
                     class="topic__header flex justify-between items-center w-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-12 md:h-[75px] px-5 transition-colors cursor-pointer">
-                    <h4 class="font-DanaMedium text-sm md:text-xl">فصل اول - مباحث TailwindCss</h4>
-                    <svg class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
+                    <h4 class="font-DanaMedium text-sm md:text-xl">
+                      فصل اول - مباحث TailwindCss
+                    </h4>
+                    <svg
+                      class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
                       <use href="#chevron-down"></use>
                     </svg>
                   </div>
                   <!-- Topic Body -->
-                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
+                  <div
+                    class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
                     <div
                       class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
                       <a
@@ -1290,7 +1595,10 @@
                           >جلسه رایگان</span
                         >
                         <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                          <span
+                            class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1">
+                            20:27
+                          </span>
                           <svg
                             class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                             <use xlink:href="#play-circle"></use>
@@ -1304,7 +1612,8 @@
             </div>
 
             <!-- Course Comments -->
-            <div class="course-comments bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
+            <div
+              class="course-comments bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
               <!-- Comments Header -->
               <div class="flex justify-between items-center mb-5">
                 <h3
@@ -1320,10 +1629,18 @@
               <!-- New Comment -->
               <div class="new-comment-form hidden mb-5">
                 <div class="flex gap-x-2 mb-3">
-                  <img class="block w-10 h-10 md:w-14 md:h-14 object-cover rounded-full shrink-0" src="images/user-profile.png" />
+                  <img
+                    class="block w-10 h-10 md:w-14 md:h-14 object-cover rounded-full shrink-0"
+                    src="images/user-profile.png" />
                   <div class="flex flex-col">
-                    <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">Darcy</span>
-                    <span class="comment-to text-slate-500 dark:text-gray-500 text-sm">ثبت نظر جدید</span>
+                    <span
+                      class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
+                      >Darcy</span
+                    >
+                    <span
+                      class="comment-to text-slate-500 dark:text-gray-500 text-sm"
+                      >ثبت نظر جدید</span
+                    >
                   </div>
                 </div>
                 <textarea
@@ -1346,12 +1663,15 @@
               <!-- Comments Container -->
               <div class="space-y-5">
                 <!-- Comment -->
-                <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
+                <div
+                  class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
                   <!-- Comment Body -->
                   <div class="flex gap-x-5 items-start">
                     <!-- Comment Right User Picture & flag (desktop version) -->
                     <div class="hidden md:flex flex-col gap-y-2 shrink-0">
-                      <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="images/user-profile.png" />
+                      <img
+                        class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full"
+                        src="images/user-profile.png" />
                       <div
                         class="text-xs w-full rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
                         دانشجو
@@ -1366,24 +1686,33 @@
                             class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
                             src="https://secure.gravatar.com/avatar/0370e6d965555e9194c47fdb9be67d76?s=96&amp;d=mm&amp;r=g" />
                           <div class="shrink-0">
-                            <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">Pe_f</span>
+                            <span
+                              class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
+                              >Pe_f</span
+                            >
                             <div class="flex items-center gap-x-1.5 mt-1">
                               <div
                                 class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
                                 دانشجو
                               </div>
-                              <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
+                              <span
+                                class="font-danaLight text-slate-500 dark:text-white text-xs"
+                                >1402/09/04</span
+                              >
                             </div>
                           </div>
                         </div>
-                        <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
+                        <button
+                          class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500"
+                          type="button">
                           <svg class="w-6 h-5">
                             <use xlink:href="#reply"></use>
                           </svg>
                         </button>
                       </div>
                       <!-- Comment Text -->
-                      <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
+                      <div
+                        class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
                         سلام ببخشید پشتیبانی دوره به چه صورتی هست؟<br />
                         <br />
                       </div>
@@ -1391,12 +1720,15 @@
                     </div>
                   </div>
                 </div>
-                <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
+                <div
+                  class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
                   <!-- Comment Body -->
                   <div class="flex gap-x-5 items-start">
                     <!-- Comment Right User Picture & flag (desktop version) -->
                     <div class="hidden md:flex flex-col gap-y-2 shrink-0">
-                      <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="images/user-profile.png" />
+                      <img
+                        class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full"
+                        src="images/user-profile.png" />
                       <div
                         class="text-xs w-full rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
                         دانشجو
@@ -1411,33 +1743,45 @@
                             class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
                             src="https://secure.gravatar.com/avatar/0370e6d965555e9194c47fdb9be67d76?s=96&amp;d=mm&amp;r=g" />
                           <div class="shrink-0">
-                            <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">mersad</span>
+                            <span
+                              class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
+                              >mersad</span
+                            >
                             <div class="flex items-center gap-x-1.5 mt-1">
                               <div
                                 class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
                                 دانشجو
                               </div>
-                              <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
+                              <span
+                                class="font-danaLight text-slate-500 dark:text-white text-xs"
+                                >1402/09/04</span
+                              >
                             </div>
                           </div>
                         </div>
-                        <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
+                        <button
+                          class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500"
+                          type="button">
                           <svg class="w-6 h-5">
                             <use xlink:href="#reply"></use>
                           </svg>
                         </button>
                       </div>
                       <!-- Comment Text -->
-                      <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
+                      <div
+                        class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
                         سلام ببخشید پشتیبانی دوره به چه صورتی هست؟<br />
                         <br />
                       </div>
                       <!-- Comment Replies -->
                       <div class="mt-7 space-y-3.5 md:space-y-5">
-                        <div id="comment-47416" class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
+                        <div
+                          id="comment-47416"
+                          class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
                           <div class="flex gap-x-5 items-start">
                             <!-- Comment Right User Picture & flag (desktop version) -->
-                            <div class="hidden md:flex flex-col shrink-0 gap-y-2">
+                            <div
+                              class="hidden md:flex flex-col shrink-0 gap-y-2">
                               <img
                                 class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full"
                                 src="https://secure.gravatar.com/avatar/213e0cf344b8c216b7048477622c195a?s=96&amp;d=mm&amp;r=g" />
@@ -1454,21 +1798,27 @@
                                     class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0"
                                     src="https://secure.gravatar.com/avatar/213e0cf344b8c216b7048477622c195a?s=96&amp;d=mm&amp;r=g" />
                                   <div class="shrink-0">
-                                    <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
+                                    <span
+                                      class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"
                                       >قدیر یلمه</span
                                     >
-                                    <div class="flex items-center gap-x-1.5 mt-1">
+                                    <div
+                                      class="flex items-center gap-x-1.5 mt-1">
                                       <div
                                         class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">
                                         مدیریت
                                       </div>
-                                      <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
+                                      <span
+                                        class="font-danaLight text-slate-500 dark:text-white text-xs"
+                                        >1402/09/04</span
+                                      >
                                     </div>
                                   </div>
                                 </div>
                               </div>
                               <!-- Comment Text -->
-                              <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
+                              <div
+                                class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
                                 بصورت آنلاین در قسمت مشاهده آنلاین جلسات هست
                               </div>
                             </div>
@@ -1490,55 +1840,76 @@
             </div>
           </div>
           <!-- Aside -->
-          <aside class="hidden lg:block sticky top-5 w-80 xl:w-96 shrink-0 space-y-5">
+          <aside
+            class="hidden lg:block sticky top-5 w-80 xl:w-96 shrink-0 space-y-5">
             <!-- Side Top -->
             <div class="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light">
               <div class="flex gap-5">
-                <div class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
+                <div
+                  class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
                   <svg class="w-8 h-8 text-primary">
                     <use href="#users-fill"></use>
                   </svg>
                   <div class="flex flex-col">
-                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white">175</span>
-                    <span class="text-sm text-slate-500 dark:text-slate-400">دانشجو</span>
+                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white"
+                      >175</span
+                    >
+                    <span class="text-sm text-slate-500 dark:text-slate-400"
+                      >دانشجو</span
+                    >
                   </div>
                 </div>
-                <div class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
+                <div
+                  class="flex items-center justify-between bg-gray-100 dark:bg-gray-700 py-4 px-5 w-full rounded-2xl">
                   <svg class="w-8 h-8 text-amber-400 dark:text-yellow-400">
                     <use href="#star-fill"></use>
                   </svg>
                   <div class="flex flex-col">
-                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white">5.0</span>
-                    <span class="text-sm text-slate-500 dark:text-slate-400">رضایت</span>
+                    <span class="text-2xl/8 font-DanaDemiBold dark:text-white"
+                      >5.0</span
+                    >
+                    <span class="text-sm text-slate-500 dark:text-slate-400"
+                      >رضایت</span
+                    >
                   </div>
                 </div>
               </div>
               <div>
-                <div class="flex justify-between items-center text-xl dark:text-white mt-5 mb-4">
+                <div
+                  class="flex justify-between items-center text-xl dark:text-white mt-5 mb-4">
                   <span class="">درصد تکمیل دوره</span>
                   <span>0%</span>
                 </div>
-                <progress value="0" max="100" class="w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
+                <progress
+                  value="0"
+                  max="100"
+                  class="w-full h-2.5 rounded-full overflow-hidden !bg-gray-200"></progress>
               </div>
             </div>
             <!-- Side Main -->
-            <div class="flex flex-col items-center text-center p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light">
-              <div class="rounded-full w-[90px] h-[90px] overflow-hidden mb-1.5">
+            <div
+              class="flex flex-col items-center text-center p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light">
+              <div
+                class="rounded-full w-[90px] h-[90px] overflow-hidden mb-1.5">
                 <img src="images/user-profile.png" class="" alt="" />
               </div>
               <h4 class="text-2xl dark:text-white">مهرشاد براتی</h4>
-              <a href="#" class="flex items-center gap-x-1 text-sm text-slate-500 dark:text-slate-400 mb-1.5 mt-1">
+              <a
+                href="#"
+                class="flex items-center gap-x-1 text-sm text-slate-500 dark:text-slate-400 mb-1.5 mt-1">
                 <span>مدرس دوره</span>
                 <svg class="w-5 h-5">
                   <use href="#logout"></use>
                 </svg>
               </a>
               <p class="text-zinc-700/80 dark:text-white">
-                مهرشاد براتی هستم برنامه نویس و توسعه دهنده فول استک وب و دانشجوی ارشد رشته کامپیوتر گرایش نرم افزار
+                مهرشاد براتی هستم برنامه نویس و توسعه دهنده فول استک وب و
+                دانشجوی ارشد رشته کامپیوتر گرایش نرم افزار
               </p>
             </div>
             <!-- Side Footer -->
-            <div class="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light overflow-hidden">
+            <div
+              class="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light overflow-hidden">
               <span
                 class="relative font-DanaDemiBold text-2xl pr-5 dark:text-white before:content-[''] before:absolute before:bg-sky-500 dark:before:bg-secondary before:w-8 before:h-2 before:rounded-sm before:top-0 before:bottom-0 before:right-4 before:my-auto"
                 >لینک کوتاه:</span
@@ -1548,7 +1919,9 @@
                 <svg class="copy-link-btn w-6 h-6 my-auto cursor-pointer">
                   <use href="#clipboard-document"></use>
                 </svg>
-                <span class="truncate text-xl leading-[65px] mt-0.5" dir="ltr">https://sabzlearn.ir/?p=3018</span>
+                <span class="truncate text-xl leading-[65px] mt-0.5" dir="ltr"
+                  >https://sabzlearn.ir/?p=3018</span
+                >
               </div>
             </div>
           </aside>
@@ -1557,36 +1930,68 @@
     </main>
 
     <!-- Footer -->
-    <footer class="mt-25 pt-8 lg:pt-16 w-full bg-white dark:bg-transparent dark:border-t dark:border-gray-700">
+    <footer
+      class="mt-25 pt-8 lg:pt-16 w-full bg-white dark:bg-transparent dark:border-t dark:border-gray-700">
       <div class="container">
         <!-- Footer Top -->
         <div class="flex flex-wrap gap-x-4 gap-y-5 justify-between">
           <div class="flex-grow text-center sm:text-right">
-            <h5 class="font-DanaMedium text-2xl text-zinc-700 dark:text-white mb-5">درباره ما</h5>
-            <p class="sm:max-w-xs text-slate-500/90 dark:text-slate-400/90 text-base xl:text-lg">
-              سبزلرن یک اکادمی خصوصی آموزش برنامه نویسی هست که با هدف تحویل نیروی متخصص بر پایه تولید محتوای غیرسطحی فعالیت میکند
+            <h5
+              class="font-DanaMedium text-2xl text-zinc-700 dark:text-white mb-5">
+              درباره ما
+            </h5>
+            <p
+              class="sm:max-w-xs text-slate-500/90 dark:text-slate-400/90 text-base xl:text-lg">
+              سبزلرن یک اکادمی خصوصی آموزش برنامه نویسی هست که با هدف تحویل
+              نیروی متخصص بر پایه تولید محتوای غیرسطحی فعالیت میکند
             </p>
           </div>
           <div class="flex-grow">
-            <h5 class="font-DanaMedium text-2xl text-zinc-700 dark:text-white mb-5">دسترسی سریع</h5>
-            <ul class="flex flex-col space-y-3 text-slate-500/90 dark:text-slate-400/90 text-base xl:text-lg">
-              <a href="#" class="hover:text-primary transition-colors">قوانین و مقررات</a>
-              <a href="#" class="hover:text-primary transition-colors">ارسال تیکت</a>
-              <a href="#" class="hover:text-primary transition-colors">همه دوره ها</a>
+            <h5
+              class="font-DanaMedium text-2xl text-zinc-700 dark:text-white mb-5">
+              دسترسی سریع
+            </h5>
+            <ul
+              class="flex flex-col space-y-3 text-slate-500/90 dark:text-slate-400/90 text-base xl:text-lg">
+              <a href="#" class="hover:text-primary transition-colors"
+                >قوانین و مقررات</a
+              >
+              <a href="#" class="hover:text-primary transition-colors"
+                >ارسال تیکت</a
+              >
+              <a href="#" class="hover:text-primary transition-colors"
+                >همه دوره ها</a
+              >
             </ul>
           </div>
           <div class="flex-grow">
-            <h5 class="font-DanaMedium text-2xl text-zinc-700 dark:text-white mb-5">لینک های مفید</h5>
-            <ul class="flex flex-col space-y-3 text-slate-500/90 dark:text-slate-400/90 text-base xl:text-lg">
-              <a href="#" class="hover:text-primary transition-colors">آموزش جاوااسکریپت</a>
-              <a href="#" class="hover:text-primary transition-colors">آموزش پایتون</a>
-              <a href="#" class="hover:text-primary transition-colors">آموزش HTML</a>
-              <a href="#" class="hover:text-primary transition-colors">آموزش CSS</a>
+            <h5
+              class="font-DanaMedium text-2xl text-zinc-700 dark:text-white mb-5">
+              لینک های مفید
+            </h5>
+            <ul
+              class="flex flex-col space-y-3 text-slate-500/90 dark:text-slate-400/90 text-base xl:text-lg">
+              <a href="#" class="hover:text-primary transition-colors"
+                >آموزش جاوااسکریپت</a
+              >
+              <a href="#" class="hover:text-primary transition-colors"
+                >آموزش پایتون</a
+              >
+              <a href="#" class="hover:text-primary transition-colors"
+                >آموزش HTML</a
+              >
+              <a href="#" class="hover:text-primary transition-colors"
+                >آموزش CSS</a
+              >
             </ul>
           </div>
           <div class="flex-grow">
-            <h5 class="font-DanaMedium text-2xl text-zinc-700 dark:text-white mb-5">شبکه های اجتماعی</h5>
-            <ul class="flex flex-col space-y-3 text-slate-500/90 dark:text-slate-400/90 text-base xl:text-lg">
+            <h5
+              class="font-DanaMedium text-2xl text-zinc-700 dark:text-white mb-5">
+              شبکه های اجتماعی
+            </h5>
+            <ul
+              class="flex flex-col space-y-3 text-slate-500/90 dark:text-slate-400/90 text-base xl:text-lg">
               <li class="flex items-center gap-x-4 transition-colors">
                 <div
                   class="flex items-center justify-center rounded-full w-8 h-8 bg-orange-600 text-white bg-gradient-to-tr from-[#FEDC15] via-[#F71F87] to-[#9000DC]">
@@ -1594,7 +1999,12 @@
                     <use href="#instagram"></use>
                   </svg>
                 </div>
-                <a href="#" class="font-DanaDemiBold hover:text-primary" dir="ltr">@sabzlearn_</a>
+                <a
+                  href="#"
+                  class="font-DanaDemiBold hover:text-primary"
+                  dir="ltr"
+                  >@sabzlearn_</a
+                >
               </li>
               <li class="flex items-center gap-x-4 transition-colors">
                 <div
@@ -1603,7 +2013,12 @@
                     <use xlink:href="#telegram"></use>
                   </svg>
                 </div>
-                <a href="#" class="font-DanaDemiBold hover:text-primary" dir="ltr">@sabzlearn</a>
+                <a
+                  href="#"
+                  class="font-DanaDemiBold hover:text-primary"
+                  dir="ltr"
+                  >@sabzlearn</a
+                >
               </li>
             </ul>
           </div>
@@ -1612,12 +2027,15 @@
         <div
           class="flex flex-col sm:flex-row justify-between gap-y-3 border-t dark:border-gray-700 py-5 mt-5 text-slate-500 dark:text-slate-400 font-thin text-center xs:text-right">
           <p>ساخته شده با ❤️ در سبزلرن</p>
-          <p class="self-end" dir="ltr">Copyright © 2019-2023 Sabzlearn. All rights reserved.</p>
+          <p class="self-end" dir="ltr">
+            Copyright © 2019-2023 Sabzlearn. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
 
-    <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
+    <div
+      class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/header.js" type="module"></script>
     <script src="scripts/share.js" type="module"></script>
     <script src="scripts/course.js" type="module"></script>

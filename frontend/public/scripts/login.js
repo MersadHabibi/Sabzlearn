@@ -1,4 +1,7 @@
 import { api, showNotif } from "./funcs/utils.js";
+import { redirectWhenHaveToken, getAfterPageLink } from "./funcs/share.js";
+
+redirectWhenHaveToken(getAfterPageLink());
 
 const $ = document;
 
@@ -31,6 +34,7 @@ const login = (email, password) => {
       } else if (res.token) {
         showNotif("با موفقیت وارد شدید", "success");
         localStorage.setItem("token", res.token);
+        location.href = getAfterPageLink();
       }
     });
 };

@@ -1,4 +1,7 @@
 import { api, showNotif } from "./funcs/utils.js";
+import { redirectWhenHaveToken, getAfterPageLink } from "./funcs/share.js";
+
+redirectWhenHaveToken(getAfterPageLink());
 
 const $ = document;
 
@@ -65,7 +68,7 @@ const register = async (
       } else {
         showNotif("اکانت شما با موفقیت ساخته شد", "success");
         localStorage.setItem("token", res.token);
-        console.log(res);
+        location.href = getAfterPageLink();
       }
     });
 };
