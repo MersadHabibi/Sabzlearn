@@ -1,4 +1,4 @@
-import { _changeClasses } from "./funcs/utils.js";
+import { _changeClasses, getMe } from "./funcs/utils.js";
 
 const $ = document;
 
@@ -91,3 +91,31 @@ const setLinkForLoginAndRegisterBtn = () => {
   loginBtn.href = `./login.html?after=${location.pathname}`;
 };
 setLinkForLoginAndRegisterBtn();
+
+// Check User Login
+
+let user = null;
+
+const checkUserLogin = async () => {
+  const profileContainer = $.querySelector(".profile__container");
+  const loginAndRegisterContainer = $.querySelector(
+    ".login-register__container"
+  );
+  user = await getMe();
+  console.log(user);
+  if (user) {
+    _changeClasses("remove", profileContainer, ["hidden"]);
+    setContentProfileSubmenu(user);
+  } else {
+    _changeClasses("remove", loginAndRegisterContainer, ["hidden"]);
+  }
+};
+checkUserLogin();
+
+// Set Profile Submenu Content
+
+const setContentProfileSubmenu = () => {
+  const profileNameElem = $.querySelector(".profile__name");
+
+  profileNameElem.innerHTML = user.username;
+};

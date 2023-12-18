@@ -1,15 +1,11 @@
-import { getToken, api } from "./utils.js";
+import { getToken, api, getMe } from "./utils.js";
 
 // Redirect Login & Register
 
 const redirectWhenHaveToken = async (redirectLink) => {
-  const res = await fetch(`${api}me`, {
-    method: "GET",
-    headers: {
-      authorization: `Bearer ${getToken()}`,
-    },
-  });
-  if (res.status == 200) {
+  const user = await getMe();
+  console.log(user);
+  if (user) {
     location.href = redirectLink;
   }
 };

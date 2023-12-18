@@ -133,4 +133,21 @@ const getToken = () => {
   return localStorage.getItem("token");
 };
 
-export { api, _changeClasses, createTimer, showNotif, getToken };
+// Get Me
+
+const getMe = async () => {
+  const res = await fetch(`${api}me`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${getToken()}`,
+    },
+  });
+
+  if (res.status == 200) {
+    return await res.json();
+  } else {
+    return false;
+  }
+};
+
+export { api, _changeClasses, createTimer, showNotif, getToken, getMe };

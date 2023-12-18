@@ -581,7 +581,7 @@
           <div class="h-12 md:h-14 w-auto rounded-full cursor-pointer">
             <!-- Login & Register -->
             <div
-              class="relative flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
+              class="login-register__container hidden relative flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
               <a
                 href="#"
                 class="login-btn absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 dark:bg-[#30457C] dark:hover:bg-secondary/60 block transition-colors"
@@ -594,7 +594,7 @@
               >
             </div>
             <!-- Profile Photo -->
-            <div class="hidden profile relative h-full w-14">
+            <div class="profile__container hidden profile relative h-full w-14">
               <div
                 class="w-12 md:w-14 h-12 md:h-14 rounded-full overflow-hidden">
                 <img src="images/user-profile.png" alt="" />
@@ -607,7 +607,7 @@
                     <img src="images/user-profile.png" alt="" />
                   </div>
                   <div>
-                    <p class="text-lg">مرصاد حبیبی</p>
+                    <p class="profile__name text-lg">مرصاد حبیبی</p>
                     <p class="font-DanaMedium text-sm text-sky-500">
                       موجودی: 0 تومان
                     </p>
@@ -640,12 +640,14 @@
                 </ul>
                 <div
                   class="pt-2 child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
-                  <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                  <button
+                    class="logout-btn hover:bg-gray-100 dark:hover:bg-slate w-full"
+                    href="#">
                     <svg class="w-5 h-5">
                       <use href="#logout"></use>
                     </svg>
                     خروج
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
