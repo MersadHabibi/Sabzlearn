@@ -30,7 +30,7 @@ const login = (email, password) => {
         showNotif("ایمیل یا رمز عبور درست نیست");
       } else if (res.token) {
         showNotif("با موفقیت وارد شدید", "success");
-        location.href = "index.html";
+        localStorage.setItem("token", res.token);
       }
     });
 };

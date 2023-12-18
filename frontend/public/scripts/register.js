@@ -49,8 +49,6 @@ const register = async (
     address,
   };
 
-  console.log(newUser);
-
   await fetch(`${api}register`, {
     method: "POST",
     body: JSON.stringify(newUser),
@@ -66,7 +64,8 @@ const register = async (
         showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
       } else {
         showNotif("اکانت شما با موفقیت ساخته شد", "success");
-        location.href = "index.html";
+        localStorage.setItem("token", res.token);
+        console.log(res);
       }
     });
 };
