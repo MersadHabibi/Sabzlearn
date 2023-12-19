@@ -1469,6 +1469,10 @@ html.dark .custom-file-upload {
   height: 38px;
 }
 
+.h-\[417px\] {
+  height: 417px;
+}
+
 .h-\[500px\] {
   height: 500px;
 }
@@ -1507,6 +1511,14 @@ html.dark .custom-file-upload {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[\] {
+  height: ;
+}
+
+.h-\[400px\] {
+  height: 400px;
 }
 
 .max-h-\[800px\] {
@@ -4315,6 +4327,10 @@ html.dark .custom-file-upload {
     height: 75px;
   }
 
+  .md\:h-\[417px\] {
+    height: 417px;
+  }
+
   .md\:min-h-screen {
     min-height: 100vh;
   }
@@ -4632,6 +4648,10 @@ html.dark .custom-file-upload {
     height: 100%;
   }
 
+  .lg\:w-\[155px\] {
+    width: 155px;
+  }
+
   .lg\:w-\[440px\] {
     width: 440px;
   }
@@ -4642,10 +4662,6 @@ html.dark .custom-file-upload {
 
   .lg\:w-auto {
     width: auto;
-  }
-
-  .lg\:w-\[155px\] {
-    width: 155px;
   }
 
   .lg\:max-w-none {
