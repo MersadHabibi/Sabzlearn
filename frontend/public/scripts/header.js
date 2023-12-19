@@ -1,4 +1,5 @@
-import { _changeClasses, getMe } from "./funcs/utils.js";
+import { createCourseCard } from "./funcs/share.js";
+import { _changeClasses, api, getMe } from "./funcs/utils.js";
 
 const $ = document;
 
@@ -130,3 +131,22 @@ const setContentProfileSubmenu = () => {
 
   profileNameElem.innerHTML = user.username;
 };
+
+// Upload Last Courses - random
+
+const getAndShowLastCourses = async () => {
+  const lastCoursesContainer = $.querySelector(".last-courses__container");
+
+  const res = await fetch(`${api}admin/courses`);
+  let courses = await res.json();
+
+  courses = courses.sort(() => Math.random() - 0.5);
+
+  courses.slice(0 , 8).forEach((course) => {
+    lastCoursesContainer.insertAdjacentHTML(
+      "beforeend",
+      createCourseCard(course)
+    );
+  });
+};
+getAndShowLastCourses();
