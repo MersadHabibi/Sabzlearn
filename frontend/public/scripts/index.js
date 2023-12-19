@@ -129,3 +129,27 @@ const getAndShowPresellCourses = async () => {
   });
 };
 getAndShowPresellCourses();
+
+// Get And Show Popular Courses
+
+const getAndShowPopularCourses = async () => {
+  const popularCoursesContainer = $.querySelector(
+    ".popular-courses__container"
+  );
+
+  let popularCourses = [...courses];
+
+  popularCourses = popularCourses.sort((a, b) => {
+    return b.studentsCount - a.studentsCount;
+  });
+
+  popularCourses.slice(0, 8).forEach((course) => {
+    popularCoursesContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+          ${createCourseCard(course, "last-courses", false, false)}
+      `
+    );
+  });
+};
+getAndShowPopularCourses();

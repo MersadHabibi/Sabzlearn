@@ -24,7 +24,12 @@ const getAfterPageLink = () => {
 
 // Create Course Card
 
-const createCourseCard = (course, whichCourses) => {
+const createCourseCard = (
+  course,
+  whichCourses,
+  hasDescription = true,
+  hasCategory = true
+) => {
   if (whichCourses == "last-courses") {
     return `
       <div class="flex flex-col bg-white dark:bg-gray-800 shadow-light dark:shadow-none dark:border border-gray-700 overflow-hidden rounded-2xl">
@@ -47,7 +52,10 @@ const createCourseCard = (course, whichCourses) => {
             alt="" />
         </a>
         <!-- Course Body -->
-        <div class="px-5 pt-2.5 pb-3.5 flex-grow">
+        <div class="px-5 pt-2.5 ${hasCategory ? "pb-3.5" : ""} flex-grow">
+        ${
+          hasCategory
+            ? `
           <div class="flex justify-start items-center gap-1">
             <a
               href="#"
@@ -63,15 +71,24 @@ const createCourseCard = (course, whichCourses) => {
                   : "غیره..."
               } </a>
           </div>
+        `
+            : ""
+        }
           <a href=./course.html?shortName=${
             course.shortName
           } class="font-DanaMedium dark:text-white text-lg line-clamp-2 my-2.5">
             ${course.title}
           </a>
-          <p
-            class="line-clamp-2 font-light text-sm text-slate-500 dark:text-slate-400">
-            ${course.description}
-          </p>
+          ${
+            hasDescription
+              ? `
+            <p
+              class="line-clamp-2 font-light text-sm text-slate-500 dark:text-slate-400">
+              ${course.description}
+            </p>
+          `
+              : ""
+          }
         </div>
         <!-- Course Footer -->
         <div class="px-5 pb-2">
