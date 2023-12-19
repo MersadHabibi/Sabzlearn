@@ -79,9 +79,11 @@ let courses = await res.json();
 const getAndShowLastCourses = async () => {
   const lastCoursesContainer = $.querySelector(".last-courses__container");
 
-  courses = courses.sort(() => Math.random() - 0.5);
+  let rndCourses = [...courses];
 
-  courses.slice(0, 8).forEach((course) => {
+  rndCourses = rndCourses.sort(() => Math.random() - 0.5);
+
+  rndCourses.slice(0, 8).forEach((course) => {
     lastCoursesContainer.insertAdjacentHTML(
       "beforeend",
       createCourseCard(course, "last-courses")
@@ -105,3 +107,25 @@ const getAndShowNewCourses = async () => {
   });
 };
 getAndShowNewCourses();
+
+// Get And Show New Courses
+
+const getAndShowPresellCourses = async () => {
+  const presellCoursesContainer = $.querySelector(
+    ".presell-courses__container"
+  );
+
+  const presellCourses = courses.filter((course) => {
+    return course.status == "presell";
+  });
+
+  presellCourses.forEach((course) => {
+    presellCoursesContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+          ${createCourseCard(course, "new-courses")}
+      `
+    );
+  });
+};
+getAndShowPresellCourses();
