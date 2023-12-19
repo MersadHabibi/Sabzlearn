@@ -4644,6 +4644,10 @@ html.dark .custom-file-upload {
     width: auto;
   }
 
+  .lg\:w-\[155px\] {
+    width: 155px;
+  }
+
   .lg\:max-w-none {
     max-width: none;
   }

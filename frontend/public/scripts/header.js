@@ -86,9 +86,11 @@ mobileMenuOpenBtn.addEventListener("click", () => {
 const setLinkForLoginAndRegisterBtn = () => {
   const registerBtn = $.querySelector(".register-btn");
   const loginBtn = $.querySelector(".login-btn");
+  const mobileLoginBtn = $.querySelector(".mobile-login-btn");
 
   registerBtn.href = `./register.html?after=${location.pathname}`;
   loginBtn.href = `./login.html?after=${location.pathname}`;
+  mobileLoginBtn.href = `./login.html?after=${location.pathname}`;
 };
 setLinkForLoginAndRegisterBtn();
 
