@@ -1,8 +1,9 @@
 import { _changeClasses, api } from "./funcs/utils.js";
+import { createCourseCard } from "./funcs/share.js";
 
 const $ = document;
 
-let courses = null;
+let allCourses = null;
 let category = "all";
 
 const overlay = $.querySelector(".overlay");
@@ -58,6 +59,11 @@ const closeMobileSortMenu = () => {
 mobileSortOpenBtn.addEventListener("click", openMobileSortMenu);
 mobileSortCloseBtn.addEventListener("click", closeMobileSortMenu);
 
+// category title - course container
+
+const categoryTitleElem = $.querySelector(".category-title");
+const courseContainer = $.querySelector(".course__container");
+
 // Change Sort Values
 
 sortValues.forEach((sort) => {
@@ -104,13 +110,12 @@ const getParams = () => {
 
 const getCourses = async () => {
   const res = await fetch(`${api}admin/courses`);
-  courses = await res.json();
+  allCourses = await res.json();
 };
 
 // Chnage Category Title
 
 const changeCategoryTitle = () => {
-  const categoryTitleElem = $.querySelector(".category-title");
   categoryTitleElem.innerHTML =
     category == "all"
       ? "همه دوره ها"
@@ -125,8 +130,26 @@ const changeCategoryTitle = () => {
       : "ٍارور";
 };
 
-window.addEventListener("load", () => {
+// Get And Show Courses Default - with params
+
+const getAndShowCourses = () => {
+  const targrtCourses =
+    category == "all"
+      ? [...allCourses]
+      : allCourses.filter((course) => {
+          return course.category == category;
+        });
+
+  targrtCourses.forEach((course) => {
+    courseContainer.insertAdjacentHTML("beforeend", createCourseCard(course));
+  });
+
+  console.log(targrtCourses);
+};
+
+window.addEventListener("load", async () => {
   getParams();
-  getCourses();
   changeCategoryTitle();
+  await getCourses();
+  getAndShowCourses();
 });
