@@ -86,7 +86,7 @@ const getAndShowLastCourses = async () => {
   rndCourses.slice(0, 8).forEach((course) => {
     lastCoursesContainer.insertAdjacentHTML(
       "beforeend",
-      createCourseCard(course, "last-courses")
+      createCourseCard(course)
     );
   });
 };
@@ -101,7 +101,15 @@ const getAndShowNewCourses = async () => {
     newCoursesContainer.insertAdjacentHTML(
       "beforeend",
       `
-          ${createCourseCard(course, "new-courses")}
+      <div class="swiper-slide" >
+        ${createCourseCard(course, {
+          hasDescription: true,
+          hasCategory: true,
+          hasBorderOnLightMode: true,
+          hasShadowOnLightMode: false,
+          fixHeight: true,
+        })}
+      </div>
       `
     );
   });
@@ -123,7 +131,15 @@ const getAndShowPresellCourses = async () => {
     presellCoursesContainer.insertAdjacentHTML(
       "beforeend",
       `
-          ${createCourseCard(course, "new-courses")}
+      <div class="swiper-slide" >
+        ${createCourseCard(course, {
+          hasDescription: true,
+          hasCategory: true,
+          hasBorderOnLightMode: true,
+          hasShadowOnLightMode: false,
+          fixHeight: true,
+        })}
+      </div>
       `
     );
   });
@@ -147,7 +163,13 @@ const getAndShowPopularCourses = async () => {
     popularCoursesContainer.insertAdjacentHTML(
       "beforeend",
       `
-          ${createCourseCard(course, "last-courses", false, false)}
+          ${createCourseCard(course, {
+            hasDescription: false,
+            hasCategory: false,
+            hasBorderOnLightMode: false,
+            hasShadowOnLightMode: true,
+            fixHeight: false,
+          })}
       `
     );
   });

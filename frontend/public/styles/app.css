@@ -1163,6 +1163,11 @@ html.dark .custom-file-upload {
   margin-right: auto;
 }
 
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -1511,14 +1516,6 @@ html.dark .custom-file-upload {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[\] {
-  height: ;
-}
-
-.h-\[400px\] {
-  height: 400px;
 }
 
 .max-h-\[800px\] {
@@ -4329,10 +4326,6 @@ html.dark .custom-file-upload {
 
   .md\:h-\[75px\] {
     height: 75px;
-  }
-
-  .md\:h-\[417px\] {
-    height: 417px;
   }
 
   .md\:min-h-screen {
