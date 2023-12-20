@@ -4,6 +4,7 @@ import { createCourseCard } from "./funcs/share.js";
 const $ = document;
 
 let allCourses = null;
+let filterCourses = null;
 let category = "all";
 
 const overlay = $.querySelector(".overlay");
@@ -66,18 +67,6 @@ const courseContainer = $.querySelector(".course__container");
 
 // Change Sort Values
 
-sortValues.forEach((sort) => {
-  sort.addEventListener("click", () => {
-    sortValues.forEach((e) => {
-      _changeClasses("remove", e, ["active"]);
-    });
-
-    _changeClasses("add", sort, ["active"]);
-  });
-});
-
-// Change Sort Values
-
 mobileSortValues.forEach((sort) => {
   sort.addEventListener("click", () => {
     mobileSortValues.forEach((e) => {
@@ -133,18 +122,63 @@ const changeCategoryTitle = () => {
 // Get And Show Courses Default - with params
 
 const getAndShowCourses = () => {
-  const targrtCourses =
+  filterCourses =
     category == "all"
       ? [...allCourses]
       : allCourses.filter((course) => {
           return course.category == category;
         });
 
-  targrtCourses.forEach((course) => {
+  loadCourses(filterCourses);
+
+  console.log(filterCourses);
+};
+
+// Sort Courses
+
+sortValues.forEach((sort) => {
+  sort.addEventListener("click", (element) => {
+    sortValues.forEach((e) => {
+      _changeClasses("remove", e, ["active"]);
+    });
+    _changeClasses("add", sort, ["active"]);
+
+    const sortBy = sort.dataset.sort;
+
+    filterCourses =
+      sortBy == "cheapest"
+        ? filterCourses
+            .sort((a, b) => {
+              return a.price - b.price;
+            })
+            .filter((course) => {
+              return !course.isFree;
+            })
+        : sortBy == "expensive"
+        ? filterCourses
+            .sort((a, b) => {
+              return b.price - a.price;
+            })
+            .filter((course) => {
+              return !course.isFree;
+            })
+        : sortBy == "popular"
+        ? filterCourses.sort((a, b) => {
+            return b.studentsCount - a.studentsCount;
+          })
+        : filterCourses;
+
+    loadCourses(filterCourses);
+  });
+});
+
+// load Courses
+
+const loadCourses = (courses) => {
+  courseContainer.innerHTML = "";
+  courses.forEach((course) => {
     courseContainer.insertAdjacentHTML("beforeend", createCourseCard(course));
   });
-
-  console.log(targrtCourses);
 };
 
 window.addEventListener("load", async () => {
