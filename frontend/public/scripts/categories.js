@@ -5,6 +5,7 @@ const $ = document;
 
 let allCourses = null;
 let filterCourses = null;
+let coursesBackup = null;
 let category = "all";
 
 const overlay = $.querySelector(".overlay");
@@ -129,6 +130,8 @@ const getAndShowCourses = () => {
           return course.category == category;
         });
 
+  coursesBackup = [...filterCourses];
+
   loadCourses(filterCourses);
 
   console.log(filterCourses);
@@ -163,10 +166,10 @@ sortValues.forEach((sort) => {
               return !course.isFree;
             })
         : sortBy == "popular"
-        ? filterCourses.sort((a, b) => {
+        ? [...coursesBackup].sort((a, b) => {
             return b.studentsCount - a.studentsCount;
           })
-        : filterCourses;
+        : [...coursesBackup];
 
     loadCourses(filterCourses);
   });
