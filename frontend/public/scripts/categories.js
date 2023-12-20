@@ -1,25 +1,33 @@
-import { _changeClasses } from "./funcs/utils.js";
+import { _changeClasses, api } from "./funcs/utils.js";
 
 const $ = document;
+
+let courses = null;
+let category = "all";
 
 const overlay = $.querySelector(".overlay");
 
 // Open Mobile Sort And Filter Menu Elements
+
 const mobileFiltersOpenBtn = $.querySelector(".mobile-filters__open-btn");
 const mobileSortOpenBtn = $.querySelector(".mobile-sort__open-btn");
 
 // close Mobile Sort And Filter Menu Elements
+
 const mobileFiltersCloseBtn = $.querySelector(".mobile-filters-menu__close");
 const mobileSortCloseBtn = $.querySelector(".mobile-sort-menu__close");
 
 // Mobile Sort And Filters Menu Elements
+
 const mobileFiltersMenu = $.querySelector(".mobile-filters-menu");
 const mobileSortMenu = $.querySelector(".mobile-sort-menu");
 
 // Sort Values Element
+
 const sortValues = $.querySelectorAll(".sort__value");
 
 // Mobile Sort Values Element
+
 const mobileSortValues = $.querySelectorAll(".mobile-sort__value");
 
 // Open and Close Mobile Filters Menu
@@ -79,4 +87,46 @@ mobileSortValues.forEach((sort) => {
 
 overlay.addEventListener("click", () => {
   closeMobileSortMenu();
+});
+
+// Get Params - query string
+
+const getParams = () => {
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+  if (params.category) {
+    category = params.category;
+  }
+};
+
+// Get Courses
+
+const getCourses = async () => {
+  const res = await fetch(`${api}admin/courses`);
+  courses = await res.json();
+};
+
+// Chnage Category Title
+
+const changeCategoryTitle = () => {
+  const categoryTitleElem = $.querySelector(".category-title");
+  categoryTitleElem.innerHTML =
+    category == "all"
+      ? "همه دوره ها"
+      : category == "frontend"
+      ? "فرانت اند"
+      : category == "security"
+      ? "امنیت"
+      : category == "python"
+      ? "پایتون"
+      : category == "softskills"
+      ? "مهارت های نرم"
+      : "ٍارور";
+};
+
+window.addEventListener("load", () => {
+  getParams();
+  getCourses();
+  changeCategoryTitle();
 });

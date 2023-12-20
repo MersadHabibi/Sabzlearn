@@ -567,17 +567,27 @@
           <div class="h-12 md:h-14 w-auto rounded-full cursor-pointer">
             <!-- Login & Register -->
             <div
-              class="login-register__container hidden relative flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
+              class="login-register__container w-12 h-12 lg:w-[155px] lg:h-full hidden">
+              <div
+                class="relative hidden lg:flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
+                <a
+                  href="#"
+                  class="login-btn absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 dark:bg-[#30457C] dark:hover:bg-secondary/60 block transition-colors"
+                  >ورود</a
+                >
+                <a
+                  href="#"
+                  class="register-btn absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block transition-colors"
+                  >عضویت</a
+                >
+              </div>
               <a
-                href="#"
-                class="login-btn absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 dark:bg-[#30457C] dark:hover:bg-secondary/60 block transition-colors"
-                >ورود</a
-              >
-              <a
-                href="#"
-                class="register-btn absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block transition-colors"
-                >عضویت</a
-              >
+                href=""
+                class="mobile-login-btn lg:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
+                <svg class="w-6 h-6">
+                  <use xlink:href="#user"></use>
+                </svg>
+              </a>
             </div>
             <!-- Profile Photo -->
             <div class="profile__container hidden profile relative h-full w-14">
@@ -780,9 +790,7 @@
         <div class="flex items-center justify-center gap-x-5 mt-15">
           <span class="bg-rose-500 w-7 h-2.5 sm:w-10 rounded-sm"></span>
           <h2
-            class="relative font-MorabbaBold text-4xl sm:text-6xl text-center text-black dark:text-white">
-            فرانت اند
-          </h2>
+            class="category-title relative font-MorabbaBold text-4xl sm:text-6xl text-center text-black dark:text-white"></h2>
         </div>
         <!-- Category Content -->
         <div
