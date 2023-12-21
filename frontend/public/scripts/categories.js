@@ -4,9 +4,11 @@ import { createCourseCard } from "./funcs/share.js";
 const $ = document;
 
 let allCourses = null;
-let filterCourses = null;
-let coursesBackup = null;
 let category = "all";
+let onlyFree = false;
+let onlyPresell = false;
+let sortBy = "all";
+let search = null;
 
 const overlay = $.querySelector(".overlay");
 
@@ -95,6 +97,7 @@ const getParams = () => {
   if (params.category) {
     category = params.category;
   }
+  loadCourses();
 };
 
 // Get Courses
@@ -121,23 +124,6 @@ const changeCategoryTitle = () => {
       : "ٍارور";
 };
 
-// Get And Show Courses Default - with params
-
-const getAndShowCourses = () => {
-  filterCourses =
-    category == "all"
-      ? [...allCourses]
-      : allCourses.filter((course) => {
-          return course.category == category;
-        });
-
-  coursesBackup = [...filterCourses];
-
-  loadCourses(filterCourses);
-
-  console.log(filterCourses);
-};
-
 // Sort Courses
 
 sortValues.forEach((sort) => {
@@ -147,36 +133,13 @@ sortValues.forEach((sort) => {
     });
     _changeClasses("add", sort, ["active"]);
 
-    const sortBy = sort.dataset.sort;
+    sortBy = sort.dataset.sort;
 
-    filterCourses =
-      sortBy == "cheapest"
-        ? filterCourses
-            .sort((a, b) => {
-              return a.price - b.price;
-            })
-            .filter((course) => {
-              return !course.isFree;
-            })
-        : sortBy == "expensive"
-        ? filterCourses
-            .sort((a, b) => {
-              return b.price - a.price;
-            })
-            .filter((course) => {
-              return !course.isFree;
-            })
-        : sortBy == "popular"
-        ? [...coursesBackup].sort((a, b) => {
-            return b.studentsCount - a.studentsCount;
-          })
-        : [...coursesBackup];
-
-    loadCourses(filterCourses);
+    loadCourses();
   });
 });
 
-// Sort Courses
+// Sort Courses Mobile
 
 mobileSortValues.forEach((sort) => {
   sort.addEventListener("click", (element) => {
@@ -187,33 +150,9 @@ mobileSortValues.forEach((sort) => {
 
     mobileSortOpenBtnText.innerHTML = sort.children[0].innerHTML;
 
-    const sortBy = sort.dataset.sort;
+    sortBy = sort.dataset.sort;
 
-    filterCourses =
-      sortBy == "cheapest"
-        ? filterCourses
-            .sort((a, b) => {
-              return a.price - b.price;
-            })
-            .filter((course) => {
-              return !course.isFree;
-            })
-        : sortBy == "expensive"
-        ? filterCourses
-            .sort((a, b) => {
-              return b.price - a.price;
-            })
-            .filter((course) => {
-              return !course.isFree;
-            })
-        : sortBy == "popular"
-        ? [...coursesBackup].sort((a, b) => {
-            return b.studentsCount - a.studentsCount;
-          })
-        : [...coursesBackup];
-
-    loadCourses(filterCourses);
-    console.log("object");
+    loadCourses();
   });
 });
 
@@ -221,20 +160,10 @@ mobileSortValues.forEach((sort) => {
 
 const onlyFreeCourses = () => {
   const onlyFreeCoursesInput = $.querySelector("#only-free-input");
-  let isFreeCourse = false;
 
   onlyFreeCoursesInput.addEventListener("change", () => {
-    filterCourses = !isFreeCourse
-      ? [...coursesBackup].filter((course) => {
-          return course.isFree;
-        })
-      : isFreeCourse
-      ? [...coursesBackup]
-      : "";
-
-    isFreeCourse = !isFreeCourse;
-
-    loadCourses(filterCourses);
+    onlyFree = !onlyFree;
+    loadCourses();
   });
 };
 
@@ -243,37 +172,116 @@ const onlyFreeCourses = () => {
 const onlyPresellCourse = () => {
   const onlyPresellInput = $.querySelector("#only-presell-input");
 
-  let isOnlyPresell = false;
+  onlyPresellInput.addEventListener("change", () => {
+    onlyPresell = !onlyPresell;
+
+    loadCourses();
+  });
+};
+
+// Mobile Filters
+
+const mobileFilters = () => {
+  const onlyFreeInput = $.querySelector("#mobile-only-free-input");
+  const onlyPresellInput = $.querySelector("#mobile-only-presell-input");
+  const mobileFiltersMenuSubmitBtn = $.querySelector(
+    ".mobile-filters-menu-submit"
+  );
+  const mobileFiltersMenuClearBtn = $.querySelector(
+    ".mobile-filters-menu-clear"
+  );
+
+  let free = false;
+  let presell = false;
+
+  onlyFreeInput.addEventListener("change", () => {
+    free = !free;
+  });
 
   onlyPresellInput.addEventListener("change", () => {
-    filterCourses = !isOnlyPresell
-      ? [...coursesBackup].filter((course) => {
-          return course.status == "presell";
-        })
-      : isOnlyPresell
-      ? [...coursesBackup]
-      : "";
+    presell = !presell;
+  });
 
-    isOnlyPresell = !isOnlyPresell;
+  mobileFiltersMenuSubmitBtn.addEventListener("click", () => {
+    onlyFree = free;
+    onlyPresell = presell;
+    loadCourses();
+    closeMobileFiltersMenu();
+  });
 
-    loadCourses(filterCourses);
+  mobileFiltersMenuClearBtn.addEventListener("click", () => {
+    onlyFreeInput.checked = false;
+    onlyPresellInput.checked = false;
+    free = false;
+    presell = false;
   });
 };
 
 // load Courses
 
-const loadCourses = (courses) => {
+const loadCourses = () => {
+  // Filter By Category
+
+  let coursesByCategory =
+    category == "all"
+      ? [...allCourses]
+      : [...allCourses].filter((course) => {
+          return course.category == category;
+        });
+
+  // Filter By Filters Value
+
+  let coursesByFilters =
+    onlyFree && onlyPresell
+      ? coursesByCategory.filter((course) => {
+          return course.isFree && course.status == "presell";
+        })
+      : onlyFree
+      ? coursesByCategory.filter((course) => {
+          return course.isFree;
+        })
+      : onlyPresell
+      ? coursesByCategory.filter((course) => {
+          return course.status == "presell";
+        })
+      : [...coursesByCategory];
+
+  // Filter By Sort
+
+  let courseBySort =
+    sortBy == "cheapest"
+      ? [...coursesByFilters]
+          .sort((a, b) => {
+            return a.price - b.price;
+          })
+          .filter((course) => {
+            return !course.isFree;
+          })
+      : sortBy == "expensive"
+      ? [...coursesByFilters]
+          .sort((a, b) => {
+            return b.price - a.price;
+          })
+          .filter((course) => {
+            return !course.isFree;
+          })
+      : sortBy == "popular"
+      ? [...coursesByFilters].sort((a, b) => {
+          return b.studentsCount - a.studentsCount;
+        })
+      : [...coursesByFilters];
+
   courseContainer.innerHTML = "";
-  courses.forEach((course) => {
+  courseBySort.forEach((course) => {
     courseContainer.insertAdjacentHTML("beforeend", createCourseCard(course));
   });
 };
 
 window.addEventListener("load", async () => {
+  await getCourses();
   getParams();
   changeCategoryTitle();
-  await getCourses();
-  getAndShowCourses();
   onlyFreeCourses();
   onlyPresellCourse();
+  mobileFilters();
 });

@@ -818,7 +818,7 @@
                   <span class="text-sm">فقط دوره های رایگان</span>
                   <label class="toggle">
                     <input
-                    id="only-free-input"
+                      id="only-free-input"
                       class="toggle__input"
                       type="checkbox"
                       name="only_free"
@@ -831,22 +831,10 @@
                   <span class="text-sm">در حال پیش فروش</span>
                   <label class="toggle">
                     <input
-                    id="only-presell-input"
+                      id="only-presell-input"
                       class="toggle__input"
                       type="checkbox"
                       name=""
-                      value="yes" />
-                    <span class="toggle__marker"></span>
-                  </label>
-                </div>
-                <div
-                  class="flex justify-between items-center h-17 w-full rounded-2xl bg-white dark:bg-gray-800 overflow-hidden text-zinc-700 dark:border dark:border-gray-700 dark:text-white shadow-light px-7">
-                  <span class="text-sm">دوره های خریداری شده</span>
-                  <label class="toggle">
-                    <input
-                      class="toggle__input"
-                      type="checkbox"
-                      name="only_free"
                       value="yes" />
                     <span class="toggle__marker"></span>
                   </label>
@@ -944,7 +932,7 @@
           <span class="mt-1 dark:text-white"> فیلتر </span>
         </div>
         <div
-          class="flex items-center gap-x-2 text-sm rounded-xl text-pink-500 dark:text-red-500 bg-pink-500/10 dark:bg-red-500/10 px-3 py-1.5">
+          class="mobile-filters-menu-clear flex items-center gap-x-2 text-sm rounded-xl text-pink-500 dark:text-red-500 bg-pink-500/10 dark:bg-red-500/10 px-3 py-1.5">
           <svg class="w-5 h-5">
             <use href="#trash"></use>
           </svg>
@@ -959,6 +947,7 @@
           <span class="text-sm">فقط دوره های رایگان</span>
           <label class="toggle">
             <input
+              id="mobile-only-free-input"
               class="toggle__input"
               type="checkbox"
               name="only_free"
@@ -971,6 +960,7 @@
           <span class="text-sm">در حال پیش فروش</span>
           <label class="toggle">
             <input
+              id="mobile-only-presell-input"
               class="toggle__input"
               type="checkbox"
               name="only_free"
@@ -994,7 +984,7 @@
       <!-- Footer ( Button ) -->
       <div class="flex items-center justify-center w-full p-6">
         <button
-          class="flex items-center justify-center h-12 w-full bg-primary rounded-xl font-DanaDemiBold text-lg text-white">
+          class="mobile-filters-menu-submit flex items-center justify-center h-12 w-full bg-primary rounded-xl font-DanaDemiBold text-lg text-white">
           اعمال فیلتر
         </button>
       </div>
