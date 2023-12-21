@@ -5,6 +5,11 @@ const $ = document;
 let openElem = {};
 
 const searchBtn = $.querySelector(".search-btn");
+const searchBox = $.querySelector(".search-box");
+const searchBoxForm = $.querySelector(".search-box-form");
+const searchBoxInput = $.querySelector(".search-box-input");
+const mobileSearchBoxForm = $.querySelector(".mobile-search-box-form");
+const mobileSearchBoxInput = $.querySelector(".mobile-search-box-input");
 const overlay = $.querySelector(".overlay");
 const profile = $.querySelector(".profile");
 const mobileSubmenuBtns = $.querySelectorAll(".mobile__submenu-btn");
@@ -130,3 +135,23 @@ const setContentProfileSubmenu = () => {
 
   profileNameElem.innerHTML = user.username;
 };
+
+// Search
+
+searchBox.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+searchBoxForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  location.href = searchBoxInput.value
+    ? `./categories.html?s=${searchBoxInput.value}`
+    : location.href;
+});
+mobileSearchBoxForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  location.href = mobileSearchBoxInput.value
+    ? `./categories.html?s=${mobileSearchBoxInput.value}`
+    : location.href;
+});

@@ -94,9 +94,9 @@ const getParams = () => {
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
-  if (params.category) {
-    category = params.category;
-  }
+  category = params.category ? params.category : "all";
+  search = params.s ? params.s : null;
+
   loadCourses();
 };
 
@@ -110,18 +110,19 @@ const getCourses = async () => {
 // Chnage Category Title
 
 const changeCategoryTitle = () => {
-  categoryTitleElem.innerHTML =
-    category == "all"
-      ? "همه دوره ها"
-      : category == "frontend"
-      ? "فرانت اند"
-      : category == "security"
-      ? "امنیت"
-      : category == "python"
-      ? "پایتون"
-      : category == "softskills"
-      ? "مهارت های نرم"
-      : "ٍارور";
+  categoryTitleElem.innerHTML = search
+    ? `جستجو : ${search}`
+    : category == "all"
+    ? "همه دوره ها"
+    : category == "frontend"
+    ? "فرانت اند"
+    : category == "security"
+    ? "امنیت"
+    : category == "python"
+    ? "پایتون"
+    : category == "softskills"
+    ? "مهارت های نرم"
+    : "ٍارور";
 };
 
 // Sort Courses

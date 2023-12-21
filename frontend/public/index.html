@@ -536,16 +536,19 @@
             <!-- Search Box -->
             <div
               class="search-box absolute top-[70px] left-0 bg-gray-100 dark:bg-gray-700 h-14 w-60 rounded-full overflow-hidden transition-all z-20">
-              <div class="relative w-full h-full">
+              <form class="search-box-form relative w-full h-full">
                 <input
                   type="text"
-                  class="w-full h-full pr-4 pl-12 outline-none bg-transparent"
+                  class="search-box-input w-full h-full pr-4 pl-12 outline-none bg-transparent rounded-full"
                   placeholder="جستجو در بین دوره ها" />
-                <svg
-                  class="absolute left-4 top-0 bottom-0 m-auto w-6 h-6 text-slate-500">
-                  <use href="#magnifying-glass"></use>
-                </svg>
-              </div>
+                <button>
+                  <svg
+                    type="submit"
+                    class="absolute left-4 top-0 bottom-0 m-auto w-6 h-6 text-slate-500">
+                    <use href="#magnifying-glass"></use>
+                  </svg>
+                </button>
+              </form>
             </div>
           </div>
           <!-- Change Theme -->
@@ -665,16 +668,18 @@
       </div>
       <!-- Mid -->
       <div class="border-y border-gray-200 dark:border-slate pt-7 pb-5">
-        <div
-          class="relative w-full h-12 rounded-xl bg-gray-100 dark:bg-gray-800 mb-5">
+        <form
+          class="mobile-search-box-form relative w-full h-12 rounded-xl bg-gray-100 dark:bg-gray-800 mb-5">
           <input
-            class="w-full h-full bg-transparent pr-5 pl-12 outline-none"
+            class="mobile-search-box-input w-full h-full bg-transparent pr-5 pl-12 outline-none"
             type="text"
             placeholder="جستجو" />
-          <svg class="absolute left-4 top-0 bottom-0 m-auto w-6 h-6">
-            <use href="#magnifying-glass"></use>
-          </svg>
-        </div>
+          <button type="submit">
+            <svg class="absolute left-4 top-0 bottom-0 m-auto w-6 h-6">
+              <use href="#magnifying-glass"></use>
+            </svg>
+          </button>
+        </form>
         <ul class="space-y-4 dark:text-slate-400">
           <li class="menu__item w-full">
             <div class="flex justify-between items-center w-full h-7">
@@ -1593,7 +1598,8 @@
             </a>
           </div>
           <!-- Section Content -->
-          <div class="popular-courses__container grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div
+            class="popular-courses__container grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             <!-- Load From JS -->
           </div>
         </div>
