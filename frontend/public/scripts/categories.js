@@ -217,6 +217,21 @@ const mobileFilters = () => {
   });
 };
 
+// Search Handler
+
+const searchHandler = () => {
+  const searchCourseForm = $.querySelector("#search-course-form");
+  const searchCourseInput = $.querySelector("#search-course");
+
+  searchCourseForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    search = searchCourseInput.value;
+    categoryTitleElem.innerHTML = `جستجو:  ${search}`;
+    loadCourses();
+  });
+};
+
 // load Courses
 
 const loadCourses = () => {
@@ -248,7 +263,7 @@ const loadCourses = () => {
 
   // Filter By Sort
 
-  let courseBySort =
+  let coursesBySort =
     sortBy == "cheapest"
       ? [...coursesByFilters]
           .sort((a, b) => {
@@ -271,8 +286,18 @@ const loadCourses = () => {
         })
       : [...coursesByFilters];
 
+  // Filter By Search
+
+  let coursesBySearch = search
+    ? coursesBySort.filter((course) => {
+        return (
+          course.title.includes(search) || course.shortName.includes(search)
+        );
+      })
+    : [...coursesBySort];
+
   courseContainer.innerHTML = "";
-  courseBySort.forEach((course) => {
+  coursesBySearch.forEach((course) => {
     courseContainer.insertAdjacentHTML("beforeend", createCourseCard(course));
   });
 };
@@ -284,4 +309,5 @@ window.addEventListener("load", async () => {
   onlyFreeCourses();
   onlyPresellCourse();
   mobileFilters();
+  searchHandler();
 });
