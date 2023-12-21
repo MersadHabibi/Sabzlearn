@@ -217,6 +217,49 @@ mobileSortValues.forEach((sort) => {
   });
 });
 
+// Only Free Courses
+
+const onlyFreeCourses = () => {
+  const onlyFreeCoursesInput = $.querySelector("#only-free-input");
+  let isFreeCourse = false;
+
+  onlyFreeCoursesInput.addEventListener("change", () => {
+    filterCourses = !isFreeCourse
+      ? [...coursesBackup].filter((course) => {
+          return course.isFree;
+        })
+      : isFreeCourse
+      ? [...coursesBackup]
+      : "";
+
+    isFreeCourse = !isFreeCourse;
+
+    loadCourses(filterCourses);
+  });
+};
+
+// Only Presell Courses
+
+const onlyPresellCourse = () => {
+  const onlyPresellInput = $.querySelector("#only-presell-input");
+
+  let isOnlyPresell = false;
+
+  onlyPresellInput.addEventListener("change", () => {
+    filterCourses = !isOnlyPresell
+      ? [...coursesBackup].filter((course) => {
+          return course.status == "presell";
+        })
+      : isOnlyPresell
+      ? [...coursesBackup]
+      : "";
+
+    isOnlyPresell = !isOnlyPresell;
+
+    loadCourses(filterCourses);
+  });
+};
+
 // load Courses
 
 const loadCourses = (courses) => {
@@ -231,4 +274,6 @@ window.addEventListener("load", async () => {
   changeCategoryTitle();
   await getCourses();
   getAndShowCourses();
+  onlyFreeCourses();
+  onlyPresellCourse();
 });
