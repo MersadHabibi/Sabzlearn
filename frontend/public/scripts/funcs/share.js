@@ -43,7 +43,7 @@ const createCourseCard = (
     props.fixHeight ? "h-[417px]" : ""
   } overflow-hidden rounded-2xl">
         <!-- Course Head -->
-        <a href=./course.html?shortName=${
+        <a href=./course.html?course=${
           course.shortName
         } class="relative block h-42 w-full overflow-hidden">
         ${
@@ -83,7 +83,7 @@ const createCourseCard = (
         `
             : ""
         }
-          <a href=./course.html?shortName=${
+          <a href=./course.html?course=${
             course.shortName
           } class="font-DanaMedium dark:text-white text-lg line-clamp-2 ${
     props.hasDescription ? "my-2.5" : "my-1"

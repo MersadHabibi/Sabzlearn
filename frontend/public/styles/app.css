@@ -4681,8 +4681,8 @@ html.dark .custom-file-upload {
     flex-direction: row;
   }
 
-  .lg\:items-stretch {
-    align-items: stretch;
+  .lg\:items-center {
+    align-items: center;
   }
 
   .lg\:justify-start {
@@ -4822,6 +4822,10 @@ html.dark .custom-file-upload {
 
   .xl\:grid-rows-1 {
     grid-template-rows: repeat(1, minmax(0, 1fr));
+  }
+
+  .xl\:items-stretch {
+    align-items: stretch;
   }
 
   .xl\:justify-between {
