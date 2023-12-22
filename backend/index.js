@@ -18,7 +18,12 @@ app.use("/api", ApiRouter);
 //   })
 // );
 
-app.use("/public/images/", express.static("public/images"));
+app.use(
+  "/public/images/",
+  express.static("public/images", {
+    extensions: [".png", ".jpg", ".jpeg"],
+  })
+);
 
 app.use("/api/admin", AdminRoutes);
 

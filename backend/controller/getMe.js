@@ -16,5 +16,8 @@ function getMe(req, res) {
           res.json(user);
         }
       });
+  else {
+    res.status(403).json({ message: "there is an error to get user." });
+  }
 }
 export default getMe;

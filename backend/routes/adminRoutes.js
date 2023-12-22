@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { createCourseUploader } from "../utils/createCourseUploadImage.js";
 import createCourse from "../controller/Admin/createCourse.js";
-import getCourses from "../controller/Admin/getCourses.js";
+import createComment from "../controller/Admin/createComment.js";
 const router = Router();
 
 // router.use('/api/admin',adminAuthMiddleWare)
@@ -10,7 +10,8 @@ const router = Router();
 // router.get("/courses", getCourses);
 router
   .route("/courses")
-  .post(createCourseUploader.single("image"), createCourse)
-  .get(getCourses);
+  .post(createCourseUploader.single("image"), createCourse);
+
+router.route("/comments").post(createComment);
 
 export default router;
