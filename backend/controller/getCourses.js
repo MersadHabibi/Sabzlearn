@@ -10,7 +10,7 @@ function getCourses(req, res) {
   });
 }
 
-function getCoursesById(req, res) {
+function getCourseById(req, res) {
   prisma.course
     .findUnique({
       where: {
@@ -29,5 +29,5 @@ function getCoursesById(req, res) {
 
 export default getCourses;
 export {
-  getCoursesById
+  getCourseById
 }

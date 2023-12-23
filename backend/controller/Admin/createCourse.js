@@ -14,7 +14,7 @@ function createCourse(req, res) {
     time: Joi.string().required().min(1),
     teacher: Joi.string().required().min(1),
     shortName: Joi.string().required().min(1),
-    isFree: Joi.boolean().allow([true, false]).required(),
+    isFree: Joi.boolean().only(true, false).required(),
   });
 
   if (!req.file) return res.json({ message: "you didnot provide image." });
@@ -37,7 +37,6 @@ function createCourse(req, res) {
           data: {
             ...values,
             image: reqFilePath,
-            
           },
         })
         .then((course) => {
