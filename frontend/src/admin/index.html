@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/icon.png" type="image/png" />
+    <title>admin</title>
+  </head>
+  <body class="relative bg-gray-100 dark:bg-gray">
+    <script>
+      if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <svg class="hidden">
+      <symbol id="logo-type" xmlns="http://www.w3.org/2000/svg" class="fill-[#3a3a3a] dark:fill-white" viewBox="0 0 739 344.219">
+        <g transform="translate(-168 -159)">
+          <path
+            d="M4277,469l-35,10-.038,46.04s-.644,12.671-15.155,12.671c-15.7,0-14.92-12.671-14.92-12.671V479.118h-35.858V525.04s1.019,12.876-14.45,12.876-14.7-12.876-14.7-12.876V479.118H4111.02V525.04s.318,13.109-24.273,13.109c-25.855,0-25.813-13.109-25.813-13.109V469.17h-37.015v55.87s-.108,6.226-3.954,9.523-11.431,3.664-11.431,3.664h-84.325l-20.014,20.015V469.17h-36.2V587.985l-19.33,19.33,25.895,25.895,29.638-29.638V572.779h104.34s10.642-.012,19.315-3.575,15.378-10.68,15.378-10.68a34.648,34.648,0,0,0,16.578,11.905c10.88,3.564,14.468,2.334,26.941,2.571,12.614-.157,12.813.615,23.288-2.571a56.489,56.489,0,0,0,18.612-10.392,42.57,42.57,0,0,0,14.609,9.982c8.453,3.186,19.2,2.761,19.2,2.761s9.581.2,17.634-2.761a49.155,49.155,0,0,0,14.577-9.092,42.813,42.813,0,0,0,14.28,9.092c8.253,2.963,9.02,2.828,18.731,2.761s18.2,1.883,34.005-13.452a49.579,49.579,0,0,0,15.2-34.287Z"
+            transform="translate(-3370 -250)"></path>
+          <rect width="36" height="36" transform="translate(498 159)"></rect>
+          <rect width="36" height="36" transform="translate(618 347)"></rect>
+          <path
+            d="M3841,409.025h-35.98l-.031,114.023s1.207,7.253-7,11.716c-5.884,3.316-16.336,3.525-16.336,3.525l-34.175-.07-20.047,20.031.016-89.078H3691.26L3691.229,588l-19.344,19.313,25.922,25.906,29.625-29.625.016-30.812h65.361s17.6-.51,33.153-15.884c15.486-16,14.91-33.867,14.91-33.867Z"
+            transform="translate(-3367.004 -250.009)"></path>
+          <path
+            d="M3657.909,469.262l-36.659-.106-.031,115.991s-.755,6.012-4.126,9.292-8.788,3.771-8.788,3.771H3579.61s-6.907-.491-10.559-3.771-3.821-9.3-3.821-9.3L3565.5,529H3529l.022,52.672a54.781,54.781,0,0,0,15.336,36.476,49.256,49.256,0,0,0,35.255,14.816h27.845s18.5,1.476,34.513-14.57a53.928,53.928,0,0,0,15.943-35.173Z"
+            transform="translate(-3357.698 -250)"></path>
+          <rect width="36" height="36" transform="translate(208 219)"></rect>
+          <g class="fill-[#5f5f5f] dark:fill-white" transform="translate(20.991 638.909)">
+            <path
+              d="M483.775-189.183c-.663.751-.707,2.827-.618,24.692l.133,23.941,1.1,1.06c1.988,1.988,8.084,3.4,15.46,3.666,9.674.353,14.489-1.1,18.6-5.477,3.048-3.269,4.02-6.184,4.285-13.031.4-11.4-2.871-17.978-10.16-20.54a25.178,25.178,0,0,0-11.971-.4c-3.49.8-8,3.313-9.365,5.257-.618.839-.663,0-.663-8.79,0-8.879-.088-9.806-.8-10.469C488.59-190.331,484.791-190.287,483.775-189.183Zm26.238,21.291c3.578,1.944,5.3,5.919,5.3,12.1,0,5.168-.928,7.907-3.49,10.425a10.721,10.721,0,0,1-4.285,2.65c-2.871.839-8.834.707-13.3-.265l-3.666-.8v-17.713l1.193-1.679a17.3,17.3,0,0,1,7.333-5.477C502.063-169.614,507.629-169.217,510.014-167.892Z"
+              transform="translate(-187.644 0)"></path>
+            <path
+              d="M1660.079-188.9a4.454,4.454,0,0,0-.221,5.654c1.678,2.12,6.626,1.944,8.172-.265a4.58,4.58,0,0,0-.442-5.389c-.883-.928-1.5-1.1-3.755-1.1S1660.962-189.823,1660.079-188.9Z"
+              transform="translate(-844.083 -0.022)"></path>
+            <path
+              d="M159.55-180.517c-4.2.618-6.847,1.767-9.011,3.931-2.3,2.341-3.092,4.417-3.092,8.26,0,4.771,1.634,8,5.257,10.292,2.915,1.9,4.771,2.474,14.4,4.461,4.682.972,9.188,2.032,9.983,2.385,3.49,1.458,5.257,3.8,5.257,6.891a5.652,5.652,0,0,1-3.534,5.433c-1.9.928-2.518.972-16.432,1.1-16.255.133-15.681,0-15.2,3.4.53,3.445.309,3.4,16.7,3.225,13.208-.177,14.489-.265,17.227-1.148,3.71-1.237,7.023-4.064,8.172-7.068a19.882,19.882,0,0,0,.177-10.425,11.966,11.966,0,0,0-2.164-3.445c-3-3.357-6.8-4.859-17.051-6.758-8.26-1.59-11.4-2.606-13.252-4.329a5.426,5.426,0,0,1,1.06-8.923c1.458-.839,2.429-.883,13.914-1.016,6.8-.044,12.81-.221,13.384-.309.839-.221.972-.53.972-2.429,0-1.634-.221-2.429-.883-3.092-.839-.839-1.414-.883-12.236-.839C166.927-180.87,160.787-180.694,159.55-180.517Z"
+              transform="translate(0 -5.088)"></path>
+            <path
+              d="M801.6-180.372l-1.1.574v18.95c0,14.93.132,19.436.618,21.114a12.488,12.488,0,0,0,7.023,7.421c2.341.928,3.357,1.016,14.8,1.193,14.135.177,14.179.177,14.709-3.225.486-3.357.663-3.313-11.529-3.313-11.485,0-13.914-.353-15.946-2.253-2.164-2.032-2.385-4.02-2.385-22.528v-17.139l-.972-.663A5.964,5.964,0,0,0,801.6-180.372Z"
+              transform="translate(-364.828 -5.1)"></path>
+            <path
+              d="M327.357-157.351c-3.666.883-5.522,1.811-7.863,4.02-4.064,3.8-5.61,8.7-5.257,16.83.353,9.32,2.739,14.091,8.437,17.006,3,1.546,3.092,1.546,8.614,1.546,6.758-.044,9.365-.883,13.031-4.241,2.562-2.341,2.915-2.253,2.915.751,0,2.827,3.18,4.285,5.654,2.562l.972-.663v-33.394l-1.06-.972C349.8-156.732,333.851-158.9,327.357-157.351Zm14.886,6.67c5.036,1.06,4.55.088,4.55,9.63,0,9.365-.044,9.585-3.18,12.545-3.092,3-5.212,3.843-10.071,4.064-3.931.177-4.329.088-6.626-1.1a6.971,6.971,0,0,1-3.755-3.843c-1.148-2.3-1.325-3.136-1.458-7.112-.309-7.6,1.5-11.529,6.317-13.738,1.855-.883,2.915-1.06,6.714-1.06A45.15,45.15,0,0,1,342.244-150.681Z"
+              transform="translate(-93.333 -17.962)"></path>
+            <path
+              d="M960.92-157.131c-9.144,2.385-13.208,9.1-12.678,20.849.4,9.276,3.931,14.356,11.794,16.83,2.385.8,4.329.972,11.794,1.193,10.2.221,10.866.088,11.308-2.827.53-3.18.265-3.269-7.554-3.269-10.734,0-14.356-.883-17.183-4.152-1.325-1.5-2.65-4.506-2.209-4.991.133-.133,6.493-1.016,14.091-1.944,7.6-.972,14.268-1.9,14.8-2.164,1.369-.574,1.678-2.253,1.1-6.449-1.016-7.73-4.594-11.662-11.971-13.252A34.434,34.434,0,0,0,960.92-157.131Zm11.043,5.875a8.952,8.952,0,0,1,6.228,4.506c1.148,2.606,1.1,4.2-.133,4.461-1.281.265-21.2,2.915-22,2.915-.839,0-.265-4.02,1.016-6.8a8.738,8.738,0,0,1,5.742-4.947A21.871,21.871,0,0,1,971.963-151.257Z"
+              transform="translate(-447.283 -17.96)"></path>
+            <path
+              d="M1117.357-157.351c-3.666.883-5.522,1.811-7.863,4.02-4.064,3.8-5.61,8.7-5.256,16.83.353,9.32,2.739,14.091,8.437,17.006,3,1.546,3.092,1.546,8.614,1.546,6.758-.044,9.365-.883,13.031-4.241,2.562-2.341,2.915-2.253,2.915.751,0,2.827,3.18,4.285,5.654,2.562l.972-.663v-33.394l-1.06-.972C1139.8-156.732,1123.851-158.9,1117.357-157.351Zm14.886,6.67c5.036,1.06,4.55.088,4.55,9.63,0,9.365-.044,9.585-3.18,12.545-3.092,3-5.213,3.843-10.071,4.064-3.931.177-4.329.088-6.626-1.1a6.971,6.971,0,0,1-3.755-3.843c-1.148-2.3-1.325-3.136-1.458-7.112-.309-7.6,1.5-11.529,6.317-13.738,1.855-.883,2.915-1.06,6.714-1.06A45.152,45.152,0,0,1,1132.244-150.681Z"
+              transform="translate(-534.371 -17.962)"></path>
+            <path
+              d="M1292.507-157.344a14.828,14.828,0,0,0-9.144,4.2c-2.385,2.164-2.739,2.076-2.739-.839a4.2,4.2,0,0,0-.574-2.164c-.707-.972-3.269-1.413-4.815-.8l-1.237.486V-138c0,21.026-.177,19.966,3.622,19.966,3.49,0,3.445.088,3.445-13.3v-11.662l1.679-2.209c3.269-4.329,7.024-5.963,13.693-5.963,3.931,0,4.505-.353,4.505-2.695C1300.943-157.256,1298.779-158.139,1292.507-157.344Z"
+              transform="translate(-629.17 -18.101)"></path>
+            <path
+              d="M1421.563-157.3a16.329,16.329,0,0,0-7.465,3.843c-2.076,1.855-2.474,1.723-2.474-.883a2.98,2.98,0,0,0-.8-1.944c-.972-.883-4.505-1.016-5.3-.221-.4.4-.53,5.168-.53,18.685,0,20.673-.177,19.657,3.622,19.657,3.49,0,3.446.133,3.446-13.782V-144.1l2.164-2.253c3.269-3.4,6.052-4.638,10.866-4.859,3.49-.133,4.2-.044,5.963.883,3.666,1.9,3.711,2.164,3.975,17.492.221,12.633.265,13.428,1.06,14.047,1.325.928,4.506.8,5.566-.265.839-.839.883-1.458.883-12.943,0-6.582-.221-13.3-.486-14.886-.884-5.61-3.887-9.055-9.011-10.38A28.728,28.728,0,0,0,1421.563-157.3Z"
+              transform="translate(-702.304 -17.963)"></path>
+            <path
+              d="M1777.507-157.344a14.828,14.828,0,0,0-9.144,4.2c-2.385,2.164-2.739,2.076-2.739-.839a4.2,4.2,0,0,0-.574-2.164c-.707-.972-3.269-1.413-4.815-.8l-1.237.486V-138c0,21.026-.177,19.966,3.622,19.966,3.49,0,3.445.088,3.445-13.3v-11.662l1.679-2.209c3.269-4.329,7.024-5.963,13.693-5.963,3.931,0,4.505-.353,4.505-2.695C1785.943-157.256,1783.779-158.139,1777.507-157.344Z"
+              transform="translate(-899.934 -18.101)"></path>
+            <path
+              d="M644.706-155.382a5.028,5.028,0,0,0-.4,2.783l.132,2.12,12.28.221c11.529.221,12.368.265,12.943,1.06,1.767,2.429.265,3.578-12.236,9.674-14.224,6.891-15.681,8.26-15.372,14.533.221,3.71.928,4.991,3.711,6.626,1.723,1.016,2.076,1.016,15.637,1.148,7.642.088,14.356.044,14.886-.088,1.369-.353,2.3-3.313,1.59-4.9l-.53-1.1H664.186c-11.176,0-13.3-.088-14.135-.707a2.8,2.8,0,0,1-.044-4.2c.53-.53,5.831-3.313,11.75-6.184,11.617-5.654,14.312-7.553,15.151-10.513,1.193-4.329-.221-8.437-3.534-10.115-1.9-.928-2.341-.972-15.063-.972C647.533-156,645.1-155.867,644.706-155.382Z"
+              transform="translate(-276.353 -19.003)"></path>
+            <path
+              d="M1662.528-155.47c-.4.4-.53,5.168-.53,18.685,0,20.673-.177,19.657,3.622,19.657,3.578,0,3.446.883,3.446-19.7,0-13.517-.132-18.243-.53-18.641a6.072,6.072,0,0,0-3-.53A6.073,6.073,0,0,0,1662.528-155.47Z"
+              transform="translate(-845.781 -19.003)"></path>
+            <path
+              d="M1566.943-85.315c-1.59.707-1.944,1.414-1.944,4.02s1.414,3.755,4.638,3.755c3.269,0,4.638-1.148,4.638-3.8,0-2.562-.53-3.49-2.253-4.108A6.722,6.722,0,0,0,1566.943-85.315Z"
+              transform="translate(-791.63 -58.15)"></path>
+          </g>
+        </g>
+      </symbol>
+      <symbol id="close" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </symbol>
+      <symbol id="moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+      </symbol>
+      <symbol id="sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+      </symbol>
+      <symbol id="bell" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+      </symbol>
+      <symbol id="bars-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </symbol>
+      <symbol id="chat-bubble" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+      </symbol>
+      <symbol id="chat-bubble-oval-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+      </symbol>
+      <symbol id="users" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+      </symbol>
+      <symbol id="plus-circle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </symbol>
+      <symbol id="pencil-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+      </symbol>
+    </svg>
+
+    <style>
+      .notif-btn.show {
+        z-index: 20;
+      }
+      .notif-btn.show .notif-box {
+        z-index: 20;
+        opacity: 1;
+      }
+      aside {
+        right: -100%;
+      }
+      aside.show {
+        right: 0;
+        z-index: 20;
+      }
+
+      /* izi Toast */
+
+      .iziToast {
+        box-shadow: 0 1px 60px rgba(0, 0, 0, 0.1);
+      }
+      .iziToast::after {
+        content: none;
+      }
+      .iziToast-texts {
+        display: flex !important;
+        flex-direction: column;
+      }
+      .iziToast-title {
+        font-family: "Dana DemiBold";
+        margin-bottom: 4px !important;
+      }
+      .iziToast-message {
+        font-family: "Dana";
+        margin-bottom: 2px !important;
+        max-width: 200px;
+        line-height: 1.5 !important;
+      }
+      /* .iziToast-icon{
+        width: 36px !important;
+        height: 36px !important;
+      } */
+      .iziToast-cover {
+        background-color: transparent !important;
+        margin-right: 10px !important;
+      }
+    </style>
+
+    <div class="flex items-stretch justify-stretch">
+      <!-- Aside -->
+      <aside
+        class="w-[260px] h-screen md:w-[300px] md:min-h-screen shrink-0 fixed top-0 overflow-y-auto md:static pb-10 pt-6 md:py-10 px-5 bg-white dark:bg-gray-800 shadow-light dark:shadow-none transition-all">
+        <!-- Aside Header -->
+        <div class="flex items-center justify-between md:justify-center gap-x-7 mb-6 md:mb-8">
+          <div class="flex items-center gap-x-2">
+            <img src="/images/logo.webp" class="h-10 md:h-14" alt="logo" />
+            <svg class="w-[86px] h-10 md:w-32 md:h-[57px] text-white dark:text-slate-600">
+              <use href="#logo-type"></use>
+            </svg>
+          </div>
+          <div class="md:hidden pl-2 md:p-0">
+            <svg class="mobile-menu-close-btn w-5 h-5 text-slate-500 dark:text-slate-400">
+              <use href="#close"></use>
+            </svg>
+          </div>
+        </div>
+        <!-- Aside Menu -->
+        <ul class="flex flex-col gap-y-3 dark:text-white border-y border-gray-200 dark:border-slate py-5">
+          <button
+            type="button"
+            href="#"
+            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg active transition-all"
+            data-content="tickets">
+            <svg class="w-6 h-6">
+              <use href="#chat-bubble"></use>
+            </svg>
+            <span class="mt-0.5"> تیکت ها </span>
+          </button>
+          <button
+            type="button"
+            href="#"
+            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+            data-content="comments">
+            <svg class="w-6 h-6">
+              <use href="#chat-bubble-oval-left"></use>
+            </svg>
+            <span class="mt-0.5"> کامنت ها </span>
+          </button>
+          <button
+            type="button"
+            href="#"
+            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+            data-content="accounts">
+            <svg class="w-6 h-6">
+              <use href="#users"></use>
+            </svg>
+            <span class="mt-0.5"> حساب ها </span>
+          </button>
+          <button
+            type="button"
+            href="#"
+            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+            data-content="create-course">
+            <svg class="w-6 h-6">
+              <use href="#plus-circle"></use>
+            </svg>
+            <span class="mt-0.5"> ایجاد دوره </span>
+          </button>
+          <button
+            type="button"
+            href="#"
+            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+            data-content="edit-course">
+            <svg class="w-6 h-6">
+              <use href="#pencil-square"></use>
+            </svg>
+            <span class="mt-0.5"> ویرایش دوره </span>
+          </button>
+        </ul>
+        <!-- Aside Footer -->
+        <div class="pr-2">
+          <div class="toggle-theme flex items-center gap-x-3 mt-4 dark:text-slate-400">
+            <div class="flex items-center justify-center rounded-xl w-[38px] h-[38px] bg-gray-100 dark:bg-transparent dark:border dark:border-slate">
+              <svg class="inline-block dark:hidden w-6 h-6 text-slate-500 dark:text-inherit">
+                <use href="#moon"></use>
+              </svg>
+              <svg class="hidden dark:inline-block w-6 h-6 text-slate-500 dark:text-inherit">
+                <use href="#sun"></use>
+              </svg>
+            </div>
+            <p>
+              <span class="inline-block dark:hidden">تم تیره</span>
+              <span class="hidden dark:inline-block">تم روشن</span>
+            </p>
+          </div>
+        </div>
+      </aside>
+      <!-- Main -->
+      <main class="w-full px-7">
+        <!-- main header -->
+        <div class="w-full h-20 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center px-2">
+          <!-- Menu Open Btn -->
+          <svg class="mobile-menu-open-btn md:hidden w-9 h-9 dark:text-white">
+            <use href="#bars-3"></use>
+          </svg>
+          <!-- Header Center -->
+          <p class="text-xl md:text-2xl font-DanaMedium dark:text-white">سلام <span>مرصاد حبیبی</span> 👋</p>
+          <!-- Header Left -->
+          <div class="flex gap-x-4">
+            <!-- notif Btn -->
+            <div class="notif-btn flex items-center justify-center relative h-12 w-12 md:h-14 md:w-14 rounded-full bg-white dark:bg-gray-800 cursor-pointer">
+              <svg class="w-6 md:w-7 h-6 md:h-7 text-slate-500">
+                <use href="#bell"></use>
+              </svg>
+              <!-- notif Box -->
+              <div
+                class="notif-box absolute top-[65px] left-0 bg-white dark:bg-gray-800 w-80 md:w-96 rounded-2xl overflow-hidden transition-all py-5 px-5 opacity-0 -z-20">
+                <div class="font-DanaMedium text-xl dark:text-white pb-3.5 mb-3.5 border-b border-gray-200 dark:border-slate-500">
+                  <p>اعلان ها</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-xl text-center p-3">
+                  <p class="dark:text-white">اعلان جدیدی وجود ندارد.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main body -->
+
+        <div class="content-container py-5">
+          <div class="content create-course">
+            <form id="create-course-form" class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-x-3 lg:gap-x-5 xl:gap-x-8 gap-y-4 lg:gap-y-5">
+              <!-- course name -->
+              <input
+                id="title"
+                class="xs:col-span-2 lg:col-span-3 bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+                type="text"
+                placeholder="نام دوره" />
+              <!-- course description -->
+              <textarea
+                id="description"
+                rows="8"
+                class="xs:col-span-2 lg:col-span-3 w-full p-3 sm:p-5 outline-none text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
+                id="text"
+                name="text"
+                placeholder="توضیحات دوره"></textarea>
+              <!-- course price -->
+              <input
+                id="price"
+                class="bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+                type="text"
+                placeholder="قیمت دوره به تومان" />
+              <!-- course category -->
+              <select
+                id="category"
+                name=""
+                id=""
+                class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+                <option value="">دسته بندی مورد نظر...</option>
+                <option value="frontend">فرانت اند</option>
+                <option value="python">پایتون</option>
+                <option value="security">امنیت</option>
+                <option value="softskills">مهارت های نرم</option>
+              </select>
+              <!-- course status -->
+              <select
+                id="status"
+                name=""
+                id=""
+                class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+                <option value="">وضعیت دوره...</option>
+                <option value="presell">پیش فروش</option>
+                <option value="completing">در حال تکمیل</option>
+                <option value="completed">تکمیل شده</option>
+              </select>
+              <!-- course link -->
+              <input
+                id="short-name"
+                class="bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+                type="text"
+                placeholder="لینک دوره" />
+              <!-- course teacher -->
+              <select
+                id="teacher"
+                name=""
+                id=""
+                class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+                <option value="">مدرس دوره...</option>
+                <option value="SaeidiRad">محمد امین سعیدی راد</option>
+                <option value="ebadi">حمید رضا عبادی</option>
+                <option value="barati">مهرشاد براتی</option>
+                <option value="rezaDolati">رضا دولتی</option>
+              </select>
+              <!-- course cover -->
+              <div id="image" class="flex justify-center items-center xl:pr-7 text-sm md:text-base">
+                <label for="cover" class="custom-file-upload shrink-0 shadow-light dark:shadow-none"> انتخاب عکس دوره </label>
+                <input id="cover" class="w-auto border-none" type="file" multiple />
+              </div>
+              <!-- Submit btn -->
+              <div class="flex justify-end xs:col-span-2 lg:col-span-3 border-t border-gray-200 dark:border-gray-800">
+                <button
+                  class="bg-primary hover:bg-green-500 text-white rounded-xl px-6 xs:px-7 py-2 xs:py-3 mt-5 mr-auto text-base xs:text-xl transition-colors"
+                  type="submit">
+                  ارسال
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
+
+    <script src="scripts/index.js" type="module"></script>
+  </body>
+</html>
