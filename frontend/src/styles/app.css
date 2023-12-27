@@ -42,10 +42,10 @@
 /* Overlay */
 
 .overlay {
-  @apply -z-10 opacity-0;
+  @apply invisible opacity-0;
 }
 .overlay.show {
-  @apply z-10 opacity-100 sm:backdrop-blur-md;
+  @apply visible opacity-100 sm:backdrop-blur-md;
 }
 
 /* Swiper Styles */
