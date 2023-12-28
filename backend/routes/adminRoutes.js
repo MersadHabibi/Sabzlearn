@@ -15,7 +15,7 @@ router
   .route("/courses")
   .post(createCourseUploader.single("image"), createCourse);
 
-router.route("/comments").post(createComment);
+
 
 router.route("/courses/:id").patch(EditCourse).delete(deleteCourse);
 

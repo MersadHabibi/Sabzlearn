@@ -35,6 +35,7 @@ function register(req, res) {
                   phoneNumber,
                   hash,
                   comments: {},
+                  replys: {},
                 },
               })
               .then((user) => {

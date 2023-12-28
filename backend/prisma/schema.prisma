@@ -20,6 +20,7 @@ model Users {
   imageProfile String?
   comments     Comments[]
   role         String?    @default("student")
+  replys       Replys[]
 }
 
 model Course {
@@ -43,12 +44,15 @@ model Course {
 }
 
 model Comments {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  body      String
 
-  Course   Course? @relation(fields: [courseId], references: [id])
-  courseId String? @db.ObjectId
-  Users    Users?  @relation(fields: [usersId], references: [id])
-  usersId  String? @db.ObjectId
+  Course   Course?  @relation(fields: [courseId], references: [id])
+  courseId String?  @db.ObjectId
+  Users    Users?   @relation(fields: [userId], references: [id])
+  userId   String?  @db.ObjectId
+  Replys   Replys[]
 }
 
 model Subjects {
@@ -63,4 +67,14 @@ model Subjects {
 model Menues {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
   data Json[]
+}
+
+model Replys {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  body      String
+  createdAt DateTime  @default(now())
+  Users     Users?    @relation(fields: [userId], references: [id])
+  userId    String?   @db.ObjectId
+  Comments  Comments? @relation(fields: [commentId], references: [id])
+  commentId String?   @db.ObjectId
 }
