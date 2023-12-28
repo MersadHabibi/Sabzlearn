@@ -17,8 +17,8 @@ router
 
 router.route("/comments").post(createComment);
 
-router.use("/courses/:id").patch(EditCourse).delete(deleteCourse);
+router.route("/courses/:id").patch(EditCourse).delete(deleteCourse);
 
-router.use('/comments/:id').delete(deleteComment)
+router.route("/comments/:id").delete(deleteComment);
 
 export default router;
