@@ -10,6 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// مدل کاربر ها
 model Users {
   id           String     @id @default(auto()) @map("_id") @db.ObjectId
   username     String     @unique
@@ -23,6 +24,7 @@ model Users {
   replys       Replys[]
 }
 
+// مدل یک دوره
 model Course {
   id            String     @id @default(auto()) @map("_id") @db.ObjectId
   title         String
@@ -41,8 +43,11 @@ model Course {
   subjects      Subjects[]
   shortName     String
   image         String
+  Menues        Menues?    @relation(fields: [menuesId], references: [id])
+  menuesId      String?    @db.ObjectId
 }
 
+// مدل کامنت های یک دوره
 model Comments {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
@@ -55,6 +60,7 @@ model Comments {
   Replys   Replys[]
 }
 
+//  سرفصل های هر دوره
 model Subjects {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   title    String
@@ -65,8 +71,20 @@ model Subjects {
 }
 
 model Menues {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  data Json[]
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  category  String
+  shortName String
+  courses   Course[]
+  subMenus  submenus[]
+}
+
+model submenus {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  shortName String
+  Menues    Menues? @relation(fields: [menuesId], references: [id])
+  menuesId  String? @db.ObjectId
 }
 
 model Replys {

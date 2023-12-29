@@ -13,12 +13,12 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/me", AuthCheckMiddleWare, getMe);
 
+router.get("/courses", getCourses);
+router.get("/courses/:id", getCourseById);
+
 router
   .use(AuthCheckMiddleWare)
   .post("/comments", createComment)
   .post("/comments/:id/reply", createReply);
-  
-router.get("/courses", getCourses);
-router.get("/courses/:id", getCourseById);
 
 export default router;

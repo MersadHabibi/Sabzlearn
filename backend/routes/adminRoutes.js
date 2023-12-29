@@ -1,3 +1,5 @@
+
+
 import { Router } from "express";
 
 import { createCourseUploader } from "../utils/createCourseUploadImage.js";
@@ -11,11 +13,10 @@ const router = Router();
 // router.use('/api/admin',adminAuthMiddleWare)
 
 // router.get("/courses", getCourses);
+
 router
   .route("/courses")
   .post(createCourseUploader.single("image"), createCourse);
-
-
 
 router.route("/courses/:id").patch(EditCourse).delete(deleteCourse);
 
