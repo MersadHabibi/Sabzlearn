@@ -20,12 +20,12 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.0.2",
-    "prisma": "^5.7.0",
+    "prisma": "^5.7.1",
     "serve-index": "^1.9.1",
     "swagger-jsdoc": "^6.0.0",
     "swagger-ui-express": "^5.0.0"
   },
   "dependencies": {
-    "@prisma/client": "^5.7.0"
+    "@prisma/client": "^5.7.1"
   }
 }

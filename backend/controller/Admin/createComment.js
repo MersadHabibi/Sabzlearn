@@ -19,8 +19,11 @@ function createComment(req, res) {
         .create({
           data: reqBody,
         })
-        .then((comment) => {
-          res.json({ message: "Your Comment Submit Successfully." });
+        .then(({ id }) => {
+          res.json({
+            message: "Your Comment Submit Successfully.",
+            commentId: id,
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -32,9 +35,10 @@ function createComment(req, res) {
     })
 
     .catch((err) => {
-      res
-        .status(403)
-        .json({ message: "there is an error in your sended data.", err });
+      res.status(403).json({
+        message: "there is an error in your sended data.",
+        err: err?.details[0]?.message,
+      });
     });
 }
 

@@ -14,12 +14,15 @@ function createReply(req, res) {
         return res
           .status(401)
           .json({ message: "You cant add reply from another user" });
-      prisma.replys
+      prisma.reply
         .create({
-          data: { ...reqBody, commnetId: req.params.id },
+          data: {
+            ...reqBody,
+            commentId: req.params.id,
+          },
         })
         .then((reply) => {
-          res.json({ message: "Your Reply Submit Successfully." });
+          res.json({ message: "Your Reply Submit Successfully.", reply });
         })
         .catch((err) => {
           console.log(err);
