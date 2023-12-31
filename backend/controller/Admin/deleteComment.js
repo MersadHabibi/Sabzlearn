@@ -4,7 +4,7 @@ function deleteComment(req, res) {
   prisma.comments
     .delete({
       where: {
-        id: req.params.id,
+        id: req.params.commentId,
       },
     })
     .then((comment) => {

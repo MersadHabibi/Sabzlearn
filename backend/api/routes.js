@@ -19,6 +19,6 @@ router.get("/courses/:id", getCourseById);
 router
   .use(AuthCheckMiddleWare)
   .post("/comments", createComment)
-  .post("/comments/:id/reply", createReply);
+  .post("/comments/:commentId/reply", createReply);
 
 export default router;

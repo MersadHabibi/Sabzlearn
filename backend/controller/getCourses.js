@@ -35,6 +35,7 @@ function getCourseById(req, res) {
       },
       include: {
         comments: {
+          where: { status: "active" },
           include: {
             Users: {
               select: {

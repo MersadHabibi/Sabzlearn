@@ -3,12 +3,13 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 function createReply(req, res) {
   const replySchema = Joi.object({
-    userId: Joi.string().required().min(1),
-    body: Joi.string().required().min(1),
+    userId: Joi.string().required().min(1).trim(),
+    body: Joi.string().required().min(1).trim(),
+    commentId: Joi.string().required().min(1).trim(),
   });
 
   replySchema
-    .validateAsync(req.body)
+    .validateAsync({ ...req.body, ...req.params })
     .then((reqBody) => {
       if (reqBody.userId !== req.userId)
         return res
@@ -18,7 +19,6 @@ function createReply(req, res) {
         .create({
           data: {
             ...reqBody,
-            commentId: req.params.id,
           },
         })
         .then((reply) => {

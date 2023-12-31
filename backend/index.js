@@ -179,6 +179,45 @@ app.use(
 
 /**
  * @swagger
+ * tags:
+ *   name: Comments
+ *   description: API for managing Commnets
+ *
+ * components:
+ *   schemas:
+ *     Comment:
+ *       type: object
+ *       required:
+ *         - userId
+ *         - courseId
+ *         - body
+ *       properties:
+ *         userId:
+ *           type: string
+ *           description: The userId of who wanted to submit new comment.
+ *         courseId:
+ *           type: string
+ *           description: The courseId of the course which user wanted to submit new comment about that.
+ *         body:
+ *           type: string
+ *           description: The text body of the comment.
+ *
+ *       example:
+ *             userId: 657b5a0b91ba64f7ddf94eb7
+ *             courseId: 658088f1895e442070bd1a2e
+ *             body: این دوره خوب بود.
+ *
+ *   securitySchemes:
+ *     bearerAuth:            # arbitrary name for the security scheme
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+ * security:
+ *   - bearerAuth: []
+ */
+
+/**
+ * @swagger
  * paths:
  *   /api/register:
  *     post:
@@ -312,6 +351,35 @@ app.use(
  *             application/json:
  *               example:
  *                 course: a course specificed by id.
+ *         500:
+ *           description: Some server error
+ *
+ *   /api/comments:
+ *     post:
+ *       summary: Create a new Commnet.
+ *       tags: [Comments]
+ *       security:
+ *         - bearerAuth: []
+ *       requestBody:
+ *         required: true
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Comment'
+ *       responses:
+ *         200:
+ *           description: Course fetched successfully
+ *           content:
+ *             application/json:
+ *               example:
+ *                 message: Your Comment Submit Successfully.
+ *                 commentId: the Id Of created Comment.
+ *         401:
+ *           description: Unauthorized
+ *           content:
+ *             application/json:
+ *               example:
+ *                 message: Authentication token is missing or invalid
  *         500:
  *           description: Some server error
  */
