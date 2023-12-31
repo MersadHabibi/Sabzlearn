@@ -3,11 +3,17 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 function getCourses(req, res) {
-  prisma.course.findMany().then((corses) => {
-    if (corses) {
-      res.json(corses);
-    }
-  });
+  prisma.course
+    .findMany({
+      include: {
+        comments: true,
+      },
+    })
+    .then((corses) => {
+      if (corses) {
+        res.json(corses);
+      }
+    });
 }
 
 function getCourseById(req, res) {
@@ -16,9 +22,12 @@ function getCourseById(req, res) {
       where: {
         id: req.params.id,
       },
+      include: {
+        comments: true,
+      },
     })
     .then((course) => {
-      res.json(course);
+      return res.json(course);
     })
     .catch((err) => {
       res
@@ -28,6 +37,4 @@ function getCourseById(req, res) {
 }
 
 export default getCourses;
-export {
-  getCourseById
-}
+export { getCourseById };
