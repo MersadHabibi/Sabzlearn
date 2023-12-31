@@ -6,7 +6,18 @@ function getCourses(req, res) {
   prisma.course
     .findMany({
       include: {
-        comments: true,
+        comments: {
+          include: {
+            Users: {
+              select: {
+                username: true,
+                email: true,
+                role: true,
+              },
+            },
+            replies: true,
+          },
+        },
       },
     })
     .then((corses) => {
@@ -23,7 +34,18 @@ function getCourseById(req, res) {
         id: req.params.id,
       },
       include: {
-        comments: true,
+        comments: {
+          include: {
+            Users: {
+              select: {
+                username: true,
+                email: true,
+                role: true,
+              },
+            },
+            replies: true,
+          },
+        },
       },
     })
     .then((course) => {
