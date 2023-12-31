@@ -4,16 +4,16 @@ import fs from "fs";
 import Joi from "joi";
 function createCourse(req, res) {
   const courseSchema = Joi.object({
-    title: Joi.string().required().min(1),
-    description: Joi.string().required().min(1),
-    category: Joi.string().required().min(1),
+    title: Joi.string().required().min(1).trim(),
+    description: Joi.string().required().min(1).trim(),
+    category: Joi.string().required().min(1).trim(),
     price: Joi.number().required().min(1),
     discount: Joi.number().required(),
     discountPrice: Joi.number().required(),
-    status: Joi.string().required().min(1),
-    time: Joi.string().required().min(1),
-    teacher: Joi.string().required().min(1),
-    shortName: Joi.string().required().min(1),
+    status: Joi.string().required().min(1).trim(),
+    time: Joi.string().required().min(1).trim(),
+    teacher: Joi.string().required().min(1).trim(),
+    shortName: Joi.string().required().min(1).trim(),
     isFree: Joi.boolean().only(true, false).required(),
   });
 

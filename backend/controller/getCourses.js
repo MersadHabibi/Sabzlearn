@@ -43,7 +43,17 @@ function getCourseById(req, res) {
                 role: true,
               },
             },
-            replies: true,
+            replies: {
+              include: {
+                Users: {
+                  select: {
+                    username: true,
+                    role: true,
+                    email: true,
+                  },
+                },
+              },
+            },
           },
         },
       },

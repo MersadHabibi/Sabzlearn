@@ -20,7 +20,7 @@ model Users {
   hash         String
   imageProfile String?
   comments     Comments[] @relation("user to comments")
-  role         String?    @default("student")
+  role         String?    @default("user")
   replies      Reply[]    @relation("user to reply")
   // Comments     Comments[] @relation("user to comments")
 }
@@ -53,12 +53,12 @@ model Comments {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
   body      String
-
-  Course   Course? @relation(fields: [courseId], references: [id])
-  courseId String? @db.ObjectId
-  Users    Users?  @relation(fields: [userId], references: [id], name: "user to comments")
-  userId   String? @db.ObjectId
-  replies  Reply[]
+  status    String?  @default("pending")
+  Course    Course?  @relation(fields: [courseId], references: [id])
+  courseId  String?  @db.ObjectId
+  Users     Users?   @relation(fields: [userId], references: [id], name: "user to comments")
+  userId    String?  @db.ObjectId
+  replies   Reply[]
 }
 
 //  سرفصل های هر دوره
