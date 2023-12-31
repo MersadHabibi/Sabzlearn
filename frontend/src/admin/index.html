@@ -173,10 +173,10 @@
       }
     </style>
 
-    <div class="flex items-stretch justify-stretch">
+    <div class="flex">
       <!-- Aside -->
       <aside
-        class="w-[260px] h-screen md:w-[300px] md:min-h-screen shrink-0 fixed top-0 overflow-y-auto md:static pb-10 pt-6 md:py-10 px-5 bg-white dark:bg-gray-800 shadow-light dark:shadow-none transition-all">
+        class="w-[260px] min-h-full md:w-[300px] md:min-h-screen shrink-0 fixed top-0 overflow-y-auto md:static pb-10 pt-6 md:py-10 px-5 bg-white dark:bg-gray-800 shadow-light dark:shadow-none transition-all">
         <!-- Aside Header -->
         <div class="flex items-center justify-between md:justify-center gap-x-7 mb-6 md:mb-8">
           <div class="flex items-center gap-x-2">
@@ -358,6 +358,16 @@
                 <option value="ebadi">حمید رضا عبادی</option>
                 <option value="barati">مهرشاد براتی</option>
                 <option value="rezaDolati">رضا دولتی</option>
+              </select>
+              <!-- is Free -->
+              <select
+                id="teacher"
+                name=""
+                id=""
+                class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+                <option value="false">دوره رایگان است؟</option>
+                <option value="true">بله</option>
+                <option value="false">خیر</option>
               </select>
               <!-- course cover -->
               <div id="image" class="flex justify-center items-center xl:pr-7 text-sm md:text-base">

@@ -144,4 +144,4 @@ const getMe = async () => {
     });
 };
 
-export { api, _changeClasses, createTimer, showNotif, getToken, getMe };
+export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe };
