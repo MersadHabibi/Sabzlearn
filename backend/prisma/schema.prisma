@@ -63,12 +63,20 @@ model Comments {
 
 //  سرفصل های هر دوره
 model Subjects {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
   title    String
-  isFree   Boolean
-  episodes Json[]
-  Course   Course? @relation(fields: [courseId], references: [id])
-  courseId String? @db.ObjectId
+  episodes Episode[]
+  Course   Course?   @relation(fields: [courseId], references: [id])
+  courseId String?   @db.ObjectId
+}
+
+model Episode {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  isFree    Boolean
+  link      String?
+  Subject   Subjects? @relation(fields: [subjectId], references: [id])
+  subjectId String?   @db.ObjectId
 }
 
 model Menues {
