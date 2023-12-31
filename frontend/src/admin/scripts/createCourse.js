@@ -2,7 +2,7 @@ import { showNotif, api, apiAdmin, getToken } from "../../scripts/funcs/utils.js
 
 const $ = document;
 
-const preparerCreateCourse = () => {
+const preparationCreateCourse = () => {
   const newCourseform = $.querySelector("#create-course-form");
 
   newCourseform.addEventListener("submit", event => {

@@ -1,7 +1,7 @@
 import "../../styles/app.css";
 import "../../scripts/share.js";
 import { _changeClasses } from "../../scripts/funcs/utils.js";
-import preparerCreateCourse from "./createCourse.js";
+import preparationCreateCourse from "./createCourse.js";
 
 const $ = document;
 
@@ -82,5 +82,5 @@ overlay.addEventListener("click", () => {
 });
 
 window.addEventListener("load", () => {
-  preparerCreateCourse();
+  preparationCreateCourse();
 });

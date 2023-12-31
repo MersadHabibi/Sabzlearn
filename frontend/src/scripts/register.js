@@ -39,20 +39,20 @@ const register = async (email, username, phoneNumber, password, address = " ") =
 
   await api
     .post("register", {
-      newUser,
+      email: email,
+      username: username,
+      phoneNumber: phoneNumber,
+      password: password,
+      repeat_password: password,
+      address: address,
     })
     .then(res => {
-      console.log("object");
-      console.log(res);
-      if (res.details) {
-        showNotif("ساخت حساب با مشکل مواجه شد");
-      } else if (res.message) {
-        showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
-      } else {
-        showNotif("اکانت شما با موفقیت ساخته شد", "success");
-        localStorage.setItem("token", res.token);
-        location.href = getAfterPageLink();
-      }
+      showNotif("اکانت شما با موفقیت ساخته شد", "success");
+      localStorage.setItem("token", res.data.token);
+      location.href = getAfterPageLink();
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      if (err.message == "Request failed with status code 403") showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
+      else showNotif("ساخت حساب با مشکل مواجه شد");
+    });
 };
