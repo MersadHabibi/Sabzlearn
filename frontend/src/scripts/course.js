@@ -2,11 +2,37 @@ import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
 import { _changeClasses, api, createTimer, getMe } from "./funcs/utils.js";
-import preparationNewComment from "./funcs/createComment.js";
+import createNewComment from "./funcs/createComment.js";
+import createReplyComment from "./funcs/replayComment.js";
 
 const $ = document;
 header($);
 let course = null;
+let user = null;
+let replayOrNewComment = "new";
+
+window.addEventListener("load", async () => {
+  await getCourse();
+  user = await getMe();
+  fillBreadCrumb();
+  setDatas();
+  getAndShowComments();
+  preparationNewAndReplayComment();
+});
+
+const preparationNewAndReplayComment = () => {
+  const form = document.querySelector(".new-comment-form");
+  const formTextarea = document.querySelector("#comment-textarea");
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (replayOrNewComment == "new") {
+      await createNewComment(user.data.id, course.id, formTextarea.value);
+    } else {
+      await createReplyComment(user.data.id, replayOrNewComment, formTextarea.value);
+    }
+  });
+};
 
 // Description Elements
 
@@ -26,7 +52,6 @@ const topicsHeader = $.querySelectorAll(".topic__header");
 const courseComments = $.querySelector(".course-comments");
 const openNewCommentBtn = $.querySelector(".open-new-comment-btn");
 const cancelNewCommentBtn = $.querySelector(".cancel-new-comment");
-const replayCommentBtn = $.querySelectorAll(".comment-reply-btn");
 const commentTo = $.querySelector(".comment-to");
 
 // Offer Elements
@@ -56,28 +81,37 @@ topicsHeader.forEach(topicHeader => {
   });
 });
 
-// New Comment - open
-
-openNewCommentBtn.addEventListener("click", () => {
-  _changeClasses("add", courseComments, ["show-new-comment-form"]);
-  commentTo.innerText = `ثبت نظر جدید`;
-});
-
 // New Comment - close
 
 cancelNewCommentBtn.addEventListener("click", () => {
   _changeClasses("remove", courseComments, ["show-new-comment-form"]);
 });
 
+// New Comment - open
+
+const preparationNewCommentBtn = () => {
+  openNewCommentBtn.addEventListener("click", async () => {
+    _changeClasses("add", courseComments, ["show-new-comment-form"]);
+    commentTo.innerText = `ثبت نظر جدید`;
+    replayOrNewComment = "new";
+  });
+};
+
 // Replay Comment - open
 
-replayCommentBtn.forEach(replayBtn => {
-  replayBtn.addEventListener("click", () => {
-    let commentToName = replayBtn.parentElement.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.innerText;
-    commentTo.innerText = `در پاسخ به ${commentToName}`;
-    _changeClasses("add", courseComments, ["show-new-comment-form"]);
+const preparationReplayCommentBtn = () => {
+  const replayCommentBtn = $.querySelectorAll(".comment-reply-btn");
+
+  replayCommentBtn.forEach(replayBtn => {
+    replayBtn.addEventListener("click", elem => {
+      let commentToName = replayBtn.dataset.creator;
+      commentTo.innerText = `در پاسخ به ${commentToName}`;
+      _changeClasses("add", courseComments, ["show-new-comment-form"]);
+
+      replayOrNewComment = replayBtn.dataset.commentId;
+    });
   });
-});
+};
 
 // Create Timer
 
@@ -235,10 +269,109 @@ const setDatas = () => {
   courseTime.innerHTML = `${course.time} ساعت`;
 };
 
-window.addEventListener("load", async () => {
-  await getCourse();
-  const user = await getMe();
-  fillBreadCrumb();
-  setDatas();
-  await preparationNewComment(user.data, course);
-});
+// Get And Show Comments
+
+const getAndShowComments = () => {
+  const commentContainer = $.querySelector(".comments__container");
+
+  course.comments.forEach(comment => {
+    console.log(comment);
+    commentContainer.insertAdjacentHTML(
+      "afterbegin",
+      `
+      <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
+        <!-- Comment Body -->
+        <div class="flex gap-x-5 items-start">
+          <!-- Comment Right User Picture & flag (desktop version) -->
+          <div class="hidden md:flex flex-col gap-y-2 shrink-0">
+            <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="/images/user-profile.png" />
+            <div class="text-xs w-full rounded-md text-center py-0.5 ${
+              comment.Users.role == "admin"
+                ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
+                : comment.Users.role == "user"
+                ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                : comment.Users.role == "student"
+                ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                : ""
+            }"> 
+            ${comment.Users.role == "admin" ? "مدیریت" : comment.Users.role == "user" ? "کاربر" : comment.Users.role == "student" ? "دانشجو" : ""}
+           </div>
+          </div>
+          <!-- Comment Left Reply comment, text, author, data, flag, reply btn -->
+          <div class="w-full">
+            <!-- Comment Head -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-x-2">
+                <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="" />
+                <div class="shrink-0">
+                  <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"> ${comment.Users.username} </span>
+                  <div class="flex items-center gap-x-1.5 mt-1">
+                    <div
+                      class="md:hidden text-xs w-full px-3 rounded-md text-center py-0.5 ${
+                        comment.Users.role == "admin"
+                          ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
+                          : comment.Users.role == "user"
+                          ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                          : comment.Users.role == "student"
+                          ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                          : ""
+                      }">
+                      ${comment.Users.role == "admin" ? "ادمین" : comment.Users.role == "user" ? "کاربر" : comment.Users.role == "student" ? "دانشجو" : ""}
+                    </div>
+                    <span class="font-danaLight text-slate-500 dark:text-white text-xs">${new Date(comment.createdAt).toLocaleDateString("fa-IR")}</span>
+                  </div>
+                </div>
+              </div>
+              <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button" data-comment-id=${comment.id} data-creator="mersad">
+                <svg class="w-6 h-5">
+                  <use xlink:href="#reply"></use>
+                </svg>
+              </button>
+            </div>
+            <!-- Comment Text -->
+            <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
+              ${comment.body} <br />
+              <br />
+            </div>
+            <!-- Comment Replies -->
+            <div class="mt-7 space-y-3.5 md:space-y-5">
+              <div id="" class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
+                <div class="flex gap-x-5 items-start">
+                  <!-- Comment Right User Picture & flag (desktop version) -->
+                  <div class="hidden md:flex flex-col shrink-0 gap-y-2">
+                    <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="" />
+                    <div class="text-xs w-full rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">مدیریت</div>
+                  </div>
+                  <!-- Comment Left Text, author, data, flag -->
+                  <div class="w-full">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-x-2">
+                        <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="" />
+                        <div class="shrink-0">
+                          <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">قدیر یلمه</span>
+                          <div class="flex items-center gap-x-1.5 mt-1">
+                            <div
+                              class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10 text-center py-0.5 ">
+                              مدیریت
+                            </div>
+                            <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Comment Text -->
+                    <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">بصورت آنلاین در قسمت مشاهده آنلاین جلسات هست</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+    );
+  });
+
+  preparationNewCommentBtn();
+  preparationReplayCommentBtn();
+};

@@ -1,23 +1,17 @@
-import { api, getToken } from "./utils";
+import { api, getToken, showNotif } from "./utils";
 
-const preparationNewComment = async (user, course) => {
-  console.log(user, course);
-  const form = document.querySelector(".new-comment-form");
-  const formTextarea = document.querySelector("#comment-textarea");
+const createNewComment = async (userId, courseId, commentText) => {
+  if (!commentText) {
+    showNotif("متن کامنت را وارد کنید!");
+    return;
+  }
 
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    await createNewComment(user, course, formTextarea.value);
-  });
-};
-const createNewComment = async (user, course, commentText) => {
-  console.log(course.id, user.id, commentText);
   await api
     .post(
       "comments",
       {
-        userId: user.id,
-        courseId: course.id,
+        userId: userId,
+        courseId: courseId,
         body: commentText,
       },
       {
@@ -27,8 +21,12 @@ const createNewComment = async (user, course, commentText) => {
         },
       }
     )
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res => {
+      showNotif("کامنت با موفقیت ثبت شد", "success");
+    })
+    .catch(err => {
+      showNotif("مشکلی در ثبت کامنت رخ داد! بعدا امتحان کنید");
+    });
 };
 
-export default preparationNewComment;
+export default createNewComment;
