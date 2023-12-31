@@ -89,8 +89,7 @@ const getCourse = async () => {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
-  const res = await fetch(`${api}admin/courses`);
-  const courses = await res.json();
+  const courses = (await api.get("courses")).data;
 
   course = params.course
     ? courses.filter(c => {

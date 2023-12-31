@@ -115,10 +115,9 @@ const header = $ => {
     const profileContainer = $.querySelector(".profile__container");
     const loginAndRegisterContainer = $.querySelector(".login-register__container");
     user = await getMe();
-    console.log(user);
-    if (user) {
+    if (user.status == 200) {
       _changeClasses("remove", profileContainer, ["hidden"]);
-      setContentProfileSubmenu(user);
+      setContentProfileSubmenu(user.data);
     } else {
       _changeClasses("remove", loginAndRegisterContainer, ["hidden"]);
     }
@@ -127,10 +126,10 @@ const header = $ => {
 
   // Set Profile Submenu Content
 
-  const setContentProfileSubmenu = () => {
+  const setContentProfileSubmenu = data => {
     const profileNameElem = $.querySelector(".profile__name");
 
-    profileNameElem.innerHTML = user.username;
+    profileNameElem.innerHTML = data.username;
   };
 
   // Search

@@ -1,6 +1,15 @@
+import axios from "axios";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-const api = "http://localhost:3000/api/";
+
+// Create APIs - Axios
+
+const api = axios.create({
+  baseURL: "http://localhost:3000/api/",
+});
+const apiAdmin = axios.create({
+  baseURL: "http://localhost:3000/api/admin/",
+});
 
 // Change Class
 
@@ -121,16 +130,18 @@ const getToken = () => {
 // Get Me
 
 const getMe = async () => {
-  const res = await fetch(`${api}me`, {
-    method: "GET",
-    headers: {
-      authorization: `Bearer ${getToken()}`,
-    },
-  });
-
-  if (res.status == 200) {
-    return await res.json();
-  }
+  return await api
+    .get("me", {
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    })
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      return err;
+    });
 };
 
-export { api, _changeClasses, createTimer, showNotif, getToken, getMe };
+export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe };

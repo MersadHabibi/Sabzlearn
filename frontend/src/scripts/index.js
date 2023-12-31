@@ -70,8 +70,8 @@ presellCoursesSliderPrevBtn.addEventListener("click", () => {
 
 // Get Course
 
-const res = await fetch(`${api}admin/courses`);
-let courses = await res.json();
+const res = await api.get("courses");
+const courses = res.data;
 
 // Get And Show Last Courses - random
 

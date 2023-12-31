@@ -1,4 +1,4 @@
-import { showNotif, api } from "../../scripts/funcs/utils.js";
+import { showNotif, api, apiAdmin, getToken } from "../../scripts/funcs/utils.js";
 
 const $ = document;
 
@@ -42,6 +42,7 @@ const createCourse = () => {
       status: newCourseStatus.value,
       shortName: newCourseShortName.value.trim(),
       teacher: newCourseTeacher.value.trim(),
+      isFree: false,
       discount: 0,
       discountPrice: 0,
       time: "0",
@@ -55,13 +56,14 @@ const createCourse = () => {
 };
 
 const sentCreateCourseApi = async formData => {
-  await fetch(`${api}admin/courses`, {
-    method: "POST",
-    body: formData,
-  })
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+  await apiAdmin
+    .post("courses", formData, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    })
+    .then(res => showNotif("دوره با موفقیت ساخته شد", "success"))
+    .catch(err => showNotif("مشکلی پیش آمده"));
 };
 
 export default preparerCreateCourse;
