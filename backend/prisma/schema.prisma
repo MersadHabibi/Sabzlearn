@@ -19,9 +19,10 @@ model Users {
   email        String     @unique
   hash         String
   imageProfile String?
-  comments     Comments[]
+  comments     Comments[] @relation("user to comments")
   role         String?    @default("student")
   replies      Reply[]    @relation("user to reply")
+  // Comments     Comments[] @relation("user to comments")
 }
 
 // مدل یک دوره
@@ -55,10 +56,9 @@ model Comments {
 
   Course   Course? @relation(fields: [courseId], references: [id])
   courseId String? @db.ObjectId
-  Users    Users?  @relation(fields: [userId], references: [id])
+  Users    Users?  @relation(fields: [userId], references: [id], name: "user to comments")
   userId   String? @db.ObjectId
-
-  replies Reply[]
+  replies  Reply[]
 }
 
 //  سرفصل های هر دوره
