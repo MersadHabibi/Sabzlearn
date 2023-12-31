@@ -104,13 +104,6 @@ const getParams = () => {
   loadCourses();
 };
 
-// Get Courses
-
-const getCourses = async () => {
-  const res = await fetch(`${api}admin/courses`);
-  allCourses = await res.json();
-};
-
 // Chnage Category Title
 
 const changeCategoryTitle = () => {
@@ -302,7 +295,7 @@ const loadCourses = () => {
 };
 
 window.addEventListener("load", async () => {
-  await getCourses();
+  allCourses = (await api.get("courses")).data;
   getParams();
   changeCategoryTitle();
   onlyFreeCourses();

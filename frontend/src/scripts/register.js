@@ -37,15 +37,13 @@ const register = async (email, username, phoneNumber, password, address = " ") =
     address,
   };
 
-  await fetch(`${api}register`, {
-    method: "POST",
-    body: JSON.stringify(newUser),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then(res => res.json())
+  await api
+    .post("register", {
+      newUser,
+    })
     .then(res => {
+      console.log("object");
+      console.log(res);
       if (res.details) {
         showNotif("ساخت حساب با مشکل مواجه شد");
       } else if (res.message) {
@@ -55,5 +53,6 @@ const register = async (email, username, phoneNumber, password, address = " ") =
         localStorage.setItem("token", res.token);
         location.href = getAfterPageLink();
       }
-    });
+    })
+    .catch(err => console.log(err));
 };

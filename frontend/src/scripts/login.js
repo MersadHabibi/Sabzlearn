@@ -18,26 +18,30 @@ form.addEventListener("submit", e => {
   login(emailAddressInput.value, passwordInput.value);
 });
 
-const login = (email, password) => {
-  fetch(`${api}login`, {
-    method: "POST",
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then(res => res.json())
+const login = async (email, password) => {
+  console.log(email, password);
+  await api
+    .post(
+      "login",
+      {
+        email: email,
+        password: password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
     .then(res => {
       console.log(res);
-      if (!res.token) {
+      if (!res.data.token) {
         showNotif("ایمیل یا رمز عبور درست نیست");
-      } else if (res.token) {
+      } else if (res.data.token) {
         showNotif("با موفقیت وارد شدید", "success");
-        localStorage.setItem("token", res.token);
+        localStorage.setItem("token", res.data.token);
         location.href = getAfterPageLink();
       }
-    });
+    })
+    .catch(err => showNotif("مشکلی پیش آمده"));
 };
