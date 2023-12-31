@@ -1,7 +1,8 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { _changeClasses, api, createTimer } from "./funcs/utils.js";
+import { _changeClasses, api, createTimer, getMe } from "./funcs/utils.js";
+import preparationNewComment from "./funcs/createComment.js";
 
 const $ = document;
 header($);
@@ -236,7 +237,8 @@ const setDatas = () => {
 
 window.addEventListener("load", async () => {
   await getCourse();
+  const user = await getMe();
   fillBreadCrumb();
   setDatas();
-  console.log(course);
+  await preparationNewComment(user.data, course);
 });
