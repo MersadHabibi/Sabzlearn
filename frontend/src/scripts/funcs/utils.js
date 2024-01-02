@@ -108,7 +108,7 @@ const showNotif = (massage, status = "error") => {
     } else {
       iziToast.show({
         backgroundColor: "white",
-        title: "خطا",
+        title: "موفق",
         titleSize: "16px",
         message: massage,
         position: "topLeft",
