@@ -15,20 +15,6 @@ function createCourse(req, res) {
     teacher: Joi.string().required().min(1).trim(),
     shortName: Joi.string().required().min(1).trim(),
     isFree: Joi.boolean().only(true, false).required(),
-    subjects: Joi.array()
-      .items(
-        Joi.object({
-          title: Joi.string(),
-          episodes: Joi.array().items(
-            Joi.object({
-              title: Joi.string(),
-              isFree: Joi.boolean(),
-              link: Joi.string(),
-            })
-          ),
-        })
-      )
-      .required(),
   });
 
   if (!req.file) return res.json({ message: "you didnot provide image." });

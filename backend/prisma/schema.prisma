@@ -66,6 +66,7 @@ model Subjects {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   title    String
   episodes Episode[]
+  sortId   Int
   Course   Course?   @relation(fields: [courseId], references: [id])
   courseId String?   @db.ObjectId
 }
@@ -75,6 +76,7 @@ model Episode {
   title     String
   isFree    Boolean
   link      String?
+  sortId    Int
   Subject   Subjects? @relation(fields: [subjectId], references: [id])
   subjectId String?   @db.ObjectId
 }
