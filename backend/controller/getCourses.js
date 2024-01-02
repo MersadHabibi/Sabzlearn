@@ -34,6 +34,18 @@ function getCourseById(req, res) {
         id: req.params.id,
       },
       include: {
+        subjects: {
+          orderBy: {
+            sortId: "asc",
+          },
+          include: {
+            episodes: {
+              orderBy: {
+                sortId: "asc",
+              },
+            },
+          },
+        },
         comments: {
           where: { status: "active" },
           include: {
@@ -63,6 +75,7 @@ function getCourseById(req, res) {
       return res.json(course);
     })
     .catch((err) => {
+      console.log(err);
       res
         .status(500)
         .json({ message: "there is an error in fetching course by this id." });
