@@ -2,7 +2,7 @@ import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
 import { _changeClasses, api } from "./funcs/utils.js";
-import { createCourseCard } from "./funcs/share.js";
+import { createCourseCard, setEventForCourseCards } from "./funcs/share.js";
 
 const $ = document;
 header($);
@@ -292,6 +292,8 @@ const loadCourses = () => {
   coursesBySearch.forEach(course => {
     courseContainer.insertAdjacentHTML("beforeend", createCourseCard(course));
   });
+
+  setEventForCourseCards();
 };
 
 window.addEventListener("load", async () => {

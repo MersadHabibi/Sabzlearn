@@ -6,7 +6,7 @@ const createNewComment = async (userId, courseId, commentText) => {
     return;
   }
 
-  await api
+  return await api
     .post(
       "comments",
       {
@@ -23,9 +23,11 @@ const createNewComment = async (userId, courseId, commentText) => {
     )
     .then(res => {
       showNotif("کامنت با موفقیت ثبت شد", "success");
+      return true;
     })
     .catch(err => {
       showNotif("مشکلی در ثبت کامنت رخ داد! بعدا امتحان کنید");
+      return false;
     });
 };
 

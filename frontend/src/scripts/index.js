@@ -3,11 +3,115 @@ import "./share.js";
 import header from "./header.js";
 import "swiper/css";
 import Swiper from "swiper";
-import { createCourseCard } from "./funcs/share.js";
+import { createCourseCard, setEventForCourseCards } from "./funcs/share.js";
 import { api } from "./funcs/utils.js";
 
 const $ = document;
 header($);
+
+// Get Course
+
+let courses = null;
+
+// Get And Show Last Courses - random
+
+const getAndShowLastCourses = async () => {
+  const lastCoursesContainer = $.querySelector(".last-courses__container");
+
+  let rndCourses = [...courses];
+
+  rndCourses = rndCourses.sort(() => Math.random() - 0.5);
+
+  rndCourses.slice(0, 8).forEach(async course => {
+    lastCoursesContainer.insertAdjacentHTML("beforeend", await createCourseCard(course));
+  });
+};
+
+// Get And Show New Courses
+
+const getAndShowNewCourses = async () => {
+  const newCoursesContainer = $.querySelector(".new-courses__container");
+
+  courses.slice(0, 8).forEach(course => {
+    newCoursesContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="swiper-slide" >
+        ${createCourseCard(course, {
+          hasDescription: true,
+          hasCategory: true,
+          hasBorderOnLightMode: true,
+          hasShadowOnLightMode: false,
+          fixHeight: true,
+        })}
+      </div>
+      `
+    );
+  });
+};
+
+// Get And Show New Courses
+
+const getAndShowPresellCourses = async () => {
+  const presellCoursesContainer = $.querySelector(".presell-courses__container");
+
+  const presellCourses = courses.filter(course => {
+    return course.status == "presell";
+  });
+
+  presellCourses.forEach(course => {
+    presellCoursesContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="swiper-slide" >
+        ${createCourseCard(course, {
+          hasDescription: true,
+          hasCategory: true,
+          hasBorderOnLightMode: true,
+          hasShadowOnLightMode: false,
+          fixHeight: true,
+        })}
+      </div>
+      `
+    );
+  });
+};
+
+// Get And Show Popular Courses
+
+const getAndShowPopularCourses = async () => {
+  const popularCoursesContainer = $.querySelector(".popular-courses__container");
+
+  let popularCourses = [...courses];
+
+  popularCourses = popularCourses.sort((a, b) => {
+    return b.studentsCount - a.studentsCount;
+  });
+
+  popularCourses.slice(0, 8).forEach(course => {
+    popularCoursesContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+          ${createCourseCard(course, {
+            hasDescription: false,
+            hasCategory: false,
+            hasBorderOnLightMode: false,
+            hasShadowOnLightMode: true,
+            fixHeight: false,
+          })}
+      `
+    );
+  });
+};
+
+window.addEventListener("load", async () => {
+  courses = (await api.get("courses")).data;
+  await getAndShowLastCourses();
+  await getAndShowNewCourses();
+  await getAndShowPresellCourses();
+  await getAndShowPopularCourses();
+  setEventForCourseCards();
+});
 
 // New Courses
 
@@ -67,103 +171,3 @@ presellCoursesSliderNextBtn.addEventListener("click", () => {
 presellCoursesSliderPrevBtn.addEventListener("click", () => {
   presellCoursesSlider.slidePrev();
 });
-
-// Get Course
-
-const res = await api.get("courses");
-const courses = res.data;
-
-// Get And Show Last Courses - random
-
-const getAndShowLastCourses = async () => {
-  const lastCoursesContainer = $.querySelector(".last-courses__container");
-
-  let rndCourses = [...courses];
-
-  rndCourses = rndCourses.sort(() => Math.random() - 0.5);
-
-  rndCourses.slice(0, 8).forEach(async course => {
-    lastCoursesContainer.insertAdjacentHTML("beforeend", await createCourseCard(course));
-  });
-};
-getAndShowLastCourses();
-
-// Get And Show New Courses
-
-const getAndShowNewCourses = async () => {
-  const newCoursesContainer = $.querySelector(".new-courses__container");
-
-  courses.slice(0, 8).forEach(course => {
-    newCoursesContainer.insertAdjacentHTML(
-      "beforeend",
-      `
-      <div class="swiper-slide" >
-        ${createCourseCard(course, {
-          hasDescription: true,
-          hasCategory: true,
-          hasBorderOnLightMode: true,
-          hasShadowOnLightMode: false,
-          fixHeight: true,
-        })}
-      </div>
-      `
-    );
-  });
-};
-getAndShowNewCourses();
-
-// Get And Show New Courses
-
-const getAndShowPresellCourses = async () => {
-  const presellCoursesContainer = $.querySelector(".presell-courses__container");
-
-  const presellCourses = courses.filter(course => {
-    return course.status == "presell";
-  });
-
-  presellCourses.forEach(course => {
-    presellCoursesContainer.insertAdjacentHTML(
-      "beforeend",
-      `
-      <div class="swiper-slide" >
-        ${createCourseCard(course, {
-          hasDescription: true,
-          hasCategory: true,
-          hasBorderOnLightMode: true,
-          hasShadowOnLightMode: false,
-          fixHeight: true,
-        })}
-      </div>
-      `
-    );
-  });
-};
-getAndShowPresellCourses();
-
-// Get And Show Popular Courses
-
-const getAndShowPopularCourses = async () => {
-  const popularCoursesContainer = $.querySelector(".popular-courses__container");
-
-  let popularCourses = [...courses];
-
-  popularCourses = popularCourses.sort((a, b) => {
-    return b.studentsCount - a.studentsCount;
-  });
-
-  popularCourses.slice(0, 8).forEach(course => {
-    popularCoursesContainer.insertAdjacentHTML(
-      "beforeend",
-      `
-          ${createCourseCard(course, {
-            hasDescription: false,
-            hasCategory: false,
-            hasBorderOnLightMode: false,
-            hasShadowOnLightMode: true,
-            fixHeight: false,
-          })}
-      `
-    );
-  });
-};
-getAndShowPopularCourses();

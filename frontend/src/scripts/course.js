@@ -1,7 +1,7 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { _changeClasses, api, createTimer, getMe } from "./funcs/utils.js";
+import { _changeClasses, api, createTimer, getMe, showNotif } from "./funcs/utils.js";
 import createNewComment from "./funcs/createComment.js";
 import createReplyComment from "./funcs/replayComment.js";
 
@@ -10,26 +10,45 @@ header($);
 let course = null;
 let user = null;
 let replayOrNewComment = "new";
+let commentsSlide = 0;
 
 window.addEventListener("load", async () => {
   await getCourse();
   user = await getMe();
   fillBreadCrumb();
   setDatas();
-  getAndShowComments();
+  ShowComments();
   preparationNewAndReplayComment();
+  preparationNewCommentBtn();
 });
 
 const preparationNewAndReplayComment = () => {
   const form = document.querySelector(".new-comment-form");
   const formTextarea = document.querySelector("#comment-textarea");
 
+  console.log("prepare");
   form.addEventListener("submit", async e => {
     e.preventDefault();
     if (replayOrNewComment == "new") {
-      await createNewComment(user.data.id, course.id, formTextarea.value);
+      let res = await createNewComment(user.data.id, course.id, formTextarea.value);
+      if (res == true) {
+        _changeClasses("remove", courseComments, ["show-new-comment-form"]);
+        formTextarea.value = "";
+        commentsSlide = 0;
+        commentContainer.innerHTML = "";
+        await getCourse();
+        ShowComments();
+      }
     } else {
-      await createReplyComment(user.data.id, replayOrNewComment, formTextarea.value);
+      let res = await createReplyComment(user.data.id, replayOrNewComment, formTextarea.value);
+      if (res == true) {
+        _changeClasses("remove", courseComments, ["show-new-comment-form"]);
+        formTextarea.value = "";
+        commentsSlide = 0;
+        commentContainer.innerHTML = "";
+        await getCourse();
+        ShowComments();
+      }
     }
   });
 };
@@ -49,10 +68,13 @@ const topicsHeader = $.querySelectorAll(".topic__header");
 
 // New Comment Elements
 
+const commentContainer = $.querySelector(".comments__container");
 const courseComments = $.querySelector(".course-comments");
 const openNewCommentBtn = $.querySelector(".open-new-comment-btn");
 const cancelNewCommentBtn = $.querySelector(".cancel-new-comment");
 const commentTo = $.querySelector(".comment-to");
+const commentsMoreBtn = $.querySelector(".comments__more-btn");
+const commentsAllShowed = $.querySelector(".comments__all-showed");
 
 // Offer Elements
 
@@ -81,13 +103,13 @@ topicsHeader.forEach(topicHeader => {
   });
 });
 
-// New Comment - close
+// Close Comment Form
 
 cancelNewCommentBtn.addEventListener("click", () => {
   _changeClasses("remove", courseComments, ["show-new-comment-form"]);
 });
 
-// New Comment - open
+// New Comment - Open Comment Form
 
 const preparationNewCommentBtn = () => {
   openNewCommentBtn.addEventListener("click", async () => {
@@ -97,7 +119,7 @@ const preparationNewCommentBtn = () => {
   });
 };
 
-// Replay Comment - open
+// Replay Comment - Open Comment Form
 
 const preparationReplayCommentBtn = () => {
   const replayCommentBtn = $.querySelectorAll(".comment-reply-btn");
@@ -120,17 +142,10 @@ createTimer(offerDay, offerHur, offerMin, offerSec, "0:14:10:3", false);
 // Get Course
 
 const getCourse = async () => {
-  const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
+  const targetCourseId = localStorage.getItem("course");
 
-  const courses = (await api.get("courses")).data;
-
-  course = params.course
-    ? courses.filter(c => {
-        return c.shortName == params.course;
-      })[0]
-    : null;
+  course = (await api.get(`courses/${targetCourseId}`)).data;
+  console.log(course);
 };
 
 // BreadCrumb
@@ -271,13 +286,20 @@ const setDatas = () => {
 
 // Get And Show Comments
 
-const getAndShowComments = () => {
-  const commentContainer = $.querySelector(".comments__container");
+const ShowComments = () => {
+  const comments = course.comments.sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
 
-  course.comments.forEach(comment => {
-    console.log(comment);
+  insertComments(comments.slice(commentsSlide, commentsSlide + 5));
+
+  preparationReplayCommentBtn();
+};
+
+const insertComments = comments => {
+  comments.forEach(comment => {
     commentContainer.insertAdjacentHTML(
-      "afterbegin",
+      "beforeend",
       `
       <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
         <!-- Comment Body -->
@@ -302,7 +324,7 @@ const getAndShowComments = () => {
             <!-- Comment Head -->
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-x-2">
-                <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="" />
+                <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="/images/user-profile.png" />
                 <div class="shrink-0">
                   <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"> ${comment.Users.username} </span>
                   <div class="flex items-center gap-x-1.5 mt-1">
@@ -334,36 +356,76 @@ const getAndShowComments = () => {
               <br />
             </div>
             <!-- Comment Replies -->
-            <div class="mt-7 space-y-3.5 md:space-y-5">
-              <div id="" class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
-                <div class="flex gap-x-5 items-start">
-                  <!-- Comment Right User Picture & flag (desktop version) -->
-                  <div class="hidden md:flex flex-col shrink-0 gap-y-2">
-                    <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="" />
-                    <div class="text-xs w-full rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">مدیریت</div>
-                  </div>
-                  <!-- Comment Left Text, author, data, flag -->
-                  <div class="w-full">
-                    <div class="flex items-center justify-between">
-                      <div class="flex items-center gap-x-2">
-                        <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="" />
-                        <div class="shrink-0">
-                          <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">قدیر یلمه</span>
-                          <div class="flex items-center gap-x-1.5 mt-1">
-                            <div
-                              class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10 text-center py-0.5 ">
-                              مدیریت
+            ${
+              comment.replies
+                ? `
+              <div class="mt-7 space-y-3.5 md:space-y-5">
+                ${comment.replies
+                  .map(reply => {
+                    return `
+                  <div class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
+                    <div class="flex gap-x-5 items-start">
+                      <!-- Comment Right User Picture & flag (desktop version) -->
+                      <div class="hidden md:flex flex-col shrink-0 gap-y-2">
+                        <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="/images/user-profile.png" />
+                        <div class="text-xs w-full rounded-md text-center py-0.5 ${
+                          reply.Users.role == "admin"
+                            ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
+                            : reply.Users.role == "user"
+                            ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                            : reply.Users.role == "student"
+                            ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                            : ""
+                        }">${
+                      reply.Users.role == "admin" ? "ادمین" : reply.Users.role == "user" ? "کاربر" : comment.Users.role == "student" ? "دانشجو" : ""
+                    }</div>
+                      </div>
+                      <!-- Comment Left Text, author, data, flag -->
+                      <div class="w-full">
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center gap-x-2">
+                            <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="/images/user-profile.png" />
+                            <div class="shrink-0">
+                              <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl"> ${reply.Users.username} </span>
+                              <div class="flex items-center gap-x-1.5 mt-1">
+                                <div
+                                  class="md:hidden text-xs w-full px-3 rounded-md text-center py-0.5 ${
+                                    reply.Users.role == "admin"
+                                      ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
+                                      : reply.Users.role == "user"
+                                      ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                                      : reply.Users.role == "student"
+                                      ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                                      : ""
+                                  }">
+                                  ${
+                                    reply.Users.role == "admin" ? "ادمین" : reply.Users.role == "user" ? "کاربر" : reply.Users.role == "student" ? "دانشجو" : ""
+                                  }
+                                </div>
+                                <span class="font-danaLight text-slate-500 dark:text-white text-xs">${new Date(reply.createdAt).toLocaleDateString(
+                                  "fa-IR"
+                                )}</span>
+                              </div>
                             </div>
-                            <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
                           </div>
                         </div>
+                        <!-- Comment Text -->
+                        <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5"> ${reply.body} </div>
                       </div>
                     </div>
-                    <!-- Comment Text -->
-                    <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">بصورت آنلاین در قسمت مشاهده آنلاین جلسات هست</div>
                   </div>
-                </div>
+                  `;
+                  })
+                  .join("")}
               </div>
+            `
+                : ""
+            }
+
+
+
+            <div class="mt-7 space-y-3.5 md:space-y-5">
+              
             </div>
           </div>
         </div>
@@ -371,7 +433,14 @@ const getAndShowComments = () => {
     `
     );
   });
-
-  preparationNewCommentBtn();
-  preparationReplayCommentBtn();
 };
+
+commentsMoreBtn.addEventListener("click", () => {
+  commentsSlide = commentsSlide + 5;
+  let commentLength = course.comments.length;
+  if (commentLength <= commentsSlide + 5) {
+    _changeClasses("add", commentsMoreBtn, ["hidden"]);
+    _changeClasses("remove", commentsAllShowed, ["hidden"]);
+  }
+  ShowComments();
+});

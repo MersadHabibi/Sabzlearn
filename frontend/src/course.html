@@ -1151,10 +1151,10 @@
                   class="block w-full p-3 md:p-5 text-sm md:text-base text-slate-500 dark:text-gray-500 focus:text-zinc-700 dark:focus:text-white bg-gray-100 dark:bg-gray-700 border border-transparent focus:border-gray-200 dark:focus:border-slate rounded-2xl placeholder:font-danaLight transition-colors outline-none"
                   placeholder="نظر خود را بنویسید ..."></textarea>
                 <div class="flex gap-x-2 justify-end mt-2.5">
-                  <button
-                    class="cancel-new-comment bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-10 px-[18px] rounded-xl transition-colors">
+                  <div
+                    class="cancel-new-comment bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-10 leading-10 px-[18px] rounded-xl transition-colors">
                     لغو
-                  </button>
+                  </div>
                   <button
                     class="bg-sky-500 hover:bg-sky-600 dark:bg-secondary dark:hover:bg-sky-700 text-white h-10 px-[18px] rounded-xl transition-colors"
                     id="comment-submit-btn"
@@ -1167,126 +1167,16 @@
               <!-- Comments Container -->
               <div class="comments__container space-y-5">
                 <!-- Comment -->
-                <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
-                  <!-- Comment Body -->
-                  <div class="flex gap-x-5 items-start">
-                    <!-- Comment Right User Picture & flag (desktop version) -->
-                    <div class="hidden md:flex flex-col gap-y-2 shrink-0">
-                      <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="/images/user-profile.png" />
-                      <div class="text-xs w-full rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">دانشجو</div>
-                    </div>
-                    <!-- Comment Left Reply comment, text, author, data, flag, reply btn -->
-                    <div class="w-full">
-                      <!-- Comment Head -->
-                      <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-x-2">
-                          <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="" />
-                          <div class="shrink-0">
-                            <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">Pe_f</span>
-                            <div class="flex items-center gap-x-1.5 mt-1">
-                              <div
-                                class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
-                                دانشجو
-                              </div>
-                              <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
-                            </div>
-                          </div>
-                        </div>
-                        <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
-                          <svg class="w-6 h-5">
-                            <use xlink:href="#reply"></use>
-                          </svg>
-                        </button>
-                      </div>
-                      <!-- Comment Text -->
-                      <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
-                        سلام ببخشید پشتیبانی دوره به چه صورتی هست؟<br />
-                        <br />
-                      </div>
-                      <!-- Comment Replies -->
-                    </div>
-                  </div>
-                </div>
-                <div class="p-3.5 md:p-5 bg-gray-100 dark:bg-gray-700 rounded-2xl">
-                  <!-- Comment Body -->
-                  <div class="flex gap-x-5 items-start">
-                    <!-- Comment Right User Picture & flag (desktop version) -->
-                    <div class="hidden md:flex flex-col gap-y-2 shrink-0">
-                      <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="/images/user-profile.png" />
-                      <div class="text-xs w-full rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">دانشجو</div>
-                    </div>
-                    <!-- Comment Left Reply comment, text, author, data, flag, reply btn -->
-                    <div class="w-full">
-                      <!-- Comment Head -->
-                      <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-x-2">
-                          <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="" />
-                          <div class="shrink-0">
-                            <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">mersad</span>
-                            <div class="flex items-center gap-x-1.5 mt-1">
-                              <div
-                                class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-primary text-center py-0.5 bg-primary dark:bg-primary/10">
-                                دانشجو
-                              </div>
-                              <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
-                            </div>
-                          </div>
-                        </div>
-                        <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button">
-                          <svg class="w-6 h-5">
-                            <use xlink:href="#reply"></use>
-                          </svg>
-                        </button>
-                      </div>
-                      <!-- Comment Text -->
-                      <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
-                        سلام ببخشید پشتیبانی دوره به چه صورتی هست؟<br />
-                        <br />
-                      </div>
-                      <!-- Comment Replies -->
-                      <div class="mt-7 space-y-3.5 md:space-y-5">
-                        <div id="comment-47416" class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
-                          <div class="flex gap-x-5 items-start">
-                            <!-- Comment Right User Picture & flag (desktop version) -->
-                            <div class="hidden md:flex flex-col shrink-0 gap-y-2">
-                              <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="" />
-                              <div class="text-xs w-full rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">مدیریت</div>
-                            </div>
-                            <!-- Comment Left Text, author, data, flag, reply btn -->
-                            <div class="w-full">
-                              <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-x-2">
-                                  <img class="block md:hidden w-10 h-10 object-cover rounded-full shrink-0" src="" />
-                                  <div class="shrink-0">
-                                    <span class="text-zinc-700 dark:text-white font-danaMedium text-base md:text-xl">قدیر یلمه</span>
-                                    <div class="flex items-center gap-x-1.5 mt-1">
-                                      <div
-                                        class="md:hidden text-xs w-full px-3 rounded-md text-white dark:text-sky-500 text-center py-0.5 bg-sky-500 dark:bg-sky-500/10">
-                                        مدیریت
-                                      </div>
-                                      <span class="font-danaLight text-slate-500 dark:text-white text-xs">1402/09/04</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- Comment Text -->
-                              <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">بصورت آنلاین در قسمت مشاهده آنلاین جلسات هست</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
               <!-- More Btn -->
               <button
-                class="flex justify-center items-center gap-x-2 text-xl text-zinc-700 dark:text-white rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-slate px-7 h-14 mx-auto mt-7 transition-colors">
+                class="comments__more-btn flex justify-center items-center gap-x-2 text-xl text-zinc-700 dark:text-white rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-slate px-7 h-14 mx-auto mt-7 transition-colors">
                 <span>مشاهده بیشتر</span>
                 <svg class="w-5 h-5">
                   <use href="#chevron-down"></use>
                 </svg>
               </button>
+              <p class="comments__all-showed hidden flex justify-center items-center text-md h-14 mt-7 dark:text-white">همه کامنت ها نشان داده شد.</p>
             </div>
           </div>
           <!-- Aside -->

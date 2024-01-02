@@ -66,4 +66,4 @@ const sentCreateCourseApi = async formData => {
     .catch(err => showNotif("مشکلی پیش آمده"));
 };
 
-export default preparerCreateCourse;
+export default preparationCreateCourse;

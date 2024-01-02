@@ -34,11 +34,13 @@ const createCourseCard = (
   }
 ) => {
   return `
-      <div class="flex flex-col bg-white dark:bg-gray-800 ${props.hasShadowOnLightMode ? "shadow-light" : ""}  dark:shadow-none ${
-    props.hasBorderOnLightMode ? `border-gray-200/80 border` : "dark:border"
-  } dark:border dark:border-gray-700 ${props.fixHeight ? "h-[417px]" : ""} overflow-hidden rounded-2xl">
+      <div data-course-id=${course.id} class="course-card flex flex-col bg-white dark:bg-gray-800 ${
+    props.hasShadowOnLightMode ? "shadow-light" : ""
+  }  dark:shadow-none ${props.hasBorderOnLightMode ? `border-gray-200/80 border` : "dark:border"} dark:border dark:border-gray-700 ${
+    props.fixHeight ? "h-[417px]" : ""
+  } overflow-hidden rounded-2xl">
         <!-- Course Head -->
-        <a href=./course.html?course=${course.shortName} class="relative block h-42 w-full overflow-hidden">
+        <a href=./course.html class="relative block h-42 w-full overflow-hidden">
         ${
           course.discount
             ? `
@@ -76,9 +78,7 @@ const createCourseCard = (
         `
             : ""
         }
-          <a href=./course.html?course=${course.shortName} class="font-DanaMedium dark:text-white text-lg line-clamp-2 ${
-    props.hasDescription ? "my-2.5" : "my-1"
-  } ">
+          <a href=./course.html class="font-DanaMedium dark:text-white text-lg line-clamp-2 ${props.hasDescription ? "my-2.5" : "my-1"} ">
             ${course.title}
           </a>
           ${
@@ -186,4 +186,16 @@ const createCourseCard = (
     `;
 };
 
-export { redirectWhenHaveToken, getAfterPageLink, createCourseCard };
+// Set Event For Course Cards
+
+const setEventForCourseCards = () => {
+  const courseCards = document.querySelectorAll(".course-card");
+
+  courseCards.forEach(course => {
+    course.addEventListener("click", () => {
+      localStorage.setItem("course", course.dataset.courseId);
+    });
+  });
+};
+
+export { redirectWhenHaveToken, getAfterPageLink, createCourseCard, setEventForCourseCards };

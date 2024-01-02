@@ -1,4 +1,4 @@
-import { api, getToken , showNotif } from "./utils";
+import { api, getToken, showNotif } from "./utils";
 
 const createReplyComment = async (userId, commentId, commentText) => {
   if (!commentText) {
@@ -6,7 +6,7 @@ const createReplyComment = async (userId, commentId, commentText) => {
     return;
   }
 
-  await api
+  return await api
     .post(
       `comments/${commentId}/reply`,
       {
@@ -20,8 +20,14 @@ const createReplyComment = async (userId, commentId, commentText) => {
         },
       }
     )
-    .then(res => showNotif("کامنت با موفقیت ثبت شد", "success"))
-    .catch(err => showNotif("مشکلی در ثبت کامنت رخ داد! بعدا امتحان کنید"));
+    .then(res => {
+      showNotif("کامنت با موفقیت ثبت شد", "success");
+      return true;
+    })
+    .catch(err => {
+      showNotif("مشکلی در ثبت کامنت رخ داد! بعدا امتحان کنید");
+      return false;
+    });
 };
 
 export default createReplyComment;
