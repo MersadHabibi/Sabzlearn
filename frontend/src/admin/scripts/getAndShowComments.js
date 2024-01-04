@@ -19,8 +19,8 @@ const getAndShowComments = async () => {
 const insertComments = comments => {
   const commentsContainer = document.querySelector(".comments__container");
 
-  comments.map((comment,index) => {
-    console.log(comment);
+  comments.map((comment, index) => {
+    // console.log(comment);
     comment.status == "pending" &&
       commentsContainer.insertAdjacentHTML(
         "beforeend",
@@ -31,7 +31,7 @@ const insertComments = comments => {
               <!-- comment id -->
               <div
                 class="h-full w-full xs:w-15 xl:w-20 text-xl border-b xs:border-b-0 xs:border-l border-gray-200 dark:border-gray-800 flex justify-center items-center shrink-0 py-1 xs:py-0 px-1">
-                <span class="font-sans mb-1 dark:text-white overflow-hidden"> ${index+ 1} </span>
+                <span class="font-sans mb-1 dark:text-white overflow-hidden"> ${index + 1} </span>
               </div>
               <!-- Comment Body -->
               <div
