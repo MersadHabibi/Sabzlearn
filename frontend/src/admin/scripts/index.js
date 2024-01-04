@@ -2,6 +2,7 @@ import "../../styles/app.css";
 import "../../scripts/share.js";
 import { _changeClasses } from "../../scripts/funcs/utils.js";
 import preparationCreateCourse from "./createCourse.js";
+import getAndShowComments from "./getAndShowComments.js";
 
 const $ = document;
 
@@ -83,4 +84,5 @@ overlay.addEventListener("click", () => {
 
 window.addEventListener("load", () => {
   preparationCreateCourse();
+  getAndShowComments();
 });
