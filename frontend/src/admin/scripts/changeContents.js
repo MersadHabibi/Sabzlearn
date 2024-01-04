@@ -1,7 +1,7 @@
 import preparationCreateCourse from "./createCourse";
-import getAndShowComments from "./getAndShowComments";
+import getAndShowComments, { setEventForCommentDeleteBtn } from "./getAndShowComments";
 
-const changeContent = targetMenu => {
+const changeContent = async targetMenu => {
   const contentContainer = document.querySelector(".content-container");
   contentContainer.innerHTML = "";
 
@@ -36,7 +36,7 @@ const changeContent = targetMenu => {
             </div>
             <!-- Comment Actions -->
             <div
-              class="h-full self-end lg:self-auto w-52 xl:w-60 flex justify-center items-center shrink-0 gap-x-4 lg:gap-x-2 xl:gap-x-4 p-4 lg:p-2 xl:p-2">
+              class="h-full self-end lg:self-auto w-36 xl:w-40 flex justify-center items-center shrink-0 gap-x-4 lg:gap-x-2 xl:gap-x-4 p-4 lg:p-2 xl:p-2">
               <span class="text-white">اعمال</span>
             </div>
           </div>
@@ -47,7 +47,8 @@ const changeContent = targetMenu => {
         </div>
       </div>`;
 
-    getAndShowComments();
+    await getAndShowComments();
+    setEventForCommentDeleteBtn();
   } else if (targetMenu == "create-course") {
     contentContainer.innerHTML = `
       <div class="content create-course">
