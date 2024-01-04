@@ -60,23 +60,30 @@ const setEventForCommentDeleteBtn = () => {
   const commentsDeleteBtn = document.querySelectorAll(".comment-delete");
 
   commentsDeleteBtn.forEach(deleteBtn => {
-    deleteBtn.addEventListener("click", () => {
+    deleteBtn.addEventListener("click", async () => {
       const commentId = deleteBtn.dataset.commentId;
-      deleteComment(commentId);
+      const isSuccess = await deleteComment(commentId);
+      isSuccess && deleteBtn.parentElement.parentElement.remove();
     });
   });
 };
 
-const deleteComment = id => {
+const deleteComment = async id => {
   console.log("object");
-  apiAdmin
+  return await apiAdmin
     .delete(`comments/${id}`, {
       headers: {
         Authorization: "Bearer " + getToken(),
       },
     })
-    .then(res => showNotif("کامنت با موفقیت پاک شد", "success"))
-    .catch(err => showNotif("مشکلی در پاک کردن کامنت به وجود آمده ! بعدا دوباره امتحان کنید"));
+    .then(res => {
+      showNotif("کامنت با موفقیت پاک شد", "success");
+      return true;
+    })
+    .catch(err => {
+      showNotif("مشکلی در پاک کردن کامنت به وجود آمده ! بعدا دوباره امتحان کنید");
+      return false;
+    });
 };
 
 export default getAndShowComments;

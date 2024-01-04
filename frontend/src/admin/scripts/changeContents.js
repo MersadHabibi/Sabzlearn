@@ -177,7 +177,7 @@ const changeContent = async targetMenu => {
             <!-- topics -->
             <div class="mt-8 px-5 space-y-5">
               <div
-                class="topic flex flex-col lg:flex-row justify-between lg:items-center gap-y-3 gap-x-1 w-full bg-gray-100 shadow-light dark:shadow-none dark:bg-gray dark:text-white px-5 py-4 rounded-lg">
+                class="topic flex flex-col lg:flex-row justify-between lg:items-center gap-y-3 gap-x-1 w-full bg-gray-100 border border-gray-300 dark:border-slate shadow-light dark:shadow-none dark:bg-gray dark:text-white px-5 py-4 rounded-lg">
                 <!-- topic right -->
                 <h4 class="font-DanaMedium text-lg md:text-xl">فصل اول - مباحث TailwindCss</h4>
 
