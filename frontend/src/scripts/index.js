@@ -3,7 +3,7 @@ import "./share.js";
 import header from "./header.js";
 import "swiper/css";
 import Swiper from "swiper";
-import { createCourseCard, setEventForCourseCards } from "./funcs/share.js";
+import createCourseCard, { setEventForCourseCards } from "./funcs/createCourseCard.js";
 import { api } from "./funcs/utils.js";
 
 const $ = document;
