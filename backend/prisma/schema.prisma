@@ -65,7 +65,7 @@ model Comments {
 model Subjects {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   title    String
-  episodes Episode[]
+  episodes Episode[] @relation("subject to episode")
   sortId   Int
   Course   Course?   @relation(fields: [courseId], references: [id])
   courseId String?   @db.ObjectId
@@ -77,7 +77,7 @@ model Episode {
   isFree    Boolean
   link      String?
   sortId    Int
-  Subject   Subjects? @relation(fields: [subjectId], references: [id])
+  Subject   Subjects? @relation(fields: [subjectId], references: [id], name: "subject to episode")
   subjectId String?   @db.ObjectId
 }
 
