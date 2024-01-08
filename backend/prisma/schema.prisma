@@ -41,7 +41,7 @@ model Course {
   rank          Float?
   teacher       String
   comments      Comments[]
-  subjects      Subjects[]
+  subjects      Subjects[] @relation("course to subject")
   shortName     String
   image         String
   Menues        Menues?    @relation(fields: [menuesId], references: [id])
@@ -67,7 +67,7 @@ model Subjects {
   title    String
   episodes Episode[] @relation("subject to episode")
   sortId   Int
-  Course   Course?   @relation(fields: [courseId], references: [id])
+  Course   Course?   @relation(fields: [courseId], references: [id], name: "course to subject")
   courseId String?   @db.ObjectId
 }
 
