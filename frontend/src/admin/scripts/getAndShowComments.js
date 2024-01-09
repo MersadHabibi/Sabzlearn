@@ -91,13 +91,14 @@ const deleteComment = async id => {
     })
     .then(res => {
       showNotif("کامنت با موفقیت پاک شد", "success");
-      fullScreenLoader("loaded");
       return true;
     })
     .catch(err => {
       showNotif("مشکلی در پاک کردن کامنت به وجود آمده ! بعدا دوباره امتحان کنید");
-      fullScreenLoader("loaded");
       return false;
+    })
+    .finally(() => {
+      fullScreenLoader("loaded");
     });
 };
 

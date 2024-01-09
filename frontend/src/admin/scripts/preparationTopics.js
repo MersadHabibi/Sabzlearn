@@ -1,4 +1,4 @@
-import { _changeClasses, api, apiAdmin, getToken, showNotif } from "../../scripts/funcs/utils";
+import { _changeClasses, api, apiAdmin, fullScreenLoader, getToken, showNotif } from "../../scripts/funcs/utils";
 
 const overlay = document.querySelector(".overlay");
 let course = null;
@@ -32,7 +32,7 @@ const preparationTopics = async () => {
 };
 
 const getCourseAndShowDatas = id => {
-  document.querySelector("#topics__container").innerHTML = "";
+  document.querySelector("#topics__container").innerHTML = `<div class="loader mx-auto mt-5"></div>`;
   api
     .get(`courses/${id}`)
     .then(res => {
@@ -51,6 +51,7 @@ const getCourseAndShowDatas = id => {
 
 const createTopic = async () => {
   const input = document.querySelector("#add-topic-modal input");
+  fullScreenLoader("loading");
   if (input.value) {
     apiAdmin
       .post(
@@ -75,6 +76,9 @@ const createTopic = async () => {
       })
       .catch(err => {
         showNotif("ساخت سر فصل جدید با مشکل مواجه شد!");
+      })
+      .finally(() => {
+        fullScreenLoader("loaded");
       });
   } else {
     showNotif("لطفا عنوان سر فصل را وارد کنید");
@@ -83,42 +87,47 @@ const createTopic = async () => {
 
 const showTopics = () => {
   const topicContainer = document.querySelector("#topics__container");
+  topicContainer.innerHTML = "";
 
-  course.subjects.forEach(topic => {
-    topicContainer.insertAdjacentHTML(
-      "beforeend",
-      `
-        <div
-          class="topic flex flex-col lg:flex-row justify-between lg:items-center gap-y-3 gap-x-1 w-full bg-gray-100 border border-gray-300 dark:border-slate shadow-light dark:shadow-none dark:bg-gray dark:text-white px-5 py-4 rounded-lg">
-          <!-- topic right -->
-          <h4 class="font-DanaMedium text-lg md:text-xl"> ${topic.title} </h4>
-
-          <!-- topic left -->
-          <div class="flex flex-col xs:flex-row gap-2 shrink-0 self-end lg:self-auto w-full xs:w-auto">
-            <button
-              data-topic-id=${topic.id}
-              class="view-episodes-btn bg-primary text-white w-full xs:w-auto flex justify-center items-center gap-x-1 px-4 py-2 rounded-md hover:bg-green-500 transition-colors">
-              <svg class="w-6 h-6">
-                <use href="#eye"></use>
-              </svg>
-              <span class="text-sm"> دیدن قسمت ها </span>
-            </button>
-            <button
-              data-topic-id=${topic.id}
-              class="add-episode-btn bg-secondary text-white w-full xs:w-auto flex justify-center items-center gap-x-1 px-4 py-2 rounded-md hover:bg-sky-600 transition-colors">
-              <svg class="w-6 h-6">
-                <use href="#plus"></use>
-              </svg>
-              <span class="text-sm"> افزودن قسمت </span>
-            </button>
+  if (course.subjects.length > 0) {
+    course.subjects.forEach(topic => {
+      topicContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+          <div
+            class="topic flex flex-col lg:flex-row justify-between lg:items-center gap-y-3 gap-x-1 w-full bg-gray-100 border border-gray-300 dark:border-slate shadow-light dark:shadow-none dark:bg-gray dark:text-white px-5 py-4 rounded-lg">
+            <!-- topic right -->
+            <h4 class="font-DanaMedium text-lg md:text-xl"> ${topic.title} </h4>
+  
+            <!-- topic left -->
+            <div class="flex flex-col xs:flex-row gap-2 shrink-0 self-end lg:self-auto w-full xs:w-auto">
+              <button
+                data-topic-id=${topic.id}
+                class="view-episodes-btn bg-primary text-white w-full xs:w-auto flex justify-center items-center gap-x-1 px-4 py-2 rounded-md hover:bg-green-500 transition-colors">
+                <svg class="w-6 h-6">
+                  <use href="#eye"></use>
+                </svg>
+                <span class="text-sm"> دیدن قسمت ها </span>
+              </button>
+              <button
+                data-topic-id=${topic.id}
+                class="add-episode-btn bg-secondary text-white w-full xs:w-auto flex justify-center items-center gap-x-1 px-4 py-2 rounded-md hover:bg-sky-600 transition-colors">
+                <svg class="w-6 h-6">
+                  <use href="#plus"></use>
+                </svg>
+                <span class="text-sm"> افزودن قسمت </span>
+              </button>
+            </div>
           </div>
-        </div>
-    `
-    );
-  });
+      `
+      );
+    });
 
-  viewEpisodesHandler();
-  addEpisodeHandler();
+    viewEpisodesHandler();
+    addEpisodeHandler();
+  } else {
+    topicContainer.innerHTML = `<p class="dark:text-white text-xl text-center"> سر فصلی وجود ندارد </p>`;
+  }
 };
 
 const addEpisodeHandler = () => {
@@ -133,18 +142,20 @@ const addEpisodeHandler = () => {
   });
 };
 
-const addEpisode = topicId => {
+const addEpisode = async topicId => {
   const titleInput = document.querySelector("#add-episode-modal #title");
   const isFreeInput = document.querySelector("#add-episode-modal #is-free");
   const fileInput = document.querySelector("#add-episode-modal #fileInput");
 
-  if (!titleInput.value || !isFreeInput.value || fileInput.files.length == 0) {
+  if (!titleInput.value || !isFreeInput.value || fileInput.files.length == 0 || fileInput.files[0].type != "video/mp4") {
     showNotif(
       `${
         !titleInput.value
           ? "عنوان را وارد کنید"
           : !isFreeInput.value
           ? "ویدیو مورد نظر را انتخاب کنید"
+          : fileInput.files[0].type != "video/mp4"
+          ? "فایل ارسالی باید mp4 باشد"
           : fileInput.files.length == 0
           ? "مشخص کنید که دوره رایگان است یا خیر"
           : ""
@@ -167,7 +178,8 @@ const addEpisode = topicId => {
     formData.append("data", JSON.stringify(newEpisode));
     formData.append("file", fileInput.files[0]);
 
-    apiAdmin
+    fullScreenLoader("loading");
+    await apiAdmin
       .post("/episode", formData, {
         headers: {
           Authorization: "Bearer " + getToken(),
@@ -184,6 +196,9 @@ const addEpisode = topicId => {
       })
       .catch(err => {
         showNotif("مشکلی در ساخت قسمت جدید به وجود آمده!");
+      })
+      .finally(() => {
+        fullScreenLoader("loaded");
       });
   }
 };

@@ -70,10 +70,11 @@ const sentCreateCourseApi = async formData => {
     })
     .then(res => {
       showNotif("دوره با موفقیت ساخته شد", "success");
-      fullScreenLoader("loaded");
     })
     .catch(err => {
       showNotif("مشکلی پیش آمده");
+    })
+    .finally(() => {
       fullScreenLoader("loaded");
     });
 };
