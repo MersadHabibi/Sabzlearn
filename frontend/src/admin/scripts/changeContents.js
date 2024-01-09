@@ -131,7 +131,7 @@ const changeContent = async targetMenu => {
           <!-- course cover -->
           <div id="image" class="flex justify-center items-center xl:pr-7 text-sm md:text-base">
             <label for="cover" class="custom-file-upload shrink-0 shadow-light dark:shadow-none"> انتخاب عکس دوره </label>
-            <input id="cover" class="w-auto border-none" type="file" multiple />
+            <input id="cover" class="w-auto border-none" type="file" />
           </div>
           <!-- Submit btn -->
           <div class="flex justify-end xs:col-span-2 lg:col-span-3 border-t border-gray-200 dark:border-gray-800">

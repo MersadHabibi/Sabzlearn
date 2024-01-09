@@ -1,4 +1,4 @@
-import { showNotif, api, apiAdmin, getToken } from "../../scripts/funcs/utils.js";
+import { showNotif, api, apiAdmin, getToken, fullScreenLoader } from "../../scripts/funcs/utils.js";
 
 const $ = document;
 
@@ -34,6 +34,11 @@ const createCourse = () => {
   ) {
     showNotif("لطفا همه مقادیر را پر کنید");
   } else {
+    if (!(newCourseCover.type == "image/jpeg" || newCourseCover.type == "image/png" || newCourseCover.type == "image/jpg")) {
+      showNotif("نوع فایل باید jpg یا png باشد");
+      return false;
+    }
+
     const newCourseDatas = {
       title: newCourseTitle.value.trim(),
       description: newCourseDescription.value.trim(),
@@ -56,14 +61,21 @@ const createCourse = () => {
 };
 
 const sentCreateCourseApi = async formData => {
+  fullScreenLoader("loading");
   await apiAdmin
     .post("courses", formData, {
       headers: {
         Authorization: "Bearer " + getToken(),
       },
     })
-    .then(res => showNotif("دوره با موفقیت ساخته شد", "success"))
-    .catch(err => showNotif("مشکلی پیش آمده"));
+    .then(res => {
+      showNotif("دوره با موفقیت ساخته شد", "success");
+      fullScreenLoader("loaded");
+    })
+    .catch(err => {
+      showNotif("مشکلی پیش آمده");
+      fullScreenLoader("loaded");
+    });
 };
 
 export default preparationCreateCourse;
