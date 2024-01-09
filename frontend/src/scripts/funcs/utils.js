@@ -144,4 +144,14 @@ const getMe = async () => {
     });
 };
 
-export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe };
+// Loader
+
+const fullScreenLoader = action => {
+  if (action == "loading") {
+    _changeClasses("add", document.querySelector("#loader__container"), ["load"]);
+  } else if (action == "loaded") {
+    _changeClasses("remove", document.querySelector("#loader__container"), ["load"]);
+  }
+};
+
+export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe, fullScreenLoader };

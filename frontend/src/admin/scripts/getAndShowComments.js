@@ -1,8 +1,17 @@
-import { api, apiAdmin, getToken, showNotif } from "../../scripts/funcs/utils";
+import { api, apiAdmin, fullScreenLoader, getToken, showNotif } from "../../scripts/funcs/utils";
 
 const getAndShowComments = async () => {
   // Get Comments
-  const courses = (await api.get("courses")).data;
+  const courses = (
+    await api
+      .get("courses")
+      .then(res => res)
+      .catch(err => {
+        document.querySelector(
+          ".comments__container"
+        ).innerHTML = `<p class="text-center text-xl mt-5 dark:text-white" > مشکلی به وجود آمده دوباره امتحان کنید </p>`;
+      })
+  ).data;
   let comments = [];
   courses.forEach(course => {
     course.comments.forEach(comment => {
@@ -18,6 +27,7 @@ const getAndShowComments = async () => {
 
 const insertComments = comments => {
   const commentsContainer = document.querySelector(".comments__container");
+  commentsContainer.innerHTML = "";
   if (comments.length > 0) {
     comments.map((comment, index) => {
       commentsContainer.insertAdjacentHTML(
@@ -72,6 +82,7 @@ const setEventForCommentDeleteBtn = () => {
 };
 
 const deleteComment = async id => {
+  fullScreenLoader("loading");
   return await apiAdmin
     .delete(`comments/${id}`, {
       headers: {
@@ -80,10 +91,12 @@ const deleteComment = async id => {
     })
     .then(res => {
       showNotif("کامنت با موفقیت پاک شد", "success");
+      fullScreenLoader("loaded");
       return true;
     })
     .catch(err => {
       showNotif("مشکلی در پاک کردن کامنت به وجود آمده ! بعدا دوباره امتحان کنید");
+      fullScreenLoader("loaded");
       return false;
     });
 };

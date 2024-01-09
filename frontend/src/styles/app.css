@@ -292,6 +292,38 @@
     background-color: transparent !important;
     margin-right: 10px !important;
   }
+
+  /* Loader */
+
+  .loader {
+    width: 60px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side, #2ed573 90%, #0000);
+    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background-size: calc(100% / 3) 50%;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {
+    20% {
+      background-position: 0% 0%, 50% 50%, 100% 50%;
+    }
+    40% {
+      background-position: 0% 100%, 50% 0%, 100% 50%;
+    }
+    60% {
+      background-position: 0% 50%, 50% 100%, 100% 0%;
+    }
+    80% {
+      background-position: 0% 50%, 50% 50%, 100% 100%;
+    }
+  }
+
+  #loader__container {
+    @apply invisible opacity-0;
+  }
+  #loader__container.load {
+    @apply visible opacity-100;
+  }
 }
 @layer components {
   /* Filter Toggles */
@@ -449,10 +481,14 @@
 
   /* Topic Modals */
 
-  #add-topic-modal , #view-episodes-modal , #add-episode-modal {
+  #add-topic-modal,
+  #view-episodes-modal,
+  #add-episode-modal {
     @apply invisible opacity-0;
   }
-  #add-topic-modal.show , #view-episodes-modal.show , #add-episode-modal.show {
+  #add-topic-modal.show,
+  #view-episodes-modal.show,
+  #add-episode-modal.show {
     @apply visible opacity-100;
   }
 }

@@ -43,10 +43,13 @@ const changeContent = async targetMenu => {
           </div>
           <!-- Comments Container -->
           <div class="comments__container mt-4 space-y-2">
+            <div class="loader mx-auto mt-5"></div>
             <!-- Load From JS -->
           </div>
         </div>
-      </div>`;
+      </div>
+
+`;
 
     await getAndShowComments();
     setEventForCommentDeleteBtn();

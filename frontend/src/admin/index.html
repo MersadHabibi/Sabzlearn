@@ -299,7 +299,7 @@
         </div>
       </aside>
       <!-- Main -->
-      <main class="w-full px-7">
+      <main class="relative w-full px-7">
         <!-- main header -->
         <div class="w-full h-20 border-b border-gray-200 dark:border-gray-800 flex justify-between items-center px-2">
           <!-- Menu Open Btn -->
@@ -333,9 +333,13 @@
 
         <div class="content-container py-5"></div>
       </main>
+      <!-- Loader -->
+      <div id="loader__container" class="fixed inset-0 w-full h-full flex items-center justify-center bg-black/30 backdrop-blur-md transition-all z-40">
+        <div class="loader"></div>
+      </div>
     </div>
 
-    <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 backdrop-blur-md transition-all"></div>
+    <div class="overlay fixed inset-0 w-full h-full bg-black/30 backdrop-blur-md transition-all"></div>
 
     <script src="scripts/index.js" type="module"></script>
   </body>
