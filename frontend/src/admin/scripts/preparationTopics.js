@@ -54,20 +54,11 @@ const createTopic = async () => {
   fullScreenLoader("loading");
   if (input.value) {
     apiAdmin
-      .post(
-        `courses/${course.id}/subjects`,
-        {
-          title: input.value,
-          courseId: course.id,
-          sortId: course.subjects.length + 1,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + getToken(),
-          },
-        }
-      )
+      .post(`courses/${course.id}/subjects`, {
+        title: input.value,
+        courseId: course.id,
+        sortId: course.subjects.length + 1,
+      })
       .then(res => {
         input.value = "";
         showNotif("سر فصل جدید ساخته شد", "success");
@@ -180,11 +171,7 @@ const addEpisode = async topicId => {
 
     fullScreenLoader("loading");
     await apiAdmin
-      .post("/episode", formData, {
-        headers: {
-          Authorization: "Bearer " + getToken(),
-        },
-      })
+      .post("/episode", formData)
       .then(res => {
         showNotif("قسمت جدید با موفقیت ساخته شد", "success");
         closeModal(document.querySelector("#add-episode-modal"));

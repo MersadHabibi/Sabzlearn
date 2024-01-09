@@ -84,11 +84,7 @@ const setEventForCommentDeleteBtn = () => {
 const deleteComment = async id => {
   fullScreenLoader("loading");
   return await apiAdmin
-    .delete(`comments/${id}`, {
-      headers: {
-        Authorization: "Bearer " + getToken(),
-      },
-    })
+    .delete(`comments/${id}`)
     .then(res => {
       showNotif("کامنت با موفقیت پاک شد", "success");
       return true;

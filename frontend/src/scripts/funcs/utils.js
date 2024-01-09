@@ -2,15 +2,6 @@ import axios from "axios";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-// Create APIs - Axios
-
-const api = axios.create({
-  baseURL: "http://localhost:3000/api/",
-});
-const apiAdmin = axios.create({
-  baseURL: "http://localhost:3000/api/admin/",
-});
-
 // Change Class
 
 const _changeClasses = (action, element, className) => {
@@ -153,5 +144,17 @@ const fullScreenLoader = action => {
     _changeClasses("remove", document.querySelector("#loader__container"), ["load"]);
   }
 };
+
+// Create APIs - Axios
+
+const api = axios.create({
+  baseURL: "http://localhost:3000/api/",
+});
+const apiAdmin = axios.create({
+  baseURL: "http://localhost:3000/api/admin/",
+  headers: {
+    Authorization: "Bearer " + getToken(),
+  },
+});
 
 export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe, fullScreenLoader };

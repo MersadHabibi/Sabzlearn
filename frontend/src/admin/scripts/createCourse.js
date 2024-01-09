@@ -63,11 +63,7 @@ const createCourse = () => {
 const sentCreateCourseApi = async formData => {
   fullScreenLoader("loading");
   await apiAdmin
-    .post("courses", formData, {
-      headers: {
-        Authorization: "Bearer " + getToken(),
-      },
-    })
+    .post("courses", formData)
     .then(res => {
       showNotif("دوره با موفقیت ساخته شد", "success");
     })
