@@ -12,7 +12,7 @@ const changeContent = async targetMenu => {
   } else if (targetMenu == "comments") {
     contentContainer.innerHTML = `
       <div class="content comments">
-        <div class="w-full pb-40 bg-white dark:bg-gray-800 shadow-light rounded-xl px-5">
+        <div class="w-full pb-5 bg-white dark:bg-gray-800 shadow-light rounded-xl px-5">
           <!-- Title -->
           <div class="py-4 border-b border-gray-200 dark:border-slate">
             <h5 class="text-xl font-DanaMedium pr-4 dark:text-white">همه کامنت ها</h5>
