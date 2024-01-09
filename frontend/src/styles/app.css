@@ -446,6 +446,15 @@
   .custom-file-upload:hover {
     border: 1px solid #00cec9;
   }
+
+  /* Topic Modals */
+
+  #add-topic-modal , #view-episodes-modal , #add-episode-modal {
+    @apply invisible opacity-0;
+  }
+  #add-topic-modal.show , #view-episodes-modal.show , #add-episode-modal.show {
+    @apply visible opacity-100;
+  }
 }
 @layer utilities {
 }
