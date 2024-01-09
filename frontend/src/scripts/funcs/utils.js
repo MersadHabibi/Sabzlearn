@@ -140,8 +140,10 @@ const getMe = async () => {
 const fullScreenLoader = action => {
   if (action == "loading") {
     _changeClasses("add", document.querySelector("#loader__container"), ["load"]);
+    _changeClasses("add", document.documentElement, ["overflow-hidden"]);
   } else if (action == "loaded") {
     _changeClasses("remove", document.querySelector("#loader__container"), ["load"]);
+    _changeClasses("remove", document.documentElement, ["overflow-hidden"]);
   }
 };
 

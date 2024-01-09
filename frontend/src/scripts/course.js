@@ -1,9 +1,11 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { _changeClasses, api, createTimer, getMe, showNotif } from "./funcs/utils.js";
+import { _changeClasses, api, createTimer, fullScreenLoader, getMe, showNotif } from "./funcs/utils.js";
 import createNewComment from "./funcs/createComment.js";
 import createReplyComment from "./funcs/replayComment.js";
+
+fullScreenLoader("loading");
 
 const $ = document;
 header($);
@@ -20,6 +22,7 @@ window.addEventListener("load", async () => {
   ShowComments();
   preparationNewAndReplayComment();
   preparationNewCommentBtn();
+  fullScreenLoader("loaded");
 });
 
 const preparationNewAndReplayComment = () => {
