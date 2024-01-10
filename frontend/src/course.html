@@ -1159,7 +1159,8 @@
                     class="bg-sky-500 hover:bg-sky-600 dark:bg-secondary dark:hover:bg-sky-700 text-white h-10 px-[18px] rounded-xl transition-colors"
                     id="comment-submit-btn"
                     type="submit">
-                    ثبت
+                    <span> ثبت </span>
+                    <div id="loader" class="w-10 btn-secondry-loader"></div>
                   </button>
                 </div>
               </form>
@@ -1249,7 +1250,9 @@
           </aside>
         </section>
         <!-- Loader -->
-        <div id="loader__container" class="fixed inset-0 w-full h-full flex items-center justify-center bg-black/30 backdrop-blur-md transition-all z-40">
+        <div
+          id="loader__container"
+          class="fixed inset-0 w-full h-full flex items-center justify-center bg-black/50 dark:bg-black/30 backdrop-blur-md transition-all z-40">
           <div class="loader"></div>
         </div>
       </div>

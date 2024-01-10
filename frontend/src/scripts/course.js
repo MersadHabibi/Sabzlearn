@@ -32,6 +32,8 @@ const preparationNewAndReplayComment = () => {
   console.log("prepare");
   form.addEventListener("submit", async e => {
     e.preventDefault();
+
+    _changeClasses("add", document.querySelector("#comment-submit-btn"), ["load"]);
     if (replayOrNewComment == "new") {
       let res = await createNewComment(user.data.id, course.id, formTextarea.value);
       if (res == true) {
@@ -53,6 +55,7 @@ const preparationNewAndReplayComment = () => {
         ShowComments();
       }
     }
+    _changeClasses("remove", document.querySelector("#comment-submit-btn"), ["load"]);
   });
 };
 

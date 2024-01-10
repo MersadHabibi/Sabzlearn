@@ -6,7 +6,6 @@ const createNewComment = async (userId, courseId, commentText) => {
     return;
   }
   console.log("loader");
-  fullScreenLoader("loading");
   return await api
     .post(
       "comments",
@@ -29,9 +28,6 @@ const createNewComment = async (userId, courseId, commentText) => {
     .catch(err => {
       showNotif("مشکلی در ثبت کامنت رخ داد! بعدا امتحان کنید");
       return false;
-    })
-    .finally(() => {
-      fullScreenLoader("loaded");
     });
 };
 

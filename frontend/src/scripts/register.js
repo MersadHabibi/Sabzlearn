@@ -1,7 +1,7 @@
 import "../styles/app.css";
 import "./header.js";
 import "./share.js";
-import { api, showNotif } from "./funcs/utils.js";
+import { api, fullScreenLoader, showNotif } from "./funcs/utils.js";
 import { redirectWhenHaveToken, getAfterPageLink } from "./funcs/share.js";
 
 redirectWhenHaveToken(getAfterPageLink());
@@ -37,6 +37,7 @@ const register = async (email, username, phoneNumber, password, address = " ") =
     address,
   };
 
+  fullScreenLoader("loading");
   await api
     .post("register", {
       email: email,
@@ -54,5 +55,8 @@ const register = async (email, username, phoneNumber, password, address = " ") =
     .catch(err => {
       if (err.message == "Request failed with status code 403") showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
       else showNotif("ساخت حساب با مشکل مواجه شد");
+    })
+    .finally(() => {
+      fullScreenLoader("loaded");
     });
 };
