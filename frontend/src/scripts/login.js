@@ -40,7 +40,7 @@ const login = async (email, password) => {
       } else if (res.data.token) {
         showNotif("با موفقیت وارد شدید", "success");
         localStorage.setItem("token", res.data.token);
-        location.href = getAfterPageLink();
+        location.replace(getAfterPageLink());
       }
     })
     .catch(err => showNotif("مشکلی پیش آمده"))
