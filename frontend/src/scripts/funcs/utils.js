@@ -121,10 +121,14 @@ const getToken = () => {
 // Get Me
 
 const getMe = async () => {
+  let token = getToken();
+  if (!token) {
+    return false;
+  }
   return await api
     .get("me", {
       headers: {
-        Authorization: `Bearer ${getToken()}`,
+        Authorization: `Bearer ${token}`,
       },
     })
     .then(res => {
