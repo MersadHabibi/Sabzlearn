@@ -211,7 +211,7 @@
         <!-- Header Right -->
         <div class="flex">
           <div class="lg:pl-5 lg:ml-5 lg:border-l border-gray-100 dark:border-gray-700">
-            <a href="./index.html">
+            <a href="#">
               <img src="/images/logo.webp" class="w-20 md:w-[104px]" alt="logo" />
             </a>
           </div>
@@ -399,20 +399,17 @@
             <div class="login-register__container w-12 h-12 lg:w-[155px] lg:h-full hidden">
               <div
                 class="relative hidden lg:flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
-                <a
-                  href="#"
-                  class="login-btn absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 dark:bg-[#30457C] dark:hover:bg-secondary/60 block transition-colors"
-                  >ورود</a
-                >
-                <a href="#" class="register-btn absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block transition-colors">عضویت</a>
+                <div class="login-btn absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 dark:bg-[#30457C] dark:hover:bg-secondary/60 block transition-colors">
+                  ورود
+                </div>
+                <div class="register-btn absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block transition-colors">عضویت</div>
               </div>
-              <a
-                href=""
+              <div
                 class="mobile-login-btn lg:hidden flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 text-slate-500 dark:bg-gray-800 dark:text-gray-500">
                 <svg class="w-6 h-6">
                   <use xlink:href="#user"></use>
                 </svg>
-              </a>
+              </div>
             </div>
             <!-- Profile Photo -->
             <div class="profile__container hidden profile relative h-full w-14">
@@ -867,7 +864,7 @@
               </button>
             </div>
             <!-- Course Topics -->
-            <div class="bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl py-7 px-5">
+            <div class="bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl pt-7 pb-5 px-5">
               <div class="flex justify-between items-center mb-5">
                 <h3
                   class="relative font-MorabbaBold text-2xl lg:text-3xl dark:text-white pr-6 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:bg-sky-500 dark:before:bg-secondary before:rounded-sm before:w-2.5 before:h-10 before:m-auto">
@@ -875,254 +872,9 @@
                 </h3>
                 <span class="mt-1 dark:text-white">06:06</span>
               </div>
-              <div class="space-y-2.5">
-                <!-- Topic -->
-                <div class="course-topic rounded-xl overflow-hidden transition-all">
-                  <!-- Topic header -->
-                  <div
-                    class="topic__header flex justify-between items-center w-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-12 md:h-[75px] px-5 transition-colors cursor-pointer">
-                    <h4 class="font-DanaMedium text-sm md:text-xl">فصل اول - مباحث TailwindCss</h4>
-                    <svg class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
-                      <use href="#chevron-down"></use>
-                    </svg>
-                  </div>
-                  <!-- Topic Body -->
-                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="course-topic rounded-xl overflow-hidden transition-all">
-                  <!-- Topic header -->
-                  <div
-                    class="topic__header flex justify-between items-center w-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-12 md:h-[75px] px-5 transition-colors cursor-pointer">
-                    <h4 class="font-DanaMedium text-sm md:text-xl">فصل اول - مباحث TailwindCss</h4>
-                    <svg class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
-                      <use href="#chevron-down"></use>
-                    </svg>
-                  </div>
-                  <!-- Topic Body -->
-                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="course-topic rounded-xl overflow-hidden transition-all">
-                  <!-- Topic header -->
-                  <div
-                    class="topic__header flex justify-between items-center w-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-12 md:h-[75px] px-5 transition-colors cursor-pointer">
-                    <h4 class="font-DanaMedium text-sm md:text-xl">فصل اول - مباحث TailwindCss</h4>
-                    <svg class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
-                      <use href="#chevron-down"></use>
-                    </svg>
-                  </div>
-                  <!-- Topic Body -->
-                  <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
-                    <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
-                      <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                        <span
-                          class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                          >1</span
-                        >
-                        <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                          معرفی دوره + نگاه کلی به پروژه دوره
-                        </h4>
-                      </a>
-                      <div class="flex items-center w-full justify-between">
-                        <span
-                          class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                          >جلسه رایگان</span
-                        >
-                        <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                          <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                            <use xlink:href="#play-circle"></use>
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="topic__container space-y-2.5">
+                <p class="text-center text-xl dark:text-white mt-2">سر فصلی وجود ندارد</p>
+                <!-- Load From JS -->
               </div>
             </div>
 
@@ -1159,7 +911,8 @@
                     class="bg-sky-500 hover:bg-sky-600 dark:bg-secondary dark:hover:bg-sky-700 text-white h-10 px-[18px] rounded-xl transition-colors"
                     id="comment-submit-btn"
                     type="submit">
-                    ثبت
+                    <span> ثبت </span>
+                    <div id="loader" class="w-10 btn-secondry-loader"></div>
                   </button>
                 </div>
               </form>
@@ -1248,6 +1001,12 @@
             </div>
           </aside>
         </section>
+        <!-- Loader -->
+        <div
+          id="loader__container"
+          class="fixed inset-0 w-full h-full flex items-center justify-center bg-black/50 dark:bg-black/30 backdrop-blur-md transition-all z-40">
+          <div class="loader"></div>
+        </div>
       </div>
     </main>
 

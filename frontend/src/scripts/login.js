@@ -1,7 +1,7 @@
 import "../styles/app.css";
 import "./header.js";
 import "./share.js";
-import { api, showNotif } from "./funcs/utils.js";
+import { api, fullScreenLoader, showNotif } from "./funcs/utils.js";
 import { redirectWhenHaveToken, getAfterPageLink } from "./funcs/share.js";
 
 redirectWhenHaveToken(getAfterPageLink());
@@ -19,7 +19,7 @@ form.addEventListener("submit", e => {
 });
 
 const login = async (email, password) => {
-  console.log(email, password);
+  fullScreenLoader("loading");
   await api
     .post(
       "login",
@@ -40,8 +40,11 @@ const login = async (email, password) => {
       } else if (res.data.token) {
         showNotif("با موفقیت وارد شدید", "success");
         localStorage.setItem("token", res.data.token);
-        location.href = getAfterPageLink();
+        location.replace(getAfterPageLink());
       }
     })
-    .catch(err => showNotif("مشکلی پیش آمده"));
+    .catch(err => showNotif("مشکلی پیش آمده"))
+    .finally(() => {
+      fullScreenLoader("loaded");
+    });
 };

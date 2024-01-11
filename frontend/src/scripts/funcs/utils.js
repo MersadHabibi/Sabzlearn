@@ -2,15 +2,6 @@ import axios from "axios";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-// Create APIs - Axios
-
-const api = axios.create({
-  baseURL: "http://localhost:3000/api/",
-});
-const apiAdmin = axios.create({
-  baseURL: "http://localhost:3000/api/admin/",
-});
-
 // Change Class
 
 const _changeClasses = (action, element, className) => {
@@ -130,10 +121,14 @@ const getToken = () => {
 // Get Me
 
 const getMe = async () => {
+  let token = getToken();
+  if (!token) {
+    return false;
+  }
   return await api
     .get("me", {
       headers: {
-        Authorization: `Bearer ${getToken()}`,
+        Authorization: `Bearer ${token}`,
       },
     })
     .then(res => {
@@ -144,4 +139,28 @@ const getMe = async () => {
     });
 };
 
-export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe };
+// Loader
+
+const fullScreenLoader = action => {
+  if (action == "loading") {
+    _changeClasses("add", document.querySelector("#loader__container"), ["load"]);
+    _changeClasses("add", document.documentElement, ["overflow-hidden"]);
+  } else if (action == "loaded") {
+    _changeClasses("remove", document.querySelector("#loader__container"), ["load"]);
+    _changeClasses("remove", document.documentElement, ["overflow-hidden"]);
+  }
+};
+
+// Create APIs - Axios
+
+const api = axios.create({
+  baseURL: "http://localhost:3000/api/",
+});
+const apiAdmin = axios.create({
+  baseURL: "http://localhost:3000/api/admin/",
+  headers: {
+    Authorization: "Bearer " + getToken(),
+  },
+});
+
+export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe, fullScreenLoader };

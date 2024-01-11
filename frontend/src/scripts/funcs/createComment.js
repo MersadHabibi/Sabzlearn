@@ -1,11 +1,11 @@
-import { api, getToken, showNotif } from "./utils";
+import { api, fullScreenLoader, getToken, showNotif } from "./utils";
 
 const createNewComment = async (userId, courseId, commentText) => {
   if (!commentText) {
     showNotif("متن کامنت را وارد کنید!");
     return;
   }
-
+  console.log("loader");
   return await api
     .post(
       "comments",

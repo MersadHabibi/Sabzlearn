@@ -1,5 +1,6 @@
 import preparationCreateCourse from "./createCourse";
 import getAndShowComments, { setEventForCommentDeleteBtn } from "./getAndShowComments";
+import preparationTopics from "./preparationTopics";
 
 const changeContent = async targetMenu => {
   const contentContainer = document.querySelector(".content-container");
@@ -11,7 +12,7 @@ const changeContent = async targetMenu => {
   } else if (targetMenu == "comments") {
     contentContainer.innerHTML = `
       <div class="content comments">
-        <div class="w-full pb-40 bg-white dark:bg-gray-800 shadow-light rounded-xl px-5">
+        <div class="w-full pb-5 bg-white dark:bg-gray-800 shadow-light rounded-xl px-5">
           <!-- Title -->
           <div class="py-4 border-b border-gray-200 dark:border-slate">
             <h5 class="text-xl font-DanaMedium pr-4 dark:text-white">همه کامنت ها</h5>
@@ -42,10 +43,13 @@ const changeContent = async targetMenu => {
           </div>
           <!-- Comments Container -->
           <div class="comments__container mt-4 space-y-2">
+            <div class="loader mx-auto mt-5"></div>
             <!-- Load From JS -->
           </div>
         </div>
-      </div>`;
+      </div>
+
+`;
 
     await getAndShowComments();
     setEventForCommentDeleteBtn();
@@ -127,7 +131,7 @@ const changeContent = async targetMenu => {
           <!-- course cover -->
           <div id="image" class="flex justify-center items-center xl:pr-7 text-sm md:text-base">
             <label for="cover" class="custom-file-upload shrink-0 shadow-light dark:shadow-none"> انتخاب عکس دوره </label>
-            <input id="cover" class="w-auto border-none" type="file" multiple />
+            <input id="cover" class="w-auto border-none" type="file" />
           </div>
           <!-- Submit btn -->
           <div class="flex justify-end xs:col-span-2 lg:col-span-3 border-t border-gray-200 dark:border-gray-800">
@@ -146,19 +150,15 @@ const changeContent = async targetMenu => {
       <div class="content topics">
         <!-- Select Course -->
         <select
-          id="category"
+          id="select-course"
           name=""
-          id=""
           class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
-          <option value="">انتخاب دوره ...</option>
-          <option value="frontend">فرانت اند</option>
-          <option value="python">پایتون</option>
-          <option value="security">امنیت</option>
-          <option value="softskills">مهارت های نرم</option>
+          <option value=""> در حال جستوجو دوره ها </option>
         </select>
         <!-- Body -->
-        <div class="w-full h-96 text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl mt-5 md:mt-10">
-          <div>
+        <div class="w-full pb-5 text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl mt-5 md:mt-10">
+          <div id="course-topic-cover" class="text-center pt-5 text-xl"> دوره را انتخاب کنید </div>
+          <div id="course-topic-container" class="hidden">
             <!-- head -->
             <div class="border-b border-gray-200 dark:border-slate flex flex-col xs:flex-row justify-between xs:items-center gap-y-2 px-5 xs:px-7 py-3">
               <div>
@@ -166,6 +166,7 @@ const changeContent = async targetMenu => {
               </div>
               <div class="self-end xs:self-auto">
                 <button
+                  id="add-topic-btn"
                   class="flex items-center justify-center gap-x-1 h-10 md:h-11 rounded-lg bg-primary hover:bg-green-500 cursor-pointer pr-3 pl-4 text-white transition-colors">
                   <svg class="w-6 md:w-6 h-6 md:h-6">
                     <use href="#plus"></use>
@@ -175,45 +176,23 @@ const changeContent = async targetMenu => {
               </div>
             </div>
             <!-- topics -->
-            <div class="mt-8 px-5 space-y-5">
-              <div
-                class="topic flex flex-col lg:flex-row justify-between lg:items-center gap-y-3 gap-x-1 w-full bg-gray-100 border border-gray-300 dark:border-slate shadow-light dark:shadow-none dark:bg-gray dark:text-white px-5 py-4 rounded-lg">
-                <!-- topic right -->
-                <h4 class="font-DanaMedium text-lg md:text-xl">فصل اول - مباحث TailwindCss</h4>
-
-                <!-- topic left -->
-                <div class="flex flex-col xs:flex-row gap-2 shrink-0 self-end lg:self-auto w-full xs:w-auto">
-                  <button
-                    class="bg-primary text-white w-full xs:w-auto flex justify-center items-center gap-x-1 px-4 py-2 rounded-md hover:bg-green-500 transition-colors">
-                    <svg class="w-6 h-6">
-                      <use href="#eye"></use>
-                    </svg>
-                    <span class="text-sm"> دیدن قسمت ها </span>
-                  </button>
-                  <button
-                    class="bg-secondary text-white w-full xs:w-auto flex justify-center items-center gap-x-1 px-4 py-2 rounded-md hover:bg-sky-600 transition-colors">
-                    <svg class="w-6 h-6">
-                      <use href="#plus"></use>
-                    </svg>
-                    <span class="text-sm"> افزودن قسمت </span>
-                  </button>
-                </div>
-              </div>
+            <div id="topics__container" class="mt-8 px-5 space-y-3">
+              <!-- Load From JS -->
             </div>
           </div>
         </div>
         <!-- Modals -->
         <!-- view episodes modal -->
-        <div class="hidden fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden">
+        <div id="view-episodes-modal" class="fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto       rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-8 py-4 shrink-0">
             <div>
-              <h5 class="sm:text-xl font-DanaMedium dark:text-white">فصل اول - مباحث TailwindCss</h5>
+              <h5 class="title sm:text-xl font-DanaMedium dark:text-white">فصل اول - مباحث TailwindCss</h5>
             </div>
             <!-- Close Btn -->
             <div>
               <div
-                class="flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
                 </svg>
@@ -221,180 +200,12 @@ const changeContent = async targetMenu => {
             </div>
           </div>
           <!-- body -->
-          <div class="py-5 px-5 space-y-3 overflow-auto basis-full">
-            <div
-              class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 bg-gray-100 dark:bg-gray-700 py-2 md:py-4 px-3.5 md:px-5 rounded-lg group">
-              <a href="" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                <span
-                  class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                  >1</span
-                >
-                <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                  معرفی دوره + نگاه کلی به پروژه دوره
-                </h4>
-              </a>
-              <div class="flex items-center w-full justify-between">
-                <span
-                  class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                  >جلسه رایگان</span
-                >
-                <div class="flex items-center gap-x-1 md:gap-x-1.5">
-                  <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                  <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                    <use xlink:href="#play-circle"></use>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div
-              class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 bg-gray-100 dark:bg-gray-700 py-2 md:py-4 px-3.5 md:px-5 rounded-lg group">
-              <a href="" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                <span
-                  class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                  >1</span
-                >
-                <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                  معرفی دوره + نگاه کلی به پروژه دوره
-                </h4>
-              </a>
-              <div class="flex items-center w-full justify-between">
-                <span
-                  class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                  >جلسه رایگان</span
-                >
-                <div class="flex items-center gap-x-1 md:gap-x-1.5">
-                  <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                  <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                    <use xlink:href="#play-circle"></use>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div
-              class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 bg-gray-100 dark:bg-gray-700 py-2 md:py-4 px-3.5 md:px-5 rounded-lg group">
-              <a href="" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                <span
-                  class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                  >1</span
-                >
-                <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                  معرفی دوره + نگاه کلی به پروژه دوره
-                </h4>
-              </a>
-              <div class="flex items-center w-full justify-between">
-                <span
-                  class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                  >جلسه رایگان</span
-                >
-                <div class="flex items-center gap-x-1 md:gap-x-1.5">
-                  <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                  <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                    <use xlink:href="#play-circle"></use>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div
-              class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 bg-gray-100 dark:bg-gray-700 py-2 md:py-4 px-3.5 md:px-5 rounded-lg group">
-              <a href="" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                <span
-                  class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                  >1</span
-                >
-                <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                  معرفی دوره + نگاه کلی به پروژه دوره
-                </h4>
-              </a>
-              <div class="flex items-center w-full justify-between">
-                <span
-                  class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                  >جلسه رایگان</span
-                >
-                <div class="flex items-center gap-x-1 md:gap-x-1.5">
-                  <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                  <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                    <use xlink:href="#play-circle"></use>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div
-              class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 bg-gray-100 dark:bg-gray-700 py-2 md:py-4 px-3.5 md:px-5 rounded-lg group">
-              <a href="" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                <span
-                  class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                  >1</span
-                >
-                <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                  معرفی دوره + نگاه کلی به پروژه دوره
-                </h4>
-              </a>
-              <div class="flex items-center w-full justify-between">
-                <span
-                  class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                  >جلسه رایگان</span
-                >
-                <div class="flex items-center gap-x-1 md:gap-x-1.5">
-                  <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                  <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                    <use xlink:href="#play-circle"></use>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div
-              class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 bg-gray-100 dark:bg-gray-700 py-2 md:py-4 px-3.5 md:px-5 rounded-lg group">
-              <a href="" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                <span
-                  class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                  >1</span
-                >
-                <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                  معرفی دوره + نگاه کلی به پروژه دوره
-                </h4>
-              </a>
-              <div class="flex items-center w-full justify-between">
-                <span
-                  class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                  >جلسه رایگان</span
-                >
-                <div class="flex items-center gap-x-1 md:gap-x-1.5">
-                  <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                  <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                    <use xlink:href="#play-circle"></use>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div
-              class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 bg-gray-100 dark:bg-gray-700 py-2 md:py-4 px-3.5 md:px-5 rounded-lg group">
-              <a href="" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
-                <span
-                  class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
-                  >1</span
-                >
-                <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
-                  معرفی دوره + نگاه کلی به پروژه دوره
-                </h4>
-              </a>
-              <div class="flex items-center w-full justify-between">
-                <span
-                  class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
-                  >جلسه رایگان</span
-                >
-                <div class="flex items-center gap-x-1 md:gap-x-1.5">
-                  <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
-                  <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
-                    <use xlink:href="#play-circle"></use>
-                  </svg>
-                </div>
-              </div>
-            </div>
+          <div id="episodes__container" class="py-5 px-5 space-y-3 overflow-auto basis-full">
+            <!-- Load from JS -->
           </div>
         </div>
         <!-- add topic modal -->
-        <div
-          class="hidden fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden">
+        <form id="add-topic-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
             <div>
@@ -403,7 +214,7 @@ const changeContent = async targetMenu => {
             <!-- Close Btn -->
             <div>
               <div
-                class="flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
                 </svg>
@@ -422,6 +233,7 @@ const changeContent = async targetMenu => {
           <!-- footer -->
           <div class="flex justify-end p-5">
             <button
+              type="submit"
               class="flex items-center justify-center gap-x-2 h-14 rounded-lg bg-primary hover:bg-green-500 cursor-pointer pr-3 pl-4 text-white transition-colors w-full">
               <svg class="w-6 md:w-7 h-6 md:h-7">
                 <use href="#plus"></use>
@@ -429,9 +241,9 @@ const changeContent = async targetMenu => {
               <span class="font-DanaMedium text-lg mt-0.5"> افزودن </span>
             </button>
           </div>
-        </div>
+        </form>
         <!-- add episode modal -->
-        <div class="hidden fixed inset-0 w-11/12 sm:w-1/2 lg:w-5/12 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden">
+        <form id="add-episode-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-5/12 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
             <div>
@@ -439,8 +251,8 @@ const changeContent = async targetMenu => {
             </div>
             <!-- Close Btn -->
             <div>
-              <div
-                class="flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+              <div 
+                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
                 </svg>
@@ -454,7 +266,7 @@ const changeContent = async targetMenu => {
               id="title"
               class="xs:col-span-2 lg:col-span-3 bg-gray-100 shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
               type="text"
-              placeholder="نام سر فصل" />
+              placeholder="نام قسمت جدید" />
             <!-- is Free -->
             <select
               id="is-free"
@@ -465,10 +277,16 @@ const changeContent = async targetMenu => {
               <option value="false">خیر</option>
               <option value="true">بله</option>
             </select>
+            <div id="file" class="flex justify-start items-center text-sm md:text-base py-3">
+              <label for="fileInput" class="custom-file-upload shrink-0 shadow-light dark:shadow-none"> انتخاب ویدیو دوره </label>
+              <input id="fileInput" class="w-auto border-none" type="file" multiple />
+            </div>
           </div>
           <!-- footer -->
           <div class="flex justify-end p-5">
             <button
+              type="submit"
+              id="add-episode-modal-submit"
               class="flex items-center justify-center gap-x-2 h-14 rounded-lg bg-primary hover:bg-green-500 cursor-pointer pr-3 pl-4 text-white transition-colors w-full">
               <svg class="w-6 md:w-7 h-6 md:h-7">
                 <use href="#plus"></use>
@@ -476,9 +294,11 @@ const changeContent = async targetMenu => {
               <span class="font-DanaMedium text-lg mt-0.5"> افزودن </span>
             </button>
           </div>
-        </div>
+        </form>
       </div>
   `;
+
+    await preparationTopics();
   }
 };
 

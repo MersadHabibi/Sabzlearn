@@ -2,6 +2,9 @@ import "../../styles/app.css";
 import "../../scripts/share.js";
 import { _changeClasses } from "../../scripts/funcs/utils.js";
 import changeContent from "./changeContents.js";
+import routeProtect from "./routeProtect.js";
+
+routeProtect();
 
 let activeContent = "tickets";
 
