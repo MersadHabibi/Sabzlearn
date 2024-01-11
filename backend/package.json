@@ -26,6 +26,7 @@
     "swagger-ui-express": "^5.0.0"
   },
   "dependencies": {
-    "@prisma/client": "^5.7.1"
+    "@prisma/client": "^5.7.1",
+    "get-video-duration": "^4.1.0"
   }
 }
