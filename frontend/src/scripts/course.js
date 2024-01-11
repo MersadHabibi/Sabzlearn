@@ -19,6 +19,7 @@ window.addEventListener("load", async () => {
   user = await getMe();
   fillBreadCrumb();
   setDatas();
+  showTopics();
   ShowComments();
   preparationNewAndReplayComment();
   preparationNewCommentBtn();
@@ -103,11 +104,10 @@ copyLinkBtn.addEventListener("click", () => {
 
 // Course Topic - open & close
 
-topicsHeader.forEach(topicHeader => {
-  topicHeader.addEventListener("click", () => {
-    _changeClasses("toggle", topicHeader.parentElement, ["open"]);
-  });
-});
+function openCloseTopicHandler(elem) {
+  _changeClasses("toggle", elem.parentElement, ["open"]);
+}
+window.openCloseTopicHandler = openCloseTopicHandler;
 
 // Close Comment Form
 
@@ -290,7 +290,72 @@ const setDatas = () => {
   courseTime.innerHTML = `${course.time} ساعت`;
 };
 
-// Get And Show Comments
+// Show Topics
+
+const showTopics = () => {
+  const topics = [...course.subjects];
+  const topicContainer = document.querySelector(".topic__container");
+
+  topics.length > 0 &&
+    ((topicContainer.innerHTML = ""),
+    topics.forEach(topic => {
+      console.log(topic);
+      topicContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+      <div class="course-topic rounded-xl overflow-hidden transition-all">
+        <!-- Topic header -->
+        <div
+          onclick="openCloseTopicHandler(this)"
+          class="topic__header flex justify-between items-center w-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-slate dark:text-white h-12 md:h-[75px] px-5 transition-colors cursor-pointer">
+          <h4 class="font-DanaMedium text-sm md:text-xl"> ${topic.title} </h4>
+          <svg class="w-5 sm:w-6 h-5 sm:h-6 text-zinc-700 dark:text-white transition-transform">
+            <use href="#chevron-down"></use>
+          </svg>
+        </div>
+        <!-- Topic Body -->
+        <div class="topic__body h-0 bg-gray-100 dark:bg-gray-700 divide-y dark:divide-slate transition-all">
+          ${
+            topic.episodes == 0
+              ? ` <p class="text-center dark:text-white text-md py-4">قسمتی وجود ندارد</p> `
+              : topic.episodes
+                  .map((episode, index) => {
+                    return `
+                  <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
+                    <a href="https://sabzlearn.ir/lesson/48-23816" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
+                      <span
+                        class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
+                        >${index}</span
+                      >
+                      <h4 class="text-zinc-700 dark:text-white group-hover:text-primary text-sm md:text-lg transition-colors pt-1">
+                        ${episode.title}
+                      </h4>
+                    </a>
+                    <div class="flex items-center w-full justify-between">
+                      <span
+                        class="inline-block h-[25px] leading-[25px] px-2.5 bg-gray-200 dark:bg-slate text-zinc-700 dark:text-white group-hover:bg-primary/10 group-hover:text-primary text-xs rounded transition-colors"
+                        >${episode.isFree ? "جلسه رایگان" : "نقدی"}</span
+                      >
+                      <div class="flex items-center gap-x-1.5 md:gap-x-2">
+                        <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                        <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
+                          <use xlink:href="#play-circle"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  `;
+                  })
+                  .join("")
+          }
+        </div>
+      </div>
+    `
+      );
+    }));
+};
+
+// Show Comments
 
 const ShowComments = () => {
   const comments = course.comments.sort((a, b) => {
