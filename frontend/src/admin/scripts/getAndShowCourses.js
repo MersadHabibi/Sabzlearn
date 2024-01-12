@@ -1,4 +1,5 @@
 import { _changeClasses, api, apiAdmin, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import changeContent from "./changeContents";
 
 let courseIdForDelete = null;
 
@@ -139,7 +140,7 @@ const getAndShowCourses = async () => {
         <div
           data-course-id=${course.id}
           class="w-full p-2 rounded-b-xl bg-gray-200 dark:bg-gray-900/30 border-gray-300/80 border border-t-transparent dark:border-gray-600 flex flex-wrap gap-2">
-          <button class="bg-secondry bg-blue-500 hover:bg-blue-600 w-full text-white font-DanaMedium py-2 rounded-md transition"> مدیریت سر فصل ها </button>
+          <button class="edit-topics-btn bg-secondry bg-blue-500 hover:bg-blue-600 w-full text-white font-DanaMedium py-2 rounded-md transition"> مدیریت سر فصل ها </button>
           <button class="bg-primary hover:bg-green-600 text-white font-DanaMedium py-2 rounded-md transition flex-1">ویرایش</button>
           <button class="delete-course-btn bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 rounded-md transition flex-1">حذف</button>
         </div>
@@ -153,8 +154,11 @@ const getAndShowCourses = async () => {
 
 const setButtonsEvent = () => {
   const deleteCourseBtns = document.querySelectorAll(".delete-course-btn");
+  const editTopicsBtn = document.querySelectorAll(".edit-topics-btn");
   const modalDeleteCourseBtn = document.querySelector(".modal-delete-course-btn");
   const modalCancelDeleteCourseBtn = document.querySelector(".modal-cancel-delete-course-btn");
+
+  // Delete Course
 
   deleteCourseBtns.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -163,7 +167,6 @@ const setButtonsEvent = () => {
       _changeClasses("add", document.querySelector(".overlay"), ["show"]);
     });
   });
-
   modalDeleteCourseBtn.addEventListener("click", async () => {
     fullScreenLoader("loading");
     await deleteCourse(courseIdForDelete);
@@ -174,6 +177,22 @@ const setButtonsEvent = () => {
   modalCancelDeleteCourseBtn.addEventListener("click", () => {
     _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
     _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
+  });
+
+  // Edit Topic
+
+  editTopicsBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const menuItems = document.querySelectorAll(".panel-menu__item");
+
+      menuItems.forEach(item => {
+        if (item.dataset.content === "topics") {
+          _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
+          _changeClasses("add", item, ["active"]);
+        }
+      });
+      changeContent("topics", btn.parentElement.dataset.courseId);
+    });
   });
 };
 

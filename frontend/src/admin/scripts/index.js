@@ -27,14 +27,13 @@ menuItems.forEach(menuItem => {
 
 const menuItemClickHandler = menuItem => {
   const clickedMenu = menuItem.dataset.content;
-  if (clickedMenu != activeContent) {
-    _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
-    _changeClasses("add", menuItem, ["active"]);
 
-    changeContent(clickedMenu);
+  _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
+  _changeClasses("add", menuItem, ["active"]);
 
-    activeContent = clickedMenu;
-  }
+  changeContent(clickedMenu);
+
+  activeContent = clickedMenu;
 };
 
 // Open Mobile Menu

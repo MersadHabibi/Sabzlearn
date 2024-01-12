@@ -3,7 +3,7 @@ import getAndShowComments, { setEventForCommentDeleteBtn } from "./getAndShowCom
 import getAndShowCourses from "./getAndShowCourses";
 import preparationTopics from "./preparationTopics";
 
-const changeContent = async targetMenu => {
+const changeContent = async (targetMenu, courseId) => {
   const contentContainer = document.querySelector(".content-container");
   contentContainer.innerHTML = "";
 
@@ -299,7 +299,7 @@ const changeContent = async targetMenu => {
       </div>
   `;
 
-    await preparationTopics();
+    await preparationTopics(courseId);
   } else if (targetMenu == "courses") {
     contentContainer.innerHTML = `
       <div class="content courses">
