@@ -1,6 +1,7 @@
 import preparationCreateCourse from "./createCourse";
 import getAndShowComments, { setEventForCommentDeleteBtn } from "./getAndShowComments";
 import getAndShowCourses from "./getAndShowCourses";
+import preparationEditDescription from "./preparationEditDescription";
 import preparationTopics from "./preparationTopics";
 
 const changeContent = async (targetMenu, courseId) => {
@@ -121,9 +122,8 @@ const changeContent = async (targetMenu, courseId) => {
           </select>
           <!-- is Free -->
           <select
-            id="teacher"
+            id="isFree"
             name=""
-            id=""
             class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
             <option value="false">دوره رایگان است؟</option>
             <option value="true">بله</option>
@@ -327,6 +327,30 @@ const changeContent = async (targetMenu, courseId) => {
   `;
 
     getAndShowCourses();
+  } else if (targetMenu == "description") {
+    contentContainer.innerHTML = `
+      <div class="content description w-full pb-5 bg-white dark:bg-gray-800 shadow-light rounded-xl px-5">
+        <div class="flex justify-between items-center py-4 border-b border-gray-200 dark:border-slate mb-4">
+          <p id="course-name" class="dark:text-white text-lg font-DanaMedium">اسم دوره‌ :</p>
+          <button id="back-btn" class="size-9 bg-red-500 hover:bg-red-600 text-white rounded-md flex items-center justify-center transition-colors">
+            <svg class="size-5">
+              <use href="#arrow-uturn-left"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="">
+          <textarea name="content" id="editor" class=""> </textarea>
+          <button
+            id="submit"
+            type="submit"
+            class="w-full bg-primary hover:bg-green-500 text-md font-DanaMedium text-white py-2.5 transition mt-3 rounded-md shadow-light dark:shadow-none">
+            ثبت توضیحات
+          </button>
+        </div>
+      </div>
+     `;
+
+    preparationEditDescription(courseId);
   }
 };
 

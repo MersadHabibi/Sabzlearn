@@ -21,7 +21,7 @@ const getAndShowCourses = async () => {
       <div data-course-id=${course.id} class="course-card flex flex-col">
         <div
           data-course-id="65808a6927251f1e5a860db1"
-          class="course-card flex flex-col bg-gray-100/50 dark:bg-gray-700 border border-b-transparent border-gray-300/80  dark:border-gray-600 dark:shadow-none overflow-hidden rounded-t-xl flex-1">
+          class="course-card flex flex-col bg-gray-100/50 dark:bg-gray-700 border !border-b-transparent border-gray-300/80  dark:border-gray-600 dark:shadow-none overflow-hidden rounded-t-xl flex-1">
           <!-- Course Head -->
           <a href="../course.html" class="relative block h-42 w-full overflow-hidden">
             <img  src=http://localhost:3000/${course.image} class="w-full h-full object-cover rounded-xl" alt="" />
@@ -139,9 +139,11 @@ const getAndShowCourses = async () => {
         </div>
         <div
           data-course-id=${course.id}
-          class="w-full p-2 rounded-b-xl bg-gray-200 dark:bg-gray-900/30 border-gray-300/80 border border-t-transparent dark:border-gray-600 flex flex-wrap gap-2">
-          <button class="edit-topics-btn bg-secondry bg-blue-500 hover:bg-blue-600 w-full text-white font-DanaMedium py-2 rounded-md transition"> مدیریت سر فصل ها </button>
-          <button class="bg-primary hover:bg-green-600 text-white font-DanaMedium py-2 rounded-md transition flex-1">ویرایش</button>
+          class="w-full p-2 rounded-b-xl bg-gray-200 dark:bg-gray-900/30 border-gray-300/80 border !border-t-transparent dark:border-gray-600 flex flex-wrap gap-2">
+
+          <button class="edit-description-course-btn bg-primary hover:bg-green-600  text-white font-DanaMedium py-2 rounded-md transition w-full "> ویرایش توضیحات </button>
+          <button class="edit-topics-btn bg-secondry bg-blue-500 hover:bg-blue-600 w-full text-white font-DanaMedium py-2 rounded-md transition "> مدیریت سر فصل ها </button>
+          <button class="bg-gray-500 hover:bg-gray-600/65 text-white font-DanaMedium py-2 rounded-md transition flex-1"> ویرایش اطلاعات</button>
           <button class="delete-course-btn bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 rounded-md transition flex-1">حذف</button>
         </div>
       </div>
@@ -155,6 +157,7 @@ const getAndShowCourses = async () => {
 const setButtonsEvent = () => {
   const deleteCourseBtns = document.querySelectorAll(".delete-course-btn");
   const editTopicsBtn = document.querySelectorAll(".edit-topics-btn");
+  const editDescriptionCourseBtn = document.querySelectorAll(".edit-description-course-btn");
   const modalDeleteCourseBtn = document.querySelector(".modal-delete-course-btn");
   const modalCancelDeleteCourseBtn = document.querySelector(".modal-cancel-delete-course-btn");
 
@@ -194,6 +197,14 @@ const setButtonsEvent = () => {
       changeContent("topics", btn.parentElement.dataset.courseId);
     });
   });
+
+  // Edit Description
+
+  editDescriptionCourseBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+      changeContent("description", btn.parentElement.dataset.courseId);
+    });
+  });
 };
 
 const deleteCourse = async courseId => {
@@ -201,6 +212,7 @@ const deleteCourse = async courseId => {
     .delete(`courses/${courseId}`)
     .then(res => {
       showNotif("دوره با موفقیت حذف شد", "success");
+      getAndShowCourses();
     })
     .catch(err => {
       showNotif("مشکلی در حذف دوره به وجود آمده ! دوباره امتحان کنید");
