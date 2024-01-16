@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/icon.png" type="image/png" />
     <title>panel</title>
+    <style>
+      .notif-btn.open {
+        @apply z-20;
+      }
+      .notif-btn.open .notif-box {
+        @apply !block;
+      }
+
+      .profile.open {
+        @apply z-20;
+      }
+      .profile.open .profile__menu {
+        @apply !block;
+      }
+    </style>
   </head>
   <body class="relative bg-gray-100 dark:bg-gray">
     <script>
@@ -174,6 +189,9 @@
           d="M10 4.5c1.215 0 2.417.055 3.604.162a.68.68 0 01.615.597c.124 1.038.208 2.088.25 3.15l-1.689-1.69a.75.75 0 00-1.06 1.061l2.999 3a.75.75 0 001.06 0l3.001-3a.75.75 0 10-1.06-1.06l-1.748 1.747a41.31 41.31 0 00-.264-3.386 2.18 2.18 0 00-1.97-1.913 41.512 41.512 0 00-7.477 0 2.18 2.18 0 00-1.969 1.913 41.16 41.16 0 00-.16 1.61.75.75 0 101.495.12c.041-.52.093-1.038.154-1.552a.68.68 0 01.615-.597A40.012 40.012 0 0110 4.5zM5.281 9.22a.75.75 0 00-1.06 0l-3.001 3a.75.75 0 101.06 1.06l1.748-1.747c.042 1.141.13 2.27.264 3.386a2.18 2.18 0 001.97 1.913 41.533 41.533 0 007.477 0 2.18 2.18 0 001.969-1.913c.064-.534.117-1.071.16-1.61a.75.75 0 10-1.495-.12c-.041.52-.093 1.037-.154 1.552a.68.68 0 01-.615.597 40.013 40.013 0 01-7.208 0 .68.68 0 01-.615-.597 39.785 39.785 0 01-.25-3.15l1.689 1.69a.75.75 0 001.06-1.061l-2.999-3z"
           clip-rule="evenodd" />
       </symbol>
+      <symbol id="arrow-uturn-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+      </symbol>
     </svg>
     <main class="bg-white dark:bg-gray-800 flex gap-x-10 w-full lg:p-7 min-h-screen">
       <div class="w-full lg:container">
@@ -246,6 +264,7 @@
               </button>
             </ul>
           </aside>
+
           <section class="w-full bg-gray-100 dark:bg-gray lg:rounded-3xl md:p-10">
             <!-- Header -->
             <div class="flex justify-between bg-white dark:bg-transparent md:bg-transparent p-5 md:p-0 dark:border-b md:border-none border-b-gray-700 mb-5">
@@ -266,13 +285,13 @@
               <div class="flex gap-x-3 md:gap-x-8">
                 <!-- notif Btn -->
                 <div
-                  class="search-btn flex items-center justify-center relative h-12 w-12 md:h-14 md:w-14 rounded-full bg-gray-100 dark:bg-gray-800 md:bg-white md:dark:bg-gray-800 cursor-pointer">
+                  class="notif-btn flex items-center justify-center relative h-12 w-12 md:h-14 md:w-14 rounded-full bg-gray-100 dark:bg-gray-800 md:bg-white md:dark:bg-gray-800 cursor-pointer">
                   <svg class="w-6 md:w-7 h-6 md:h-7 text-slate-500">
                     <use href="#bell"></use>
                   </svg>
                   <!-- notif Box -->
                   <div
-                    class="search-box absolute top-[70px] -left-[115px] bg-white dark:bg-gray-800 w-80 md:w-96 rounded-2xl overflow-hidden transition-all z-20 py-5 px-5">
+                    class="notif-box hidden absolute top-[70px] -left-[115px] bg-white dark:bg-gray-800 w-80 md:w-96 rounded-2xl overflow-hidden transition-all z-20 py-5 px-5">
                     <div class="font-DanaMedium text-xl dark:text-white pb-3.5 mb-3.5 border-b border-gray-200 dark:border-slate-500">
                       <p>اعلان ها</p>
                     </div>
@@ -293,12 +312,6 @@
                 </div>
                 <!-- Profile -->
                 <div class="h-12 md:h-14 w-auto rounded-full cursor-pointer">
-                  <!-- Login & Register -->
-                  <div
-                    class="hidden relative flex items-center justify-between w-[155px] h-full text-white child:w-25 child:h-full child:flex child:items-center child:rounded-full">
-                    <a href="#" class="absolute pr-4 right-0 bg-sky-300 hover:bg-sky-400 block">ورود</a>
-                    <a href="#" class="absolute justify-center left-0 bg-sky-500 hover:bg-sky-600 block">عضویت</a>
-                  </div>
                   <!-- Profile Photo -->
                   <div class="profile relative h-full w-12 md:w-14">
                     <div class="w-12 md:w-14 h-12 md:h-14 rounded-full overflow-hidden">
@@ -349,8 +362,12 @@
                 </div>
               </div>
             </div>
+
             <!-- Body -->
+
             <div class="content p-5 pt-0 md:p-0"></div>
+
+            <!--  -->
           </section>
         </div>
       </div>
