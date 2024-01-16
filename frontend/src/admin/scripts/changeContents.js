@@ -52,8 +52,7 @@ const changeContent = async (targetMenu, courseId) => {
         </div>
       </div>
 
-`;
-
+    `;
     await getAndShowComments();
     setEventForCommentDeleteBtn();
   } else if (targetMenu == "create-course") {
@@ -421,6 +420,177 @@ const changeContent = async (targetMenu, courseId) => {
      `;
 
     preparationAccounts();
+  } else if (targetMenu == "category") {
+    contentContainer.innerHTML = `
+    <div class="content categories">
+      <div class="w-full pb-5 bg-white dark:bg-gray-800 shadow-light rounded-xl">
+        <!-- Title -->
+        <div class="flex justify-between items-center p-3 border-b border-gray-200 dark:border-slate">
+          <h5 class="text-xl font-DanaMedium pr-4 dark:text-white">دسته بندی ها</h5>
+          <button class="flex items-center gap-x-2 text-white bg-primary hover:bg-green-500 px-4 py-2 rounded-md transition-colors">
+            <svg class="size-7">
+              <use href="#plus-circle"></use>
+            </svg>
+            <span>اضافه کردن دسته بندی</span>
+          </button>
+        </div>
+        <!-- Categories Container -->
+        <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-5 px-5">
+          <div class="bg-gray-100 dark:bg-gray px-2 pt-1 rounded-lg dark:text-white">
+            <!-- category name -->
+            <div class="w-full text-center text-xl font-DanaMedium py-4 border-b border-gray-300 dark:border-gray-700">
+              <span>فرانت اند</span>
+            </div>
+            <!-- category info -->
+            <div class="flex justify-between items-center w-full text-center text-lg py-2 px-2 border-b border-gray-300 dark:border-gray-700">
+              <p class="flex items-center gap-x-2">
+                <svg class="size-6">
+                  <use href="#users"></use>
+                </svg>
+                <span class="mt-1"> 4353 </span>
+              </p>
+              <p class="flex items-center gap-x-2">
+                <svg class="size-6">
+                  <use href="#video-camera"></use>
+                </svg>
+                <span class="mt-1"> 12 </span>
+              </p>
+            </div>
+            <!-- category btns -->
+            <div class="flex justify-between items-center w-full text-center text-lg py-2">
+              <button class="bg-secondary hover:bg-sky-600 w-full py-2 text-lg font-DanaMedium rounded-md text-white transition-colors">
+                لیست دوره ها
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Modals -->
+        <!-- Add Category -->
+        <form
+          id="add-category-modal"
+          class="hidden fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+          <!-- head -->
+          <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
+            <div>
+              <h5 class="sm:text-xl font-DanaMedium dark:text-white">افزودن دسته بندی</h5>
+            </div>
+            <!-- Close Btn -->
+            <div>
+              <div
+                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
+                  <use href="#plus"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- body -->
+          <div class="pt-5 px-5">
+            <!-- category name -->
+            <input
+              id="title"
+              class="xs:col-span-2 lg:col-span-3 bg-gray-100 shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+              type="text"
+              placeholder="نام دسته بندی" />
+          </div>
+          <!-- footer -->
+          <div class="flex justify-end p-5">
+            <button
+              type="submit"
+              class="flex items-center justify-center gap-x-2 h-14 rounded-lg bg-primary hover:bg-green-500 cursor-pointer pr-3 pl-4 text-white transition-colors w-full">
+              <svg class="w-6 md:w-7 h-6 md:h-7">
+                <use href="#plus"></use>
+              </svg>
+              <span class="font-DanaMedium text-lg mt-0.5"> افزودن </span>
+            </button>
+          </div>
+        </form>
+        <!-- View Courses Modal -->
+        <div
+          id="view-courses-modal"
+          class="hidden fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+          <!-- head -->
+          <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-8 py-4 shrink-0">
+            <div>
+              <h5 class="title sm:text-xl font-DanaMedium dark:text-white">لیست دوره ها</h5>
+            </div>
+            <!-- Close Btn -->
+            <div>
+              <div
+                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
+                  <use href="#plus"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- body -->
+          <div id="courses__container" class="overflow-auto">
+            <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 py-5 px-5">
+              <div
+                class="course-card flex flex-col bg-gray-100 dark:bg-gray-800 shadow-light dark:shadow-none border border-gray-300 dark:border-gray-700 h-fit overflow-hidden rounded-2xl">
+                <!-- Course Head -->
+                <a href="./course.html" class="relative block h-42 w-full overflow-hidden">
+                  <img src="http://localhost:3000/public/images/a758f704-1702923511505.png" class="w-full h-full object-cover rounded-2xl" alt="" />
+                </a>
+                <!-- Course Body -->
+                <div class="px-5 pt-2.5 flex-grow">
+                  <a href="./course.html" class="font-DanaMedium dark:text-white text-lg line-clamp-2 my-2 h-14">
+                    تکنیک های قیمت گذاری پروژه های فریلنسری
+                  </a>
+                </div>
+                <!-- Course Footer -->
+                <div class="px-5 pb-2 pt-1">
+                  <!-- Course Info -->
+                  <div class="flex justify-between text-xs pb-3 border-b border-b-gray-100 dark:border-b-gray-700">
+                    <div class="flex gap-x-2 text-slate-500 dark:text-slate-400">
+                      <a href="#" class="flex items-center gap-x-1 hover:text-primary transition-colors">
+                        <svg class="w-4 h-4">
+                          <use href="#user"></use>
+                        </svg>
+                        <span> محمد امین سعیدی راد </span>
+                      </a>
+                      <span class="flex items-center gap-x-1">
+                        <svg class="w-4 h-4">
+                          <use href="#clock"></use>
+                        </svg>
+                        <span>00:00</span>
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-x-1 text-amber-400">
+                      <span class="leading-[1px] mt-1">5.0</span>
+                      <svg class="w-4 h-4">
+                        <use href="#star"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <!-- Course Bottom -->
+                  <div class="flex justify-between items-end mt-1.5">
+                    <div class="dark:text-white flex gap-x-1 items-center">
+                      <svg class="w-5 h-5">
+                        <use href="#users"></use>
+                      </svg>
+                      <span> 13 </span>
+                    </div>
+                    <!-- Course Price -->
+                    <div class="text-primary">
+                      <!-- Normal Price -->
+                      <div class="flex gap-x-1 items-center">
+                        <span class="text-xl"> 285000 </span>
+                        <svg class="w-4 h-4">
+                          <use href="#toman"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     `;
   }
 };
 
