@@ -423,8 +423,7 @@ const insertComments = comments => {
             </div>
             <!-- Comment Text -->
             <div class="text-zinc-700 dark:text-white font-danaLight leading-7 mt-3.5">
-              ${comment.body} <br />
-              <br />
+              ${comment.body} 
             </div>
             <!-- Comment Replies -->
             ${
@@ -492,12 +491,6 @@ const insertComments = comments => {
             `
                 : ""
             }
-
-
-
-            <div class="mt-7 space-y-3.5 md:space-y-5">
-              
-            </div>
           </div>
         </div>
       </div>
