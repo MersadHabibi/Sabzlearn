@@ -5,7 +5,7 @@ import Joi from "joi";
 function createCourse(req, res) {
   const courseSchema = Joi.object({
     title: Joi.string().required().min(1).trim(),
-    description: Joi.string().required().min(1).trim(),
+    description: Joi.string().trim(),
     category: Joi.string().required().min(1).trim(),
     price: Joi.number().required().min(1),
     discount: Joi.number().required(),
@@ -15,7 +15,7 @@ function createCourse(req, res) {
     teacher: Joi.string().required().min(1).trim(),
     shortName: Joi.string().required().min(1).trim(),
     isFree: Joi.boolean().only(true, false).required(),
-    caption: Joi.string().trim(),
+    caption: Joi.string().trim().required().min(1),
     categoryId: Joi.string().trim(),
   });
 
