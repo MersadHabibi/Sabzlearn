@@ -16,6 +16,7 @@ function createCourse(req, res) {
     shortName: Joi.string().required().min(1).trim(),
     isFree: Joi.boolean().only(true, false).required(),
     caption: Joi.string().min(1).required().trim(),
+    categoryId: Joi.string().trim(),
   });
 
   if (!req.file) return res.json({ message: "you didnot provide image." });
