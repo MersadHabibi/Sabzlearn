@@ -52,6 +52,7 @@ model Course {
   categoryId    String     @db.ObjectId
   Users         Users?     @relation(fields: [usersId], references: [id], name: "user to courses")
   usersId       String?    @db.ObjectId
+  caption       String
 }
 
 // مدل کامنت های یک دوره

@@ -23,14 +23,18 @@ function login(req, res) {
         .then((user) => {
           if (!user)
             return res.status(403).json({ err: "email or password is wrong." });
+          else if (user.blocked)
+            return res.status(403).json({ err: "your account is blocked." });
           bcrypt.compare(password, user.hash).then((result) => {
             if (result) {
               delete user.hash;
               delete user.role;
-              const token = jwt.sign(user, process.env.SECRET_KEY);
+              const token = jwt.sign(user, process.env.SECRET_KEY, {
+                expiresIn: "20m",
+              });
               return res.json({ token, decodeToken: jwt.decode(token) });
             }
-            return res.json({ err: "email or  password is wrong" });
+            return res.json({ err: "email or  password is  wrong" });
           });
         });
     })
