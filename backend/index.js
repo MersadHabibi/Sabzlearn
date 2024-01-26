@@ -31,6 +31,8 @@ app.use(express.json());
 
 app.use(cors());
 
+app.use("/api/admin", AdminRoutes); //adminRoutesMiddleWare, AdminRoutes);
+
 app.use("/api", ApiRouter);
 
 app.use(
@@ -383,7 +385,6 @@ app.use(
  *         500:
  *           description: Some server error
  */
-app.use("/api/admin", adminRoutesMiddleWare, AdminRoutes);
 
 const swaggerSpec = swaggerJSDoc({
   definition: {

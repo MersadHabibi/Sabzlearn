@@ -6,12 +6,13 @@ import getMe from "../controller/getMe.js";
 import getCourses, { getCourseById } from "../controller/getCourses.js";
 import createComment from "../controller/Admin/createComment.js";
 import createReply from "../controller/Admin/createReply.js";
+import updateUser from "../controller/updateUser.js";
 
 const router = Router();
 
 router.post("/register", register);
 router.post("/login", login);
-router.get("/me", AuthCheckMiddleWare, getMe);
+router.route("/me").get(AuthCheckMiddleWare, getMe).patch(updateUser);
 
 router.get("/courses", getCourses);
 router.get("/courses/:id", getCourseById);

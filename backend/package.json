@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@prisma/client": "^5.8.1",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -26,7 +27,6 @@
     "swagger-ui-express": "^5.0.0"
   },
   "dependencies": {
-    "@prisma/client": "^5.7.1",
     "get-video-duration": "^4.1.0"
   }
 }

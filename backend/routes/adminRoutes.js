@@ -10,6 +10,12 @@ import updateCommentStatus from "../controller/Admin/updateCommentStatus.js";
 import createSubject from "../controller/Admin/createSubject.js";
 import { createEpisodeUploader } from "../utils/createEpisodeUploadFile.js";
 import createEpisode from "../controller/Admin/createEpisode.js";
+import getAllUsers from "../controller/Admin/getAllUsers.js";
+import deleteUser from "../controller/Admin/deleteUser.js";
+import changeUserRole from "../controller/Admin/changeUserRole.js";
+import blockUser from "../controller/Admin/blockUser.js";
+import createCategory from "../controller/Admin/createCategory.js";
+import getAllCategories from "../controller/Admin/getAllCategories.js";
 const router = Router();
 
 // router.use('/api/admin',adminAuthMiddleWare)
@@ -32,5 +38,15 @@ router
 router
   .route("/episode")
   .post(createEpisodeUploader.single("file"), createEpisode);
+
+router.route("/users").get(getAllUsers);
+
+router
+  .route("/users/:id")
+  .delete(deleteUser)
+  .patch(changeUserRole)
+  .post(blockUser); //admin
+
+router.route("/categories").get(getAllCategories).post(createCategory);
 
 export default router;

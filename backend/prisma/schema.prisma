@@ -14,6 +14,8 @@ datasource db {
 model Users {
   id           String     @id @default(auto()) @map("_id") @db.ObjectId
   username     String     @unique
+  name         String     @default("")
+  family       String     @default("")
   phoneNumber  String
   address      String
   email        String     @unique
@@ -22,7 +24,8 @@ model Users {
   comments     Comments[] @relation("user to comments")
   role         String?    @default("user")
   replies      Reply[]    @relation("user to reply")
-  // Comments     Comments[] @relation("user to comments")
+  blocked      Boolean    @default(false)
+  courses      Course[]   @relation("user to courses")
 }
 
 // مدل یک دوره
@@ -30,7 +33,7 @@ model Course {
   id            String     @id @default(auto()) @map("_id") @db.ObjectId
   title         String
   description   String
-  category      String
+  category      Category   @relation(fields: [categoryId], references: [id])
   price         Int
   discount      Int
   discountPrice Int
@@ -46,6 +49,9 @@ model Course {
   image         String
   Menues        Menues?    @relation(fields: [menuesId], references: [id])
   menuesId      String?    @db.ObjectId
+  categoryId    String     @db.ObjectId
+  Users         Users?     @relation(fields: [usersId], references: [id], name: "user to courses")
+  usersId       String?    @db.ObjectId
 }
 
 // مدل کامنت های یک دوره
@@ -82,12 +88,13 @@ model Episode {
 }
 
 model Menues {
-  id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  category  String
-  shortName String
-  courses   Course[]
-  subMenus  submenus[]
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  category   Category   @relation(fields: [categoryId], references: [id])
+  shortName  String
+  courses    Course[]
+  subMenus   submenus[]
+  categoryId String     @db.ObjectId
 }
 
 model submenus {
@@ -106,4 +113,11 @@ model Reply {
   userId    String   @db.ObjectId
   Comments  Comments @relation(fields: [commentId], references: [id])
   commentId String   @db.ObjectId
+}
+
+model Category {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  name   String
+  Menues Menues[]
+  Course Course[]
 }
