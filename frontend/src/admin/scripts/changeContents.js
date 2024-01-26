@@ -1,8 +1,11 @@
 import preparationCreateCourse from "./createCourse";
 import getAndShowComments, { setEventForCommentDeleteBtn } from "./getAndShowComments";
+import getAndShowCourses from "./getAndShowCourses";
+import preparationAccounts from "./preparationAccounts";
+import preparationEditDescription from "./preparationEditDescription";
 import preparationTopics from "./preparationTopics";
 
-const changeContent = async targetMenu => {
+const changeContent = async (targetMenu, courseId) => {
   const contentContainer = document.querySelector(".content-container");
   contentContainer.innerHTML = "";
 
@@ -49,8 +52,7 @@ const changeContent = async targetMenu => {
         </div>
       </div>
 
-`;
-
+    `;
     await getAndShowComments();
     setEventForCommentDeleteBtn();
   } else if (targetMenu == "create-course") {
@@ -105,7 +107,7 @@ const changeContent = async targetMenu => {
             id="short-name"
             class="bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
             type="text"
-            placeholder="لینک دوره" />
+            placeholder="کلمات کلیدی(برای جستجو بهتر)" />
           <!-- course teacher -->
           <select
             id="teacher"
@@ -120,9 +122,8 @@ const changeContent = async targetMenu => {
           </select>
           <!-- is Free -->
           <select
-            id="teacher"
+            id="isFree"
             name=""
-            id=""
             class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
             <option value="false">دوره رایگان است؟</option>
             <option value="true">بله</option>
@@ -298,7 +299,298 @@ const changeContent = async targetMenu => {
       </div>
   `;
 
-    await preparationTopics();
+    await preparationTopics(courseId);
+  } else if (targetMenu == "courses") {
+    contentContainer.innerHTML = `
+      <div class="content courses">
+        <div
+          class="courses__container grid grid-rows-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 gap-5 w-full bg-white dark:bg-gray-800 shadow-light rounded-xl p-5">
+          <div class="loader mx-auto my-2 sm:col-span-2 md:col-span-1 lg:col-span-2 xl:col-span-3 xxl:col-span-4"></div>
+        </div>
+        <!-- Delete Course Modal -->
+        <div id="delete-course-modal" class="fixed bg-white dark:bg-gray inset-0 m-auto w-[95%] sm:w-[500px] h-fit rounded-md z-30">
+          <div class="pt-5 pb-3 px-4">
+            <p class="dark:text-white text-xl font-DanaMedium mb-2">آیا از حذف کردن دوره ... مطمعن هستید؟</p>
+            <span class="flex items-center gap-x-1 text-red-600 font-DanaMedium">
+              <svg class="size-5 mb-1">
+                <use href="#exclamation-circle"></use>
+              </svg>
+              این عمل غیر قابل بازگشت است
+            </span>
+          </div>
+          <div class="flex justify-end gap-x-2 p-2 border-t border-gray-200 dark:border-gray-800">
+            <button class="modal-cancel-delete-course-btn bg-gray-500 hover:bg-gray-600/75 text-white font-DanaMedium py-2 w-24 rounded-md transition">لغو</button>
+            <button class="modal-delete-course-btn bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 w-24 rounded-md transition">حذف</button>
+          </div>
+        </div>
+      </div>
+  `;
+
+    getAndShowCourses();
+  } else if (targetMenu == "description") {
+    contentContainer.innerHTML = `
+      <div class="content description w-full pb-5 bg-white dark:bg-gray-800 shadow-light rounded-xl px-5">
+        <div class="flex justify-between items-center py-4 border-b border-gray-200 dark:border-slate mb-4">
+          <p id="course-name" class="dark:text-white text-lg font-DanaMedium">اسم دوره‌ :</p>
+          <button id="back-btn" class="size-9 bg-red-500 hover:bg-red-600 text-white rounded-md flex items-center justify-center transition-colors">
+            <svg class="size-5">
+              <use href="#arrow-uturn-left"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="">
+          <textarea name="content" id="editor" class=""> </textarea>
+          <button
+            id="submit"
+            type="submit"
+            class="w-full bg-primary hover:bg-green-500 text-md font-DanaMedium text-white py-2.5 transition mt-3 rounded-md shadow-light dark:shadow-none">
+            ثبت توضیحات
+          </button>
+        </div>
+      </div>
+     `;
+
+    preparationEditDescription(courseId);
+  } else if (targetMenu == "accounts") {
+    contentContainer.innerHTML = `
+    <div class="content accounts">
+      <div class="w-full pb-5 bg-white dark:bg-gray-800 shadow-light rounded-xl px-5">
+        <!-- Title -->
+        <div class="py-4 border-b border-gray-200 dark:border-slate">
+          <h5 class="text-xl font-DanaMedium pr-4 dark:text-white">همه حساب ها</h5>
+        </div>
+        <!-- Accounts Container -->
+        <div class="acconts__container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-4">
+          <!-- <div class="loader mx-auto mt-5"></div> -->
+          <div
+            class="relative flex flex-col justify-center items-center bg-gray-100 dark:bg-gray rounded-xl p-4 border border-gray-300 dark:border-none overflow-hidden">
+            <!-- Role -->
+            <span class="absolute top-2 right-2 bg-secondary px-2 py-1 text-white rounded-lg text-xs"> ادمین </span>
+            <!-- Profile & Username -->
+            <div class="flex flex-col justify-center items-center gap-y-5 w-full border-b border-gray-200 dark:border-gray-700 py-4 shrink-0">
+              <!-- Profile -->
+              <div class="rounded-full overflow-hidden size-22 shadow-light">
+                <img src="../../public/images/user-profile.png" alt="" />
+              </div>
+              <!-- Username -->
+              <span class="font-DanaDemiBold text-xl/5 dark:text-white text-center"> Mersad habibi </span>
+            </div>
+            <!-- Firstname & Lastname & Email & Number -->
+            <div class="dark:text-white w-full">
+              <!-- Firstname & Lastname -->
+              <div class="flex flex-col justify-center gap-y-2 w-full border-b border-gray-200 dark:border-gray-700 text-lg px-3 py-4">
+                <p class="overflow-hidden whitespace-nowrap text-ellipsis">
+                  <span class="font-DanaMedium"> نام: </span>
+                  <span> مرصاد </span>
+                </p>
+                <p class="overflow-hidden whitespace-nowrap text-ellipsis">
+                  <span class="font-DanaMedium"> نام خانوادگی: </span>
+                  <span> حبیبی </span>
+                </p>
+              </div>
+              <!-- Email & Number -->
+              <div class="flex flex-col justify-center gap-y-2 w-full border-b border-gray-200 dark:border-gray-700 text-lg px-3 py-4">
+                <p class="flex flex-col">
+                  <span class="font-DanaMedium"> ایمیل: </span>
+                  <span class="overflow-hidden whitespace-nowrap text-ellipsis"> mersad.up@gmail.com </span>
+                </p>
+                <p>
+                  <span class="font-DanaMedium"> شماره: </span>
+                  <span> ۰۹۱۴۸۹۰۶۰۰۵ </span>
+                </p>
+              </div>
+            </div>
+            <!-- Button -->
+            <div class="pt-4 w-full">
+              <button class="open-user-actions-btn bg-primary hover:bg-green-500 w-full py-2 rounded-md text-white text-lg transition-colors">
+                تغییرات
+              </button>
+            </div>
+            <!-- Actions -->
+            <div
+              class="absolute left-0 right-0 !-bottom-full w-full h-full flex flex-col justify-center items-center gap-y-4 bg-gray-200 dark:bg-gray-700">
+              <button class="bg-red-500 hover:bg-red-600 py-2 w-36 rounded-md text-white transition-colors">مسدود کردن</button>
+              <button class="bg-secondary hover:bg-sky-600 py-2 w-36 rounded-md text-white transition-colors">تغییر دسترسی</button>
+              <button class="bg-gray-400/70 hover:bg-gray-400 py-2 w-36 rounded-md text-white transition-colors">بازگشت</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     `;
+
+    preparationAccounts();
+  } else if (targetMenu == "category") {
+    contentContainer.innerHTML = `
+    <div class="content categories">
+      <div class="w-full pb-5 bg-white dark:bg-gray-800 shadow-light rounded-xl">
+        <!-- Title -->
+        <div class="flex justify-between items-center p-3 border-b border-gray-200 dark:border-slate">
+          <h5 class="text-xl font-DanaMedium pr-4 dark:text-white">دسته بندی ها</h5>
+          <button class="flex items-center gap-x-2 text-white bg-primary hover:bg-green-500 px-4 py-2 rounded-md transition-colors">
+            <svg class="size-7">
+              <use href="#plus-circle"></use>
+            </svg>
+            <span>اضافه کردن دسته بندی</span>
+          </button>
+        </div>
+        <!-- Categories Container -->
+        <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-5 px-5">
+          <div class="bg-gray-100 dark:bg-gray px-2 pt-1 rounded-lg dark:text-white">
+            <!-- category name -->
+            <div class="w-full text-center text-xl font-DanaMedium py-4 border-b border-gray-300 dark:border-gray-700">
+              <span>فرانت اند</span>
+            </div>
+            <!-- category info -->
+            <div class="flex justify-between items-center w-full text-center text-lg py-2 px-2 border-b border-gray-300 dark:border-gray-700">
+              <p class="flex items-center gap-x-2">
+                <svg class="size-6">
+                  <use href="#users"></use>
+                </svg>
+                <span class="mt-1"> 4353 </span>
+              </p>
+              <p class="flex items-center gap-x-2">
+                <svg class="size-6">
+                  <use href="#video-camera"></use>
+                </svg>
+                <span class="mt-1"> 12 </span>
+              </p>
+            </div>
+            <!-- category btns -->
+            <div class="flex justify-between items-center w-full text-center text-lg py-2">
+              <button class="bg-secondary hover:bg-sky-600 w-full py-2 text-lg font-DanaMedium rounded-md text-white transition-colors">
+                لیست دوره ها
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Modals -->
+        <!-- Add Category -->
+        <form
+          id="add-category-modal"
+          class="hidden fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+          <!-- head -->
+          <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
+            <div>
+              <h5 class="sm:text-xl font-DanaMedium dark:text-white">افزودن دسته بندی</h5>
+            </div>
+            <!-- Close Btn -->
+            <div>
+              <div
+                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
+                  <use href="#plus"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- body -->
+          <div class="pt-5 px-5">
+            <!-- category name -->
+            <input
+              id="title"
+              class="xs:col-span-2 lg:col-span-3 bg-gray-100 shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+              type="text"
+              placeholder="نام دسته بندی" />
+          </div>
+          <!-- footer -->
+          <div class="flex justify-end p-5">
+            <button
+              type="submit"
+              class="flex items-center justify-center gap-x-2 h-14 rounded-lg bg-primary hover:bg-green-500 cursor-pointer pr-3 pl-4 text-white transition-colors w-full">
+              <svg class="w-6 md:w-7 h-6 md:h-7">
+                <use href="#plus"></use>
+              </svg>
+              <span class="font-DanaMedium text-lg mt-0.5"> افزودن </span>
+            </button>
+          </div>
+        </form>
+        <!-- View Courses Modal -->
+        <div
+          id="view-courses-modal"
+          class="hidden fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+          <!-- head -->
+          <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-8 py-4 shrink-0">
+            <div>
+              <h5 class="title sm:text-xl font-DanaMedium dark:text-white">لیست دوره ها</h5>
+            </div>
+            <!-- Close Btn -->
+            <div>
+              <div
+                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
+                  <use href="#plus"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- body -->
+          <div id="courses__container" class="overflow-auto">
+            <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 py-5 px-5">
+              <div
+                class="course-card flex flex-col bg-gray-100 dark:bg-gray-800 shadow-light dark:shadow-none border border-gray-300 dark:border-gray-700 h-fit overflow-hidden rounded-2xl">
+                <!-- Course Head -->
+                <a href="./course.html" class="relative block h-42 w-full overflow-hidden">
+                  <img src="http://localhost:3000/public/images/a758f704-1702923511505.png" class="w-full h-full object-cover rounded-2xl" alt="" />
+                </a>
+                <!-- Course Body -->
+                <div class="px-5 pt-2.5 flex-grow">
+                  <a href="./course.html" class="font-DanaMedium dark:text-white text-lg line-clamp-2 my-2 h-14">
+                    تکنیک های قیمت گذاری پروژه های فریلنسری
+                  </a>
+                </div>
+                <!-- Course Footer -->
+                <div class="px-5 pb-2 pt-1">
+                  <!-- Course Info -->
+                  <div class="flex justify-between text-xs pb-3 border-b border-b-gray-100 dark:border-b-gray-700">
+                    <div class="flex gap-x-2 text-slate-500 dark:text-slate-400">
+                      <a href="#" class="flex items-center gap-x-1 hover:text-primary transition-colors">
+                        <svg class="w-4 h-4">
+                          <use href="#user"></use>
+                        </svg>
+                        <span> محمد امین سعیدی راد </span>
+                      </a>
+                      <span class="flex items-center gap-x-1">
+                        <svg class="w-4 h-4">
+                          <use href="#clock"></use>
+                        </svg>
+                        <span>00:00</span>
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-x-1 text-amber-400">
+                      <span class="leading-[1px] mt-1">5.0</span>
+                      <svg class="w-4 h-4">
+                        <use href="#star"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <!-- Course Bottom -->
+                  <div class="flex justify-between items-end mt-1.5">
+                    <div class="dark:text-white flex gap-x-1 items-center">
+                      <svg class="w-5 h-5">
+                        <use href="#users"></use>
+                      </svg>
+                      <span> 13 </span>
+                    </div>
+                    <!-- Course Price -->
+                    <div class="text-primary">
+                      <!-- Normal Price -->
+                      <div class="flex gap-x-1 items-center">
+                        <span class="text-xl"> 285000 </span>
+                        <svg class="w-4 h-4">
+                          <use href="#toman"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     `;
   }
 };
 

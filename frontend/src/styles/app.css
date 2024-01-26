@@ -504,12 +504,14 @@
 
   #add-topic-modal,
   #view-episodes-modal,
-  #add-episode-modal {
+  #add-episode-modal,
+  #delete-course-modal {
     @apply invisible opacity-0;
   }
   #add-topic-modal.show,
   #view-episodes-modal.show,
-  #add-episode-modal.show {
+  #add-episode-modal.show,
+  #delete-course-modal.show {
     @apply visible opacity-100;
   }
 }

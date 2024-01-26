@@ -20,6 +20,8 @@ const createCourse = () => {
   const newCourseShortName = $.querySelector("#create-course-form #short-name");
   const newCourseTeacher = $.querySelector("#create-course-form #teacher");
   const newCourseCoverElem = $.querySelector("#create-course-form #cover");
+  const newCourseIsFreeElem = $.querySelector("#create-course-form #isFree");
+  console.log(newCourseIsFreeElem);
   let newCourseCover = newCourseCoverElem.files[0];
 
   if (
@@ -47,7 +49,7 @@ const createCourse = () => {
       status: newCourseStatus.value,
       shortName: newCourseShortName.value.trim(),
       teacher: newCourseTeacher.value.trim(),
-      isFree: false,
+      isFree: newCourseIsFreeElem.value,
       discount: 0,
       discountPrice: 0,
       time: "0",

@@ -4,7 +4,7 @@ const overlay = document.querySelector(".overlay");
 let course = null;
 let topicIdForAddEpisode = "";
 
-const preparationTopics = async () => {
+const preparationTopics = async (courseId = null) => {
   const seleteCoursesInput = document.querySelector("#select-course");
 
   await api.get("/courses").then(res => {
@@ -29,6 +29,11 @@ const preparationTopics = async () => {
   });
 
   setRequiredEvents();
+
+  if (courseId) {
+    getCourseAndShowDatas(courseId);
+    seleteCoursesInput.value = courseId;
+  }
 };
 
 const getCourseAndShowDatas = id => {

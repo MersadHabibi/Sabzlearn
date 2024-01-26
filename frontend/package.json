@@ -15,7 +15,10 @@
     "vite": "^5.0.8"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^40.2.0",
+    "@ckeditor/ckeditor5-build-inline": "^40.2.0",
     "axios": "^1.6.3",
+    "ckeditor-tailwind-reset": "^1.0.5",
     "izitoast": "^1.4.0",
     "swiper": "^11.0.5"
   }

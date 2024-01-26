@@ -1,12 +1,11 @@
 import "../../styles/app.css";
 import "../../scripts/share.js";
+import "ckeditor-tailwind-reset/ckeditor-tailwind-reset.css";
 import { _changeClasses } from "../../scripts/funcs/utils.js";
 import changeContent from "./changeContents.js";
 import routeProtect from "./routeProtect.js";
 
-routeProtect();
-
-let activeContent = "tickets";
+// routeProtect();
 
 const menuItems = document.querySelectorAll(".menu__item");
 const notifBtn = document.querySelector(".notif-btn");
@@ -27,14 +26,11 @@ menuItems.forEach(menuItem => {
 
 const menuItemClickHandler = menuItem => {
   const clickedMenu = menuItem.dataset.content;
-  if (clickedMenu != activeContent) {
-    _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
-    _changeClasses("add", menuItem, ["active"]);
 
-    changeContent(clickedMenu);
+  _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
+  _changeClasses("add", menuItem, ["active"]);
 
-    activeContent = clickedMenu;
-  }
+  changeContent(clickedMenu);
 };
 
 // Open Mobile Menu
@@ -68,3 +64,5 @@ overlay.addEventListener("click", () => {
   _changeClasses("remove", overlay, ["show"]);
   _changeClasses("remove", menuContainer, ["show"]);
 });
+
+// ck editor

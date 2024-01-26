@@ -4,40 +4,19 @@ import "./share.js";
 import { _changeClasses } from "./funcs/utils.js";
 import { loadPanelContent } from "./panel-content.js";
 
-// Load Content onLoad Window - With Query String
-
-const params = new Proxy(new URLSearchParams(window.location.search), {
-  get: (searchParams, prop) => searchParams.get(prop),
-});
-if (params.content) {
-  loadPanelContent(params.content);
-} else {
-  loadPanelContent("home");
-}
-
 // Default Variables
-
-const $ = document;
-const overlay = $.querySelector(".overlay");
+window.loadPanelContent = loadPanelContent;
+const overlay = document.querySelector(".overlay");
 
 // Mobile Aside
-
-const mobileAsideOpenBtn = $.querySelector(".moblie-aside__open");
-const mobileAsideCloseBtn = $.querySelector(".mobile-aside__close");
-const mobileAsideContainer = $.querySelector(".panel-menu__container");
+const mobileAsideOpenBtn = document.querySelector(".moblie-aside__open");
+const mobileAsideCloseBtn = document.querySelector(".mobile-aside__close");
+const mobileAsideContainer = document.querySelector(".panel-menu__container");
 
 // Panel Menu - Active Default
+const panelMenuItem = document.querySelectorAll(".panel-menu__item");
 
-const panelMenuItem = $.querySelectorAll(".panel-menu__item");
-if (params.content) {
-  panelMenuItem.forEach(e => {
-    if (e.dataset.panelContent != params.content) {
-      _changeClasses("remove", e, ["active"]);
-    } else {
-      _changeClasses("add", e, ["active"]);
-    }
-  });
-}
+const panelMobileMenuText = document.querySelectorAll(".panel-mobile-menu-text__item");
 
 // Mobile Aside - open & close
 
@@ -54,29 +33,89 @@ const closeMobileAside = () => {
 mobileAsideOpenBtn.addEventListener("click", openMobileAside);
 mobileAsideCloseBtn.addEventListener("click", closeMobileAside);
 
+// Profile
+
+const profileBtn = document.querySelector(".profile");
+profileBtn.addEventListener("click", () => {
+  _changeClasses("add", profileBtn, ["open"]);
+  _changeClasses("add", overlay, ["show"]);
+});
+
+// Notif
+
+const notifBtn = document.querySelector(".notif-btn");
+notifBtn.addEventListener("click", () => {
+  console.log("add");
+  _changeClasses("add", notifBtn, ["open"]);
+  _changeClasses("add", overlay, ["show"]);
+});
+
 // Overlay Click
 
 overlay.addEventListener("click", () => {
   _changeClasses("remove", mobileAsideContainer, ["open"]);
+  _changeClasses("remove", notifBtn, ["open"]);
+  _changeClasses("remove", overlay, ["show"]);
+  _changeClasses("remove", profileBtn, ["open"]);
 });
 
 // Load Content - Click Aside Menu
 
-const ChangeContent = (event, element) => {
-  const content = element.dataset.panelContent;
-  loadPanelContent(content);
+const ChangeContentWithMenu = element => {
+  console.log("ChangeContentWithMenu");
+  const contentName = element.dataset.panelContent;
+  loadPanelContent(contentName);
   closeMobileAside();
 
-  window.history.pushState("", "", `http://127.0.0.1:5500/frontend/public/panel.html?content=${content}`);
+  setMobileMenuTitle(contentName); // set Mobile Menu Title
 
-  panelMenuItem.forEach(e => {
-    _changeClasses("remove", e, ["active"]);
-  });
-  _changeClasses("add", element, ["active"]);
+  window.history.pushState("", "", `${location.pathname}?content=${contentName}`);
 };
 
-panelMenuItem.forEach(e => {
-  e.addEventListener("click", event => {
-    ChangeContent(event, e);
+// Menu Click - Change Content
+
+panelMenuItem.forEach(btn => {
+  btn.addEventListener("click", event => {
+    _changeClasses("remove", document.querySelector(".panel-menu__item.active"), ["active"]);
+    _changeClasses("add", btn, ["active"]);
+    ChangeContentWithMenu(btn);
   });
+});
+
+// Load Content onLoad Window - With Query String
+
+const getParamsAndChangeContent = () => {
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+  if (params.content) {
+    loadPanelContent(params.content);
+  } else {
+    loadPanelContent("home");
+  }
+
+  // Highlight Active Btn
+  panelMenuItem.forEach(btn => {
+    if (btn.dataset.panelContent == params.content) {
+      _changeClasses("remove", document.querySelector(".panel-menu__item.active"), ["active"]);
+      _changeClasses("add", btn, ["active"]);
+    }
+  });
+  // set Mobile Menu Title
+  setMobileMenuTitle(params.content);
+};
+
+// Mobile Menu Title
+
+const setMobileMenuTitle = contentName => {
+  panelMobileMenuText.forEach(e => {
+    _changeClasses("remove", e, ["!block"]);
+  });
+  contentName = contentName == "new-ticket" ? "tickets" : contentName; // check new-ticket
+  const panelMobileMenuTextActive = document.querySelector(`.panel-mobile-menu-text__item#${contentName}`);
+  _changeClasses("add", panelMobileMenuTextActive, ["!block"]);
+};
+
+window.addEventListener("load", () => {
+  getParamsAndChangeContent();
 });

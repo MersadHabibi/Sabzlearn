@@ -5,6 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="images/icon.png" type="image/png" />
     <title>admin</title>
+    <style>
+      .notif-btn.show {
+        z-index: 20;
+      }
+      .notif-btn.show .notif-box {
+        z-index: 20;
+        opacity: 1;
+      }
+      aside {
+        right: -100%;
+      }
+      aside.show {
+        right: 0;
+        z-index: 20;
+      }
+
+      /* izi Toast */
+
+      .iziToast {
+        box-shadow: 0 1px 60px rgba(0, 0, 0, 0.1);
+      }
+      .iziToast::after {
+        content: none;
+      }
+      .iziToast-texts {
+        display: flex !important;
+        flex-direction: column;
+      }
+      .iziToast-title {
+        font-family: "Dana DemiBold";
+        margin-bottom: 4px !important;
+      }
+      .iziToast-message {
+        font-family: "Dana";
+        margin-bottom: 2px !important;
+        max-width: 200px;
+        line-height: 1.5 !important;
+      }
+      /* .iziToast-icon{
+        width: 36px !important;
+        height: 36px !important;
+      } */
+      .iziToast-cover {
+        background-color: transparent !important;
+        margin-right: 10px !important;
+      }
+
+      .ck-content {
+        @apply !bg-gray-100 dark:!bg-gray-700 dark:!text-white !rounded-b-md dark:!border-gray-500/60;
+      }
+      .ck-toolbar {
+        @apply !bg-gray-100 dark:!bg-gray-700 dark:!text-white !rounded-t-md dark:!border-gray-500/60;
+      }
+      .ck-toolbar__items {
+        @apply child:dark:!text-white child:dark:hover:!bg-gray-600;
+      }
+      .ck-button {
+        @apply dark:!text-white;
+      }
+    </style>
   </head>
   <body class="relative bg-gray-100 dark:bg-gray">
     <script>
@@ -149,152 +209,192 @@
           stroke-linejoin="round"
           d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5" />
       </symbol>
+      <symbol id="clock" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </symbol>
+      <symbol id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+          clip-rule="evenodd"></path>
+      </symbol>
+      <symbol id="user" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
+      </symbol>
+      <symbol id="exclamation-circle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+      </symbol>
+      <symbol id="folder" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+      </symbol>
+      <symbol id="home" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+      </symbol>
+      <symbol id="toman" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="4" stroke="currentColor" viewBox="0 0 57.988 55.588">
+        <g transform="translate(-4013.907 176.406)">
+          <path
+            d="M4068.117-146.108s3,8.61,1.066,11.035-4.839,1.921-11.736,1.921-10.552.731-12.355-1.6-2.288-7.952,2.547-9.55,7.877,3.5,7.877,9.231.668,5.874-.732,8.36c-1.858,2.6-10.917,3.915-10.917,3.915"></path>
+          <path d="M4069.56-152.461v3.969" transform="translate(0 -1.945)"></path>
+          <path d="M4069.56-152.461v3.969" transform="translate(-7 -1.945)"></path>
+          <path d="M4069.56-152.461v3.969" transform="translate(-7 -1.945)"></path>
+          <path
+            d="M4027.592-128.435s5.376,4.632,8.167,3.124a5.918,5.918,0,0,0,3.034-6.158c-.446-4.24-4.144-5.625-6.783-4.418s-4.016,5.866-4.016,5.866-1.857,4.934-6.114,4.934-4.928-2.6-5-4.934-.98-19.76-.98-19.76"></path>
+          <path d="M4069.56-152.461v3.969" transform="translate(-44 -23.945)"></path>
+          <path
+            d="M4017.55-171.009s-3.525,12.094,2.454,15.619c5.623,3.035,12.585-.714,12.585-.714s3.473-2.1,3.436-4.864c-.089-3.883-1.651-12.986-1.651-12.986"></path>
+        </g>
+      </symbol>
+      <symbol id="arrow-uturn-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M7.793 2.232a.75.75 0 0 1-.025 1.06L3.622 7.25h10.003a5.375 5.375 0 0 1 0 10.75H10.75a.75.75 0 0 1 0-1.5h2.875a3.875 3.875 0 0 0 0-7.75H3.622l4.146 3.957a.75.75 0 0 1-1.036 1.085l-5.5-5.25a.75.75 0 0 1 0-1.085l5.5-5.25a.75.75 0 0 1 1.06.025Z"
+          clip-rule="evenodd" />
+      </symbol>
+      <symbol id="video-camera" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+      </symbol>
     </svg>
-
-    <style>
-      .notif-btn.show {
-        z-index: 20;
-      }
-      .notif-btn.show .notif-box {
-        z-index: 20;
-        opacity: 1;
-      }
-      aside {
-        right: -100%;
-      }
-      aside.show {
-        right: 0;
-        z-index: 20;
-      }
-
-      /* izi Toast */
-
-      .iziToast {
-        box-shadow: 0 1px 60px rgba(0, 0, 0, 0.1);
-      }
-      .iziToast::after {
-        content: none;
-      }
-      .iziToast-texts {
-        display: flex !important;
-        flex-direction: column;
-      }
-      .iziToast-title {
-        font-family: "Dana DemiBold";
-        margin-bottom: 4px !important;
-      }
-      .iziToast-message {
-        font-family: "Dana";
-        margin-bottom: 2px !important;
-        max-width: 200px;
-        line-height: 1.5 !important;
-      }
-      /* .iziToast-icon{
-        width: 36px !important;
-        height: 36px !important;
-      } */
-      .iziToast-cover {
-        background-color: transparent !important;
-        margin-right: 10px !important;
-      }
-    </style>
 
     <div class="flex">
       <!-- Aside -->
       <aside
-        class="w-[260px] min-h-full md:w-[300px] md:min-h-screen shrink-0 fixed top-0 overflow-y-auto md:static pb-10 pt-6 md:py-10 px-5 bg-white dark:bg-gray-800 shadow-light dark:shadow-none transition-all">
-        <!-- Aside Header -->
-        <div class="flex items-center justify-between md:justify-center gap-x-7 mb-6 md:mb-8">
-          <div class="flex items-center gap-x-2">
-            <img src="/images/logo.webp" class="h-10 md:h-14" alt="logo" />
-            <svg class="w-[86px] h-10 md:w-32 md:h-[57px] text-white dark:text-slate-600">
-              <use href="#logo-type"></use>
-            </svg>
-          </div>
-          <div class="md:hidden pl-2 md:p-0">
-            <svg class="mobile-menu-close-btn w-5 h-5 text-slate-500 dark:text-slate-400">
-              <use href="#close"></use>
-            </svg>
-          </div>
-        </div>
-        <!-- Aside Menu -->
-        <ul class="flex flex-col gap-y-3 dark:text-white border-y border-gray-200 dark:border-slate py-5">
-          <button
-            type="button"
-            href="#"
-            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg active transition-all"
-            data-content="tickets">
-            <svg class="w-6 h-6">
-              <use href="#chat-bubble"></use>
-            </svg>
-            <span class="mt-0.5"> تیکت ها </span>
-          </button>
-          <button
-            type="button"
-            href="#"
-            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-content="comments">
-            <svg class="w-6 h-6">
-              <use href="#chat-bubble-oval-left"></use>
-            </svg>
-            <span class="mt-0.5"> کامنت ها </span>
-          </button>
-          <button
-            type="button"
-            href="#"
-            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-content="accounts">
-            <svg class="w-6 h-6">
-              <use href="#users"></use>
-            </svg>
-            <span class="mt-0.5"> حساب ها </span>
-          </button>
-          <button
-            type="button"
-            href="#"
-            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-content="create-course">
-            <svg class="w-6 h-6">
-              <use href="#plus-circle"></use>
-            </svg>
-            <span class="mt-0.5"> ایجاد دوره </span>
-          </button>
-          <button
-            type="button"
-            href="#"
-            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-content="edit-course">
-            <svg class="w-6 h-6">
-              <use href="#pencil-square"></use>
-            </svg>
-            <span class="mt-0.5"> ویرایش دوره </span>
-          </button>
-          <button
-            type="button"
-            href="#"
-            class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
-            data-content="topics">
-            <svg class="w-6 h-6">
-              <use href="#flag"></use>
-            </svg>
-            <span class="mt-0.5"> مدیریت سر فصل ها </span>
-          </button>
-        </ul>
-        <!-- Aside Footer -->
-        <div class="pr-2">
-          <div class="toggle-theme flex items-center gap-x-3 mt-4 dark:text-slate-400">
-            <div class="flex items-center justify-center rounded-xl w-[38px] h-[38px] bg-gray-100 dark:bg-transparent dark:border dark:border-slate">
-              <svg class="inline-block dark:hidden w-6 h-6 text-slate-500 dark:text-inherit">
-                <use href="#moon"></use>
-              </svg>
-              <svg class="hidden dark:inline-block w-6 h-6 text-slate-500 dark:text-inherit">
-                <use href="#sun"></use>
+        class="w-[260px] min-h-full md:w-[300px] md:min-h-screen shrink-0 fixed top-0 md:static bg-white dark:bg-gray-800 shadow-light dark:shadow-none transition-all">
+        <div class="md:fixed top-0 right-0 h-dvh w-[260px] md:w-[300px] pb-10 pt-6 md:py-10 px-5 overflow-y-auto">
+          <!-- Aside Header -->
+          <div class="flex items-center justify-between md:justify-center gap-x-7 mb-6 md:mb-8">
+            <div class="flex items-center gap-x-2">
+              <img src="/images/logo.webp" class="h-10 md:h-14" alt="logo" />
+              <svg class="w-[86px] h-10 md:w-32 md:h-[57px] text-white dark:text-slate-600">
+                <use href="#logo-type"></use>
               </svg>
             </div>
-            <p>
-              <span class="inline-block dark:hidden">تم تیره</span>
-              <span class="hidden dark:inline-block">تم روشن</span>
-            </p>
+            <div class="md:hidden pl-2 md:p-0">
+              <svg class="mobile-menu-close-btn w-5 h-5 text-slate-500 dark:text-slate-400">
+                <use href="#close"></use>
+              </svg>
+            </div>
+          </div>
+          <!-- Aside Menu -->
+          <ul class="flex flex-col gap-y-3 dark:text-white border-y border-gray-200 dark:border-slate py-5">
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg active transition-all"
+              data-content="home">
+              <svg class="w-6 h-6">
+                <use href="#home"></use>
+              </svg>
+              <span class="mt-0.5"> صفحه اصلی </span>
+            </button>
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+              data-content="courses">
+              <svg class="w-6 h-6">
+                <use href="#folder"></use>
+              </svg>
+              <span class="mt-0.5"> دوره ها </span>
+            </button>
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+              data-content="tickets">
+              <svg class="w-6 h-6">
+                <use href="#chat-bubble"></use>
+              </svg>
+              <span class="mt-0.5"> تیکت ها </span>
+            </button>
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+              data-content="comments">
+              <svg class="w-6 h-6">
+                <use href="#chat-bubble-oval-left"></use>
+              </svg>
+              <span class="mt-0.5"> کامنت ها </span>
+            </button>
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+              data-content="accounts">
+              <svg class="w-6 h-6">
+                <use href="#users"></use>
+              </svg>
+              <span class="mt-0.5"> حساب ها </span>
+            </button>
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+              data-content="create-course">
+              <svg class="w-6 h-6">
+                <use href="#plus-circle"></use>
+              </svg>
+              <span class="mt-0.5"> ایجاد دوره </span>
+            </button>
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+              data-content="edit-course">
+              <svg class="w-6 h-6">
+                <use href="#pencil-square"></use>
+              </svg>
+              <span class="mt-0.5"> ویرایش دوره </span>
+            </button>
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+              data-content="topics">
+              <svg class="w-6 h-6">
+                <use href="#flag"></use>
+              </svg>
+              <span class="mt-0.5"> مدیریت سر فصل ها </span>
+            </button>
+            <button
+              type="button"
+              href="#"
+              class="menu__item panel-menu__item inline-flex items-center gap-x-3 pr-2 py-2 rounded-lg transition-all"
+              data-content="category">
+              <svg class="w-6 h-6">
+                <use href="#flag"></use>
+              </svg>
+              <span class="mt-0.5"> مدیریت دسته بندی ها </span>
+            </button>
+          </ul>
+          <!-- Aside Footer -->
+          <div class="pr-2">
+            <div class="toggle-theme flex items-center gap-x-3 mt-4 dark:text-slate-400">
+              <div class="flex items-center justify-center rounded-xl w-[38px] h-[38px] bg-gray-100 dark:bg-transparent dark:border dark:border-slate">
+                <svg class="inline-block dark:hidden w-6 h-6 text-slate-500 dark:text-inherit">
+                  <use href="#moon"></use>
+                </svg>
+                <svg class="hidden dark:inline-block w-6 h-6 text-slate-500 dark:text-inherit">
+                  <use href="#sun"></use>
+                </svg>
+              </div>
+              <p>
+                <span class="inline-block dark:hidden">تم تیره</span>
+                <span class="hidden dark:inline-block">تم روشن</span>
+              </p>
+            </div>
           </div>
         </div>
       </aside>
@@ -328,7 +428,6 @@
             </div>
           </div>
         </div>
-
         <!-- Main body -->
 
         <div class="content-container py-5"></div>

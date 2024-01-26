@@ -16,7 +16,6 @@ const createNewComment = async (userId, courseId, commentText) => {
       },
       {
         headers: {
-          "Content-Type": "application/json",
           Authorization: "Bearer " + getToken(),
         },
       }
