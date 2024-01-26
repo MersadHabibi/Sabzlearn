@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-async function getAllCategories(req, res) {
+
+async function getCountOfUsersInEachCourseCategory() {
   const categoryStudentCount = prisma.category.findMany({
     include: {
       Course: {
@@ -22,6 +23,12 @@ async function getAllCategories(req, res) {
       studentsCount,
     };
   });
-  return res.json(await formattedCounts);
+  return formattedCounts;
+}
+
+async function getAllCategories(req, res) {
+  prisma.category.findMany().then((categories) => {
+    res.json(categories);
+  });
 }
 export default getAllCategories;
