@@ -6,7 +6,7 @@ function createCourse(req, res) {
   const courseSchema = Joi.object({
     title: Joi.string().required().min(1).trim(),
     description: Joi.string().trim(),
-    category: Joi.string().required().min(1).trim(),
+
     price: Joi.number().required().min(1),
     discount: Joi.number().required(),
     discountPrice: Joi.number().required(),

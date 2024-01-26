@@ -33,7 +33,7 @@ model Course {
   id            String     @id @default(auto()) @map("_id") @db.ObjectId
   title         String
   description   String
-  category      Category   @relation(fields: [categoryId], references: [id])
+  category      Category?  @relation(fields: [categoryId], references: [id])
   price         Int
   discount      Int
   discountPrice Int
@@ -49,7 +49,7 @@ model Course {
   image         String
   Menues        Menues?    @relation(fields: [menuesId], references: [id])
   menuesId      String?    @db.ObjectId
-  categoryId    String     @db.ObjectId
+  categoryId    String?    @db.ObjectId
   Users         Users?     @relation(fields: [usersId], references: [id], name: "user to courses")
   usersId       String?    @db.ObjectId
   caption       String
@@ -84,7 +84,8 @@ model Episode {
   isFree    Boolean
   link      String?
   sortId    Int
-  Subject   Subjects? @relation(fields: [subjectId], references: [id], name: "subject to episode")
+  time      String
+  Subjects  Subjects? @relation(fields: [subjectId], references: [id], name: "subject to episode")
   subjectId String?   @db.ObjectId
 }
 

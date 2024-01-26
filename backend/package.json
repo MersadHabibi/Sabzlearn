@@ -27,6 +27,7 @@
     "swagger-ui-express": "^5.0.0"
   },
   "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
     "get-video-duration": "^4.1.0"
   }
 }

@@ -13,7 +13,8 @@ const EditCourseSchema = Joi.object({
   time: Joi.string().min(1),
   teacher: Joi.string().min(1),
   shortName: Joi.string().min(1),
-  isFree: Joi.boolean().only(true,false),
+  isFree: Joi.boolean().only(true, false),
+  caption: Joi.string().trim(),
 });
 function EditCourse(req, res) {
   EditCourseSchema.validateAsync(req.body)

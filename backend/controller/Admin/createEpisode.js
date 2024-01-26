@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 import Joi from "joi";
 import fs from "fs";
+import Ffmpeg from "fluent-ffmpeg";
 const validatSchema = Joi.object({
   title: Joi.string().required().min(1).trim(),
   subjectId: Joi.string().required().min(1).trim(),
@@ -29,20 +30,31 @@ function createEpisode(req, res) {
   validatSchema
     .validateAsync(body)
     .then((reqBody) => {
-      prisma.episode
-        .create({
-          data: {
-            ...reqBody,
-            link: reqFilePath,
-          },
-        })
-        .then((subject) => {
-          res.json(subject);
-        })
-        .catch((err) => {
-          res.status(500).json({ err });
-          fs.rmSync(reqFilePath, { force: true, maxRetries: 5 });
-        });
+      Ffmpeg.ffprobe(reqFilePath, (err, metadata) => {
+        console.log(metadata);
+        const minute = Math.floor(metadata.format.duration / 60);
+        const second = Math.floor(metadata.format.duration % 60);
+        console.log(minute, second);
+        prisma.episode
+          .create({
+            data: {
+              ...reqBody,
+              time: `${minute}:${second}`,
+              link: reqFilePath,
+            },
+          })
+          .then((episode) => {
+            return res.status(200).json({
+              message: "Episode created successfully",
+              episode,
+            });
+          })
+          .catch((err) => {
+            fs.rmSync(reqFilePath, { force: true, maxRetries: 5 });
+            console.log(err);
+            return res.status(500).json({ err });
+          });
+      });
     })
     .catch((err) => {
       return res.status(403).json({
