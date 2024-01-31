@@ -17,7 +17,7 @@ const createCourseCard = (
     props.fixHeight ? "h-[417px]" : ""
   } overflow-hidden rounded-2xl">
         <!-- Course Head -->
-        <a href=./course.html class="relative block h-42 w-full overflow-hidden">
+        <a href=http://localhost:8000/src/course.html class="relative block h-42 w-full overflow-hidden">
         ${
           course.discount
             ? `
@@ -29,6 +29,7 @@ const createCourseCard = (
         }
           <img
             src=http://localhost:3000/${course.image}
+            onerror="this.src = 'http://localhost:8000/images/image-404.png'"
             class="w-full h-full object-cover rounded-2xl"
             alt="" />
         </a>
