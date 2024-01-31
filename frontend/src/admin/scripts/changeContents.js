@@ -2,6 +2,7 @@ import preparationCreateCourse from "./createCourse";
 import getAndShowComments, { setEventForCommentDeleteBtn } from "./getAndShowComments";
 import getAndShowCourses from "./getAndShowCourses";
 import preparationAccounts from "./preparationAccounts";
+import preparationAddCategory from "./preparationAddCategory";
 import preparationEditDescription from "./preparationEditDescription";
 import preparationTopics from "./preparationTopics";
 
@@ -427,7 +428,7 @@ const changeContent = async (targetMenu, courseId) => {
         <!-- Title -->
         <div class="flex justify-between items-center p-3 border-b border-gray-200 dark:border-slate">
           <h5 class="text-xl font-DanaMedium pr-4 dark:text-white">دسته بندی ها</h5>
-          <button class="flex items-center gap-x-2 text-white bg-primary hover:bg-green-500 px-4 py-2 rounded-md transition-colors">
+          <button class="open-add-category-modal-btn flex items-center gap-x-2 text-white bg-primary hover:bg-green-500 px-4 py-2 rounded-md transition-colors">
             <svg class="size-7">
               <use href="#plus-circle"></use>
             </svg>
@@ -468,7 +469,7 @@ const changeContent = async (targetMenu, courseId) => {
         <!-- Add Category -->
         <form
           id="add-category-modal"
-          class="hidden fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+          class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
             <div>
@@ -477,7 +478,7 @@ const changeContent = async (targetMenu, courseId) => {
             <!-- Close Btn -->
             <div>
               <div
-                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                class="close-add-category-modal-btn flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
                 </svg>
@@ -488,7 +489,7 @@ const changeContent = async (targetMenu, courseId) => {
           <div class="pt-5 px-5">
             <!-- category name -->
             <input
-              id="title"
+              id="name"
               class="xs:col-span-2 lg:col-span-3 bg-gray-100 shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
               type="text"
               placeholder="نام دسته بندی" />
@@ -508,7 +509,7 @@ const changeContent = async (targetMenu, courseId) => {
         <!-- View Courses Modal -->
         <div
           id="view-courses-modal"
-          class="hidden fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+          class="fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-8 py-4 shrink-0">
             <div>
@@ -591,6 +592,8 @@ const changeContent = async (targetMenu, courseId) => {
       </div>
     </div>
      `;
+
+     preparationAddCategory()
   }
 };
 
