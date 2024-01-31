@@ -5,6 +5,7 @@ import preparationAccounts from "./preparationAccounts";
 import preparationAddCategory from "./preparationAddCategory";
 import preparationEditDescription from "./preparationEditDescription";
 import preparationTopics from "./preparationTopics";
+import showCategories from "./showCategories";
 
 const changeContent = async (targetMenu, courseId) => {
   const contentContainer = document.querySelector(".content-container");
@@ -436,34 +437,9 @@ const changeContent = async (targetMenu, courseId) => {
           </button>
         </div>
         <!-- Categories Container -->
-        <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-5 px-5">
-          <div class="bg-gray-100 dark:bg-gray px-2 pt-1 rounded-lg dark:text-white">
-            <!-- category name -->
-            <div class="w-full text-center text-xl font-DanaMedium py-4 border-b border-gray-300 dark:border-gray-700">
-              <span>فرانت اند</span>
-            </div>
-            <!-- category info -->
-            <div class="flex justify-between items-center w-full text-center text-lg py-2 px-2 border-b border-gray-300 dark:border-gray-700">
-              <p class="flex items-center gap-x-2">
-                <svg class="size-6">
-                  <use href="#users"></use>
-                </svg>
-                <span class="mt-1"> 4353 </span>
-              </p>
-              <p class="flex items-center gap-x-2">
-                <svg class="size-6">
-                  <use href="#video-camera"></use>
-                </svg>
-                <span class="mt-1"> 12 </span>
-              </p>
-            </div>
-            <!-- category btns -->
-            <div class="flex justify-between items-center w-full text-center text-lg py-2">
-              <button class="bg-secondary hover:bg-sky-600 w-full py-2 text-lg font-DanaMedium rounded-md text-white transition-colors">
-                لیست دوره ها
-              </button>
-            </div>
-          </div>
+        <div id="categories__container" class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-5 px-5">
+        <div class="loader mx-auto my-3 xs:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>
+          <!-- Load From JS -->
         </div>
         <!-- Modals -->
         <!-- Add Category -->
@@ -593,7 +569,8 @@ const changeContent = async (targetMenu, courseId) => {
     </div>
      `;
 
-     preparationAddCategory()
+    preparationAddCategory();
+    showCategories();
   }
 };
 
