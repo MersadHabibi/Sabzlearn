@@ -54,9 +54,13 @@ const getCategories = async () => {
     const res = await apiAdmin.get("categories");
     const categories = res.data;
 
+    console.log(res);
+
     return categories;
   } catch (err) {
+    console.log(err);
     showNotif("اینترنت خود را بررسی کنید!");
+    return null
   }
 };
 
@@ -66,3 +70,4 @@ const closeViewCoursesModal = () => {
 };
 
 export default showCategories;
+export {getCategories}

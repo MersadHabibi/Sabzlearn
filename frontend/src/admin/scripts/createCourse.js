@@ -1,9 +1,43 @@
 import { showNotif, api, apiAdmin, getToken, fullScreenLoader } from "../../scripts/funcs/utils.js";
+import { getCategories } from "./showCategories.js";
 
 const $ = document;
 
-const preparationCreateCourse = () => {
+const preparationCreateCourse = async () => {
   const newCourseform = $.querySelector("#create-course-form");
+  const newCourseCoverElem = $.querySelector("#create-course-form #cover");
+  const newCourseCategory = $.querySelector("#create-course-form #category");
+  const submitBtn = $.querySelector("#submit-btn");
+  const imagePreviewElem = document.querySelector("#image-preview");
+
+  const categories = await getCategories();
+  console.log(categories);
+
+  if (categories) {
+    console.log("true");
+    newCourseCategory.innerHTML = "<option value=''>دسته بندی...</option>";
+
+    categories.forEach(category => {
+      newCourseCategory.insertAdjacentHTML(
+        "beforeend",
+        `
+        <option value="${category.categoryId}"> ${category.categoryName} </option>
+      `
+      );
+    });
+  } else {
+    console.log("false");
+    newCourseCategory.innerHTML = "<option value=''>دسته بندی پیدا نشد...</option>";
+    console.log(submitBtn);
+    submitBtn.disabled = true;
+  }
+
+  newCourseCoverElem.addEventListener("change", () => {
+    const [file] = newCourseCoverElem.files;
+    if (file) {
+      imagePreviewElem.src = URL.createObjectURL(file);
+    }
+  });
 
   newCourseform.addEventListener("submit", event => {
     event.preventDefault();
@@ -36,16 +70,17 @@ const createCourse = () => {
   ) {
     showNotif("لطفا همه مقادیر را پر کنید");
   } else {
-    if (!(newCourseCover.type == "image/jpeg" || newCourseCover.type == "image/png" || newCourseCover.type == "image/jpg")) {
-      showNotif("نوع فایل باید jpg یا png باشد");
+    if (!(newCourseCover.type == "image/jpeg" || newCourseCover.type == "image/png" || newCourseCover.type == "image/jpg" || newCourseCover.type == "image/webp")) {
+      showNotif("نوع فایل باید jpg , webp یا png باشد");
       return false;
     }
 
     const newCourseDatas = {
       title: newCourseTitle.value.trim(),
+      caption: newCourseDescription.value.trim(),
       description: newCourseDescription.value.trim(),
       price: +newCoursePrice.value,
-      category: newCourseCategory.value,
+      categoryId: newCourseCategory.value,
       status: newCourseStatus.value,
       shortName: newCourseShortName.value.trim(),
       teacher: newCourseTeacher.value.trim(),
@@ -67,9 +102,11 @@ const sentCreateCourseApi = async formData => {
   await apiAdmin
     .post("courses", formData)
     .then(res => {
+      console.log(res);
       showNotif("دوره با موفقیت ساخته شد", "success");
     })
     .catch(err => {
+      console.log(err);
       showNotif("مشکلی پیش آمده");
     })
     .finally(() => {
