@@ -362,8 +362,25 @@ const changeContent = async (targetMenu, courseId) => {
         </div>
         <!-- Users Container -->
         <div class="users__container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-4">
-          <div class="loader mx-auto mt-5 sm:col-span-2 md:col-span-1 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>
-          
+          <div class="loader mx-auto my-3 sm:col-span-2 md:col-span-1 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>
+          <!-- Load From JS -->
+        </div>
+      </div>
+      <!-- Modals -->
+      <!-- Block User Modal -->
+      <div id="block-user-modal" class="fixed bg-white dark:bg-gray inset-0 m-auto w-[95%] sm:w-[500px] h-fit rounded-md z-30">
+        <div class="pt-5 pb-3 px-4">
+          <p class="dark:text-white text-xl font-DanaMedium mb-2">آیا از مسدود کردن کاربر مطمعن هستید؟</p>
+          <span class="flex items-center gap-x-1 text-red-600 font-DanaMedium">
+            <svg class="size-5 mb-1">
+              <use href="#exclamation-circle"></use>
+            </svg>
+            این عمل غیر قابل بازگشت است
+          </span>
+        </div>
+        <div class="flex justify-end gap-x-2 p-2 border-t border-gray-200 dark:border-gray-800">
+          <button onclick="hideBlockUserModal()" class="bg-gray-500 hover:bg-gray-600/75 text-white font-DanaMedium py-2 w-24 rounded-md transition">لغو</button>
+          <button onclick="blockUser()" class="bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 w-24 rounded-md transition">حذف</button>
         </div>
       </div>
     </div>
