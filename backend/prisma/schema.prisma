@@ -39,7 +39,8 @@ model Course {
   discountPrice Int
   isFree        Boolean    @default(false)
   status        String     @default("active")
-  time          String
+  time          Int        @default(0)
+  timeForShow   String?    @default("")
   studentsCount Int?       @default(0)
   rank          Float?
   teacher       String
@@ -52,7 +53,7 @@ model Course {
   categoryId    String?    @db.ObjectId
   Users         Users?     @relation(fields: [usersId], references: [id], name: "user to courses")
   usersId       String?    @db.ObjectId
-  caption       String
+  caption       String?
 }
 
 // مدل کامنت های یک دوره
@@ -79,14 +80,15 @@ model Subjects {
 }
 
 model Episode {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  title     String
-  isFree    Boolean
-  link      String?
-  sortId    Int
-  time      String
-  Subjects  Subjects? @relation(fields: [subjectId], references: [id], name: "subject to episode")
-  subjectId String?   @db.ObjectId
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  isFree      Boolean
+  link        String?
+  sortId      Int
+  time        Int?
+  timeForShow String?
+  Subjects    Subjects? @relation(fields: [subjectId], references: [id], name: "subject to episode")
+  subjectId   String?   @db.ObjectId
 }
 
 model Menues {

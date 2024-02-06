@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
+import updateTotalTime from "../../utils/updateCourseTotalTime.js";
+
 import Joi from "joi";
 import fs from "fs";
 import Ffmpeg from "fluent-ffmpeg";
@@ -31,19 +33,38 @@ function createEpisode(req, res) {
     .validateAsync(body)
     .then((reqBody) => {
       Ffmpeg.ffprobe(reqFilePath, (err, metadata) => {
-        console.log(metadata);
-        const minute = Math.floor(metadata.format.duration / 60);
-        const second = Math.floor(metadata.format.duration % 60);
+        // console.log(metadata);
+        const time = metadata.format.duration;
+        console.log(time);
+        let minute = 0,
+          second = 0;
+        if (time >= 60) {
+          minute = Math.floor(time / 60);
+          second = Math.floor(time % 60);
+        } else {
+          second = Math.floor(time);
+        }
         console.log(minute, second);
         prisma.episode
           .create({
             data: {
               ...reqBody,
-              time: `${minute}:${second}`,
+              time: +time,
               link: reqFilePath,
+              timeForShow: `${minute}:${second}`,
+            },
+            include: {
+              Subjects: true,
             },
           })
           .then((episode) => {
+            updateTotalTime(episode.Subjects.courseId)
+              .then((result) => {
+                console.log(result);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
             return res.status(200).json({
               message: "Episode created successfully",
               episode,

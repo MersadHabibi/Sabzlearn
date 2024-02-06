@@ -5,7 +5,7 @@ import Joi from "joi";
 const EditCourseSchema = Joi.object({
   title: Joi.string().min(1),
   description: Joi.string().min(1),
-  category: Joi.string().min(1),
+  categoryId: Joi.string().min(1),
   price: Joi.number().min(1),
   discount: Joi.number(),
   discountPrice: Joi.number(),
@@ -38,7 +38,10 @@ function EditCourse(req, res) {
     .catch((err) => {
       return res
         .status(403)
-        .json({ message: "there is an error in your sended Data.", err });
+        .json({
+          message: "there is an error in your sended Data.",
+          err: err?.details[0]?.message,
+        });
     });
 }
 
