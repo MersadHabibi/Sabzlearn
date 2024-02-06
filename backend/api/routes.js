@@ -8,6 +8,7 @@ import createComment from "../controller/Admin/createComment.js";
 import createReply from "../controller/Admin/createReply.js";
 import updateUser from "../controller/updateUser.js";
 import getCoursesByCategory from "../controller/Admin/getCoursesByCategory.js";
+import buyCourse from "../controller/buyCourse.js";
 
 const router = Router();
 
@@ -15,7 +16,7 @@ router.post("/register", register);
 router.post("/login", login);
 router.route("/me").get(AuthCheckMiddleWare, getMe).patch(updateUser);
 
-router.get("/courses", getCourses);
+router.route("/courses").get(getCourses).post(AuthCheckMiddleWare, buyCourse);
 router.get("/courses/:id", getCourseById);
 router.get("/courses/category/:id", getCoursesByCategory);
 
