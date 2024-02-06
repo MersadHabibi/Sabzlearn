@@ -20,12 +20,10 @@ router.route("/me").get(AuthCheckMiddleWare, getMe).patch(updateUser);
 router.route("/courses").get(getCourses).post(AuthCheckMiddleWare, buyCourse);
 router.get("/courses/:id", getCourseById);
 router.get("/courses/category/:id", getCoursesByCategory);
-
+router.get("/categories", getAllCategories);
 router
   .use(AuthCheckMiddleWare)
   .post("/comments", createComment)
   .post("/comments/:commentId/reply", createReply);
-
-router.get("/categories", getAllCategories);
 
 export default router;
