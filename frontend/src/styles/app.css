@@ -505,13 +505,19 @@
   #add-topic-modal,
   #view-episodes-modal,
   #add-episode-modal,
-  #delete-course-modal {
+  #delete-course-modal,
+  #add-category-modal,
+  #view-courses-modal,
+  #block-user-modal {
     @apply invisible opacity-0;
   }
   #add-topic-modal.show,
   #view-episodes-modal.show,
   #add-episode-modal.show,
-  #delete-course-modal.show {
+  #delete-course-modal.show,
+  #add-category-modal.show,
+  #view-courses-modal.show,
+  #block-user-modal.show {
     @apply visible opacity-100;
   }
 }

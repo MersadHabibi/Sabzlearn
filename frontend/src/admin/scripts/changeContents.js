@@ -1,9 +1,11 @@
 import preparationCreateCourse from "./createCourse";
 import getAndShowComments, { setEventForCommentDeleteBtn } from "./getAndShowComments";
 import getAndShowCourses from "./getAndShowCourses";
-import preparationAccounts from "./preparationAccounts";
+import showUsers from "./showUsers";
+import preparationAddCategory from "./preparationAddCategory";
 import preparationEditDescription from "./preparationEditDescription";
 import preparationTopics from "./preparationTopics";
+import showCategories from "./showCategories";
 
 const changeContent = async (targetMenu, courseId) => {
   const contentContainer = document.querySelector(".content-container");
@@ -59,6 +61,12 @@ const changeContent = async (targetMenu, courseId) => {
     contentContainer.innerHTML = `
       <div class="content create-course">
         <form id="create-course-form" class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-x-3 lg:gap-x-5 xl:gap-x-8 gap-y-4 lg:gap-y-5">
+          <!-- course cover -->
+          <div id="image" class="relative text-sm md:text-base w-full h-[500px] xs:col-span-2 lg:col-span-3 rounded-xl overflow-hidden">
+            <label for="cover" class="custom-file-upload absolute top-3 right-3 opacity-40 hover:opacity-90 shrink-0 shadow-light transition-all rounded-lg"> انتخاب عکس دوره </label>
+            <input id="cover" class="hidden w-auto border-none" type="file" />
+            <img id="image-preview" src="http://localhost:8000/images/choose-image-placeholder.png" alt="your image" class="w-full h-full object-cover" />
+          </div>
           <!-- course name -->
           <input
             id="title"
@@ -85,11 +93,7 @@ const changeContent = async (targetMenu, courseId) => {
             name=""
             id=""
             class="w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
-            <option value="">دسته بندی مورد نظر...</option>
-            <option value="frontend">فرانت اند</option>
-            <option value="python">پایتون</option>
-            <option value="security">امنیت</option>
-            <option value="softskills">مهارت های نرم</option>
+            <option value="">در حال جست و جو...</option>
           </select>
           <!-- course status -->
           <select
@@ -129,15 +133,12 @@ const changeContent = async (targetMenu, courseId) => {
             <option value="true">بله</option>
             <option value="false">خیر</option>
           </select>
-          <!-- course cover -->
-          <div id="image" class="flex justify-center items-center xl:pr-7 text-sm md:text-base">
-            <label for="cover" class="custom-file-upload shrink-0 shadow-light dark:shadow-none"> انتخاب عکس دوره </label>
-            <input id="cover" class="w-auto border-none" type="file" />
-          </div>
+          
           <!-- Submit btn -->
           <div class="flex justify-end xs:col-span-2 lg:col-span-3 border-t border-gray-200 dark:border-gray-800">
             <button
-              class="bg-primary hover:bg-green-500 text-white rounded-xl px-6 xs:px-7 py-2 xs:py-3 mt-5 mr-auto text-base xs:text-xl transition-colors"
+              id="submit-btn"
+              class="bg-primary hover:bg-green-500 text-white rounded-xl px-6 xs:px-7 py-2 xs:py-3 mt-5 mr-auto text-base xs:text-xl transition-colors disabled:hover:bg-primary disabled:opacity-20"
               type="submit">
               ارسال
             </button>
@@ -351,75 +352,41 @@ const changeContent = async (targetMenu, courseId) => {
      `;
 
     preparationEditDescription(courseId);
-  } else if (targetMenu == "accounts") {
+  } else if (targetMenu == "users") {
     contentContainer.innerHTML = `
-    <div class="content accounts">
+    <div class="content users">
       <div class="w-full pb-5 bg-white dark:bg-gray-800 shadow-light rounded-xl px-5">
         <!-- Title -->
         <div class="py-4 border-b border-gray-200 dark:border-slate">
           <h5 class="text-xl font-DanaMedium pr-4 dark:text-white">همه حساب ها</h5>
         </div>
-        <!-- Accounts Container -->
-        <div class="acconts__container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-4">
-          <!-- <div class="loader mx-auto mt-5"></div> -->
-          <div
-            class="relative flex flex-col justify-center items-center bg-gray-100 dark:bg-gray rounded-xl p-4 border border-gray-300 dark:border-none overflow-hidden">
-            <!-- Role -->
-            <span class="absolute top-2 right-2 bg-secondary px-2 py-1 text-white rounded-lg text-xs"> ادمین </span>
-            <!-- Profile & Username -->
-            <div class="flex flex-col justify-center items-center gap-y-5 w-full border-b border-gray-200 dark:border-gray-700 py-4 shrink-0">
-              <!-- Profile -->
-              <div class="rounded-full overflow-hidden size-22 shadow-light">
-                <img src="../../public/images/user-profile.png" alt="" />
-              </div>
-              <!-- Username -->
-              <span class="font-DanaDemiBold text-xl/5 dark:text-white text-center"> Mersad habibi </span>
-            </div>
-            <!-- Firstname & Lastname & Email & Number -->
-            <div class="dark:text-white w-full">
-              <!-- Firstname & Lastname -->
-              <div class="flex flex-col justify-center gap-y-2 w-full border-b border-gray-200 dark:border-gray-700 text-lg px-3 py-4">
-                <p class="overflow-hidden whitespace-nowrap text-ellipsis">
-                  <span class="font-DanaMedium"> نام: </span>
-                  <span> مرصاد </span>
-                </p>
-                <p class="overflow-hidden whitespace-nowrap text-ellipsis">
-                  <span class="font-DanaMedium"> نام خانوادگی: </span>
-                  <span> حبیبی </span>
-                </p>
-              </div>
-              <!-- Email & Number -->
-              <div class="flex flex-col justify-center gap-y-2 w-full border-b border-gray-200 dark:border-gray-700 text-lg px-3 py-4">
-                <p class="flex flex-col">
-                  <span class="font-DanaMedium"> ایمیل: </span>
-                  <span class="overflow-hidden whitespace-nowrap text-ellipsis"> mersad.up@gmail.com </span>
-                </p>
-                <p>
-                  <span class="font-DanaMedium"> شماره: </span>
-                  <span> ۰۹۱۴۸۹۰۶۰۰۵ </span>
-                </p>
-              </div>
-            </div>
-            <!-- Button -->
-            <div class="pt-4 w-full">
-              <button class="open-user-actions-btn bg-primary hover:bg-green-500 w-full py-2 rounded-md text-white text-lg transition-colors">
-                تغییرات
-              </button>
-            </div>
-            <!-- Actions -->
-            <div
-              class="absolute left-0 right-0 !-bottom-full w-full h-full flex flex-col justify-center items-center gap-y-4 bg-gray-200 dark:bg-gray-700">
-              <button class="bg-red-500 hover:bg-red-600 py-2 w-36 rounded-md text-white transition-colors">مسدود کردن</button>
-              <button class="bg-secondary hover:bg-sky-600 py-2 w-36 rounded-md text-white transition-colors">تغییر دسترسی</button>
-              <button class="bg-gray-400/70 hover:bg-gray-400 py-2 w-36 rounded-md text-white transition-colors">بازگشت</button>
-            </div>
-          </div>
+        <!-- Users Container -->
+        <div class="users__container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-4">
+          <div class="loader mx-auto my-3 sm:col-span-2 md:col-span-1 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>
+          <!-- Load From JS -->
+        </div>
+      </div>
+      <!-- Modals -->
+      <!-- Block User Modal -->
+      <div id="block-user-modal" class="fixed bg-white dark:bg-gray inset-0 m-auto w-[95%] sm:w-[500px] h-fit rounded-md z-30">
+        <div class="pt-5 pb-3 px-4">
+          <p class="dark:text-white text-xl font-DanaMedium mb-2">آیا از مسدود کردن کاربر مطمعن هستید؟</p>
+          <span class="flex items-center gap-x-1 text-red-600 font-DanaMedium">
+            <svg class="size-5 mb-1">
+              <use href="#exclamation-circle"></use>
+            </svg>
+            این عمل غیر قابل بازگشت است
+          </span>
+        </div>
+        <div class="flex justify-end gap-x-2 p-2 border-t border-gray-200 dark:border-gray-800">
+          <button onclick="hideBlockUserModal()" class="bg-gray-500 hover:bg-gray-600/75 text-white font-DanaMedium py-2 w-24 rounded-md transition">لغو</button>
+          <button onclick="blockUser()" class="bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 w-24 rounded-md transition">حذف</button>
         </div>
       </div>
     </div>
      `;
 
-    preparationAccounts();
+    showUsers();
   } else if (targetMenu == "category") {
     contentContainer.innerHTML = `
     <div class="content categories">
@@ -427,7 +394,7 @@ const changeContent = async (targetMenu, courseId) => {
         <!-- Title -->
         <div class="flex justify-between items-center p-3 border-b border-gray-200 dark:border-slate">
           <h5 class="text-xl font-DanaMedium pr-4 dark:text-white">دسته بندی ها</h5>
-          <button class="flex items-center gap-x-2 text-white bg-primary hover:bg-green-500 px-4 py-2 rounded-md transition-colors">
+          <button class="open-add-category-modal-btn flex items-center gap-x-2 text-white bg-primary hover:bg-green-500 px-4 py-2 rounded-md transition-colors">
             <svg class="size-7">
               <use href="#plus-circle"></use>
             </svg>
@@ -435,40 +402,15 @@ const changeContent = async (targetMenu, courseId) => {
           </button>
         </div>
         <!-- Categories Container -->
-        <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-5 px-5">
-          <div class="bg-gray-100 dark:bg-gray px-2 pt-1 rounded-lg dark:text-white">
-            <!-- category name -->
-            <div class="w-full text-center text-xl font-DanaMedium py-4 border-b border-gray-300 dark:border-gray-700">
-              <span>فرانت اند</span>
-            </div>
-            <!-- category info -->
-            <div class="flex justify-between items-center w-full text-center text-lg py-2 px-2 border-b border-gray-300 dark:border-gray-700">
-              <p class="flex items-center gap-x-2">
-                <svg class="size-6">
-                  <use href="#users"></use>
-                </svg>
-                <span class="mt-1"> 4353 </span>
-              </p>
-              <p class="flex items-center gap-x-2">
-                <svg class="size-6">
-                  <use href="#video-camera"></use>
-                </svg>
-                <span class="mt-1"> 12 </span>
-              </p>
-            </div>
-            <!-- category btns -->
-            <div class="flex justify-between items-center w-full text-center text-lg py-2">
-              <button class="bg-secondary hover:bg-sky-600 w-full py-2 text-lg font-DanaMedium rounded-md text-white transition-colors">
-                لیست دوره ها
-              </button>
-            </div>
-          </div>
+        <div id="categories__container" class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 mt-5 px-5">
+          <div class="loader mx-auto my-3 xs:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>
+          <!-- Load From JS -->
         </div>
         <!-- Modals -->
         <!-- Add Category -->
         <form
           id="add-category-modal"
-          class="hidden fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+          class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
             <div>
@@ -477,7 +419,7 @@ const changeContent = async (targetMenu, courseId) => {
             <!-- Close Btn -->
             <div>
               <div
-                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                class="close-add-category-modal-btn flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
                 </svg>
@@ -488,7 +430,7 @@ const changeContent = async (targetMenu, courseId) => {
           <div class="pt-5 px-5">
             <!-- category name -->
             <input
-              id="title"
+              id="name"
               class="xs:col-span-2 lg:col-span-3 bg-gray-100 shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
               type="text"
               placeholder="نام دسته بندی" />
@@ -508,7 +450,7 @@ const changeContent = async (targetMenu, courseId) => {
         <!-- View Courses Modal -->
         <div
           id="view-courses-modal"
-          class="hidden fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+          class="fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-8 py-4 shrink-0">
             <div>
@@ -517,7 +459,8 @@ const changeContent = async (targetMenu, courseId) => {
             <!-- Close Btn -->
             <div>
               <div
-                class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
+                onclick="closeViewCoursesModal()"
+                class="flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
                 </svg>
@@ -525,72 +468,19 @@ const changeContent = async (targetMenu, courseId) => {
             </div>
           </div>
           <!-- body -->
-          <div id="courses__container" class="overflow-auto">
-            <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 py-5 px-5">
-              <div
-                class="course-card flex flex-col bg-gray-100 dark:bg-gray-800 shadow-light dark:shadow-none border border-gray-300 dark:border-gray-700 h-fit overflow-hidden rounded-2xl">
-                <!-- Course Head -->
-                <a href="./course.html" class="relative block h-42 w-full overflow-hidden">
-                  <img src="http://localhost:3000/public/images/a758f704-1702923511505.png" class="w-full h-full object-cover rounded-2xl" alt="" />
-                </a>
-                <!-- Course Body -->
-                <div class="px-5 pt-2.5 flex-grow">
-                  <a href="./course.html" class="font-DanaMedium dark:text-white text-lg line-clamp-2 my-2 h-14">
-                    تکنیک های قیمت گذاری پروژه های فریلنسری
-                  </a>
-                </div>
-                <!-- Course Footer -->
-                <div class="px-5 pb-2 pt-1">
-                  <!-- Course Info -->
-                  <div class="flex justify-between text-xs pb-3 border-b border-b-gray-100 dark:border-b-gray-700">
-                    <div class="flex gap-x-2 text-slate-500 dark:text-slate-400">
-                      <a href="#" class="flex items-center gap-x-1 hover:text-primary transition-colors">
-                        <svg class="w-4 h-4">
-                          <use href="#user"></use>
-                        </svg>
-                        <span> محمد امین سعیدی راد </span>
-                      </a>
-                      <span class="flex items-center gap-x-1">
-                        <svg class="w-4 h-4">
-                          <use href="#clock"></use>
-                        </svg>
-                        <span>00:00</span>
-                      </span>
-                    </div>
-                    <div class="flex items-center gap-x-1 text-amber-400">
-                      <span class="leading-[1px] mt-1">5.0</span>
-                      <svg class="w-4 h-4">
-                        <use href="#star"></use>
-                      </svg>
-                    </div>
-                  </div>
-                  <!-- Course Bottom -->
-                  <div class="flex justify-between items-end mt-1.5">
-                    <div class="dark:text-white flex gap-x-1 items-center">
-                      <svg class="w-5 h-5">
-                        <use href="#users"></use>
-                      </svg>
-                      <span> 13 </span>
-                    </div>
-                    <!-- Course Price -->
-                    <div class="text-primary">
-                      <!-- Normal Price -->
-                      <div class="flex gap-x-1 items-center">
-                        <span class="text-xl"> 285000 </span>
-                        <svg class="w-4 h-4">
-                          <use href="#toman"></use>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="overflow-auto">
+            <div id="courses__container" class="grid grid-rows-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-4 py-5 px-5">
+              <div class="loader mx-auto my-3 sm:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>
+              <!-- Load From JS -->
             </div>
           </div>
         </div>
       </div>
     </div>
      `;
+
+    preparationAddCategory();
+    showCategories();
   }
 };
 
