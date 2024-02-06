@@ -9,6 +9,7 @@ import createReply from "../controller/Admin/createReply.js";
 import updateUser from "../controller/updateUser.js";
 import getCoursesByCategory from "../controller/Admin/getCoursesByCategory.js";
 import buyCourse from "../controller/buyCourse.js";
+import getAllCategories from "../controller/Admin/getAllCategories.js";
 
 const router = Router();
 
@@ -24,5 +25,7 @@ router
   .use(AuthCheckMiddleWare)
   .post("/comments", createComment)
   .post("/comments/:commentId/reply", createReply);
+
+router.get("/categories", getAllCategories);
 
 export default router;

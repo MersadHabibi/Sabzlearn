@@ -47,6 +47,6 @@ router
   .patch(changeUserRole)
   .post(blockUser); //admin
 
-router.route("/categories").get(getAllCategories).post(createCategory);
+router.route("/categories").post(createCategory);
 
 export default router;

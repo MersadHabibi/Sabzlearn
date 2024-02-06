@@ -18,6 +18,11 @@ function getCourses(req, res) {
             replies: true,
           },
         },
+        category: {
+          select: {
+            name: true,
+          },
+        },
       },
     })
     .then((corses) => {
