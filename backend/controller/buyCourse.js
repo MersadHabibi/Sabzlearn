@@ -13,6 +13,15 @@ async function buyCourse(req, res) {
     })
     .then((user) => {
       console.log(user, "user");
+      let userHasCourse = false;;
+      if (user.courses != [])  {
+        user.courses.map((course) => {
+          if (course.id === courseId) {
+            userHasCourse = true;
+            
+          }
+        });
+      }
     })
     .catch((err) => {
       console.log(err, "err");

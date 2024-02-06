@@ -10,7 +10,7 @@ function createCourse(req, res) {
     discount: Joi.number().required(),
     discountPrice: Joi.number().required(),
     status: Joi.string().required().min(1).trim(),
-    time: Joi.number().required().min(1).trim(),
+    time: Joi.number().required(),
     teacher: Joi.string().required().min(1).trim(),
     shortName: Joi.string().required().min(1).trim(),
     isFree: Joi.boolean().only(true, false).required(),
