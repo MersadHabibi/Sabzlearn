@@ -1,4 +1,4 @@
-import { _changeClasses, apiAdmin, showNotif } from "../../scripts/funcs/utils";
+import { _changeClasses, api, apiAdmin, showNotif } from "../../scripts/funcs/utils";
 import showCategoryCourses from "./showCategoryCourses";
 
 const showCategories = async () => {
@@ -36,7 +36,7 @@ const showCategories = async () => {
       </div>
       <!-- category btns -->
       <div class="flex justify-between items-center w-full text-center text-lg py-2">
-        <button data-category-id=${category.categoryId} onclick="showCategoryCourses(this)" class="bg-secondary hover:bg-sky-600 w-full py-2 text-lg font-DanaMedium rounded-md text-white transition-colors">
+        <button onclick="showCategoryCourses('${category.categoryId}')" class="bg-secondary hover:bg-sky-600 w-full py-2 text-lg font-DanaMedium rounded-md text-white transition-colors">
           لیست دوره ها
         </button>
       </div>
@@ -51,7 +51,7 @@ const showCategories = async () => {
 
 const getCategories = async () => {
   try {
-    const res = await apiAdmin.get("categories");
+    const res = await api.get("categories");
     const categories = res.data;
 
     console.log(res);
@@ -60,7 +60,7 @@ const getCategories = async () => {
   } catch (err) {
     console.log(err);
     showNotif("اینترنت خود را بررسی کنید!");
-    return null
+    return null;
   }
 };
 
@@ -70,4 +70,4 @@ const closeViewCoursesModal = () => {
 };
 
 export default showCategories;
-export {getCategories}
+export { getCategories };

@@ -1,9 +1,12 @@
+import { categoryClickHandler, courseClickHandler } from "../../scripts/funcs/createCourseCard";
 import { _changeClasses, api, apiAdmin, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
-
 let courseIdForDelete = null;
 
 const getAndShowCourses = async () => {
+  window.categoryClickHandler = categoryClickHandler;
+  window.courseClickHandler = courseClickHandler;
+
   const coursesContainer = document.querySelector(".courses__container");
 
   const courses = await api
@@ -11,36 +14,32 @@ const getAndShowCourses = async () => {
     .then(res => res.data)
     .catch(err => null);
 
-  courses == null && showNotif("دوره ای پیدا نشد");
-
   coursesContainer.innerHTML = "";
-  courses.forEach(course => {
+
+  (courses == null || courses.length == 0) &&
+    (coursesContainer.innerHTML =
+      "<p class='dark:text-white text-xl text-center py-3 sm:col-span-2 md:col-span-1 lg:col-span-2 xl:col-span-3 xxl:col-span-4'> دوره ای پیدا نشد! </p>");
+
+  courses?.forEach(course => {
     coursesContainer.insertAdjacentHTML(
       "beforeend",
       `
-      <div data-course-id=${course.id} class="course-card flex flex-col">
+      <div class="course-card flex flex-col">
         <div
-          data-course-id="65808a6927251f1e5a860db1"
+          onclick="courseClickHandler('${course.id}')"
           class="course-card flex flex-col bg-gray-100/50 dark:bg-gray-700 border !border-b-transparent border-gray-300/80  dark:border-gray-600 dark:shadow-none overflow-hidden rounded-t-xl flex-1">
           <!-- Course Head -->
           <a href="../course.html" class="relative block h-42 w-full overflow-hidden">
-            <img  src=http://localhost:3000/${course.image} class="w-full h-full object-cover rounded-xl" alt="" />
+            <img src=http://localhost:3000/${course.image} class="w-full h-full object-cover rounded-xl" alt="" />
           </a>
           <!-- Course Body -->
           <div class="px-5 pt-3.5 flex-grow">
             <div class="flex justify-start items-center gap-1">
               <a
-                href=../categories.html?category=${course.category}
+                onclick="categoryClickHandler('${course.categoryId}')"
+                href=../categories.html?category=${course.category?.name}
                 class="inline-flex items-center justify-center text-xs py-1 px-1.5 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded"> ${
-                  course.category == "frontend"
-                    ? "فرانت اند"
-                    : course.category == "python"
-                    ? "پایتون"
-                    : course.category == "softskills"
-                    ? "مهارت های نرم"
-                    : course.category == "security"
-                    ? "امنیت"
-                    : "غیره..."
+                  course.category?.name
                 } </a>
             </div>
             <a href="./course.html" class="font-DanaMedium dark:text-white text-lg line-clamp-2 my-2"> ${course.title} </a>
@@ -137,86 +136,80 @@ const getAndShowCourses = async () => {
             </div>
           </div>
         </div>
-        <div
-          data-course-id=${course.id}
-          class="w-full p-2 rounded-b-xl bg-gray-200 dark:bg-gray-900/30 border-gray-300/80 border !border-t-transparent dark:border-gray-600 flex flex-wrap gap-2">
+        <div class="w-full p-2 rounded-b-xl bg-gray-200 dark:bg-gray-900/30 border-gray-300/80 border !border-t-transparent dark:border-gray-600 flex flex-wrap gap-2">
 
-          <button class="edit-description-course-btn bg-primary hover:bg-green-600  text-white font-DanaMedium py-2 rounded-md transition w-full "> ویرایش توضیحات </button>
-          <button class="edit-topics-btn bg-secondry bg-blue-500 hover:bg-blue-600 w-full text-white font-DanaMedium py-2 rounded-md transition "> مدیریت سر فصل ها </button>
+          <button onclick="editDescriptionHandler('${
+            course.id
+          }')" class="edit-description-course-btn bg-primary hover:bg-green-600  text-white font-DanaMedium py-2 rounded-md transition w-full "> ویرایش توضیحات </button>
+          <button onclick="editTopicHandler('${
+            course.id
+          }')" class="edit-topics-btn bg-secondry bg-blue-500 hover:bg-blue-600 w-full text-white font-DanaMedium py-2 rounded-md transition "> مدیریت سر فصل ها </button>
           <button class="bg-gray-500 hover:bg-gray-600/65 text-white font-DanaMedium py-2 rounded-md transition flex-1"> ویرایش اطلاعات</button>
-          <button class="delete-course-btn bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 rounded-md transition flex-1">حذف</button>
+          <button onclick="deleteCourseHandler('${
+            course.id
+          }')" class="delete-course-btn bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 rounded-md transition flex-1">حذف</button>
         </div>
       </div>
     `
     );
   });
 
-  setButtonsEvent();
+  window.deleteCourseHandler = deleteCourseHandler;
+  window.editTopicHandler = editTopicHandler;
+  window.editDescriptionHandler = editDescriptionHandler;
+  window.deleteCourse = deleteCourse;
+  window.closeDeleteCourseModal = closeDeleteCourseModal;
 };
 
-const setButtonsEvent = () => {
-  const deleteCourseBtns = document.querySelectorAll(".delete-course-btn");
-  const editTopicsBtn = document.querySelectorAll(".edit-topics-btn");
-  const editDescriptionCourseBtn = document.querySelectorAll(".edit-description-course-btn");
-  const modalDeleteCourseBtn = document.querySelector(".modal-delete-course-btn");
-  const modalCancelDeleteCourseBtn = document.querySelector(".modal-cancel-delete-course-btn");
+// Handlers
 
-  // Delete Course
-
-  deleteCourseBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      courseIdForDelete = btn.parentElement.dataset.courseId;
-      _changeClasses("add", document.querySelector("#delete-course-modal"), ["show"]);
-      _changeClasses("add", document.querySelector(".overlay"), ["show"]);
-    });
-  });
-  modalDeleteCourseBtn.addEventListener("click", async () => {
-    fullScreenLoader("loading");
-    await deleteCourse(courseIdForDelete);
-    fullScreenLoader("loaded");
-    _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
-    _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
-  });
-  modalCancelDeleteCourseBtn.addEventListener("click", () => {
-    _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
-    _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
-  });
-
-  // Edit Topic
-
-  editTopicsBtn.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const menuItems = document.querySelectorAll(".panel-menu__item");
-
-      menuItems.forEach(item => {
-        if (item.dataset.content === "topics") {
-          _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
-          _changeClasses("add", item, ["active"]);
-        }
-      });
-      changeContent("topics", btn.parentElement.dataset.courseId);
-    });
-  });
-
-  // Edit Description
-
-  editDescriptionCourseBtn.forEach(btn => {
-    btn.addEventListener("click", () => {
-      changeContent("description", btn.parentElement.dataset.courseId);
-    });
-  });
+const editDescriptionHandler = id => {
+  changeContent("description", id);
 };
 
-const deleteCourse = async courseId => {
+const editTopicHandler = id => {
+  const menuItems = document.querySelectorAll(".panel-menu__item");
+
+  menuItems.forEach(item => {
+    if (item.dataset.content === "topics") {
+      _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
+      _changeClasses("add", item, ["active"]);
+    }
+  });
+  changeContent("topics", id);
+};
+
+const deleteCourseHandler = id => {
+  courseIdForDelete = id;
+  _changeClasses("add", document.querySelector("#delete-course-modal"), ["show"]);
+  _changeClasses("add", document.querySelector(".overlay"), ["show"]);
+};
+
+// Delete Course
+
+const deleteCourse = async () => {
+  fullScreenLoader("loading");
   await apiAdmin
-    .delete(`courses/${courseId}`)
+    .delete(`courses/${courseIdForDelete}`)
     .then(res => {
       showNotif("دوره با موفقیت حذف شد", "success");
       getAndShowCourses();
     })
     .catch(err => {
       showNotif("مشکلی در حذف دوره به وجود آمده ! دوباره امتحان کنید");
+    })
+    .finally(() => {
+      fullScreenLoader("loaded");
+      _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
+      _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
     });
+};
+
+// Close Delete Course Modal
+
+const closeDeleteCourseModal = () => {
+  _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
+  _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
 };
 
 export default getAndShowCourses;

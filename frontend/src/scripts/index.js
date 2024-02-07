@@ -3,8 +3,11 @@ import "./share.js";
 import header from "./header.js";
 import "swiper/css";
 import Swiper from "swiper";
-import createCourseCard, { setEventForCourseCards } from "./funcs/createCourseCard.js";
+import createCourseCard, { categoryClickHandler, courseClickHandler } from "./funcs/createCourseCard.js";
 import { api } from "./funcs/utils.js";
+
+window.categoryClickHandler = categoryClickHandler;
+window.courseClickHandler = courseClickHandler;
 
 const $ = document;
 header($);
@@ -110,7 +113,6 @@ window.addEventListener("load", async () => {
   await getAndShowNewCourses();
   await getAndShowPresellCourses();
   await getAndShowPopularCourses();
-  setEventForCourseCards();
 });
 
 // New Courses
