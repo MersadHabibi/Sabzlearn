@@ -10,7 +10,7 @@ const EditCourseSchema = Joi.object({
   discount: Joi.number(),
   discountPrice: Joi.number(),
   status: Joi.string().min(1),
-  time: Joi.string().min(1),
+  time: Joi.number(),
   teacher: Joi.string().min(1),
   shortName: Joi.string().min(1),
   isFree: Joi.boolean().only(true, false),
@@ -36,12 +36,10 @@ function EditCourse(req, res) {
         });
     })
     .catch((err) => {
-      return res
-        .status(403)
-        .json({
-          message: "there is an error in your sended Data.",
-          err: err?.details[0]?.message,
-        });
+      return res.status(403).json({
+        message: "there is an error in your sended Data.",
+        err: err?.details[0]?.message,
+      });
     });
 }
 
