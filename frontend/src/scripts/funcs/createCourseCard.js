@@ -10,8 +10,9 @@ const createCourseCard = (
     fixHeight: false,
   }
 ) => {
+  console.log(course);
   return `
-      <div data-course-id=${course.id} class="course-card flex flex-col bg-white dark:bg-gray-800 ${
+      <div onclick="courseClickHandler('${course.id}')" class="course-card flex flex-col bg-white dark:bg-gray-800 ${
     props.hasShadowOnLightMode ? "shadow-light" : ""
   }  dark:shadow-none ${props.hasBorderOnLightMode ? `border-gray-200/80 border` : "dark:border"} dark:border dark:border-gray-700 ${
     props.fixHeight ? "h-[417px]" : ""
@@ -40,18 +41,9 @@ const createCourseCard = (
             ? `
           <div class="flex justify-start items-center gap-1">
             <a
-              href=./categories.html?category=${course.category}
-              class="inline-flex items-center justify-center text-xs py-1 px-1.5 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded"> ${
-                course.category == "frontend"
-                  ? "فرانت اند"
-                  : course.category == "python"
-                  ? "پایتون"
-                  : course.category == "softskills"
-                  ? "مهارت های نرم"
-                  : course.category == "security"
-                  ? "امنیت"
-                  : "غیره..."
-              } </a>
+              onclick="categoryClickHandler('${course.categoryId}')"
+              href=./categories.html?category=${course.category?.name}
+              class="inline-flex items-center justify-center text-xs py-1 px-1.5 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded"> ${course.category?.name} </a>
           </div>
         `
             : ""
@@ -98,7 +90,7 @@ const createCourseCard = (
                 <svg class="w-4 h-4">
                   <use href="#clock"></use>
                 </svg>
-                <span>00:00</span>
+                <span> ${course.time} </span>
               </span>
             </div>
             <div class="flex items-center gap-x-1 text-amber-400">
@@ -164,17 +156,14 @@ const createCourseCard = (
     `;
 };
 
-// Set Event For Course Cards
+const courseClickHandler = id => {
+  console.log(id);
+  localStorage.setItem("course", id);
+};
 
-const setEventForCourseCards = () => {
-  const courseCards = document.querySelectorAll(".course-card");
-
-  courseCards.forEach(course => {
-    course.addEventListener("click", () => {
-      localStorage.setItem("course", course.dataset.courseId);
-    });
-  });
+const categoryClickHandler = id => {
+  localStorage.setItem("category", id);
 };
 
 export default createCourseCard;
-export { setEventForCourseCards };
+export { courseClickHandler, categoryClickHandler };

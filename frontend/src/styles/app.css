@@ -508,7 +508,8 @@
   #delete-course-modal,
   #add-category-modal,
   #view-courses-modal,
-  #block-user-modal {
+  #block-user-modal,
+  #unblock-user-modal {
     @apply invisible opacity-0;
   }
   #add-topic-modal.show,
@@ -517,7 +518,8 @@
   #delete-course-modal.show,
   #add-category-modal.show,
   #view-courses-modal.show,
-  #block-user-modal.show {
+  #block-user-modal.show,
+  #unblock-user-modal.show {
     @apply visible opacity-100;
   }
 }

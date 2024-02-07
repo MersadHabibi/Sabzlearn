@@ -1,4 +1,5 @@
 import { _changeClasses, apiAdmin, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import changeContent from "./changeContents";
 
 const overlay = document.querySelector(".overlay");
 
@@ -31,6 +32,9 @@ const showUsers = async () => {
   window.blockUser = blockUser;
   window.selectAdmin = selectAdmin;
   window.removeAdmin = removeAdmin;
+  window.showUnBlockUserModal = showUnBlockUserModal;
+  window.hideUnBlockUserModal = hideUnBlockUserModal;
+  window.unBlockUser = unBlockUser;
 };
 
 const getUsers = async () => {
@@ -97,17 +101,20 @@ const createUserCard = user => {
       </div>
 
       <!-- Actions -->
-      <div data-user-id=${
-        user.id
-      } class="actions__container absolute left-0 right-0 -bottom-full w-full h-full flex flex-col justify-center items-center gap-y-4 bg-gray-200 dark:bg-gray-700 transition-all">
+      <div class="actions__container absolute left-0 right-0 -bottom-full w-full h-full flex flex-col justify-center items-center gap-y-4 bg-gray-200 dark:bg-gray-700 transition-all">
 
-        <button onclick="showBlockUserModal(this)" class="bg-red-500 hover:bg-red-600 py-2 w-36 rounded-md text-white transition-colors">مسدود کردن</button>
+        ${
+          user.blocked
+            ? `<button onclick="showUnBlockUserModal('${user.id}')" class="bg-red-500 hover:bg-red-600 py-2 w-36 rounded-md text-white transition-colors"> رفع انسداد </button>`
+            : `<button onclick="showBlockUserModal('${user.id}')" class="bg-red-500 hover:bg-red-600 py-2 w-36 rounded-md text-white transition-colors"> مسدود کردن </button>`
+        }
+        
 
         ${
           user.role == "user"
             ? `
-              <button onclick="selectAdmin(this)" class="bg-secondary hover:bg-sky-600 py-2 w-36 rounded-md text-white transition-colors"> انتخاب ادمین </button>`
-            : `<button onclick="removeAdmin(this)" class="bg-secondary hover:bg-sky-600 py-2 w-36 rounded-md text-white transition-colors"> حذف ادمین </button>`
+              <button onclick="selectAdmin('${user.id}')" class="bg-secondary hover:bg-sky-600 py-2 w-36 rounded-md text-white transition-colors"> انتخاب ادمین </button>`
+            : `<button onclick="removeAdmin('${user.id}')" class="bg-secondary hover:bg-sky-600 py-2 w-36 rounded-md text-white transition-colors"> حذف ادمین </button>`
         }
 
         <button onclick="closeActions(this)" class="bg-gray-400/70 hover:bg-gray-400 py-2 w-36 rounded-md text-white transition-colors">بازگشت</button>
@@ -119,13 +126,13 @@ const createUserCard = user => {
 
 // Change Role => selectAdmin , removeAdmin
 
-const selectAdmin = elem => {
-  userId = elem.parentElement.dataset.userId;
+const selectAdmin = id => {
+  userId = id;
 
   changeUserRole("admin");
 };
-const removeAdmin = elem => {
-  userId = elem.parentElement.dataset.userId;
+const removeAdmin = id => {
+  userId = id;
 
   changeUserRole("user");
 };
@@ -167,19 +174,54 @@ const blockUser = async () => {
     showNotif("مشکلی به وجود آمده! دوباره امتحان کنید");
   } finally {
     fullScreenLoader("loaded");
+    hideBlockUserModal();
+    showUsers();
   }
 };
 
 // Show and Hide Block User Modal
-const showBlockUserModal = elem => {
+const showBlockUserModal = id => {
   _changeClasses("add", document.querySelector("#block-user-modal"), ["show"]);
   _changeClasses("add", overlay, ["show"]);
 
-  userId = elem.parentElement.dataset.userId;
+  userId = id;
   console.log(userId);
 };
 const hideBlockUserModal = () => {
   _changeClasses("remove", document.querySelector("#block-user-modal"), ["show"]);
+  _changeClasses("remove", overlay, ["show"]);
+};
+
+// unBlock User
+const unBlockUser = async () => {
+  console.log("unblock");
+  try {
+    fullScreenLoader("loading");
+    const res = await apiAdmin.post(`users/${userId}`, {
+      id: userId,
+    });
+    console.log(res);
+    showNotif("کاربر رفع انسداد شد", "success");
+  } catch (err) {
+    console.log(err);
+    showNotif("مشکلی به وجود آمده! دوباره امتحان کنید");
+  } finally {
+    fullScreenLoader("loaded");
+    hideUnBlockUserModal();
+    showUsers();
+  }
+};
+
+// Show and Hide unBlock User Modal
+const showUnBlockUserModal = id => {
+  _changeClasses("add", document.querySelector("#unblock-user-modal"), ["show"]);
+  _changeClasses("add", overlay, ["show"]);
+
+  userId = id;
+  console.log(userId);
+};
+const hideUnBlockUserModal = () => {
+  _changeClasses("remove", document.querySelector("#unblock-user-modal"), ["show"]);
   _changeClasses("remove", overlay, ["show"]);
 };
 

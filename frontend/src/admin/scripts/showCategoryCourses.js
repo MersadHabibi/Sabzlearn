@@ -1,9 +1,9 @@
 import { _changeClasses, api } from "../../scripts/funcs/utils";
-import createCourseCard from "../../scripts/funcs/createCourseCard";
+import createCourseCard, { courseClickHandler, categoryClickHandler } from "../../scripts/funcs/createCourseCard";
 
 const overlay = document.querySelector(".overlay");
 
-const showCategoryCourses = async elem => {
+const showCategoryCourses = async id => {
   const viewCoursesModal = document.querySelector("#view-courses-modal");
   const coursesContainer = document.querySelector("#courses__container");
 
@@ -14,7 +14,7 @@ const showCategoryCourses = async elem => {
   //
   coursesContainer.innerHTML = `<div class="loader mx-auto my-3 sm:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>`;
 
-  const courses = await getCourses(elem.dataset.categoryId);
+  const courses = await getCourses(id);
 
   coursesContainer.innerHTML =
     courses.length == 0
@@ -30,6 +30,9 @@ const showCategoryCourses = async elem => {
     `
     );
   });
+
+  window.categoryClickHandler = categoryClickHandler;
+  window.courseClickHandler = courseClickHandler;
 };
 
 const getCourses = async id => {

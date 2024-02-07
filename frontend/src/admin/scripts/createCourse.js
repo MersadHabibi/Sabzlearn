@@ -10,11 +10,11 @@ const preparationCreateCourse = async () => {
   const submitBtn = $.querySelector("#submit-btn");
   const imagePreviewElem = document.querySelector("#image-preview");
 
+  const imagePreview = document.querySelector(".preview__img");
+
   const categories = await getCategories();
-  console.log(categories);
 
   if (categories) {
-    console.log("true");
     newCourseCategory.innerHTML = "<option value=''>دسته بندی...</option>";
 
     categories.forEach(category => {
@@ -28,14 +28,15 @@ const preparationCreateCourse = async () => {
   } else {
     console.log("false");
     newCourseCategory.innerHTML = "<option value=''>دسته بندی پیدا نشد...</option>";
-    console.log(submitBtn);
     submitBtn.disabled = true;
   }
 
+  // Image Preview
   newCourseCoverElem.addEventListener("change", () => {
     const [file] = newCourseCoverElem.files;
     if (file) {
       imagePreviewElem.src = URL.createObjectURL(file);
+      imagePreview.src = URL.createObjectURL(file);
     }
   });
 
@@ -55,7 +56,6 @@ const createCourse = () => {
   const newCourseTeacher = $.querySelector("#create-course-form #teacher");
   const newCourseCoverElem = $.querySelector("#create-course-form #cover");
   const newCourseIsFreeElem = $.querySelector("#create-course-form #isFree");
-  console.log(newCourseIsFreeElem);
   let newCourseCover = newCourseCoverElem.files[0];
 
   if (
@@ -70,7 +70,9 @@ const createCourse = () => {
   ) {
     showNotif("لطفا همه مقادیر را پر کنید");
   } else {
-    if (!(newCourseCover.type == "image/jpeg" || newCourseCover.type == "image/png" || newCourseCover.type == "image/jpg" || newCourseCover.type == "image/webp")) {
+    if (
+      !(newCourseCover.type == "image/jpeg" || newCourseCover.type == "image/png" || newCourseCover.type == "image/jpg" || newCourseCover.type == "image/webp")
+    ) {
       showNotif("نوع فایل باید jpg , webp یا png باشد");
       return false;
     }
@@ -87,7 +89,7 @@ const createCourse = () => {
       isFree: newCourseIsFreeElem.value,
       discount: 0,
       discountPrice: 0,
-      time: "0",
+      time: 0,
     };
 
     const formData = new FormData();

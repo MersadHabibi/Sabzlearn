@@ -20,6 +20,7 @@
     "axios": "^1.6.3",
     "ckeditor-tailwind-reset": "^1.0.5",
     "izitoast": "^1.4.0",
+    "persian-currency-converter": "^1.0.10",
     "swiper": "^11.0.5"
   }
 }
