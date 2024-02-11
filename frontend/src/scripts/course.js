@@ -1,7 +1,7 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { _changeClasses, api, createTimer, fullScreenLoader, getMe, showNotif } from "./funcs/utils.js";
+import { _changeClasses, api, createTimer, fullScreenLoader, getMe, getTeacherName, showNotif } from "./funcs/utils.js";
 import createNewComment from "./funcs/createComment.js";
 import createReplyComment from "./funcs/replayComment.js";
 
@@ -36,14 +36,18 @@ const preparationNewAndReplayComment = () => {
 
     _changeClasses("add", document.querySelector("#comment-submit-btn"), ["load"]);
     if (replayOrNewComment == "new") {
-      let res = await createNewComment(user.data.id, course.id, formTextarea.value);
-      if (res == true) {
-        _changeClasses("remove", courseComments, ["show-new-comment-form"]);
-        formTextarea.value = "";
-        commentsSlide = 0;
-        commentContainer.innerHTML = "";
-        await getCourse();
-        ShowComments();
+      if (user.data) {
+        let res = await createNewComment(user.data.id, course.id, formTextarea.value);
+        if (res == true) {
+          _changeClasses("remove", courseComments, ["show-new-comment-form"]);
+          formTextarea.value = "";
+          commentsSlide = 0;
+          commentContainer.innerHTML = "";
+          await getCourse();
+          ShowComments();
+        }
+      } else {
+        showNotif("وارد شوید");
       }
     } else {
       let res = await createReplyComment(user.data.id, replayOrNewComment, formTextarea.value);
@@ -160,17 +164,7 @@ const fillBreadCrumb = () => {
   const breadCrumbCategory = $.querySelector("#breadCrumb__category");
   const breadCrumbName = $.querySelector("#breadCrumb__name");
 
-  breadCrumbCategory.innerHTML = `<a href=./categories.html?category=${course.category}> ${
-    course.category == "frontend"
-      ? "فرانت اند"
-      : course.category == "python"
-      ? "پایتون"
-      : course.category == "security"
-      ? "امنیت"
-      : course.category == "softskills"
-      ? "مهارت های نرم"
-      : "غیره..."
-  } </a>`;
+  breadCrumbCategory.innerHTML = `<a href=./categories.html?category=${course.categoryId}> ${course.category.name} </a>`;
 
   breadCrumbName.innerHTML = course.title;
 };
@@ -180,7 +174,7 @@ const fillBreadCrumb = () => {
 const setDatas = () => {
   const courseImage = $.querySelector(".course__image");
   const courseTitle = $.querySelector(".course__title");
-  const courseDescription = $.querySelector(".course__description");
+  const courseCaption = $.querySelector(".course__caption");
   const coursePrice = $.querySelector(".course__price");
   const courseOffer = $.querySelector(".course__offer");
   const courseOfferPercent = $.querySelector(".course__offer-percent");
@@ -190,6 +184,11 @@ const setDatas = () => {
   const courseTime = $.querySelector(".course__time");
   const courseTeacher = $.querySelector(".course__teacher");
   const mobileCourseTeacher = $.querySelector(".mobile-course__teacher");
+  const courseDescription = $.querySelector(".course__description");
+
+  // Description
+
+  courseDescription.innerHTML = course.description;
 
   // Image
 
@@ -197,10 +196,10 @@ const setDatas = () => {
   courseImage.alt = course.title;
   _changeClasses("remove", courseImage, ["hidden"]);
 
-  // Title and Description
+  // Title and Caption
 
   courseTitle.innerHTML = course.title;
-  courseDescription.innerHTML = course.description;
+  courseCaption.innerHTML = course.caption;
 
   // Offer
 
@@ -255,26 +254,8 @@ const setDatas = () => {
 
   // Teacher
 
-  courseTeacher.innerHTML =
-    course.teacher == "SaeidiRad"
-      ? "محمد امین سعیدی راد"
-      : course.teacher == "barati"
-      ? "مهرشاد براتی"
-      : course.teacher == "ebadi"
-      ? "حمیدرضا عبادی"
-      : course.teacher == "rezaDolati"
-      ? "رضا دولتی"
-      : "غیره...";
-  mobileCourseTeacher.innerHTML =
-    course.teacher == "SaeidiRad"
-      ? "محمد امین سعیدی راد"
-      : course.teacher == "barati"
-      ? "مهرشاد براتی"
-      : course.teacher == "ebadi"
-      ? "حمیدرضا عبادی"
-      : course.teacher == "rezaDolati"
-      ? "رضا دولتی"
-      : "غیره...";
+  courseTeacher.innerHTML = getTeacherName(course.teacher);
+  mobileCourseTeacher.innerHTML = getTeacherName(course.teacher);
 
   // StudentsCount
 
@@ -361,6 +342,11 @@ const ShowComments = () => {
   const comments = course.comments.sort((a, b) => {
     return new Date(b.createdAt) - new Date(a.createdAt);
   });
+
+  if (comments.length <= 5) {
+    _changeClasses("add", commentsMoreBtn, ["hidden"]);
+    _changeClasses("remove", commentsAllShowed, ["hidden"]);
+  }
 
   insertComments(comments.slice(commentsSlide, commentsSlide + 5));
 

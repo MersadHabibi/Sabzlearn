@@ -99,7 +99,7 @@ const changeContent = async (targetMenu, courseId) => {
             <textarea
               oninput="descriptionPreviewHandler(this)"
               id="description"
-              rows="7"
+              rows="8"
               class="col-span-3 w-full p-3 sm:p-5 outline-none text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
               id="text"
               name="text"
@@ -288,7 +288,7 @@ const changeContent = async (targetMenu, courseId) => {
             <textarea
               oninput="descriptionPreviewHandler(this)"
               id="description"
-              rows="7"
+              rows="8"
               class="col-span-3 w-full p-3 sm:p-5 outline-none text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
               id="text"
               name="text"

@@ -59,10 +59,16 @@
         @apply !bg-gray-100 dark:!bg-gray-700 dark:!text-white !rounded-t-md dark:!border-gray-500/60;
       }
       .ck-toolbar__items {
-        @apply child:dark:!text-white child:dark:hover:!bg-gray-600;
+        @apply child:dark:!text-white;
       }
       .ck-button {
         @apply dark:!text-white;
+      }
+      .ck-button:hover {
+        @apply dark:hover:!bg-gray-600;
+      }
+      .ck-on {
+        @apply dark:!bg-gray-800;
       }
     </style>
   </head>

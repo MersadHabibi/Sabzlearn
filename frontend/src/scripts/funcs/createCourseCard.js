@@ -58,7 +58,7 @@ const createCourseCard = (
               ? `
             <p
               class="line-clamp-2 font-light text-sm text-slate-500 dark:text-slate-400">
-              ${course.description}
+              ${course.caption}
             </p>
           `
               : ""

@@ -55,10 +55,11 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1280px",
-      xxl: "1550px"
+      xxl: "1550px",
     },
   },
   plugins: [
+    require("@tailwindcss/typography"),
     function ({ addVariant }) {
       addVariant("child", "& > *");
       addVariant("child-hover", "& > *:hover");

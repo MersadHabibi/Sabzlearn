@@ -158,7 +158,7 @@
   @apply hidden;
 }
 
-.course-description.show .course-description__content {
+.course-description.show .course__description {
   @apply max-h-none;
 }
 

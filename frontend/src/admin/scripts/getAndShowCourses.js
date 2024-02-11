@@ -42,10 +42,10 @@ const getAndShowCourses = async () => {
                   course.category?.name
                 } </a>
             </div>
-            <a href="./course.html" class="font-DanaMedium dark:text-white text-lg line-clamp-2 my-2"> ${course.title} </a>
+            <a href="../course.html" class="font-DanaMedium dark:text-white text-lg line-clamp-2 my-2"> ${course.title} </a>
             <p
               class="line-clamp-2 font-light text-sm text-slate-500 dark:text-slate-400 mb-3">
-              ${course.description}
+              ${course.caption}
             </p>
           </div>
           <!-- Course Footer -->
