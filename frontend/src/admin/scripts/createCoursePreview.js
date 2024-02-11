@@ -39,10 +39,8 @@ const categoryPreviewHandler = async elem => {
     categoryPreview.innerText = "loading...";
 
     const categories = await getCategories();
-    console.log(categories);
 
     const categoryTarget = categories.filter(category => category.categoryId == elem.value);
-    console.log(categoryTarget);
     categoryPreview.innerText = categoryTarget[0].categoryName;
   } else {
     categoryPreview.innerText = "دسته بندی";
@@ -61,7 +59,6 @@ const teacherPreviewHandler = elem => {
 const pricePreviewHandler = elem => {
   const pricePreview = document.querySelector(".preview__price");
   price = elem.value ? elem.value : "0000000";
-  console.log(price);
   if (price) {
     pricePreview.innerHTML = isFree
       ? `<div class="">
@@ -83,7 +80,6 @@ const pricePreviewHandler = elem => {
 const isFreePreviewHandler = elem => {
   const pricePreview = document.querySelector(".preview__price");
   isFree = /^true$/i.test(elem.value);
-  console.log(isFree);
   pricePreview.innerHTML = isFree
     ? `<div class="">
           <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> ${Converter.threeDigitSeparator(price)} </del>
@@ -99,3 +95,4 @@ const isFreePreviewHandler = elem => {
 };
 
 export default createCoursePreview;
+export { titlePreviewHandler, descriptionPreviewHandler, categoryPreviewHandler, teacherPreviewHandler, pricePreviewHandler, isFreePreviewHandler };

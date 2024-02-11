@@ -16,10 +16,9 @@ const showCategoryCourses = async id => {
 
   const courses = await getCourses(id);
 
-  coursesContainer.innerHTML =
-    courses.length == 0
-      ? "<p class='text-xl text-center dark:text-white sm:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5'> دوره ای وجود ندارد </p>"
-      : "";
+  courses.length === 0 &&
+    (coursesContainer.innerHTML =
+      "<p class='text-xl text-center dark:text-white sm:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5'> دوره ای وجود ندارد </p>");
 
   courses?.forEach(course => {
     console.log(course);
@@ -42,6 +41,7 @@ const getCourses = async id => {
 
     return courses;
   } catch (err) {
+    console.log(err);
     return null;
   }
 };

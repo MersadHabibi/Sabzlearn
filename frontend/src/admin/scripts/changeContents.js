@@ -7,6 +7,7 @@ import preparationEditDescription from "./preparationEditDescription";
 import preparationTopics from "./preparationTopics";
 import showCategories from "./showCategories";
 import createCoursePreview from "./createCoursePreview";
+import preparationEditCourse from "./preparationEditCourse";
 
 const changeContent = async (targetMenu, courseId) => {
   const contentContainer = document.querySelector(".content-container");
@@ -76,7 +77,7 @@ const changeContent = async (targetMenu, courseId) => {
                   انتخاب عکس دوره
                 </span>
               </label>
-              <input id="cover" class="hidden w-auto border-none" type="file" />
+              <input id="cover" class="hidden w-auto border-none" type="file" accept="image/*" />
             </div>
             <!-- course name -->
             <input
@@ -115,6 +116,7 @@ const changeContent = async (targetMenu, courseId) => {
               <option value="ebadi">حمید رضا عبادی</option>
               <option value="barati">مهرشاد براتی</option>
               <option value="rezaDolati">رضا دولتی</option>
+              <option value="moghadas"> اشکان مقدس </option>
             </select>
             <!-- course price -->
             <input
@@ -246,6 +248,201 @@ const changeContent = async (targetMenu, courseId) => {
 
     createCoursePreview();
     preparationCreateCourse();
+  } else if (targetMenu == "edit-course") {
+    contentContainer.innerHTML = `
+      <div class="content create-course">
+        <form onsubmit="editCourse(event)" id="create-course-form" class="flex flex-col lg:grid grid-cols-2 gap-5 sm:gap-10">
+          <!-- Inputs -->
+          <div class="col-span-1 grid grid-cols-3 gap-x-3 lg:gap-x-5 gap-y-4 lg:gap-y-5">
+            <!-- course cover -->
+            <div id="image" class="w-full h-fit col-span-3">
+              <label
+                for="cover"
+                class="custom-file-upload flex justify-center items-center gap-x-2 shrink-0 shadow-light transition-all rounded-lg w-full py-3 bg-primary hover:bg-green-500 text-white">
+                <svg class="size-5">
+                  <use href="#upload"/>
+                </svg>
+                <span class="font-DanaMedium mt-0.5"> 
+                  انتخاب عکس دوره
+                </span>
+              </label>
+              <input id="cover" class="hidden w-auto border-none" type="file" accept="image/*" />
+            </div>
+            <!-- course name -->
+            <input
+              oninput="titlePreviewHandler(this)"
+              id="title"
+              class="col-span-3 bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+              type="text"
+              placeholder="نام دوره" />
+            <!-- course category -->
+            <select
+              oninput="categoryPreviewHandler(this)"
+              id="category"
+              name=""
+              id=""
+              class="col-span-3 w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+              <option value="">در حال جست و جو...</option>
+            </select>
+            <!-- course description -->
+            <textarea
+              oninput="descriptionPreviewHandler(this)"
+              id="description"
+              rows="7"
+              class="col-span-3 w-full p-3 sm:p-5 outline-none text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
+              id="text"
+              name="text"
+              placeholder="توضیحات دوره"></textarea>
+            <!-- course teacher -->
+            <select
+              oninput="teacherPreviewHandler(this)"
+              id="teacher"
+              name=""
+              id=""
+              class="col-span-3 xl:col-span-1 w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+              <option value="">مدرس دوره...</option>
+              <option value="SaeidiRad">محمد امین سعیدی راد</option>
+              <option value="ebadi">حمید رضا عبادی</option>
+              <option value="barati">مهرشاد براتی</option>
+              <option value="rezaDolati">رضا دولتی</option>
+              <option value="moghadas"> اشکان مقدس </option>
+            </select>
+            <!-- course price -->
+            <input
+              oninput="pricePreviewHandler(this)"
+              id="price"
+              class="col-span-3 xl:col-span-1 bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-lg"
+              type="text"
+              placeholder="قیمت دوره به تومان" />
+            <!-- is Free -->
+            <select
+              oninput="isFreePreviewHandler(this)"
+              id="isFree"
+              name=""
+              class="col-span-3 xl:col-span-1 w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+              <option value="">دوره رایگان است؟</option>
+              <option value="true">بله</option>
+              <option value="false">خیر</option>
+            </select>
+            <!-- course status -->
+            <select
+              id="status"
+              name=""
+              id=""
+              class="col-span-3 xl:col-span-1 w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+              <option value="">وضعیت دوره...</option>
+              <option value="presell">پیش فروش</option>
+              <option value="completing">در حال تکمیل</option>
+              <option value="completed">تکمیل شده</option>
+            </select>
+            <!-- course link -->
+            <input
+              id="short-name"
+              class="col-span-3 xl:col-span-2 bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+              type="text"
+              placeholder="کلمات کلیدی(برای جستجو بهتر)" />
+          </div>
+
+          <!-- Preview -->
+          <div class="col-span-1 py-10 lg:py-0">
+            <div
+              class="course-card flex flex-col bg-white dark:bg-gray-800 shadow-light dark:shadow-none border-gray-200/80 border dark:border-gray-700 overflow-hidden rounded-2xl">
+              <!-- Course Head -->
+              <div class="relative block h-56 sm:h-[300px] lg:h-56 xl:h-[300px] w-full overflow-hidden">
+                <img src="http://localhost:8000/images/choose-image-placeholder.png" class="preview__img w-full h-full object-cover rounded-2xl" alt="" />
+              </div>
+              <!-- Course Body -->
+              <div class="px-3 xs:px-5 pt-4 pb-5 flex-grow">
+                <div class="flex justify-start items-center gap-1">
+                  <p
+                    class="preview__category inline-flex items-center justify-center text-sm py-1.5 px-2 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded">
+                    (خالی)
+                  </p>
+                </div>
+
+                <p class="preview__title font-DanaMedium dark:text-white text-xl xs:text-2xl line-clamp-2 my-2.5 xs:my-5">
+                  (خالی)
+                </p>
+
+                <p class="preview__description line-clamp-3 text-sm xs:text-base font-light text-slate-500 dark:text-slate-400">
+                  (خالی)
+                </p>
+              </div>
+              <!-- Course Footer -->
+              <div class="px-3 xs:px-5 pb-2">
+                <!-- Course Info -->
+                <div class="flex justify-between pb-3 border-b text-xs xs:text-sm border-b-gray-100 dark:border-b-gray-700">
+                  <div class="flex gap-x-4 text-slate-500 dark:text-slate-400">
+                    <a href="#" class="flex items-center gap-x-1 hover:text-primary transition-colors">
+                      <svg class="size-5 xs:size-6">
+                        <use href="#user"></use>
+                      </svg>
+                      <span class="preview__teacher"> (خالی) </span>
+                    </a>
+                    <span class="flex items-center gap-x-1">
+                      <svg class="size-5 xs:size-6">
+                        <use href="#clock"></use>
+                      </svg>
+                      <span> 00:00 </span>
+                    </span>
+                  </div>
+                  <div class="flex items-center gap-x-1 text-amber-400">
+                    <span class="leading-[1px] mt-1">5.0</span>
+                    <svg class="size-5 xs:size-6">
+                      <use href="#star"></use>
+                    </svg>
+                  </div>
+                </div>
+                <!-- Course Bottom -->
+                <div class="flex justify-between items-center mt-2 xs:mt-3 xs:py-1.5">
+                  <div class="dark:text-white flex gap-x-1 items-center">
+                    <svg class="size-5 xs:size-7">
+                      <use href="#users"></use>
+                    </svg>
+                    <span class="text-lg xs:text-xl font-DanaMedium mt-1"> 482 </span>
+                  </div>
+                  <!-- Course Price -->
+                  <div class="preview__price text-primary">
+                    <!-- Free Price -->
+                    <div class="!hidden">
+                      <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> 0,000,000 </del>
+                      <span class="xs:font-DanaMedium text-lg xs:text-2xl">رایگان!</span>
+                    </div>
+
+                    <!-- Normal Price -->
+                    <div class="flex gap-x-1 items-center">
+                      <span class="text-lg xs:text-2xl"> 0,000,000 </span>
+                      <svg class="size-4 xs:size-6">
+                        <use href="#toman"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit btn -->
+          <div class="flex justify-end gap-x-2 col-span-2 border-t border-gray-200 dark:border-gray-800">
+            <button
+              id="back-btn"
+              class="bg-red-500 hover:bg-red-600 text-white rounded-xl px-6 xs:px-7 py-2 xs:py-3 mt-5 text-base xs:text-xl transition-colors disabled:hover:bg-primary disabled:opacity-20"
+              type="button">
+              بازگشت
+            </button>
+            <button
+              id="submit-btn"
+              class="bg-primary hover:bg-green-500 text-white rounded-xl px-6 xs:px-7 py-2 xs:py-3 mt-5 text-base xs:text-xl transition-colors disabled:hover:bg-primary disabled:opacity-20"
+              type="submit">
+              ارسال
+            </button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    createCoursePreview();
+    preparationEditCourse(courseId);
   } else if (targetMenu == "topics") {
     contentContainer.innerHTML = `
       <div class="content topics">

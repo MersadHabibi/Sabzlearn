@@ -165,16 +165,18 @@ const apiAdmin = axios.create({
 
 // Get Teacher Name
 
-function getTeacherName(teacherName){
+function getTeacherName(teacherName) {
   return teacherName == "SaeidiRad"
-  ? "محمد امین سعیدی راد"
-  : teacherName == "barati"
-  ? "مهرشاد براتی"
-  : teacherName == "ebadi"
-  ? "حمیدرضا عبادی"
-  : teacherName == "rezaDolati"
-  ? "رضا دولتی"
-  : "یافت نشد"
+    ? "محمد امین سعیدی راد"
+    : teacherName == "barati"
+    ? "مهرشاد براتی"
+    : teacherName == "ebadi"
+    ? "حمیدرضا عبادی"
+    : teacherName == "rezaDolati"
+    ? "رضا دولتی"
+    : teacherName == "moghadas"
+    ? "اشکان مقدس"
+    : "یافت نشد";
 }
 
-export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe, fullScreenLoader , getTeacherName };
+export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe, fullScreenLoader, getTeacherName };

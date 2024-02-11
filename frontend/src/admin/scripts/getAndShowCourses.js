@@ -134,7 +134,9 @@ const getAndShowCourses = async () => {
           <button onclick="editTopicHandler('${
             course.id
           }')" class="edit-topics-btn bg-secondry bg-blue-500 hover:bg-blue-600 w-full text-white font-DanaMedium py-2 rounded-md transition "> مدیریت سر فصل ها </button>
-          <button class="bg-gray-500 hover:bg-gray-600/65 text-white font-DanaMedium py-2 rounded-md transition flex-1"> ویرایش اطلاعات</button>
+          <button onclick="editCourseHandler('${
+            course.id
+          }')" class="bg-gray-500 hover:bg-gray-600/65 text-white font-DanaMedium py-2 rounded-md transition flex-1"> ویرایش اطلاعات</button>
           <button onclick="deleteCourseHandler('${
             course.id
           }')" class="delete-course-btn bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 rounded-md transition flex-1">حذف</button>
@@ -149,6 +151,7 @@ const getAndShowCourses = async () => {
   window.editDescriptionHandler = editDescriptionHandler;
   window.deleteCourse = deleteCourse;
   window.closeDeleteCourseModal = closeDeleteCourseModal;
+  window.editCourseHandler = editCourseHandler;
 };
 
 // Handlers
@@ -167,6 +170,10 @@ const editTopicHandler = id => {
     }
   });
   changeContent("topics", id);
+};
+
+const editCourseHandler = id => {
+  changeContent("edit-course", id);
 };
 
 const deleteCourseHandler = id => {
