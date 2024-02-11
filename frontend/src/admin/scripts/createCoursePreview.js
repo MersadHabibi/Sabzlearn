@@ -1,7 +1,9 @@
 import * as Converter from "persian-currency-converter";
+import { getTeacherName } from "../../scripts/funcs/utils";
+import { getCategories } from "./showCategories";
 
 let isFree = false;
-let price = 1000000;
+let price = "0000000";
 
 const createCoursePreview = () => {
   window.titlePreviewHandler = titlePreviewHandler;
@@ -17,7 +19,7 @@ const titlePreviewHandler = elem => {
   if (elem.value) {
     titlePreview.innerText = elem.value;
   } else {
-    titlePreview.innerText = "نام دوره...";
+    titlePreview.innerText = "نام دوره";
   }
 };
 
@@ -30,24 +32,27 @@ const descriptionPreviewHandler = elem => {
   }
 };
 
-const categoryPreviewHandler = elem => {
+const categoryPreviewHandler = async elem => {
   const categoryPreview = document.querySelector(".preview__category");
-  console.log(elem);
+
+  if (elem.value) {
+    categoryPreview.innerText = "loading...";
+
+    const categories = await getCategories();
+    console.log(categories);
+
+    const categoryTarget = categories.filter(category => category.categoryId == elem.value);
+    console.log(categoryTarget);
+    categoryPreview.innerText = categoryTarget[0].categoryName;
+  } else {
+    categoryPreview.innerText = "دسته بندی";
+  }
 };
 
 const teacherPreviewHandler = elem => {
   const teacherPreview = document.querySelector(".preview__teacher");
   if (elem.value) {
-    teacherPreview.innerText =
-      elem.value == "SaeidiRad"
-        ? "محمد امین سعیدی راد"
-        : elem.value == "barati"
-        ? "مهرشاد براتی"
-        : elem.value == "ebadi"
-        ? "حمیدرضا عبادی"
-        : elem.value == "rezaDolati"
-        ? "رضا دولتی"
-        : "غیره...";
+    teacherPreview.innerText = getTeacherName(elem.value);
   } else {
     teacherPreview.innerText = "مدرس";
   }
@@ -55,7 +60,7 @@ const teacherPreviewHandler = elem => {
 
 const pricePreviewHandler = elem => {
   const pricePreview = document.querySelector(".preview__price");
-  price = elem.value ? elem.value : 1000000;
+  price = elem.value ? elem.value : "0000000";
   console.log(price);
   if (price) {
     pricePreview.innerHTML = isFree
@@ -81,12 +86,12 @@ const isFreePreviewHandler = elem => {
   console.log(isFree);
   pricePreview.innerHTML = isFree
     ? `<div class="">
-          <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> ${price} </del>
+          <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> ${Converter.threeDigitSeparator(price)} </del>
           <span class="xs:font-DanaMedium text-lg xs:text-2xl">رایگان!</span>
         </div>`
     : `
         <div class="flex gap-x-1 items-center">
-          <span class="text-lg xs:text-2xl"> ${price} </span>
+          <span class="text-lg xs:text-2xl"> ${Converter.threeDigitSeparator(price)} </span>
           <svg class="size-4 xs:size-6">
             <use href="#toman"></use>
           </svg>

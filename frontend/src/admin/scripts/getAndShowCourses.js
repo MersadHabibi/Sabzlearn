@@ -1,5 +1,5 @@
 import { categoryClickHandler, courseClickHandler } from "../../scripts/funcs/createCourseCard";
-import { _changeClasses, api, apiAdmin, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import { _changeClasses, api, apiAdmin, fullScreenLoader, getTeacherName, showNotif } from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
 let courseIdForDelete = null;
 
@@ -57,17 +57,7 @@ const getAndShowCourses = async () => {
                   <svg class="w-4 h-4">
                     <use href="#user"></use>
                   </svg>
-                  <span> ${
-                    course.teacher == "SaeidiRad"
-                      ? "محمد امین سعیدی راد"
-                      : course.teacher == "barati"
-                      ? "مهرشاد براتی"
-                      : course.teacher == "ebadi"
-                      ? "حمیدرضا عبادی"
-                      : course.teacher == "rezaDolati"
-                      ? "رضا دولتی"
-                      : "غیره..."
-                  } </span>
+                  <span> ${getTeacherName(course.teacher)} </span>
                 </a>
                 <span class="flex items-center gap-x-1">
                   <svg class="w-4 h-4">

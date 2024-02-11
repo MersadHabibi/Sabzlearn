@@ -1,5 +1,7 @@
 // Create Course Card
 
+import { getTeacherName } from "./utils";
+
 const createCourseCard = (
   course,
   props = {
@@ -74,17 +76,7 @@ const createCourseCard = (
                 <svg class="w-4 h-4">
                   <use href="#user"></use>
                 </svg>
-                <span> ${
-                  course.teacher == "SaeidiRad"
-                    ? "محمد امین سعیدی راد"
-                    : course.teacher == "barati"
-                    ? "مهرشاد براتی"
-                    : course.teacher == "ebadi"
-                    ? "حمیدرضا عبادی"
-                    : course.teacher == "rezaDolati"
-                    ? "رضا دولتی"
-                    : "غیره..."
-                } </span>
+                <span> ${getTeacherName(course.teacher)} </span>
               </a>
               <span class="flex items-center gap-x-1">
                 <svg class="w-4 h-4">

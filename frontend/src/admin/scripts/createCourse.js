@@ -8,7 +8,6 @@ const preparationCreateCourse = async () => {
   const newCourseCoverElem = $.querySelector("#create-course-form #cover");
   const newCourseCategory = $.querySelector("#create-course-form #category");
   const submitBtn = $.querySelector("#submit-btn");
-  const imagePreviewElem = document.querySelector("#image-preview");
 
   const imagePreview = document.querySelector(".preview__img");
 
@@ -35,7 +34,6 @@ const preparationCreateCourse = async () => {
   newCourseCoverElem.addEventListener("change", () => {
     const [file] = newCourseCoverElem.files;
     if (file) {
-      imagePreviewElem.src = URL.createObjectURL(file);
       imagePreview.src = URL.createObjectURL(file);
     }
   });

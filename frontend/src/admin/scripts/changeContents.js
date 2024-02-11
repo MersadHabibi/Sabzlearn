@@ -65,14 +65,18 @@ const changeContent = async (targetMenu, courseId) => {
           <!-- Inputs -->
           <div class="col-span-1 grid grid-cols-3 gap-x-3 lg:gap-x-5 gap-y-4 lg:gap-y-5">
             <!-- course cover -->
-            <div id="image" class="relative text-sm md:text-base w-full h-56 sm:h-[300px] lg:h-56 xl:h-[300px] col-span-3 rounded-2xl overflow-hidden">
+            <div id="image" class="w-full h-fit col-span-3">
               <label
                 for="cover"
-                class="custom-file-upload absolute top-3 right-3 opacity-40 hover:opacity-90 shrink-0 shadow-light transition-all rounded-lg">
-                انتخاب عکس دوره
+                class="custom-file-upload flex justify-center items-center gap-x-2 shrink-0 shadow-light transition-all rounded-lg w-full py-3 bg-primary hover:bg-green-500 text-white">
+                <svg class="size-5">
+                  <use href="#upload"/>
+                </svg>
+                <span class="font-DanaMedium mt-0.5"> 
+                  انتخاب عکس دوره
+                </span>
               </label>
               <input id="cover" class="hidden w-auto border-none" type="file" />
-              <img id="image-preview" src="http://localhost:8000/images/choose-image-placeholder.png" alt="your image" class="w-full h-full object-cover" />
             </div>
             <!-- course name -->
             <input
@@ -94,7 +98,7 @@ const changeContent = async (targetMenu, courseId) => {
             <textarea
               oninput="descriptionPreviewHandler(this)"
               id="description"
-              rows="8"
+              rows="7"
               class="col-span-3 w-full p-3 sm:p-5 outline-none text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
               id="text"
               name="text"
@@ -161,18 +165,16 @@ const changeContent = async (targetMenu, courseId) => {
                 <div class="flex justify-start items-center gap-1">
                   <p
                     class="preview__category inline-flex items-center justify-center text-sm py-1.5 px-2 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded">
-                    فرانت اند
+                    (خالی)
                   </p>
                 </div>
 
                 <p class="preview__title font-DanaMedium dark:text-white text-xl xs:text-2xl line-clamp-2 my-2.5 xs:my-5">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit
+                  (خالی)
                 </p>
 
                 <p class="preview__description line-clamp-3 text-sm xs:text-base font-light text-slate-500 dark:text-slate-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi, deleniti, molestias voluptas ex, consequatur voluptatem quidem
-                  culpa amet incidunt eveniet ut impedit ab. Assumenda rerum, delectus officiis obcaecati modi ipsa veniam voluptates ratione sapiente
-                  dolorem quae itaque saepe? Quasi in aperiam optio eius accusantium, eum voluptatibus enim suscipit sunt!
+                  (خالی)
                 </p>
               </div>
               <!-- Course Footer -->
@@ -184,7 +186,7 @@ const changeContent = async (targetMenu, courseId) => {
                       <svg class="size-5 xs:size-6">
                         <use href="#user"></use>
                       </svg>
-                      <span class="preview__teacher"> محمد امین سعیدی راد </span>
+                      <span class="preview__teacher"> (خالی) </span>
                     </a>
                     <span class="flex items-center gap-x-1">
                       <svg class="size-5 xs:size-6">
@@ -212,13 +214,13 @@ const changeContent = async (targetMenu, courseId) => {
                   <div class="preview__price text-primary">
                     <!-- Free Price -->
                     <div class="!hidden">
-                      <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> 1,200,000 </del>
+                      <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> 0,000,000 </del>
                       <span class="xs:font-DanaMedium text-lg xs:text-2xl">رایگان!</span>
                     </div>
 
                     <!-- Normal Price -->
                     <div class="flex gap-x-1 items-center">
-                      <span class="text-lg xs:text-2xl"> 1,200,000 </span>
+                      <span class="text-lg xs:text-2xl"> 0,000,000 </span>
                       <svg class="size-4 xs:size-6">
                         <use href="#toman"></use>
                       </svg>
