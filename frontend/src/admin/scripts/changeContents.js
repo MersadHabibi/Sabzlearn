@@ -160,7 +160,7 @@ const changeContent = async (targetMenu, courseId) => {
               class="course-card flex flex-col bg-white dark:bg-gray-800 shadow-light dark:shadow-none border-gray-200/80 border dark:border-gray-700 overflow-hidden rounded-2xl">
               <!-- Course Head -->
               <div class="relative block h-56 sm:h-[300px] lg:h-56 xl:h-[300px] w-full overflow-hidden">
-                <img src="http://localhost:8000/images/choose-image-placeholder.png" class="preview__img w-full h-full object-cover rounded-2xl" alt="" />
+                <img src="/images/choose-image-placeholder.png" class="preview__img w-full h-full object-cover rounded-2xl" alt="" />
               </div>
               <!-- Course Body -->
               <div class="px-3 xs:px-5 pt-4 pb-5 flex-grow">
@@ -349,7 +349,7 @@ const changeContent = async (targetMenu, courseId) => {
               class="course-card flex flex-col bg-white dark:bg-gray-800 shadow-light dark:shadow-none border-gray-200/80 border dark:border-gray-700 overflow-hidden rounded-2xl">
               <!-- Course Head -->
               <div class="relative block h-56 sm:h-[300px] lg:h-56 xl:h-[300px] w-full overflow-hidden">
-                <img src="http://localhost:8000/images/choose-image-placeholder.png" class="preview__img w-full h-full object-cover rounded-2xl" alt="" />
+                <img src="/images/choose-image-placeholder.png" class="preview__img w-full h-full object-cover rounded-2xl" alt="" />
               </div>
               <!-- Course Body -->
               <div class="px-3 xs:px-5 pt-4 pb-5 flex-grow">
@@ -481,7 +481,7 @@ const changeContent = async (targetMenu, courseId) => {
         </div>
         <!-- Modals -->
         <!-- view episodes modal -->
-        <div id="view-episodes-modal" class="fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto       rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+        <div id="view-episodes-modal" class="fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-8 py-4 shrink-0">
             <div>
@@ -575,9 +575,12 @@ const changeContent = async (targetMenu, courseId) => {
               <option value="false">خیر</option>
               <option value="true">بله</option>
             </select>
-            <div id="file" class="flex justify-start items-center text-sm md:text-base py-3">
-              <label for="fileInput" class="custom-file-upload shrink-0 shadow-light dark:shadow-none"> انتخاب ویدیو دوره </label>
-              <input id="fileInput" class="w-auto border-none" type="file" multiple />
+            <div id="file" class="relative flex justify-start items-center text-sm w-full h-72">
+              <label for="fileInput" class="absolute top-2 right-2 flex justify-center items-center rounded-xl bg-primary shadow-light dark:shadow-none px-3 py-1.5 opacity-70 text-white hover:opacity-100 transition-all cursor-pointer z-10"> انتخاب ویدیو دوره </label>
+              <input id="fileInput" class="w-auto border-none hidden" type="file" multiple onchange="previewEpisodeVideo(this)" />
+              <video id="video-preview" class="w-full h-full object-cover rounded-2xl" controls>
+                <source src="/media/cc0-videos/flower.webm" type="video/webm" />
+              </video>
             </div>
           </div>
           <!-- footer -->

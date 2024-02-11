@@ -34,6 +34,8 @@ const preparationTopics = async (courseId = null) => {
     getCourseAndShowDatas(courseId);
     seleteCoursesInput.value = courseId;
   }
+
+  window.previewEpisodeVideo = previewEpisodeVideo;
 };
 
 const getCourseAndShowDatas = id => {
@@ -288,6 +290,12 @@ const setRequiredEvents = () => {
     closeModal(addTopicModal);
     closeModal(document.querySelector("#view-episodes-modal"));
   });
+};
+
+const previewEpisodeVideo = elem => {
+  const videoPreviewElem = document.querySelector("#video-preview");
+
+  videoPreviewElem.src = URL.createObjectURL(elem.files[0]);
 };
 
 const openModal = modal => {
