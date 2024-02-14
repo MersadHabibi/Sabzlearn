@@ -15,6 +15,8 @@ export default defineConfig(() => {
           course: resolve(__dirname, "./src/course.html"),
           categories: resolve(__dirname, "./src/categories.html"),
           panel: resolve(__dirname, "./src/panel.html"),
+          order: resolve(__dirname, "./src/order.html"),
+          successOrder: resolve(__dirname, "./src/success_buy_course.html"),
           admin: resolve(__dirname, "./src/admin/index.html"),
         },
       },

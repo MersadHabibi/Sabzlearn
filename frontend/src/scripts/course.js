@@ -169,7 +169,7 @@ const fillBreadCrumb = () => {
   breadCrumbName.innerHTML = course.title;
 };
 
-// Set Datas = image - title - description - price - offer - time - teacher - studentsCount
+// Set Datas = image - title - description - price - offer - time - teacher - studentsCount - caption
 
 const setDatas = () => {
   const courseImage = $.querySelector(".course__image");
@@ -185,6 +185,11 @@ const setDatas = () => {
   const courseTeacher = $.querySelector(".course__teacher");
   const mobileCourseTeacher = $.querySelector(".mobile-course__teacher");
   const courseDescription = $.querySelector(".course__description");
+  const buyBtn = $.querySelector("#buy-btn");
+
+  // Buy Btn
+
+  buyBtn.href = `./order.html?courseId=${course.id}`;
 
   // Description
 
