@@ -11,6 +11,7 @@ export default defineConfig(() => {
           main: resolve(__dirname, "./src/index.html"),
           login: resolve(__dirname, "./src/login.html"),
           register: resolve(__dirname, "./src/register.html"),
+          OTP: resolve(__dirname, "./src/submit_otp_page.html"),
           course: resolve(__dirname, "./src/course.html"),
           categories: resolve(__dirname, "./src/categories.html"),
           panel: resolve(__dirname, "./src/panel.html"),

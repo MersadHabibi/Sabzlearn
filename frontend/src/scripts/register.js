@@ -28,15 +28,6 @@ form.addEventListener("submit", e => {
 });
 
 const register = async (email, username, phoneNumber, password, address = " ") => {
-  const newUser = {
-    email,
-    username,
-    phoneNumber,
-    password,
-    repeat_password: password,
-    address,
-  };
-
   fullScreenLoader("loading");
   await api
     .post("register", {
