@@ -97,38 +97,30 @@ overlay.addEventListener("click", () => {
 
 // Get Params - query string
 
-const getParams = () => {
+const getParams = async () => {
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
-  category = params.category ? params.category : "all";
+
+  category = (await api.get("categories")).data.find(category => category.categoryId == params.category) || "all";
+
+  changeCategoryTitle();
+
   search = params.s ? params.s : null;
 
-  loadCourses();
+  await loadCourses();
 };
 
 // Chnage Category Title
 
 const changeCategoryTitle = () => {
-  categoryTitleElem.innerHTML = search
-    ? `جستجو : ${search}`
-    : category == "all"
-    ? "همه دوره ها"
-    : category == "frontend"
-    ? "فرانت اند"
-    : category == "security"
-    ? "امنیت"
-    : category == "python"
-    ? "پایتون"
-    : category == "softskills"
-    ? "مهارت های نرم"
-    : "ٍارور";
+  categoryTitleElem.innerHTML = search ? `جستجو : ${search}` : category === "all" ? "همه دوره ها" : category.categoryName ? category.categoryName : "ارور";
 };
 
 // Sort Courses
 
 sortValues.forEach(sort => {
-  sort.addEventListener("click", element => {
+  sort.addEventListener("click", async element => {
     sortValues.forEach(e => {
       _changeClasses("remove", e, ["active"]);
     });
@@ -136,14 +128,14 @@ sortValues.forEach(sort => {
 
     sortBy = sort.dataset.sort;
 
-    loadCourses();
+    await loadCourses();
   });
 });
 
 // Sort Courses Mobile
 
 mobileSortValues.forEach(sort => {
-  sort.addEventListener("click", element => {
+  sort.addEventListener("click", async element => {
     sortValues.forEach(e => {
       _changeClasses("remove", e, ["active"]);
     });
@@ -153,7 +145,7 @@ mobileSortValues.forEach(sort => {
 
     sortBy = sort.dataset.sort;
 
-    loadCourses();
+    await loadCourses();
   });
 });
 
@@ -162,9 +154,9 @@ mobileSortValues.forEach(sort => {
 const onlyFreeCourses = () => {
   const onlyFreeCoursesInput = $.querySelector("#only-free-input");
 
-  onlyFreeCoursesInput.addEventListener("change", () => {
+  onlyFreeCoursesInput.addEventListener("change", async () => {
     onlyFree = !onlyFree;
-    loadCourses();
+    await loadCourses();
   });
 };
 
@@ -173,10 +165,10 @@ const onlyFreeCourses = () => {
 const onlyPresellCourse = () => {
   const onlyPresellInput = $.querySelector("#only-presell-input");
 
-  onlyPresellInput.addEventListener("change", () => {
+  onlyPresellInput.addEventListener("change", async () => {
     onlyPresell = !onlyPresell;
 
-    loadCourses();
+    await loadCourses();
   });
 };
 
@@ -199,10 +191,10 @@ const mobileFilters = () => {
     presell = !presell;
   });
 
-  mobileFiltersMenuSubmitBtn.addEventListener("click", () => {
+  mobileFiltersMenuSubmitBtn.addEventListener("click", async () => {
     onlyFree = free;
     onlyPresell = presell;
-    loadCourses();
+    await loadCourses();
     closeMobileFiltersMenu();
   });
 
@@ -220,26 +212,21 @@ const searchHandler = () => {
   const searchCourseForm = $.querySelector("#search-course-form");
   const searchCourseInput = $.querySelector("#search-course");
 
-  searchCourseForm.addEventListener("submit", e => {
+  searchCourseForm.addEventListener("submit", async e => {
     e.preventDefault();
 
     search = searchCourseInput.value;
     categoryTitleElem.innerHTML = `جستجو:  ${search}`;
-    loadCourses();
+    await loadCourses();
   });
 };
 
 // load Courses
 
-const loadCourses = () => {
+const loadCourses = async () => {
   // Filter By Category
 
-  let coursesByCategory =
-    category == "all"
-      ? [...allCourses]
-      : [...allCourses].filter(course => {
-          return course.category == category;
-        });
+  let coursesByCategory = category === "all" ? (await api.get(`courses`)).data : (await api.get(`courses/category/${category.categoryId}`)).data;
 
   // Filter By Filters Value
 
@@ -298,9 +285,7 @@ const loadCourses = () => {
 };
 
 window.addEventListener("load", async () => {
-  allCourses = (await api.get("courses")).data;
-  getParams();
-  changeCategoryTitle();
+  await getParams();
   onlyFreeCourses();
   onlyPresellCourse();
   mobileFilters();

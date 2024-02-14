@@ -44,7 +44,7 @@ const createCourseCard = (
           <div class="flex justify-start items-center gap-1">
             <a
               onclick="categoryClickHandler('${course.categoryId}')"
-              href=./categories.html?category=${course.category?.name}
+              href=./categories.html?category=${course.categoryId}
               class="inline-flex items-center justify-center text-xs py-1 px-1.5 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded"> ${course.category?.name} </a>
           </div>
         `
