@@ -1,5 +1,5 @@
 import { getAllCourses, getCourseById } from "../../../services/coursesAPIs";
-import { createTopicApi } from "../../../services/topicsAPIs";
+import { addEpisodeApi, createTopicApi } from "../../../services/topicsAPIs";
 import { _changeClasses, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
 
 const overlay = document.querySelector(".overlay");
@@ -133,20 +133,22 @@ const addEpisode = async topicId => {
       `${
         !titleInput.value
           ? "عنوان را وارد کنید"
-          : !isFreeInput.value
-          ? "ویدیو مورد نظر را انتخاب کنید"
-          : fileInput.files[0].type != "video/mp4"
-          ? "فایل ارسالی باید mp4 باشد"
           : fileInput.files.length == 0
+          ? "ویدیو مورد نظر را انتخاب کنید"
+          : fileInput.files[0]?.type != "video/mp4"
+          ? "فایل ارسالی باید mp4 باشد"
+          : !isFreeInput.value
           ? "مشخص کنید که دوره رایگان است یا خیر"
           : ""
       }`
     );
     return false;
   } else {
+
     let topic = course.subjects.filter(topic => {
       return topic.id == topicId;
     })[0];
+
 
     let newEpisode = {
       title: titleInput.value,
@@ -161,9 +163,9 @@ const addEpisode = async topicId => {
 
     fullScreenLoader("loading");
 
-    const res = await addEpisode(formData);
+    const res = await addEpisodeApi(formData);
 
-    if (res.status === null) {
+    if (res.status === false) {
       fullScreenLoader("loaded");
       return;
     }
@@ -217,7 +219,7 @@ const showEpisodes = topic => {
           > ${episode.isFree ? "جلسه رایگان" : "نقدی"} </span
         >
         <div class="flex items-center gap-x-1 md:gap-x-1.5">
-          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+          <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> ${episode.timeForShow} </span>
           <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
             <use xlink:href="#play-circle"></use>
           </svg>

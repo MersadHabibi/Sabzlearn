@@ -183,6 +183,7 @@ const setDatas = () => {
   const mobileCourseStudentsCount = $.querySelector(".mobile-course__studentsCount");
   const courseStatus = $.querySelector(".course__status");
   const courseTime = $.querySelector(".course__time");
+  const topicsAllTimeElem = $.querySelector(".topics__all-time");
   const courseTeacher = $.querySelector(".course__teacher");
   const mobileCourseTeacher = $.querySelector(".mobile-course__teacher");
   const courseDescription = $.querySelector(".course__description");
@@ -274,7 +275,11 @@ const setDatas = () => {
 
   // Time
 
-  courseTime.innerHTML = `${course.time} ساعت`;
+  courseTime.innerHTML = `${course.timeForShow} ساعت`;
+
+  // topics All Time 
+
+  topicsAllTimeElem.innerText = course.timeForShow
 };
 
 // Show Topics
@@ -324,7 +329,7 @@ const showTopics = () => {
                         >${episode.isFree ? "جلسه رایگان" : "نقدی"}</span
                       >
                       <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                        <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                        <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> ${episode.timeForShow} </span>
                         <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                           <use xlink:href="#play-circle"></use>
                         </svg>

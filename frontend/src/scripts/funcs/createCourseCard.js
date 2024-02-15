@@ -82,7 +82,7 @@ const createCourseCard = (
                 <svg class="w-4 h-4">
                   <use href="#clock"></use>
                 </svg>
-                <span> ${course.time} </span>
+                <span> ${!course.timeForShow ? "00:00" : course.timeForShow} </span>
               </span>
             </div>
             <div class="flex items-center gap-x-1 text-amber-400">
