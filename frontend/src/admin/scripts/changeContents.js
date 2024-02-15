@@ -464,6 +464,7 @@ const changeContent = async (targetMenu, courseId) => {
               </div>
               <div class="self-end xs:self-auto">
                 <button
+                  onclick="addTopicHandler()"
                   id="add-topic-btn"
                   class="flex items-center justify-center gap-x-1 h-10 md:h-11 rounded-lg bg-primary hover:bg-green-500 cursor-pointer pr-3 pl-4 text-white transition-colors">
                   <svg class="w-6 md:w-6 h-6 md:h-6">
@@ -485,11 +486,12 @@ const changeContent = async (targetMenu, courseId) => {
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-8 py-4 shrink-0">
             <div>
-              <h5 class="title sm:text-xl font-DanaMedium dark:text-white">فصل اول - مباحث TailwindCss</h5>
+              <h5 class="title sm:text-xl font-DanaMedium dark:text-white">  </h5>
             </div>
             <!-- Close Btn -->
             <div>
               <div
+                onclick="closeModals()"
                 class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
@@ -503,7 +505,7 @@ const changeContent = async (targetMenu, courseId) => {
           </div>
         </div>
         <!-- add topic modal -->
-        <form id="add-topic-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+        <form onsubmit="addTopicModalSubmit(event)" id="add-topic-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
             <div>
@@ -512,6 +514,7 @@ const changeContent = async (targetMenu, courseId) => {
             <!-- Close Btn -->
             <div>
               <div
+                onclick="closeModals()"
                 class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
@@ -541,7 +544,7 @@ const changeContent = async (targetMenu, courseId) => {
           </div>
         </form>
         <!-- add episode modal -->
-        <form id="add-episode-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-5/12 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+        <form onsubmit="addEpisodeModalSubmit(event)" id="add-episode-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-5/12 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
             <div>
@@ -550,6 +553,7 @@ const changeContent = async (targetMenu, courseId) => {
             <!-- Close Btn -->
             <div>
               <div 
+                onclick="closeModals()"
                 class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>

@@ -28,14 +28,24 @@ const preparationTopics = async (courseId = null) => {
     }
   });
 
-  setRequiredEvents();
-
   if (courseId) {
     getCourseAndShowDatas(courseId);
     seleteCoursesInput.value = courseId;
   }
 
+  overlay.addEventListener("click", () => {
+    closeModal(document.querySelector("#add-topic-modal"));
+    closeModal(document.querySelector("#add-episode-modal"));
+    closeModal(document.querySelector("#view-episodes-modal"));
+  });
+
   window.previewEpisodeVideo = previewEpisodeVideo;
+  window.addEpisodeHandler = addEpisodeHandler;
+  window.viewEpisodesHandler = viewEpisodesHandler;
+  window.addEpisodeModalSubmit = addEpisodeModalSubmit;
+  window.addTopicModalSubmit = addTopicModalSubmit;
+  window.addTopicHandler = addTopicHandler;
+  window.closeModals = closeModals;
 };
 
 const getCourseAndShowDatas = id => {
@@ -56,33 +66,6 @@ const getCourseAndShowDatas = id => {
     });
 };
 
-const createTopic = async () => {
-  const input = document.querySelector("#add-topic-modal input");
-  fullScreenLoader("loading");
-  if (input.value) {
-    apiAdmin
-      .post(`courses/${course.id}/subjects`, {
-        title: input.value,
-        courseId: course.id,
-        sortId: course.subjects.length + 1,
-      })
-      .then(res => {
-        input.value = "";
-        showNotif("سر فصل جدید ساخته شد", "success");
-        getCourseAndShowDatas(course.id);
-        closeModal(document.querySelector("#add-topic-modal"));
-      })
-      .catch(err => {
-        showNotif("ساخت سر فصل جدید با مشکل مواجه شد!");
-      })
-      .finally(() => {
-        fullScreenLoader("loaded");
-      });
-  } else {
-    showNotif("لطفا عنوان سر فصل را وارد کنید");
-  }
-};
-
 const showTopics = () => {
   const topicContainer = document.querySelector("#topics__container");
   topicContainer.innerHTML = "";
@@ -100,7 +83,7 @@ const showTopics = () => {
             <!-- topic left -->
             <div class="flex flex-col xs:flex-row gap-2 shrink-0 self-end lg:self-auto w-full xs:w-auto">
               <button
-                data-topic-id=${topic.id}
+                onclick="viewEpisodesHandler('${topic.id}')"
                 class="view-episodes-btn bg-primary text-white w-full xs:w-auto flex justify-center items-center gap-x-1 px-4 py-2 rounded-md hover:bg-green-500 transition-colors">
                 <svg class="w-6 h-6">
                   <use href="#eye"></use>
@@ -108,7 +91,7 @@ const showTopics = () => {
                 <span class="text-sm"> دیدن قسمت ها </span>
               </button>
               <button
-                data-topic-id=${topic.id}
+                onclick="addEpisodeHandler('${topic.id}')"
                 class="add-episode-btn bg-secondary text-white w-full xs:w-auto flex justify-center items-center gap-x-1 px-4 py-2 rounded-md hover:bg-sky-600 transition-colors">
                 <svg class="w-6 h-6">
                   <use href="#plus"></use>
@@ -120,24 +103,22 @@ const showTopics = () => {
       `
       );
     });
-
-    viewEpisodesHandler();
-    addEpisodeHandler();
   } else {
-    topicContainer.innerHTML = `<p class="dark:text-white text-xl text-center"> سر فصلی وجود ندارد </p>`;
+    topicContainer.innerHTML = `<p class="dark:text-white text-xl text-center mb-2"> سر فصلی وجود ندارد </p>`;
   }
 };
 
-const addEpisodeHandler = () => {
-  const addEpisodesBtns = document.querySelectorAll(".add-episode-btn");
+// Add Episode
 
-  addEpisodesBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      openModal(document.querySelector("#add-episode-modal"));
+const addEpisodeHandler = id => {
+  openModal(document.querySelector("#add-episode-modal"));
 
-      topicIdForAddEpisode = btn.dataset.topicId;
-    });
-  });
+  topicIdForAddEpisode = id;
+};
+
+const addEpisodeModalSubmit = event => {
+  event.preventDefault();
+  addEpisode(topicIdForAddEpisode);
 };
 
 const addEpisode = async topicId => {
@@ -177,9 +158,11 @@ const addEpisode = async topicId => {
     formData.append("file", fileInput.files[0]);
 
     fullScreenLoader("loading");
+    console.log(JSON.stringify(newEpisode), fileInput.files[0]);
     await apiAdmin
       .post("/episode", formData)
       .then(res => {
+        console.log(res);
         showNotif("قسمت جدید با موفقیت ساخته شد", "success");
         closeModal(document.querySelector("#add-episode-modal"));
         getCourseAndShowDatas(course.id);
@@ -189,6 +172,7 @@ const addEpisode = async topicId => {
         fileInput.value = "";
       })
       .catch(err => {
+        console.log(err);
         showNotif("مشکلی در ساخت قسمت جدید به وجود آمده!");
       })
       .finally(() => {
@@ -197,21 +181,16 @@ const addEpisode = async topicId => {
   }
 };
 
-const viewEpisodesHandler = () => {
-  const viewEpisodesBtns = document.querySelectorAll(".view-episodes-btn");
+// View Episodes
 
-  viewEpisodesBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      openModal(document.querySelector("#view-episodes-modal"));
-      let topicId = btn.dataset.topicId;
+const viewEpisodesHandler = id => {
+  openModal(document.querySelector("#view-episodes-modal"));
 
-      let targetTopic = course.subjects.filter(topic => {
-        return topic.id == topicId;
-      })[0];
+  let targetTopic = course.subjects.filter(topic => {
+    return topic.id == id;
+  })[0];
 
-      showEpisodes(targetTopic);
-    });
-  });
+  showEpisodes(targetTopic);
 };
 
 const showEpisodes = topic => {
@@ -260,43 +239,61 @@ const showEpisodes = topic => {
     );
 };
 
-const setRequiredEvents = () => {
-  const addTopicBtn = document.querySelector("#add-topic-btn");
-  const closeModalsBtn = document.querySelectorAll(".close-modal");
-  const addTopicModal = document.querySelector("#add-topic-modal");
-  const addEpisodeModal = document.querySelector("#add-episode-modal");
+// Add Topic
 
-  addEpisodeModal.addEventListener("submit", e => {
-    e.preventDefault();
-    addEpisode(topicIdForAddEpisode);
-  });
-
-  addTopicBtn.addEventListener("click", () => {
-    openModal(addTopicModal);
-  });
-  addTopicModal.addEventListener("submit", e => {
-    e.preventDefault();
-    createTopic();
-  });
-  closeModalsBtn.forEach(btn => {
-    btn.addEventListener("click", () => {
-      closeModal(addTopicModal);
-      closeModal(document.querySelector("#add-episode-modal"));
-      closeModal(document.querySelector("#view-episodes-modal"));
-    });
-  });
-
-  overlay.addEventListener("click", () => {
-    closeModal(addTopicModal);
-    closeModal(document.querySelector("#view-episodes-modal"));
-  });
+const addTopicHandler = () => {
+  openModal(document.querySelector("#add-topic-modal"));
 };
+
+const addTopicModalSubmit = event => {
+  event.preventDefault();
+  createTopic();
+};
+
+const createTopic = async () => {
+  const input = document.querySelector("#add-topic-modal input");
+  fullScreenLoader("loading");
+  if (input.value) {
+    apiAdmin
+      .post(`courses/${course.id}/subjects`, {
+        title: input.value,
+        courseId: course.id,
+        sortId: course.subjects.length + 1,
+      })
+      .then(res => {
+        input.value = "";
+        showNotif("سر فصل جدید ساخته شد", "success");
+        getCourseAndShowDatas(course.id);
+        closeModal(document.querySelector("#add-topic-modal"));
+      })
+      .catch(err => {
+        showNotif("ساخت سر فصل جدید با مشکل مواجه شد!");
+      })
+      .finally(() => {
+        fullScreenLoader("loaded");
+      });
+  } else {
+    showNotif("لطفا عنوان سر فصل را وارد کنید");
+  }
+};
+
+// Close Modals
+
+const closeModals = () => {
+  closeModal(document.querySelector("#add-topic-modal"));
+  closeModal(document.querySelector("#add-episode-modal"));
+  closeModal(document.querySelector("#view-episodes-modal"));
+};
+
+// Preview Episode Video
 
 const previewEpisodeVideo = elem => {
   const videoPreviewElem = document.querySelector("#video-preview");
 
   videoPreviewElem.src = URL.createObjectURL(elem.files[0]);
 };
+
+// Helpers
 
 const openModal = modal => {
   _changeClasses("add", modal, ["show"]);
