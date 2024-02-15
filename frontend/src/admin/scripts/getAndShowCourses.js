@@ -1,5 +1,6 @@
+import { deleteCourseApi, getAllCourses } from "../../../services/coursesAPIs";
 import { categoryClickHandler, courseClickHandler } from "../../scripts/funcs/createCourseCard";
-import { _changeClasses, api, apiAdmin, fullScreenLoader, getTeacherName, showNotif } from "../../scripts/funcs/utils";
+import { BASE_URL, _changeClasses , fullScreenLoader, getTeacherName } from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
 let courseIdForDelete = null;
 
@@ -9,10 +10,7 @@ const getAndShowCourses = async () => {
 
   const coursesContainer = document.querySelector(".courses__container");
 
-  const courses = await api
-    .get("courses")
-    .then(res => res.data)
-    .catch(err => null);
+  const courses = await getAllCourses();
 
   coursesContainer.innerHTML = "";
 
@@ -30,7 +28,7 @@ const getAndShowCourses = async () => {
           class="course-card flex flex-col bg-gray-100/50 dark:bg-gray-700 border !border-b-transparent border-gray-300/80  dark:border-gray-600 dark:shadow-none overflow-hidden rounded-t-xl flex-1">
           <!-- Course Head -->
           <a href="../course.html" class="relative block h-42 w-full overflow-hidden">
-            <img src=http://localhost:3000/${course.image} class="w-full h-full object-cover rounded-xl" alt="" />
+            <img src=${BASE_URL}/${course.image} class="w-full h-full object-cover rounded-xl" alt="" />
           </a>
           <!-- Course Body -->
           <div class="px-5 pt-3.5 flex-grow">
@@ -186,20 +184,15 @@ const deleteCourseHandler = id => {
 
 const deleteCourse = async () => {
   fullScreenLoader("loading");
-  await apiAdmin
-    .delete(`courses/${courseIdForDelete}`)
-    .then(res => {
-      showNotif("دوره با موفقیت حذف شد", "success");
-      getAndShowCourses();
-    })
-    .catch(err => {
-      showNotif("مشکلی در حذف دوره به وجود آمده ! دوباره امتحان کنید");
-    })
-    .finally(() => {
-      fullScreenLoader("loaded");
-      _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
-      _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
-    });
+  const res = await deleteCourseApi(courseIdForDelete);
+
+  if (res.status) {
+    getAndShowCourses();
+  }
+
+  fullScreenLoader("loaded");
+  _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
+  _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
 };
 
 // Close Delete Course Modal

@@ -2,6 +2,8 @@ import axios from "axios";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
+const BASE_URL = "http://localhost:3000"
+
 // Change Class
 
 const _changeClasses = (action, element, className) => {
@@ -118,26 +120,6 @@ const getToken = () => {
   return localStorage.getItem("token");
 };
 
-// Get Me
-
-const getMe = async () => {
-  let token = getToken();
-  if (!token) {
-    return false;
-  }
-  return await api
-    .get("me", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then(res => {
-      return res;
-    })
-    .catch(err => {
-      return err;
-    });
-};
 
 // Loader
 
@@ -154,10 +136,10 @@ const fullScreenLoader = action => {
 // Create APIs - Axios
 
 const api = axios.create({
-  baseURL: "http://localhost:3000/api/",
+  baseURL: `${BASE_URL}/api/`,
 });
 const apiAdmin = axios.create({
-  baseURL: "http://localhost:3000/api/admin/",
+  baseURL: `${BASE_URL}/api/admin/`,
   headers: {
     Authorization: "Bearer " + getToken(),
   },
@@ -179,4 +161,4 @@ function getTeacherName(teacherName) {
     : "یافت نشد";
 }
 
-export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, getMe, fullScreenLoader, getTeacherName };
+export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, fullScreenLoader, getTeacherName , BASE_URL };

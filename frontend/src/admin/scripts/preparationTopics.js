@@ -1,4 +1,6 @@
-import { _changeClasses, api, apiAdmin, fullScreenLoader, getToken, showNotif } from "../../scripts/funcs/utils";
+import { getAllCourses, getCourseById } from "../../../services/coursesAPIs";
+import { createTopicApi } from "../../../services/topicsAPIs";
+import { _changeClasses, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
 
 const overlay = document.querySelector(".overlay");
 let course = null;
@@ -7,16 +9,16 @@ let topicIdForAddEpisode = "";
 const preparationTopics = async (courseId = null) => {
   const seleteCoursesInput = document.querySelector("#select-course");
 
-  await api.get("/courses").then(res => {
-    seleteCoursesInput.innerHTML = `<option value=""> انتخاب دوره... </option>`;
-    res.data.forEach(course => {
-      seleteCoursesInput.insertAdjacentHTML(
-        "beforeend",
-        `
-        <option value="${course.id}"> ${course.title} </option>
+  const courses = await getAllCourses();
+
+  seleteCoursesInput.innerHTML = `<option value=""> انتخاب دوره... </option>`;
+  courses.forEach(course => {
+    seleteCoursesInput.insertAdjacentHTML(
+      "beforeend",
       `
-      );
-    });
+      <option value="${course.id}"> ${course.title} </option>
+    `
+    );
   });
 
   seleteCoursesInput.addEventListener("change", () => {
@@ -48,22 +50,22 @@ const preparationTopics = async (courseId = null) => {
   window.closeModals = closeModals;
 };
 
-const getCourseAndShowDatas = id => {
+const getCourseAndShowDatas = async id => {
   document.querySelector("#topics__container").innerHTML = `<div class="loader mx-auto mt-5"></div>`;
-  api
-    .get(`courses/${id}`)
-    .then(res => {
-      _changeClasses("add", document.querySelector("#course-topic-cover"), ["hidden"]);
-      _changeClasses("remove", document.querySelector("#course-topic-container"), ["hidden"]);
 
-      course = res.data;
+  course = await getCourseById(id);
 
-      showTopics(res.data);
-    })
-    .catch(err => {
-      showNotif("دوره انتخاب شده پیدا نشد");
-      document.querySelector("#select-course").value = "";
-    });
+  if (course === null) {
+    showNotif("دوره انتخاب شده پیدا نشد");
+    document.querySelector("#select-course").value = "";
+
+    return;
+  }
+
+  _changeClasses("add", document.querySelector("#course-topic-cover"), ["hidden"]);
+  _changeClasses("remove", document.querySelector("#course-topic-container"), ["hidden"]);
+
+  showTopics();
 };
 
 const showTopics = () => {
@@ -158,26 +160,22 @@ const addEpisode = async topicId => {
     formData.append("file", fileInput.files[0]);
 
     fullScreenLoader("loading");
-    console.log(JSON.stringify(newEpisode), fileInput.files[0]);
-    await apiAdmin
-      .post("/episode", formData)
-      .then(res => {
-        console.log(res);
-        showNotif("قسمت جدید با موفقیت ساخته شد", "success");
-        closeModal(document.querySelector("#add-episode-modal"));
-        getCourseAndShowDatas(course.id);
 
-        titleInput.value = "";
-        isFreeInput.value = "";
-        fileInput.value = "";
-      })
-      .catch(err => {
-        console.log(err);
-        showNotif("مشکلی در ساخت قسمت جدید به وجود آمده!");
-      })
-      .finally(() => {
-        fullScreenLoader("loaded");
-      });
+    const res = await addEpisode(formData);
+
+    if (res.status === null) {
+      fullScreenLoader("loaded");
+      return;
+    }
+
+    closeModal(document.querySelector("#add-episode-modal"));
+    getCourseAndShowDatas(course.id);
+
+    titleInput.value = "";
+    isFreeInput.value = "";
+    fileInput.value = "";
+
+    fullScreenLoader("loaded");
   }
 };
 
@@ -253,25 +251,23 @@ const addTopicModalSubmit = event => {
 const createTopic = async () => {
   const input = document.querySelector("#add-topic-modal input");
   fullScreenLoader("loading");
+
   if (input.value) {
-    apiAdmin
-      .post(`courses/${course.id}/subjects`, {
+    const res = await createTopicApi(
+      course.id,
+      {
         title: input.value,
         courseId: course.id,
         sortId: course.subjects.length + 1,
-      })
-      .then(res => {
-        input.value = "";
-        showNotif("سر فصل جدید ساخته شد", "success");
-        getCourseAndShowDatas(course.id);
-        closeModal(document.querySelector("#add-topic-modal"));
-      })
-      .catch(err => {
-        showNotif("ساخت سر فصل جدید با مشکل مواجه شد!");
-      })
-      .finally(() => {
-        fullScreenLoader("loaded");
-      });
+      },
+      () => fullScreenLoader("loaded")
+    );
+
+    if (res.status === true) {
+      input.value = "";
+      getCourseAndShowDatas(course.id);
+      closeModal(document.querySelector("#add-topic-modal"));
+    }
   } else {
     showNotif("لطفا عنوان سر فصل را وارد کنید");
   }

@@ -1,8 +1,10 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { _changeClasses, api } from "./funcs/utils.js";
+import { _changeClasses } from "./funcs/utils.js";
 import createCourseCard, { courseClickHandler, categoryClickHandler } from "./funcs/createCourseCard.js";
+import { getAllCourses, getCoursesByCategoryId } from "../../services/coursesAPIs.js";
+import { getAllCategories } from "../../services/categoriesAPIs.js";
 
 window.courseClickHandler = courseClickHandler;
 window.categoryClickHandler = categoryClickHandler;
@@ -102,7 +104,7 @@ const getParams = async () => {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
-  category = (await api.get("categories")).data.find(category => category.categoryId == params.category) || "all";
+  category = (await getAllCategories()).find(category => category.categoryId == params.category) || "all";
 
   changeCategoryTitle();
 
@@ -226,7 +228,7 @@ const searchHandler = () => {
 const loadCourses = async () => {
   // Filter By Category
 
-  let coursesByCategory = category === "all" ? (await api.get(`courses`)).data : (await api.get(`courses/category/${category.categoryId}`)).data;
+  let coursesByCategory = category === "all" ? await getAllCourses() : await getCoursesByCategoryId(category.categoryId);
 
   // Filter By Filters Value
 

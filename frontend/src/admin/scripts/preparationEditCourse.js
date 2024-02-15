@@ -1,4 +1,6 @@
-import { api, apiAdmin, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import { getAllCategories } from "../../../services/categoriesAPIs";
+import { editCourseApi, getCourseById } from "../../../services/coursesAPIs";
+import { BASE_URL, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
 import {
   categoryPreviewHandler,
@@ -8,7 +10,6 @@ import {
   teacherPreviewHandler,
   titlePreviewHandler,
 } from "./createCoursePreview";
-import { getCategories } from "./showCategories";
 
 let courseId = null;
 
@@ -38,10 +39,13 @@ const preparationEditCourse = async id => {
 
   // Get Datas
 
-  const course = await getCourse(id);
-  const categories = await getCategories();
+  const course = await getCourseById(id);
+  const categories = await getAllCategories();
 
-  categories === null && changeContent("courses");
+  if (course === null || categories === null) {
+    changeContent("courses");
+    return;
+  }
 
   // Set Categories
 
@@ -70,7 +74,7 @@ const preparationEditCourse = async id => {
   newCourseShortName.value = course.shortName;
   newCourseTeacher.value = course.teacher;
   teacherPreviewHandler(newCourseTeacher);
-  newCoursePreviewImage.src = `http://localhost:3000/${course.image}`;
+  newCoursePreviewImage.src = `${BASE_URL}/${course.image}`;
   newCourseIsFreeElem.value = course.isFree;
   isFreePreviewHandler(newCourseIsFreeElem);
 
@@ -86,7 +90,7 @@ const preparationEditCourse = async id => {
   fullScreenLoader("loaded");
 };
 
-const editCourse = event => {
+const editCourse = async event => {
   event.preventDefault();
 
   const newCourseTitle = document.querySelector("#create-course-form #title");
@@ -120,42 +124,15 @@ const editCourse = event => {
       isFree: newCourseIsFreeElem.value,
     };
 
-    editCourseApi(newCourseDatas);
+    fullScreenLoader("loading");
+    const res = await editCourseApi(courseId, newCourseDatas);
+    fullScreenLoader("loaded");
+
+    if(res.status === true){
+      changeContent("courses")
+    }
   }
 };
 
-const editCourseApi = async newCourse => {
-  console.log(courseId, newCourse);
-  fullScreenLoader("loading");
-  await apiAdmin
-    .patch(`courses/${courseId}`, newCourse)
-    .then(res => {
-      console.log(res);
-      showNotif("دوره با موفقیت ویرایش شد", "success");
-    })
-    .catch(err => {
-      console.log(err);
-      showNotif("مشکلی پیش آمده");
-    })
-    .finally(() => {
-      fullScreenLoader("loaded");
-    });
-};
-
-const getCourse = async id => {
-  try {
-    const res = await api(`courses/${id}`);
-    const course = res.data;
-    console.log(course);
-
-    return course;
-  } catch (err) {
-    console.log(err);
-    changeContent("courses");
-    showNotif("اینترنت خود را بررسی کنید!");
-
-    return null;
-  }
-};
 
 export default preparationEditCourse;

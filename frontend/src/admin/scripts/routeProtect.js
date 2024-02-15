@@ -1,4 +1,3 @@
-import { getMe } from "../../scripts/funcs/utils";
 
 export default async function routeProtect() {
   // const user = (await getMe()).data;

@@ -1,4 +1,5 @@
-import { _changeClasses, getMe } from "./funcs/utils.js";
+import { getMe } from "../../services/usersAPIs.js";
+import { _changeClasses } from "./funcs/utils.js";
 
 const header = $ => {
   let openElem = {};
@@ -92,15 +93,15 @@ const header = $ => {
     const loginBtn = $.querySelector(".login-btn");
     const mobileLoginBtn = $.querySelector(".mobile-login-btn");
 
-    registerBtn.addEventListener("click" , ()=>{
-      location.replace(`./register.html?after=${location.pathname}`)
-    })
-    loginBtn.addEventListener("click" , ()=>{
-      location.replace(`./login.html?after=${location.pathname}`)
-    })
-    mobileLoginBtn.addEventListener("click" , ()=>{
-      location.replace(`./login.html?after=${location.pathname}`)
-    })
+    registerBtn.addEventListener("click", () => {
+      location.replace(`./register.html?after=${location.pathname}`);
+    });
+    loginBtn.addEventListener("click", () => {
+      location.replace(`./login.html?after=${location.pathname}`);
+    });
+    mobileLoginBtn.addEventListener("click", () => {
+      location.replace(`./login.html?after=${location.pathname}`);
+    });
   };
   setLinkForLoginAndRegisterBtn();
 
@@ -121,12 +122,14 @@ const header = $ => {
     const profileContainer = $.querySelector(".profile__container");
     const loginAndRegisterContainer = $.querySelector(".login-register__container");
     user = await getMe();
-    if (user.status == 200) {
-      _changeClasses("remove", profileContainer, ["hidden"]);
-      setContentProfileSubmenu(user.data);
-    } else {
+    console.log(user);
+
+    if (user === null) {
       _changeClasses("remove", loginAndRegisterContainer, ["hidden"]);
+      return;
     }
+    _changeClasses("remove", profileContainer, ["hidden"]);
+    setContentProfileSubmenu(user);
   };
   checkUserLogin();
 

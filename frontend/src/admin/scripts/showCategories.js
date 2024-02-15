@@ -1,10 +1,13 @@
-import { _changeClasses, api, apiAdmin, showNotif } from "../../scripts/funcs/utils";
+import { getAllCategories } from "../../../services/categoriesAPIs";
+import { _changeClasses } from "../../scripts/funcs/utils";
 import showCategoryCourses from "./showCategoryCourses";
 
 const showCategories = async () => {
   const categoriesContainer = document.querySelector("#categories__container");
 
-  const categories = await getCategories();
+  const categories = await getAllCategories();
+
+  categoriesContainer.innerHTML = "";
 
   categoriesContainer.innerHTML =
     categories?.length == 0 || !categories
@@ -49,25 +52,9 @@ const showCategories = async () => {
   window.closeViewCoursesModal = closeViewCoursesModal;
 };
 
-const getCategories = async () => {
-  try {
-    const res = await api.get("categories");
-    const categories = res.data;
-
-    console.log(res);
-
-    return categories;
-  } catch (err) {
-    console.log(err);
-    showNotif("اینترنت خود را بررسی کنید!");
-    return null;
-  }
-};
-
 const closeViewCoursesModal = () => {
   _changeClasses("remove", document.querySelector("#view-courses-modal"), ["show"]);
   _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
 };
 
 export default showCategories;
-export { getCategories };

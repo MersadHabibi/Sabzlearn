@@ -5,6 +5,7 @@ import "swiper/css";
 import Swiper from "swiper";
 import createCourseCard, { categoryClickHandler, courseClickHandler } from "./funcs/createCourseCard.js";
 import { api } from "./funcs/utils.js";
+import { getAllCourses } from "../../services/coursesAPIs.js";
 
 window.categoryClickHandler = categoryClickHandler;
 window.courseClickHandler = courseClickHandler;
@@ -18,7 +19,7 @@ let courses = null;
 
 // Get And Show Last Courses - random
 
-const getAndShowLastCourses = async () => {
+const getAndShowLastCourses = () => {
   const lastCoursesContainer = $.querySelector(".last-courses__container");
 
   let rndCourses = [...courses];
@@ -26,13 +27,13 @@ const getAndShowLastCourses = async () => {
   rndCourses = rndCourses.sort(() => Math.random() - 0.5);
 
   rndCourses.slice(0, 8).forEach(async course => {
-    lastCoursesContainer.insertAdjacentHTML("beforeend", await createCourseCard(course));
+    lastCoursesContainer.insertAdjacentHTML("beforeend", createCourseCard(course));
   });
 };
 
 // Get And Show New Courses
 
-const getAndShowNewCourses = async () => {
+const getAndShowNewCourses = () => {
   const newCoursesContainer = $.querySelector(".new-courses__container");
 
   courses.slice(0, 8).forEach(course => {
@@ -55,7 +56,7 @@ const getAndShowNewCourses = async () => {
 
 // Get And Show New Courses
 
-const getAndShowPresellCourses = async () => {
+const getAndShowPresellCourses = () => {
   const presellCoursesContainer = $.querySelector(".presell-courses__container");
 
   const presellCourses = courses.filter(course => {
@@ -82,7 +83,7 @@ const getAndShowPresellCourses = async () => {
 
 // Get And Show Popular Courses
 
-const getAndShowPopularCourses = async () => {
+const getAndShowPopularCourses = () => {
   const popularCoursesContainer = $.querySelector(".popular-courses__container");
 
   let popularCourses = [...courses];
@@ -108,11 +109,11 @@ const getAndShowPopularCourses = async () => {
 };
 
 window.addEventListener("load", async () => {
-  courses = (await api.get("courses")).data;
-  await getAndShowLastCourses();
-  await getAndShowNewCourses();
-  await getAndShowPresellCourses();
-  await getAndShowPopularCourses();
+  courses = await getAllCourses();
+  getAndShowLastCourses();
+  getAndShowNewCourses();
+  getAndShowPresellCourses();
+  getAndShowPopularCourses();
 });
 
 // New Courses

@@ -1,4 +1,6 @@
-import { _changeClasses, api, apiAdmin, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import { createCategoryApi } from "../../../services/categoriesAPIs";
+import { _changeClasses, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import showCategories from "./showCategories";
 
 const overlay = document.querySelector(".overlay");
 
@@ -29,20 +31,15 @@ const addCategory = async name => {
     showNotif("اسم دسته بندی جدید باید بیشتر از ۳ کلمه باشه");
   } else {
     fullScreenLoader("loading");
-    try {
-      const res = await apiAdmin.post("categories", {
-        name: name,
-      });
 
-      res.data.message == "Category created successfully" && showNotif("دسته بندی جدید با موفقیت اضافه شد", "success");
-    } catch (err) {
-      showNotif("مشکلی در ایجاد دسته بندی جدید به وجود آمده!");
-    } finally {
-      _changeClasses("remove", document.querySelector("#add-category-modal"), ["show"]);
-      _changeClasses("remove", overlay, ["show"]);
+    const res = await createCategoryApi(name);
 
-      fullScreenLoader("loaded");
-    }
+    if (res.status === true) showCategories();
+
+    _changeClasses("remove", document.querySelector("#add-category-modal"), ["show"]);
+    _changeClasses("remove", overlay, ["show"]);
+
+    fullScreenLoader("loaded");
   }
 };
 

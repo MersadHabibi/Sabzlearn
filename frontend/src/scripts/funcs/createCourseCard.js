@@ -1,6 +1,6 @@
 // Create Course Card
 
-import { getTeacherName } from "./utils";
+import { BASE_URL, getTeacherName } from "./utils";
 
 const createCourseCard = (
   course,
@@ -31,7 +31,7 @@ const createCourseCard = (
             : ""
         }
           <img
-            src=http://localhost:3000/${course.image}
+            src=${BASE_URL}/${course.image}
             onerror="this.src = 'http://localhost:8000/images/image-404.png'"
             class="w-full h-full object-cover rounded-2xl"
             alt="" />

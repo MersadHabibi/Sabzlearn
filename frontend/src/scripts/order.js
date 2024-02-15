@@ -1,7 +1,8 @@
 import "../styles/app.css";
 import "./share.js";
 import * as Converter from "persian-currency-converter";
-import { api, fullScreenLoader, getToken, showNotif } from "./funcs/utils";
+import { BASE_URL, api, fullScreenLoader, getToken, showNotif } from "./funcs/utils";
+import { getCourseById } from "../../services/coursesAPIs.js";
 
 let course = null;
 
@@ -14,20 +15,17 @@ async function getCourse() {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
-  try {
-    fullScreenLoader("loading");
-    const res = await api.get(`courses/${params.courseId}`);
+  fullScreenLoader("loading");
+  course = await getCourseById(params.courseId);
 
-    if (res.statusText !== "OK") throw new Error("Error");
-
-    course = res.data;
-    console.log(course);
-    setDatas();
-  } catch (err) {
+  if (course === null) {
     location.href = "./course.html";
-  } finally {
-    fullScreenLoader("loaded");
+    return;
   }
+
+  setDatas();
+
+  fullScreenLoader("loaded");
 }
 
 function setDatas() {
@@ -36,7 +34,7 @@ function setDatas() {
   const mainPriceElem = document.querySelector("#course__main-price");
   const payablePriceElem = document.querySelector("#course__payable-price");
 
-  imageElem.src = `http://localhost:3000/${course.image}`;
+  imageElem.src = `${BASE_URL}/${course.image}`;
 
   titleElem.innerText = course.title;
 
@@ -45,8 +43,8 @@ function setDatas() {
 }
 
 buyBtn.addEventListener("click", async () => {
+  fullScreenLoader("loading");
   try {
-    fullScreenLoader("loading");
     const res = await api.post(
       "courses",
       {

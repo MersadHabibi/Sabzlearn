@@ -1,9 +1,11 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { _changeClasses, api, createTimer, fullScreenLoader, getMe, getTeacherName, showNotif } from "./funcs/utils.js";
+import { BASE_URL, _changeClasses, api, createTimer, fullScreenLoader, getTeacherName, showNotif } from "./funcs/utils.js";
 import createNewComment from "./funcs/createComment.js";
 import createReplyComment from "./funcs/replayComment.js";
+import { getCourseById } from "../../services/coursesAPIs.js";
+import { getMe } from "../../services/usersAPIs.js";
 
 fullScreenLoader("loading");
 
@@ -36,8 +38,8 @@ const preparationNewAndReplayComment = () => {
 
     _changeClasses("add", document.querySelector("#comment-submit-btn"), ["load"]);
     if (replayOrNewComment == "new") {
-      if (user.data) {
-        let res = await createNewComment(user.data.id, course.id, formTextarea.value);
+      if (user !== null) {
+        let res = await createNewComment(user.id, course.id, formTextarea.value);
         if (res == true) {
           _changeClasses("remove", courseComments, ["show-new-comment-form"]);
           formTextarea.value = "";
@@ -50,7 +52,7 @@ const preparationNewAndReplayComment = () => {
         showNotif("وارد شوید");
       }
     } else {
-      let res = await createReplyComment(user.data.id, replayOrNewComment, formTextarea.value);
+      let res = await createReplyComment(user.id, replayOrNewComment, formTextarea.value);
       if (res == true) {
         _changeClasses("remove", courseComments, ["show-new-comment-form"]);
         formTextarea.value = "";
@@ -154,8 +156,7 @@ createTimer(offerDay, offerHur, offerMin, offerSec, "0:14:10:3", false);
 const getCourse = async () => {
   const targetCourseId = localStorage.getItem("course");
 
-  course = (await api.get(`courses/${targetCourseId}`)).data;
-  console.log(course);
+  course = await getCourseById(targetCourseId);
 };
 
 // BreadCrumb
@@ -197,7 +198,7 @@ const setDatas = () => {
 
   // Image
 
-  courseImage.src = `http://localhost:3000/${course.image}`;
+  courseImage.src = `${BASE_URL}/${course.image}`;
   courseImage.alt = course.title;
   _changeClasses("remove", courseImage, ["hidden"]);
 
@@ -371,11 +372,11 @@ const insertComments = comments => {
             <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="/images/user-profile.png" />
             <div class="text-xs w-full rounded-md text-center py-0.5 ${
               comment.Users.role == "admin"
-                ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
+                ? "text-white bg-sky-500 dark:text-sky-500 dark:bg-sky-500/10"
                 : comment.Users.role == "user"
-                ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                ? "bg-slate-500 text-white dark:text-slate-400 dark:bg-slate-400/10"
                 : comment.Users.role == "student"
-                ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                ? "text-white bg-primary dark:text-primary dark:bg-primary/10"
                 : ""
             }"> 
             ${comment.Users.role == "admin" ? "مدیریت" : comment.Users.role == "user" ? "کاربر" : comment.Users.role == "student" ? "دانشجو" : ""}
@@ -406,7 +407,9 @@ const insertComments = comments => {
                   </div>
                 </div>
               </div>
-              <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button" data-comment-id=${comment.id} data-creator="mersad">
+              <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button" data-comment-id=${comment.id} data-creator=" ${
+        comment.Users.username
+      }">
                 <svg class="w-6 h-5">
                   <use xlink:href="#reply"></use>
                 </svg>
@@ -433,7 +436,7 @@ const insertComments = comments => {
                           reply.Users.role == "admin"
                             ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
                             : reply.Users.role == "user"
-                            ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                            ? "bg-slate-500 text-white dark:text-slate-400 dark:bg-slate-400/10"
                             : reply.Users.role == "student"
                             ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
                             : ""

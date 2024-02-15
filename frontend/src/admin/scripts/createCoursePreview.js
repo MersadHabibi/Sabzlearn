@@ -1,6 +1,6 @@
 import * as Converter from "persian-currency-converter";
 import { getTeacherName } from "../../scripts/funcs/utils";
-import { getCategories } from "./showCategories";
+import { getAllCategories } from "../../../services/categoriesAPIs";
 
 let isFree = false;
 let price = "0000000";
@@ -38,7 +38,7 @@ const categoryPreviewHandler = async elem => {
   if (elem.value) {
     categoryPreview.innerText = "loading...";
 
-    const categories = await getCategories();
+    const categories = await getAllCategories();
 
     const categoryTarget = categories.filter(category => category.categoryId == elem.value);
     categoryPreview.innerText = categoryTarget[0].categoryName;

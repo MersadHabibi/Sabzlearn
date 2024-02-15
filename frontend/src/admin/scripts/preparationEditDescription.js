@@ -1,4 +1,5 @@
-import { api, fullScreenLoader } from "../../scripts/funcs/utils";
+import { getCourseById } from "../../../services/coursesAPIs";
+import { fullScreenLoader } from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
 import ckEditor from "./ckEditorConfig";
 import getAndPostCourseDescription from "./getAndPostCourseDescription";
@@ -7,7 +8,9 @@ const preparationEditDescription = async courseId => {
   fullScreenLoader("loading");
 
   const editor = await ckEditor();
-  const course = await getCourse(courseId);
+  const course = await getCourseById(courseId);
+
+  if (course === null) changeContent("courses");
 
   editor.setData(course.description);
   fullScreenLoader("loaded");
@@ -23,21 +26,6 @@ const preparationEditDescription = async courseId => {
   });
 
   document.querySelector("#course-name").innerHTML = ` اسم دوره : ${course.title} `;
-};
-
-const getCourse = async id => {
-  try {
-    const res = await api.get(`courses/${id}`);
-    const course = res.data;
-
-    console.log(course);
-
-    return course;
-  } catch (err) {
-    changeContent("courses");
-
-    return null;
-  }
 };
 
 export default preparationEditDescription;

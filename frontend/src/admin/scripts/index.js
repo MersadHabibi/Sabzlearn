@@ -3,9 +3,7 @@ import "../../scripts/share.js";
 import "ckeditor-tailwind-reset/ckeditor-tailwind-reset.css";
 import { _changeClasses } from "../../scripts/funcs/utils.js";
 import changeContent from "./changeContents.js";
-import routeProtect from "./routeProtect.js";
 
-// routeProtect();
 
 const menuItems = document.querySelectorAll(".menu__item");
 const notifBtn = document.querySelector(".notif-btn");
@@ -14,7 +12,7 @@ const openMobileMenuBtn = document.querySelector(".mobile-menu-open-btn");
 const closeMobileMenuBtn = document.querySelector(".mobile-menu-close-btn");
 const menuContainer = document.querySelector("aside");
 
-// Menu Items
+// Menu Items 
 
 menuItems.forEach(menuItem => {
   menuItem.addEventListener("click", () => {

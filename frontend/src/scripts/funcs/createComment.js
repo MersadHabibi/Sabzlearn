@@ -1,4 +1,5 @@
-import { api, fullScreenLoader, getToken, showNotif } from "./utils";
+import { createNewCommentApi } from "../../../services/commentsAPIs";
+import { showNotif } from "./utils";
 
 const createNewComment = async (userId, courseId, commentText) => {
   if (!commentText) {
@@ -6,28 +7,10 @@ const createNewComment = async (userId, courseId, commentText) => {
     return;
   }
   console.log("loader");
-  return await api
-    .post(
-      "comments",
-      {
-        userId: userId,
-        courseId: courseId,
-        body: commentText,
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + getToken(),
-        },
-      }
-    )
-    .then(res => {
-      showNotif("کامنت با موفقیت ثبت شد", "success");
-      return true;
-    })
-    .catch(err => {
-      showNotif("مشکلی در ثبت کامنت رخ داد! بعدا امتحان کنید");
-      return false;
-    });
+
+  const res = await createNewCommentApi(userId, courseId, commentText);
+
+  return res.status;
 };
 
 export default createNewComment;

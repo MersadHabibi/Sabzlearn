@@ -3,6 +3,7 @@ import "./header.js";
 import "./share.js";
 import { api, fullScreenLoader, showNotif } from "./funcs/utils.js";
 import { redirectWhenHaveToken, getAfterPageLink } from "./funcs/share.js";
+import { registerApi } from "../../services/usersAPIs.js";
 
 redirectWhenHaveToken(getAfterPageLink());
 
@@ -23,31 +24,23 @@ form.addEventListener("submit", e => {
       } را به درستی وارد کنید.`
     );
   } else {
-    register(emailAddressInput.value, usernameInput.value, phoneNumberInput.value, passwordInput.value);
+    register();
   }
 });
 
-const register = async (email, username, phoneNumber, password, address = " ") => {
+const register = async () => {
+  const newUser = {
+    email: emailAddressInput.value,
+    username: usernameInput.value,
+    phoneNumber: phoneNumberInput.value,
+    password: passwordInput.value,
+    repeat_password: passwordInput.value,
+    address: " ",
+  };
+
+  console.log(newUser);
   fullScreenLoader("loading");
-  await api
-    .post("register", {
-      email: email,
-      username: username,
-      phoneNumber: phoneNumber,
-      password: password,
-      repeat_password: password,
-      address: address,
-    })
-    .then(res => {
-      showNotif("اکانت شما با موفقیت ساخته شد", "success");
-      localStorage.setItem("token", res.data.token);
-      location.href = getAfterPageLink();
-    })
-    .catch(err => {
-      if (err.message == "Request failed with status code 403") showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
-      else showNotif("ساخت حساب با مشکل مواجه شد");
-    })
-    .finally(() => {
-      fullScreenLoader("loaded");
-    });
+  const res = await registerApi(newUser);
+  fullScreenLoader("loaded");
+  if (res !== null) location.replace(getAfterPageLink());
 };

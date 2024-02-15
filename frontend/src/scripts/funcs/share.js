@@ -1,10 +1,11 @@
-import { getMe } from "./utils.js";
 
 // Redirect Login & Register
 
+import { getMe } from "../../../services/usersAPIs.js";
+
 const redirectWhenHaveToken = async redirectLink => {
   const user = await getMe();
-  if (user.status == 200) {
+  if (user !== null) {
     location.href = redirectLink;
   }
 };
