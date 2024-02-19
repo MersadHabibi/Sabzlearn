@@ -10,7 +10,6 @@ async function getCoursesByCategory(req, res) {
         categoryId: req.params.id,
       },
       include: {
-        Users: true,
         category: {
           select: {
             name: true,
@@ -18,21 +17,31 @@ async function getCoursesByCategory(req, res) {
         },
       },
     })
-    .then(async (course) => {
-      console.log(course);
-      if (course != []) {
-        const studentsCount = await course?.reduce((count, course) => {
-          return count + course?.Users?.length;
-        }, 0);
+    .then(async (courses) => {
+      console.log(courses);
+      if (courses != []) {
+        // const studentsCount = courses?.reduce((count, course) => {
+        //   console.log(count);
+        //   console.log(Array.from(course?.Users));
+        //   return count + Array.from(course?.Users).length;
+        // }, 0);
+        // prisma.users.findMany({
+        //   include:{
 
+        //   },
+        //   where:{
+
+        //   }
+        // })
         const obj = {
-          categoryId: course.categoryId,
-          categoryName: course.category?.name,
-          studentsCount,
+          categoryId: courses[0].categoryId,
+          categoryName: courses[0].category?.name,
+          studentsCount: 0,
         };
-        if (studentsCount) {
-          return res.json({ course, details: obj });
-        }
+        // console.log(studentsCount);
+        // if (studentsCount) {
+        return res.json({ courses, details: obj });
+        // }
       } else {
         return res.status(404).json({
           message: "There is not any course in this categorie.",

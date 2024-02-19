@@ -39,6 +39,13 @@ async function buyCourse(req, res) {
                   where: { id: req.userId },
                   data: {
                     courses: {
+                      update: {
+                        data: {
+                          studentsCount: {
+                            increment: 1,
+                          },
+                        },
+                      },
                       connect: {
                         id: courseId,
                       },

@@ -29,6 +29,9 @@ function EditCourse(req, res) {
             id: req.params.id,
           },
         })
+        .then((result) => {
+          res.json({ message: "The Course Updated SuccesFully." });
+        })
         .catch((err) => {
           res
             .status(500)
