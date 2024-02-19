@@ -1,8 +1,9 @@
 import "../styles/app.css";
 import "./header.js";
 import "./share.js";
-import { api, fullScreenLoader, showNotif } from "./funcs/utils.js";
+import { fullScreenLoader } from "./funcs/utils.js";
 import { redirectWhenHaveToken, getAfterPageLink } from "./funcs/share.js";
+import { loginApi } from "../../services/usersAPIs.js";
 
 redirectWhenHaveToken(getAfterPageLink());
 
@@ -15,36 +16,15 @@ const form = $.querySelector("form");
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  login(emailAddressInput.value, passwordInput.value);
+  if (emailAddressInput.value && passwordInput.value) login();
 });
 
-const login = async (email, password) => {
+const login = async () => {
   fullScreenLoader("loading");
-  await api
-    .post(
-      "login",
-      {
-        email: email,
-        password: password,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-    .then(res => {
-      console.log(res);
-      if (!res.data.token) {
-        showNotif("ایمیل یا رمز عبور درست نیست");
-      } else if (res.data.token) {
-        showNotif("با موفقیت وارد شدید", "success");
-        localStorage.setItem("token", res.data.token);
-        location.replace(getAfterPageLink());
-      }
-    })
-    .catch(err => showNotif("مشکلی پیش آمده"))
-    .finally(() => {
-      fullScreenLoader("loaded");
-    });
+  const res = await loginApi({
+    email: emailAddressInput.value,
+    password: passwordInput.value,
+  });
+
+  if (res !== null) location.replace(getAfterPageLink());
 };

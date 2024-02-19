@@ -1,5 +1,6 @@
 import { _changeClasses, api } from "../../scripts/funcs/utils";
 import createCourseCard, { courseClickHandler, categoryClickHandler } from "../../scripts/funcs/createCourseCard";
+import { getCoursesByCategoryId } from "../../../services/coursesAPIs";
 
 const overlay = document.querySelector(".overlay");
 
@@ -14,12 +15,11 @@ const showCategoryCourses = async id => {
   //
   coursesContainer.innerHTML = `<div class="loader mx-auto my-3 sm:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>`;
 
-  const courses = await getCourses(id);
+  const courses = await getCoursesByCategoryId(id);
 
-  coursesContainer.innerHTML =
-    courses.length == 0
-      ? "<p class='text-xl text-center dark:text-white sm:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5'> دوره ای وجود ندارد </p>"
-      : "";
+  courses === null &&
+    (coursesContainer.innerHTML =
+      "<p class='text-xl text-center dark:text-white sm:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5'> دوره ای وجود ندارد </p>");
 
   courses?.forEach(course => {
     console.log(course);
@@ -33,17 +33,6 @@ const showCategoryCourses = async id => {
 
   window.categoryClickHandler = categoryClickHandler;
   window.courseClickHandler = courseClickHandler;
-};
-
-const getCourses = async id => {
-  try {
-    const res = await api.get(`courses/category/${id}`);
-    const courses = res.data;
-
-    return courses;
-  } catch (err) {
-    return null;
-  }
 };
 
 export default showCategoryCourses;

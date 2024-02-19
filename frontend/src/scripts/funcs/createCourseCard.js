@@ -1,5 +1,7 @@
 // Create Course Card
 
+import { BASE_URL, getTeacherName } from "./utils";
+
 const createCourseCard = (
   course,
   props = {
@@ -29,7 +31,7 @@ const createCourseCard = (
             : ""
         }
           <img
-            src=http://localhost:3000/${course.image}
+            src=${BASE_URL}/${course.image}
             onerror="this.src = 'http://localhost:8000/images/image-404.png'"
             class="w-full h-full object-cover rounded-2xl"
             alt="" />
@@ -42,7 +44,7 @@ const createCourseCard = (
           <div class="flex justify-start items-center gap-1">
             <a
               onclick="categoryClickHandler('${course.categoryId}')"
-              href=./categories.html?category=${course.category?.name}
+              href=./categories.html?category=${course.categoryId}
               class="inline-flex items-center justify-center text-xs py-1 px-1.5 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded"> ${course.category?.name} </a>
           </div>
         `
@@ -56,7 +58,7 @@ const createCourseCard = (
               ? `
             <p
               class="line-clamp-2 font-light text-sm text-slate-500 dark:text-slate-400">
-              ${course.description}
+              ${course.caption}
             </p>
           `
               : ""
@@ -74,23 +76,13 @@ const createCourseCard = (
                 <svg class="w-4 h-4">
                   <use href="#user"></use>
                 </svg>
-                <span> ${
-                  course.teacher == "SaeidiRad"
-                    ? "محمد امین سعیدی راد"
-                    : course.teacher == "barati"
-                    ? "مهرشاد براتی"
-                    : course.teacher == "ebadi"
-                    ? "حمیدرضا عبادی"
-                    : course.teacher == "rezaDolati"
-                    ? "رضا دولتی"
-                    : "غیره..."
-                } </span>
+                <span> ${getTeacherName(course.teacher)} </span>
               </a>
               <span class="flex items-center gap-x-1">
                 <svg class="w-4 h-4">
                   <use href="#clock"></use>
                 </svg>
-                <span> ${course.time} </span>
+                <span> ${!course.timeForShow ? "00:00" : course.timeForShow} </span>
               </span>
             </div>
             <div class="flex items-center gap-x-1 text-amber-400">

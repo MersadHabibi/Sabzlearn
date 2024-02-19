@@ -1,4 +1,5 @@
-import { _changeClasses, apiAdmin, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import { blockAndUnBlockUserApi, changeUserRoleApi, getAllUsers } from "../../../services/usersAPIs";
+import { _changeClasses, fullScreenLoader } from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
 
 const overlay = document.querySelector(".overlay");
@@ -8,7 +9,7 @@ let userId = null;
 const showUsers = async () => {
   const usersContainer = document.querySelector(".users__container");
 
-  const users = await getUsers();
+  const users = await getAllUsers();
 
   if (!users) {
     usersContainer.innerHTML = `<p class="text-xl dark:text-white text-center py-3 sm:col-span-2 md:col-span-1 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></p>`;
@@ -35,18 +36,6 @@ const showUsers = async () => {
   window.showUnBlockUserModal = showUnBlockUserModal;
   window.hideUnBlockUserModal = hideUnBlockUserModal;
   window.unBlockUser = unBlockUser;
-};
-
-const getUsers = async () => {
-  try {
-    const res = await apiAdmin.get("users");
-    const users = res.data;
-
-    return users;
-  } catch (err) {
-    showNotif("اینترنت خود را بررسی کنید!");
-    return null;
-  }
 };
 
 const createUserCard = user => {
@@ -127,56 +116,30 @@ const createUserCard = user => {
 // Change Role => selectAdmin , removeAdmin
 
 const selectAdmin = id => {
-  userId = id;
+  fullScreenLoader("loading");
 
-  changeUserRole("admin");
-};
-const removeAdmin = id => {
-  userId = id;
-
-  changeUserRole("user");
-};
-
-const changeUserRole = async role => {
-  try {
-    fullScreenLoader("loading");
-    const res = await apiAdmin.patch(`users/${userId}`, {
-      id: userId,
-      role: role,
-    });
-
-    role == "admin" && showNotif("ادمین با موفقیت انتخاب شد", "success");
-    role == "user" && showNotif("ادمین با موفقیت حذف شد", "success");
-
-    console.log(res);
-  } catch (err) {
-    console.log(err);
-    role == "admin" && showNotif("مشکلی در انتخاب ادمین به وجود آمده!");
-    role == "user" && showNotif("مشکلی در حذف ادمین به وجود آمده!");
-  } finally {
+  changeUserRoleApi(id, "admin", () => {
     fullScreenLoader("loaded");
     showUsers();
-  }
+  });
+};
+const removeAdmin = id => {
+  fullScreenLoader("loading");
+
+  changeUserRoleApi(id, "user", () => {
+    fullScreenLoader("loaded");
+    showUsers();
+  });
 };
 
 // Block User
 const blockUser = async () => {
-  console.log("block");
-  try {
-    fullScreenLoader("loading");
-    const res = await apiAdmin.post(`users/${userId}`, {
-      id: userId,
-    });
-    console.log(res);
-    showNotif("کاربر مسدود شد", "success");
-  } catch (err) {
-    console.log(err);
-    showNotif("مشکلی به وجود آمده! دوباره امتحان کنید");
-  } finally {
+  fullScreenLoader("loading");
+  await blockAndUnBlockUserApi("block", userId, () => {
     fullScreenLoader("loaded");
     hideBlockUserModal();
     showUsers();
-  }
+  });
 };
 
 // Show and Hide Block User Modal
@@ -194,22 +157,12 @@ const hideBlockUserModal = () => {
 
 // unBlock User
 const unBlockUser = async () => {
-  console.log("unblock");
-  try {
-    fullScreenLoader("loading");
-    const res = await apiAdmin.post(`users/${userId}`, {
-      id: userId,
-    });
-    console.log(res);
-    showNotif("کاربر رفع انسداد شد", "success");
-  } catch (err) {
-    console.log(err);
-    showNotif("مشکلی به وجود آمده! دوباره امتحان کنید");
-  } finally {
+  fullScreenLoader("loading");
+  await blockAndUnBlockUserApi("block", userId, () => {
     fullScreenLoader("loaded");
     hideUnBlockUserModal();
     showUsers();
-  }
+  });
 };
 
 // Show and Hide unBlock User Modal

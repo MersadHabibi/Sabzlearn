@@ -1,5 +1,6 @@
-import { showNotif, api, apiAdmin, getToken, fullScreenLoader } from "../../scripts/funcs/utils.js";
-import { getCategories } from "./showCategories.js";
+import { getAllCategories } from "../../../services/categoriesAPIs.js";
+import { createCourseApi } from "../../../services/coursesAPIs.js";
+import { showNotif, fullScreenLoader } from "../../scripts/funcs/utils.js";
 
 const $ = document;
 
@@ -8,13 +9,12 @@ const preparationCreateCourse = async () => {
   const newCourseCoverElem = $.querySelector("#create-course-form #cover");
   const newCourseCategory = $.querySelector("#create-course-form #category");
   const submitBtn = $.querySelector("#submit-btn");
-  const imagePreviewElem = document.querySelector("#image-preview");
 
   const imagePreview = document.querySelector(".preview__img");
 
-  const categories = await getCategories();
+  const categories = await getAllCategories();
 
-  if (categories) {
+  if (categories){
     newCourseCategory.innerHTML = "<option value=''>دسته بندی...</option>";
 
     categories.forEach(category => {
@@ -35,7 +35,6 @@ const preparationCreateCourse = async () => {
   newCourseCoverElem.addEventListener("change", () => {
     const [file] = newCourseCoverElem.files;
     if (file) {
-      imagePreviewElem.src = URL.createObjectURL(file);
       imagePreview.src = URL.createObjectURL(file);
     }
   });
@@ -101,19 +100,8 @@ const createCourse = () => {
 
 const sentCreateCourseApi = async formData => {
   fullScreenLoader("loading");
-  await apiAdmin
-    .post("courses", formData)
-    .then(res => {
-      console.log(res);
-      showNotif("دوره با موفقیت ساخته شد", "success");
-    })
-    .catch(err => {
-      console.log(err);
-      showNotif("مشکلی پیش آمده");
-    })
-    .finally(() => {
-      fullScreenLoader("loaded");
-    });
+  await createCourseApi(formData);
+  fullScreenLoader("loaded");
 };
 
 export default preparationCreateCourse;

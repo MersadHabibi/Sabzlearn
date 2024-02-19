@@ -7,6 +7,7 @@ import preparationEditDescription from "./preparationEditDescription";
 import preparationTopics from "./preparationTopics";
 import showCategories from "./showCategories";
 import createCoursePreview from "./createCoursePreview";
+import preparationEditCourse from "./preparationEditCourse";
 
 const changeContent = async (targetMenu, courseId) => {
   const contentContainer = document.querySelector(".content-container");
@@ -65,14 +66,18 @@ const changeContent = async (targetMenu, courseId) => {
           <!-- Inputs -->
           <div class="col-span-1 grid grid-cols-3 gap-x-3 lg:gap-x-5 gap-y-4 lg:gap-y-5">
             <!-- course cover -->
-            <div id="image" class="relative text-sm md:text-base w-full h-56 sm:h-[300px] lg:h-56 xl:h-[300px] col-span-3 rounded-2xl overflow-hidden">
+            <div id="image" class="w-full h-fit col-span-3">
               <label
                 for="cover"
-                class="custom-file-upload absolute top-3 right-3 opacity-40 hover:opacity-90 shrink-0 shadow-light transition-all rounded-lg">
-                انتخاب عکس دوره
+                class="custom-file-upload flex justify-center items-center gap-x-2 shrink-0 shadow-light transition-all rounded-lg w-full py-3 bg-primary hover:bg-green-500 text-white">
+                <svg class="size-5">
+                  <use href="#upload"/>
+                </svg>
+                <span class="font-DanaMedium mt-0.5"> 
+                  انتخاب عکس دوره
+                </span>
               </label>
-              <input id="cover" class="hidden w-auto border-none" type="file" />
-              <img id="image-preview" src="http://localhost:8000/images/choose-image-placeholder.png" alt="your image" class="w-full h-full object-cover" />
+              <input id="cover" class="hidden w-auto border-none" type="file" accept="image/*" />
             </div>
             <!-- course name -->
             <input
@@ -111,6 +116,7 @@ const changeContent = async (targetMenu, courseId) => {
               <option value="ebadi">حمید رضا عبادی</option>
               <option value="barati">مهرشاد براتی</option>
               <option value="rezaDolati">رضا دولتی</option>
+              <option value="moghadas"> اشکان مقدس </option>
             </select>
             <!-- course price -->
             <input
@@ -154,25 +160,23 @@ const changeContent = async (targetMenu, courseId) => {
               class="course-card flex flex-col bg-white dark:bg-gray-800 shadow-light dark:shadow-none border-gray-200/80 border dark:border-gray-700 overflow-hidden rounded-2xl">
               <!-- Course Head -->
               <div class="relative block h-56 sm:h-[300px] lg:h-56 xl:h-[300px] w-full overflow-hidden">
-                <img src="http://localhost:8000/images/choose-image-placeholder.png" class="preview__img w-full h-full object-cover rounded-2xl" alt="" />
+                <img src="/images/choose-image-placeholder.png" class="preview__img w-full h-full object-cover rounded-2xl" alt="" />
               </div>
               <!-- Course Body -->
               <div class="px-3 xs:px-5 pt-4 pb-5 flex-grow">
                 <div class="flex justify-start items-center gap-1">
                   <p
                     class="preview__category inline-flex items-center justify-center text-sm py-1.5 px-2 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded">
-                    فرانت اند
+                    (خالی)
                   </p>
                 </div>
 
                 <p class="preview__title font-DanaMedium dark:text-white text-xl xs:text-2xl line-clamp-2 my-2.5 xs:my-5">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit
+                  (خالی)
                 </p>
 
                 <p class="preview__description line-clamp-3 text-sm xs:text-base font-light text-slate-500 dark:text-slate-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi, deleniti, molestias voluptas ex, consequatur voluptatem quidem
-                  culpa amet incidunt eveniet ut impedit ab. Assumenda rerum, delectus officiis obcaecati modi ipsa veniam voluptates ratione sapiente
-                  dolorem quae itaque saepe? Quasi in aperiam optio eius accusantium, eum voluptatibus enim suscipit sunt!
+                  (خالی)
                 </p>
               </div>
               <!-- Course Footer -->
@@ -184,7 +188,7 @@ const changeContent = async (targetMenu, courseId) => {
                       <svg class="size-5 xs:size-6">
                         <use href="#user"></use>
                       </svg>
-                      <span class="preview__teacher"> محمد امین سعیدی راد </span>
+                      <span class="preview__teacher"> (خالی) </span>
                     </a>
                     <span class="flex items-center gap-x-1">
                       <svg class="size-5 xs:size-6">
@@ -212,13 +216,13 @@ const changeContent = async (targetMenu, courseId) => {
                   <div class="preview__price text-primary">
                     <!-- Free Price -->
                     <div class="!hidden">
-                      <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> 1,200,000 </del>
+                      <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> 0,000,000 </del>
                       <span class="xs:font-DanaMedium text-lg xs:text-2xl">رایگان!</span>
                     </div>
 
                     <!-- Normal Price -->
                     <div class="flex gap-x-1 items-center">
-                      <span class="text-lg xs:text-2xl"> 1,200,000 </span>
+                      <span class="text-lg xs:text-2xl"> 0,000,000 </span>
                       <svg class="size-4 xs:size-6">
                         <use href="#toman"></use>
                       </svg>
@@ -244,6 +248,201 @@ const changeContent = async (targetMenu, courseId) => {
 
     createCoursePreview();
     preparationCreateCourse();
+  } else if (targetMenu == "edit-course") {
+    contentContainer.innerHTML = `
+      <div class="content create-course">
+        <form onsubmit="editCourse(event)" id="create-course-form" class="flex flex-col lg:grid grid-cols-2 gap-5 sm:gap-10">
+          <!-- Inputs -->
+          <div class="col-span-1 grid grid-cols-3 gap-x-3 lg:gap-x-5 gap-y-4 lg:gap-y-5">
+            <!-- course cover -->
+            <div id="image" class="w-full h-fit col-span-3">
+              <label
+                for="cover"
+                class="custom-file-upload flex justify-center items-center gap-x-2 shrink-0 shadow-light transition-all rounded-lg w-full py-3 bg-primary hover:bg-green-500 text-white">
+                <svg class="size-5">
+                  <use href="#upload"/>
+                </svg>
+                <span class="font-DanaMedium mt-0.5"> 
+                  انتخاب عکس دوره
+                </span>
+              </label>
+              <input id="cover" class="hidden w-auto border-none" type="file" accept="image/*" />
+            </div>
+            <!-- course name -->
+            <input
+              oninput="titlePreviewHandler(this)"
+              id="title"
+              class="col-span-3 bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+              type="text"
+              placeholder="نام دوره" />
+            <!-- course category -->
+            <select
+              oninput="categoryPreviewHandler(this)"
+              id="category"
+              name=""
+              id=""
+              class="col-span-3 w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+              <option value="">در حال جست و جو...</option>
+            </select>
+            <!-- course description -->
+            <textarea
+              oninput="descriptionPreviewHandler(this)"
+              id="description"
+              rows="8"
+              class="col-span-3 w-full p-3 sm:p-5 outline-none text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all"
+              id="text"
+              name="text"
+              placeholder="توضیحات دوره"></textarea>
+            <!-- course teacher -->
+            <select
+              oninput="teacherPreviewHandler(this)"
+              id="teacher"
+              name=""
+              id=""
+              class="col-span-3 xl:col-span-1 w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+              <option value="">مدرس دوره...</option>
+              <option value="SaeidiRad">محمد امین سعیدی راد</option>
+              <option value="ebadi">حمید رضا عبادی</option>
+              <option value="barati">مهرشاد براتی</option>
+              <option value="rezaDolati">رضا دولتی</option>
+              <option value="moghadas"> اشکان مقدس </option>
+            </select>
+            <!-- course price -->
+            <input
+              oninput="pricePreviewHandler(this)"
+              id="price"
+              class="col-span-3 xl:col-span-1 bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-lg"
+              type="text"
+              placeholder="قیمت دوره به تومان" />
+            <!-- is Free -->
+            <select
+              oninput="isFreePreviewHandler(this)"
+              id="isFree"
+              name=""
+              class="col-span-3 xl:col-span-1 w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+              <option value="">دوره رایگان است؟</option>
+              <option value="true">بله</option>
+              <option value="false">خیر</option>
+            </select>
+            <!-- course status -->
+            <select
+              id="status"
+              name=""
+              id=""
+              class="col-span-3 xl:col-span-1 w-full px-3 sm:px-5 h-12 sm:h-14 text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white bg-white shadow-light dar:shadow-none dark:bg-gray-700 rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none">
+              <option value="">وضعیت دوره...</option>
+              <option value="presell">پیش فروش</option>
+              <option value="completing">در حال تکمیل</option>
+              <option value="completed">تکمیل شده</option>
+            </select>
+            <!-- course link -->
+            <input
+              id="short-name"
+              class="col-span-3 xl:col-span-2 bg-white shadow-light dar:shadow-none dark:bg-gray-700 h-12 sm:h-14 px-3 sm:px-5 text-sm sm:text-xl"
+              type="text"
+              placeholder="کلمات کلیدی(برای جستجو بهتر)" />
+          </div>
+
+          <!-- Preview -->
+          <div class="col-span-1 py-10 lg:py-0">
+            <div
+              class="course-card flex flex-col bg-white dark:bg-gray-800 shadow-light dark:shadow-none border-gray-200/80 border dark:border-gray-700 overflow-hidden rounded-2xl">
+              <!-- Course Head -->
+              <div class="relative block h-56 sm:h-[300px] lg:h-56 xl:h-[300px] w-full overflow-hidden">
+                <img src="/images/choose-image-placeholder.png" class="preview__img w-full h-full object-cover rounded-2xl" alt="" />
+              </div>
+              <!-- Course Body -->
+              <div class="px-3 xs:px-5 pt-4 pb-5 flex-grow">
+                <div class="flex justify-start items-center gap-1">
+                  <p
+                    class="preview__category inline-flex items-center justify-center text-sm py-1.5 px-2 text-sky-500 dark:text-yellow-400 bg-sky-500/10 dark:bg-yellow-400/10 rounded">
+                    (خالی)
+                  </p>
+                </div>
+
+                <p class="preview__title font-DanaMedium dark:text-white text-xl xs:text-2xl line-clamp-2 my-2.5 xs:my-5">
+                  (خالی)
+                </p>
+
+                <p class="preview__description line-clamp-3 text-sm xs:text-base font-light text-slate-500 dark:text-slate-400">
+                  (خالی)
+                </p>
+              </div>
+              <!-- Course Footer -->
+              <div class="px-3 xs:px-5 pb-2">
+                <!-- Course Info -->
+                <div class="flex justify-between pb-3 border-b text-xs xs:text-sm border-b-gray-100 dark:border-b-gray-700">
+                  <div class="flex gap-x-4 text-slate-500 dark:text-slate-400">
+                    <a href="#" class="flex items-center gap-x-1 hover:text-primary transition-colors">
+                      <svg class="size-5 xs:size-6">
+                        <use href="#user"></use>
+                      </svg>
+                      <span class="preview__teacher"> (خالی) </span>
+                    </a>
+                    <span class="flex items-center gap-x-1">
+                      <svg class="size-5 xs:size-6">
+                        <use href="#clock"></use>
+                      </svg>
+                      <span> 00:00 </span>
+                    </span>
+                  </div>
+                  <div class="flex items-center gap-x-1 text-amber-400">
+                    <span class="leading-[1px] mt-1">5.0</span>
+                    <svg class="size-5 xs:size-6">
+                      <use href="#star"></use>
+                    </svg>
+                  </div>
+                </div>
+                <!-- Course Bottom -->
+                <div class="flex justify-between items-center mt-2 xs:mt-3 xs:py-1.5">
+                  <div class="dark:text-white flex gap-x-1 items-center">
+                    <svg class="size-5 xs:size-7">
+                      <use href="#users"></use>
+                    </svg>
+                    <span class="text-lg xs:text-xl font-DanaMedium mt-1"> 482 </span>
+                  </div>
+                  <!-- Course Price -->
+                  <div class="preview__price text-primary">
+                    <!-- Free Price -->
+                    <div class="!hidden">
+                      <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> 0,000,000 </del>
+                      <span class="xs:font-DanaMedium text-lg xs:text-2xl">رایگان!</span>
+                    </div>
+
+                    <!-- Normal Price -->
+                    <div class="flex gap-x-1 items-center">
+                      <span class="text-lg xs:text-2xl"> 0,000,000 </span>
+                      <svg class="size-4 xs:size-6">
+                        <use href="#toman"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit btn -->
+          <div class="flex justify-end gap-x-2 col-span-2 border-t border-gray-200 dark:border-gray-800">
+            <button
+              id="back-btn"
+              class="bg-red-500 hover:bg-red-600 text-white rounded-xl px-6 xs:px-7 py-2 xs:py-3 mt-5 text-base xs:text-xl transition-colors disabled:hover:bg-primary disabled:opacity-20"
+              type="button">
+              بازگشت
+            </button>
+            <button
+              id="submit-btn"
+              class="bg-primary hover:bg-green-500 text-white rounded-xl px-6 xs:px-7 py-2 xs:py-3 mt-5 text-base xs:text-xl transition-colors disabled:hover:bg-primary disabled:opacity-20"
+              type="submit">
+              ارسال
+            </button>
+          </div>
+        </form>
+      </div>
+    `;
+
+    createCoursePreview();
+    preparationEditCourse(courseId);
   } else if (targetMenu == "topics") {
     contentContainer.innerHTML = `
       <div class="content topics">
@@ -265,6 +464,7 @@ const changeContent = async (targetMenu, courseId) => {
               </div>
               <div class="self-end xs:self-auto">
                 <button
+                  onclick="addTopicHandler()"
                   id="add-topic-btn"
                   class="flex items-center justify-center gap-x-1 h-10 md:h-11 rounded-lg bg-primary hover:bg-green-500 cursor-pointer pr-3 pl-4 text-white transition-colors">
                   <svg class="w-6 md:w-6 h-6 md:h-6">
@@ -282,15 +482,16 @@ const changeContent = async (targetMenu, courseId) => {
         </div>
         <!-- Modals -->
         <!-- view episodes modal -->
-        <div id="view-episodes-modal" class="fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto       rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+        <div id="view-episodes-modal" class="fixed inset-0 w-11/12 h-5/6 bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-8 py-4 shrink-0">
             <div>
-              <h5 class="title sm:text-xl font-DanaMedium dark:text-white">فصل اول - مباحث TailwindCss</h5>
+              <h5 class="title sm:text-xl font-DanaMedium dark:text-white">  </h5>
             </div>
             <!-- Close Btn -->
             <div>
               <div
+                onclick="closeModals()"
                 class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
@@ -304,7 +505,7 @@ const changeContent = async (targetMenu, courseId) => {
           </div>
         </div>
         <!-- add topic modal -->
-        <form id="add-topic-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+        <form onsubmit="addTopicModalSubmit(event)" id="add-topic-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
             <div>
@@ -313,6 +514,7 @@ const changeContent = async (targetMenu, courseId) => {
             <!-- Close Btn -->
             <div>
               <div
+                onclick="closeModals()"
                 class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
@@ -342,7 +544,7 @@ const changeContent = async (targetMenu, courseId) => {
           </div>
         </form>
         <!-- add episode modal -->
-        <form id="add-episode-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-5/12 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
+        <form onsubmit="addEpisodeModalSubmit(event)" id="add-episode-modal" class="fixed inset-0 w-11/12 sm:w-1/2 lg:w-5/12 h-fit bg-white dark:bg-gray m-auto rounded-lg z-30 flex flex-col overflow-hidden transition-all">
           <!-- head -->
           <div class="border-b border-gray-200 dark:border-slate flex justify-between items-center px-5 py-4 shrink-0">
             <div>
@@ -351,6 +553,7 @@ const changeContent = async (targetMenu, courseId) => {
             <!-- Close Btn -->
             <div>
               <div 
+                onclick="closeModals()"
                 class="close-modal flex items-center justify-center gap-x-1 h-10 md:h-11 w-10 md:w-11 rounded-lg bg-red-500 hover:bg-red-600 cursor-pointer text-white transition-colors">
                 <svg class="w-6 md:w-8 h-6 md:h-8 rotate-45">
                   <use href="#plus"></use>
@@ -376,9 +579,12 @@ const changeContent = async (targetMenu, courseId) => {
               <option value="false">خیر</option>
               <option value="true">بله</option>
             </select>
-            <div id="file" class="flex justify-start items-center text-sm md:text-base py-3">
-              <label for="fileInput" class="custom-file-upload shrink-0 shadow-light dark:shadow-none"> انتخاب ویدیو دوره </label>
-              <input id="fileInput" class="w-auto border-none" type="file" multiple />
+            <div id="file" class="relative flex justify-start items-center text-sm w-full h-72">
+              <label for="fileInput" class="absolute top-2 right-2 flex justify-center items-center rounded-xl bg-primary shadow-light dark:shadow-none px-3 py-1.5 opacity-70 text-white hover:opacity-100 transition-all cursor-pointer z-10"> انتخاب ویدیو دوره </label>
+              <input id="fileInput" class="w-auto border-none hidden" type="file" multiple onchange="previewEpisodeVideo(this)" />
+              <video id="video-preview" class="w-full h-full object-cover rounded-2xl" controls>
+                <source src="/media/cc0-videos/flower.webm" type="video/webm" />
+              </video>
             </div>
           </div>
           <!-- footer -->

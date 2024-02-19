@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/icon.png" type="image/png" />
+    <title>خرید موفق</title>
+  </head>
+  <body class="relative bg-gray-100 dark:bg-gray">
+    <script>
+      if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <svg class="hidden"></svg>
+
+    <div class="min-h-screen flex items-center justify-center overflow-hidden relative">
+      <div class="w-[400px] flex flex-col items-center mx-4 px-5 pb-5 bg-white dark:bg-gray-800 rounded-2xl shadow-light dark:shadow-none">
+        <img class="size-25 mt-2" src="/images/svgs/check-circle-success.svg" alt="success" />
+        <p class="max-w-[282px] text-center text-zinc-700 dark:text-white mt-5 mb-6 text-xl font-DanaMedium">دوره با موفقیت خریداری شد</p>
+        <a href="./course.html" class="bg-primary py-3 rounded-lg w-full text-white text-center font-DanaMedium text-lg"> دیدن جلسات </a>
+      </div>
+    </div>
+
+    <script src="scripts/success_buy_course.js" type="module"></script>
+  </body>
+</html>

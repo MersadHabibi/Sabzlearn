@@ -158,7 +158,7 @@
   @apply hidden;
 }
 
-.course-description.show .course-description__content {
+.course-description.show .course__description {
   @apply max-h-none;
 }
 
@@ -345,6 +345,20 @@
   #loader__container.load {
     @apply visible opacity-100;
   }
+
+  /* Number Input Styles */
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 @layer components {
   /* Filter Toggles */
@@ -480,24 +494,6 @@
 
   input[type="file"]::file-selector-button {
     display: none;
-  }
-
-  .custom-file-upload {
-    border: 1px solid #6c5ce7;
-    padding: 5px 12px;
-    margin-left: 10px;
-    border-radius: 0.2em;
-    background-color: white;
-    transition: all 200ms;
-  }
-
-  html.dark .custom-file-upload {
-    background-color: #32334d;
-    color: white;
-  }
-
-  .custom-file-upload:hover {
-    border: 1px solid #00cec9;
   }
 
   /* Topic Modals */

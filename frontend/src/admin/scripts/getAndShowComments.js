@@ -1,17 +1,17 @@
-import { api, apiAdmin, fullScreenLoader, getToken, showNotif } from "../../scripts/funcs/utils";
+import { deleteCommentApi } from "../../../services/commentsAPIs";
+import { getAllCourses } from "../../../services/coursesAPIs";
+import { fullScreenLoader } from "../../scripts/funcs/utils";
 
 const getAndShowComments = async () => {
   // Get Comments
-  const courses = (
-    await api
-      .get("courses")
-      .then(res => res)
-      .catch(err => {
-        document.querySelector(
-          ".comments__container"
-        ).innerHTML = `<p class="text-center text-xl mt-5 dark:text-white" > مشکلی به وجود آمده دوباره امتحان کنید </p>`;
-      })
-  ).data;
+  const courses = await getAllCourses();
+
+  if (courses === null) {
+    document.querySelector(
+      ".comments__container"
+    ).innerHTML = `<p class="text-center text-xl mt-5 dark:text-white" > مشکلی به وجود آمده دوباره امتحان کنید </p>`;
+    return;
+  }
   let comments = [];
   courses.forEach(course => {
     course.comments.forEach(comment => {
@@ -83,19 +83,10 @@ const setEventForCommentDeleteBtn = () => {
 
 const deleteComment = async id => {
   fullScreenLoader("loading");
-  return await apiAdmin
-    .delete(`comments/${id}`)
-    .then(res => {
-      showNotif("کامنت با موفقیت پاک شد", "success");
-      return true;
-    })
-    .catch(err => {
-      showNotif("مشکلی در پاک کردن کامنت به وجود آمده ! بعدا دوباره امتحان کنید");
-      return false;
-    })
-    .finally(() => {
-      fullScreenLoader("loaded");
-    });
+  const res = await deleteCommentApi(id);
+  fullScreenLoader("loaded");
+
+  return res;
 };
 
 export default getAndShowComments;

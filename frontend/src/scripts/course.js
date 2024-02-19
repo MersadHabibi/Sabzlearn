@@ -1,9 +1,11 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { _changeClasses, api, createTimer, fullScreenLoader, getMe, showNotif } from "./funcs/utils.js";
+import { BASE_URL, _changeClasses, api, createTimer, fullScreenLoader, getTeacherName, showNotif } from "./funcs/utils.js";
 import createNewComment from "./funcs/createComment.js";
 import createReplyComment from "./funcs/replayComment.js";
+import { getCourseById } from "../../services/coursesAPIs.js";
+import { getMe } from "../../services/usersAPIs.js";
 
 fullScreenLoader("loading");
 
@@ -36,17 +38,21 @@ const preparationNewAndReplayComment = () => {
 
     _changeClasses("add", document.querySelector("#comment-submit-btn"), ["load"]);
     if (replayOrNewComment == "new") {
-      let res = await createNewComment(user.data.id, course.id, formTextarea.value);
-      if (res == true) {
-        _changeClasses("remove", courseComments, ["show-new-comment-form"]);
-        formTextarea.value = "";
-        commentsSlide = 0;
-        commentContainer.innerHTML = "";
-        await getCourse();
-        ShowComments();
+      if (user !== null) {
+        let res = await createNewComment(user.id, course.id, formTextarea.value);
+        if (res == true) {
+          _changeClasses("remove", courseComments, ["show-new-comment-form"]);
+          formTextarea.value = "";
+          commentsSlide = 0;
+          commentContainer.innerHTML = "";
+          await getCourse();
+          ShowComments();
+        }
+      } else {
+        showNotif("وارد شوید");
       }
     } else {
-      let res = await createReplyComment(user.data.id, replayOrNewComment, formTextarea.value);
+      let res = await createReplyComment(user.id, replayOrNewComment, formTextarea.value);
       if (res == true) {
         _changeClasses("remove", courseComments, ["show-new-comment-form"]);
         formTextarea.value = "";
@@ -150,8 +156,7 @@ createTimer(offerDay, offerHur, offerMin, offerSec, "0:14:10:3", false);
 const getCourse = async () => {
   const targetCourseId = localStorage.getItem("course");
 
-  course = (await api.get(`courses/${targetCourseId}`)).data;
-  console.log(course);
+  course = await getCourseById(targetCourseId);
 };
 
 // BreadCrumb
@@ -160,27 +165,17 @@ const fillBreadCrumb = () => {
   const breadCrumbCategory = $.querySelector("#breadCrumb__category");
   const breadCrumbName = $.querySelector("#breadCrumb__name");
 
-  breadCrumbCategory.innerHTML = `<a href=./categories.html?category=${course.category}> ${
-    course.category == "frontend"
-      ? "فرانت اند"
-      : course.category == "python"
-      ? "پایتون"
-      : course.category == "security"
-      ? "امنیت"
-      : course.category == "softskills"
-      ? "مهارت های نرم"
-      : "غیره..."
-  } </a>`;
+  breadCrumbCategory.innerHTML = `<a href=./categories.html?category=${course.categoryId}> ${course.category.name} </a>`;
 
   breadCrumbName.innerHTML = course.title;
 };
 
-// Set Datas = image - title - description - price - offer - time - teacher - studentsCount
+// Set Datas = image - title - description - price - offer - time - teacher - studentsCount - caption
 
 const setDatas = () => {
   const courseImage = $.querySelector(".course__image");
   const courseTitle = $.querySelector(".course__title");
-  const courseDescription = $.querySelector(".course__description");
+  const courseCaption = $.querySelector(".course__caption");
   const coursePrice = $.querySelector(".course__price");
   const courseOffer = $.querySelector(".course__offer");
   const courseOfferPercent = $.querySelector(".course__offer-percent");
@@ -188,19 +183,30 @@ const setDatas = () => {
   const mobileCourseStudentsCount = $.querySelector(".mobile-course__studentsCount");
   const courseStatus = $.querySelector(".course__status");
   const courseTime = $.querySelector(".course__time");
+  const topicsAllTimeElem = $.querySelector(".topics__all-time");
   const courseTeacher = $.querySelector(".course__teacher");
   const mobileCourseTeacher = $.querySelector(".mobile-course__teacher");
+  const courseDescription = $.querySelector(".course__description");
+  const buyBtn = $.querySelector("#buy-btn");
+
+  // Buy Btn
+
+  buyBtn.href = `./order.html?courseId=${course.id}`;
+
+  // Description
+
+  courseDescription.innerHTML = course.description;
 
   // Image
 
-  courseImage.src = `http://localhost:3000/${course.image}`;
+  courseImage.src = `${BASE_URL}/${course.image}`;
   courseImage.alt = course.title;
   _changeClasses("remove", courseImage, ["hidden"]);
 
-  // Title and Description
+  // Title and Caption
 
   courseTitle.innerHTML = course.title;
-  courseDescription.innerHTML = course.description;
+  courseCaption.innerHTML = course.caption;
 
   // Offer
 
@@ -255,26 +261,8 @@ const setDatas = () => {
 
   // Teacher
 
-  courseTeacher.innerHTML =
-    course.teacher == "SaeidiRad"
-      ? "محمد امین سعیدی راد"
-      : course.teacher == "barati"
-      ? "مهرشاد براتی"
-      : course.teacher == "ebadi"
-      ? "حمیدرضا عبادی"
-      : course.teacher == "rezaDolati"
-      ? "رضا دولتی"
-      : "غیره...";
-  mobileCourseTeacher.innerHTML =
-    course.teacher == "SaeidiRad"
-      ? "محمد امین سعیدی راد"
-      : course.teacher == "barati"
-      ? "مهرشاد براتی"
-      : course.teacher == "ebadi"
-      ? "حمیدرضا عبادی"
-      : course.teacher == "rezaDolati"
-      ? "رضا دولتی"
-      : "غیره...";
+  courseTeacher.innerHTML = getTeacherName(course.teacher);
+  mobileCourseTeacher.innerHTML = getTeacherName(course.teacher);
 
   // StudentsCount
 
@@ -287,7 +275,11 @@ const setDatas = () => {
 
   // Time
 
-  courseTime.innerHTML = `${course.time} ساعت`;
+  courseTime.innerHTML = `${course.timeForShow} ساعت`;
+
+  // topics All Time 
+
+  topicsAllTimeElem.innerText = course.timeForShow
 };
 
 // Show Topics
@@ -337,7 +329,7 @@ const showTopics = () => {
                         >${episode.isFree ? "جلسه رایگان" : "نقدی"}</span
                       >
                       <div class="flex items-center gap-x-1.5 md:gap-x-2">
-                        <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> 20:27 </span>
+                        <span class="text-slate-500 dark:text-slate-400 text-sm md:text-lg mt-1"> ${episode.timeForShow} </span>
                         <svg class="w-5 h-6 md:w-6 md:h-6 text-zinc-700 dark:text-white group-hover:text-primary transition-colors">
                           <use xlink:href="#play-circle"></use>
                         </svg>
@@ -362,6 +354,11 @@ const ShowComments = () => {
     return new Date(b.createdAt) - new Date(a.createdAt);
   });
 
+  if (comments.length <= 5) {
+    _changeClasses("add", commentsMoreBtn, ["hidden"]);
+    _changeClasses("remove", commentsAllShowed, ["hidden"]);
+  }
+
   insertComments(comments.slice(commentsSlide, commentsSlide + 5));
 
   preparationReplayCommentBtn();
@@ -380,11 +377,11 @@ const insertComments = comments => {
             <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="/images/user-profile.png" />
             <div class="text-xs w-full rounded-md text-center py-0.5 ${
               comment.Users.role == "admin"
-                ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
+                ? "text-white bg-sky-500 dark:text-sky-500 dark:bg-sky-500/10"
                 : comment.Users.role == "user"
-                ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                ? "bg-slate-500 text-white dark:text-slate-400 dark:bg-slate-400/10"
                 : comment.Users.role == "student"
-                ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                ? "text-white bg-primary dark:text-primary dark:bg-primary/10"
                 : ""
             }"> 
             ${comment.Users.role == "admin" ? "مدیریت" : comment.Users.role == "user" ? "کاربر" : comment.Users.role == "student" ? "دانشجو" : ""}
@@ -415,7 +412,9 @@ const insertComments = comments => {
                   </div>
                 </div>
               </div>
-              <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button" data-comment-id=${comment.id} data-creator="mersad">
+              <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button" data-comment-id=${comment.id} data-creator=" ${
+        comment.Users.username
+      }">
                 <svg class="w-6 h-5">
                   <use xlink:href="#reply"></use>
                 </svg>
@@ -442,7 +441,7 @@ const insertComments = comments => {
                           reply.Users.role == "admin"
                             ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
                             : reply.Users.role == "user"
-                            ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                            ? "bg-slate-500 text-white dark:text-slate-400 dark:bg-slate-400/10"
                             : reply.Users.role == "student"
                             ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
                             : ""
