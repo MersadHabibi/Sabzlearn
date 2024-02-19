@@ -345,6 +345,20 @@
   #loader__container.load {
     @apply visible opacity-100;
   }
+
+  /* Number Input Styles */
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 @layer components {
   /* Filter Toggles */
@@ -481,7 +495,6 @@
   input[type="file"]::file-selector-button {
     display: none;
   }
-
 
   /* Topic Modals */
 

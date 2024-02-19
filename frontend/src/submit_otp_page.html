@@ -112,24 +112,36 @@
         <div class="flex flex-col items-center mb-7 sm:mb-9">
           <span class="font-MorabbaMedium text-3xl mb-2 sm:mb-3 dark:text-white"> تایید ایمیل </span>
           <span class="text-gray-500 text-lg mb-1"> کد تایید به ایمیل شما ارسال شد </span>
-          <p class="text-gray-500">ایمیل اشتباه است؟ <a href="./login.html" class="text-primary"> تغییر ایمیل </a></p>
+          <p class="text-gray-500">ایمیل اشتباه است؟ <a href="./register.html" class="text-primary"> تغییر ایمیل </a></p>
         </div>
         <!-- Form -->
-        <form method="post" class="">
-          <div class="relative">
+        <form class="">
+          <div class="flex justify-center items-center gap-x-4">
             <input
-              id="form__email-address"
-              type="email"
-              class="bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 pl-9 sm:pl-12 pr-3 sm:pr-5 text-sm sm:text-xl"
-              placeholder="کد تایید" />
-            <svg class="absolute left-3 sm:left-4 top-0 bottom-0 my-auto w-4 sm:w-5 h-4 sm:h-5 text-slate-500 dark:text-slate-400">
-              <use href="#envelope"></use>
-            </svg>
+              type="number"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              maxlength="1"
+              class="otp__input bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 w-12 sm:w-14 text-sm sm:text-xl text-center" />
+            <input
+              type="number"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              maxlength="1"
+              class="otp__input bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 w-12 sm:w-14 text-sm sm:text-xl text-center" />
+            <input
+              type="number"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              maxlength="1"
+              class="otp__input bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 w-12 sm:w-14 text-sm sm:text-xl text-center" />
+            <input
+              type="number"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              maxlength="1"
+              class="otp__input bg-gray-100 dark:bg-gray-700 h-12 sm:h-14 w-12 sm:w-14 text-sm sm:text-xl text-center" />
           </div>
 
-          <div class="flex justify-between items-center mt-5 mb-2.5 px-1">
-            <div class="text-primary cursor-pointer">ارسال دوباره</div>
-            <div class="text-secondary">00:00</div>
+          <div class="flex justify-between items-center mt-8 mb-2.5 px-1">
+            <div class="text-primary dark:text-secondary font-DanaMedium cursor-pointer">ارسال دوباره</div>
+            <div class="text-gray-600 dark:text-gray-300">00:00</div>
           </div>
 
           <button type="submit" class="h-12 sm:h-14 w-full text-center rounded-xl bg-primary text-white text-xl hover:bg-green-500 transition-colors">
