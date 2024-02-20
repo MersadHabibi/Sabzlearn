@@ -5,27 +5,34 @@ const prisma = new PrismaClient();
 function getCourses(req, res) {
   prisma.course
     .findMany({
-      include: {
-        comments: {
-          include: {
-            Users: {
-              select: {
-                username: true,
-                email: true,
-                role: true,
-              },
-            },
-            replies: true,
-          },
-        },
+      select: {
+        comments: false,
+
         category: {
           select: {
             name: true,
           },
         },
-      },
-      select: {
-        "*": true,
+        id: true,
+        title: true,
+        price: true,
+        discount: true,
+        discountPrice: true,
+        isFree: true,
+        status: true,
+        time: true,
+        timeForShow: true,
+        studentsCount: true,
+        rank: true,
+        teacher: true,
+        shortName: true,
+        image: true,
+        menuesId: true,
+        categoryId: true,
+        usersId: false,
+        caption: true,
+        subjects: false,
+        Menues: true,
         description: false,
       },
     })
