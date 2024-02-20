@@ -30,9 +30,9 @@ async function getCoursesByCategoryId(id) {
   try {
     const res = await api.get(`courses/category/${id}`);
 
-    const courses = res.data;
+    const data = res.data;
 
-    return courses;
+    return data;
   } catch (err) {
     showNotif("مشکلی در نشان دادن دوره ها به وجود آمده! کمی بعد دوباره تلاش کنید");
     return null;
@@ -96,7 +96,7 @@ async function editCourseApi(id, datas) {
       showNotif("دوره با موفقیت ویرایش شد", "success");
 
       return {
-        status: false,
+        status: true,
       };
     })
     .catch(err => {
@@ -108,4 +108,4 @@ async function editCourseApi(id, datas) {
     });
 }
 
-export { getAllCourses, getCourseById, getCoursesByCategoryId, deleteCourseApi, createCourseApi, courseDescriptionApi , editCourseApi };
+export { getAllCourses, getCourseById, getCoursesByCategoryId, deleteCourseApi, createCourseApi, courseDescriptionApi, editCourseApi };
