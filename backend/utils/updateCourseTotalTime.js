@@ -55,7 +55,7 @@ async function updateTotalTime(courseId) {
             where: { id: courseId },
             data: {
               time: totalTime[0],
-              timeForShow: `${hour}:${minute}:${second}`,
+              timeForShow: `${minute}:${second}`,
             },
           })
           .then((result) => {

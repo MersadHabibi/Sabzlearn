@@ -8,6 +8,15 @@ function getMe(req, res) {
         where: {
           id: req.userId,
         },
+        include: {
+          courses: {
+            select: {
+              id: true,
+              image: true,
+              title: true,
+            },
+          },
+        },
       })
       .then((user) => {
         if (user) {
