@@ -128,11 +128,10 @@ const editCourse = async event => {
     const res = await editCourseApi(courseId, newCourseDatas);
     fullScreenLoader("loaded");
 
-    if(res.status === true){
-      changeContent("courses")
+    if (res.status === true) {
+      changeContent("courses");
     }
   }
 };
-
 
 export default preparationEditCourse;

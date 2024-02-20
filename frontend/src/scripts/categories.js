@@ -228,7 +228,7 @@ const searchHandler = () => {
 const loadCourses = async () => {
   // Filter By Category
 
-  let coursesByCategory = category === "all" ? await getAllCourses() : await getCoursesByCategoryId(category.categoryId);
+  let coursesByCategory = category === "all" ? await getAllCourses() : (await getCoursesByCategoryId(category.categoryId)).courses;
 
   // Filter By Filters Value
 
