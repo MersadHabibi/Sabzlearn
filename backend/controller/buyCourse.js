@@ -39,13 +39,6 @@ async function buyCourse(req, res) {
                   where: { id: req.userId },
                   data: {
                     courses: {
-                      update: {
-                        data: {
-                          studentsCount: {
-                            increment: 1,
-                          },
-                        },
-                      },
                       connect: {
                         id: courseId,
                       },
@@ -57,7 +50,19 @@ async function buyCourse(req, res) {
                 })
                 .then((user) => {
                   console.log(user);
-                  return res.json(user);
+                  prisma.course
+                    .update({
+                      where: { id: courseId },
+                      data: {
+                        studentsCount: {
+                          increment: 1,
+                        },
+                      },
+                    })
+                    .then(() => res.json(user))
+                    .catch((err) => {
+                      console.log("err in updating studentsCount", err);
+                    });
                 });
             }
           }
