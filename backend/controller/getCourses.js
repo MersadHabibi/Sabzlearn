@@ -24,8 +24,12 @@ function getCourses(req, res) {
           },
         },
       },
+      select: {
+        "*": true,
+        description: false,
+      },
     })
-    .then(corses => {
+    .then((corses) => {
       if (corses) {
         res.json(corses);
       }
@@ -81,12 +85,14 @@ function getCourseById(req, res) {
         },
       },
     })
-    .then(course => {
+    .then((course) => {
       return res.json(course);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: "there is an error in fetching course by this id." });
+      res
+        .status(500)
+        .json({ message: "there is an error in fetching course by this id." });
     });
 }
 
