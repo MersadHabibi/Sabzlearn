@@ -45,8 +45,8 @@ function createEpisode(req, res) {
           second = Math.floor(time);
         }
         console.log(minute, second);
-        minute <= 10 ? minute : (minute = `0${minute}`);
-        second <= 10 ? second : (second = `0${second}`);
+        minute < 10 ? (minute = `0${minute}`) : minute;
+        second <= 10 ? (second = `0${second}`) : second;
 
         prisma.episode
           .create({

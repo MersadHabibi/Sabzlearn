@@ -14,6 +14,7 @@ function getMe(req, res) {
               id: true,
               image: true,
               title: true,
+              isFree: true,
             },
           },
         },

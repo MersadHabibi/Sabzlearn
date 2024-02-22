@@ -5,15 +5,19 @@ async function updateUser(req, res) {
     await prisma.users
       .update({
         where: {
-          id: user,
+          id: req.userId,
         },
         data: {
           ...req.body,
         },
       })
       .then((user) => {
+        delete user.role;
+        delete user.hash;
+        delete user.blocked;
         return res.json({
-          message: "uesr updated successfully",
+          message: "user updated successfully",
+          user,
         });
       })
       .catch((err) => {

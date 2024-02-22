@@ -50,14 +50,14 @@ async function updateTotalTime(courseId) {
           second = totalTime[0];
         }
         console.log(totalTime[0]);
-        minute <= 10 ? minute : (minute = `0${minute}`);
-        second <= 10 ? second : (second = `0${second}`);
+        minute < 10 ? (minute = `0${minute}`) : minute;
+        hour < 10 ? (hour = `0${hour}`) : hour;
         prisma.course
           .update({
             where: { id: courseId },
             data: {
               time: totalTime[0],
-              timeForShow: `${minute}:${second}`,
+              timeForShow: `${hour}:${minute}`,
             },
           })
           .then((result) => {
