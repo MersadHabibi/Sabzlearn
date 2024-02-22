@@ -1,10 +1,11 @@
 import { _changeClasses } from "../funcs/utils.js";
 import myCourses from "./myCourses.js";
+import userInfo from "./userInfo.js";
 
 const $ = document;
 const contentContainer = $.querySelector(".content");
 
-const contentsName = ["home", "courses", "tickets", "new-ticket", "user-details", "logout"];
+const contentsName = ["home", "courses", "tickets", "new-ticket", "user-infos", "logout"];
 
 const loadPanelContent = (content, user) => {
   // If Content Name Is Not True
@@ -398,7 +399,7 @@ const loadPanelContent = (content, user) => {
           </form>
         </div>
       `;
-  } else if (content == "user-details") {
+  } else if (content == "user-infos") {
     contentContainer.innerHTML = `
         <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">${name} عزیز؛ خوش اومدی 🙌</p>
         <!-- User Details -->
@@ -407,7 +408,7 @@ const loadPanelContent = (content, user) => {
             <div class="pb-5 border-b border-b-gray-200 dark:border-b-slate-500">
               <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">جزییات حساب کاربری</span>
             </div>
-            <form id="edit-account-info" class="p-3.5 pt-8">
+            <form onsubmit="editUserInfo( event ,'${user.id}')" id="edit-account-info" class="p-3.5 pt-8">
               <div class="relative mb-11">
                 <img src="/images/user-profile.png" class="w-32 md:w-44 h-32 md:h-44 rounded-full" />
                 <a
@@ -433,11 +434,11 @@ const loadPanelContent = (content, user) => {
                 <div class="hidden md:block"></div>
                 <div>
                   <label for="first_name" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام</label>
-                  <input type="text" class="mt-3.5 md:mt-4" id="first_name" name="first_name" required="" value="مرصاد" />
+                  <input type="text" class="mt-3.5 md:mt-4" id="first_name" name="first_name" required="" value="${user.name ? user.name : ""}" />
                 </div>
                 <div>
                   <label for="last_name" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام خانوادگی</label>
-                  <input type="text" class="mt-3.5 md:mt-4" id="last_name" name="last_name" value="حبیبی" />
+                  <input type="text" class="mt-3.5 md:mt-4" id="last_name" name="last_name" value="${user.family ? user.family : ""}" />
                 </div>
                 <div>
                   <label for="username" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام کاربری</label>
@@ -455,8 +456,9 @@ const loadPanelContent = (content, user) => {
                     class="mt-3.5 md:mt-4"
                     id="email"
                     name="email"
+                    disabled=""
                     required=""
-                    value="mersad.up@gmail.com" />
+                    value="${user.email}" />
                 </div>
               </div>
               <input type="hidden" name="nonce" value="8c6668f0dc" />
@@ -507,6 +509,8 @@ const loadPanelContent = (content, user) => {
           </div>
         </div>
       `;
+
+    userInfo(user);
   }
 };
 export { loadPanelContent };

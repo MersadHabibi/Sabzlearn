@@ -6,7 +6,7 @@ import { getMe } from "../../services/usersAPIs.js";
 
 const user = await getMe();
 
-// console.log(user);
+console.log(user);
 
 if (!user) location.replace("./index.html");
 

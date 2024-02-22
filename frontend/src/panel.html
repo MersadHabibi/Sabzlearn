@@ -246,7 +246,7 @@
                 type="button"
                 href="#"
                 class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg transition-all"
-                data-panel-content="user-details">
+                data-panel-content="user-infos">
                 <svg class="w-6 h-6">
                   <use href="#user"></use>
                 </svg>
@@ -372,6 +372,12 @@
         </div>
       </div>
     </main>
+
+    <!-- Loader -->
+    <div id="loader__container" class="fixed inset-0 w-full h-full flex items-center justify-center bg-black/30 backdrop-blur-md transition-all z-40">
+      <div class="loader"></div>
+    </div>
+
     <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/panel.js" type="module"></script>
   </body>

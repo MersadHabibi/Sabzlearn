@@ -120,4 +120,24 @@ async function changeUserRoleApi(id, role, callback) {
   }
 }
 
-export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi };
+async function editUserApi(datas, callback) {
+  try {
+    const res = await api.patch(`me`, { ...datas });
+
+    showNotif("اطلاعات شما با موفقیت ویرایش شد", "success");
+
+    return {
+      status: true,
+    };
+  } catch (err) {
+    showNotif("مشکلی در ویرایش اطلاعات شما به وجود آمده");
+
+    return {
+      status: false,
+    };
+  } finally {
+    callback();
+  }
+}
+
+export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi, editUserApi };
