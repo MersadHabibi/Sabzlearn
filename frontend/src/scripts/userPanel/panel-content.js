@@ -1,29 +1,28 @@
-import { _changeClasses } from "./funcs/utils.js";
+import { _changeClasses } from "../funcs/utils.js";
+import myCourses from "./myCourses.js";
+import userInfo from "./userInfo.js";
 
 const $ = document;
 const contentContainer = $.querySelector(".content");
 
-const contentsName = ["home", "courses", "tickets", "new-ticket", "user-details"];
+const contentsName = ["home", "courses", "tickets", "new-ticket", "user-infos", "logout"];
 
-const loadPanelContent = content => {
-  if (content == "close-acc") {
+const loadPanelContent = (content, user) => {
+  // If Content Name Is Not True
+  if (!contentsName.includes(content)) {
+    location.replace("./panel.html");
+    return;
+  }
+
+  const name = user.name && user.family ? `${user.name} ${user.family}` : user.username;
+
+  if (content == "logout") {
     return false;
   } else if (content == "home") {
     contentContainer.innerHTML = `
-      <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
+      <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">${name} عزیز؛ خوش اومدی 🙌</p>
         <!-- Tags -->
         <div class="flex flex-wrap items-center justify-start gap-x-5 md:gap-x-8 gap-y-3 md:pt-8">
-          <div class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-amber-400 dark:bg-yellow-400 rounded-2xl flex-grow md:flex-grow-0">
-            <div class="flex items-center justify-center w-14 h-14 md:w-[68px] md:h-[68px] bg-white/20 rounded-2xl">
-              <svg class="w-8 h-8 md:w-9 md:h-9">
-                <use href="#cradit-card"></use>
-              </svg>
-            </div>
-            <div class="flex flex-col">
-              <span class="text-xs mb-1.5 md:mb-3">کش بک</span>
-              <span class="text-sm md:text-lg font-DanaMedium">0 تومان</span>
-            </div>
-          </div>
           <div class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-sky-500 dark:bg-secondary rounded-2xl flex-grow md:flex-grow-0">
             <div class="flex items-center justify-center w-14 h-14 md:w-[68px] md:h-[68px] bg-white/20 rounded-2xl">
               <svg class="w-8 h-8 md:w-9 md:h-9">
@@ -32,7 +31,7 @@ const loadPanelContent = content => {
             </div>
             <div class="flex flex-col">
               <span class="text-xs mb-1.5 md:mb-3">دوره های من</span>
-              <span class="text-sm md:text-lg font-DanaMedium">۱۷ دوره</span>
+              <span class="text-sm md:text-lg font-DanaMedium">${user.courses.length} دوره</span>
             </div>
           </div>
           <div class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-pink-500 dark:bg-rose-500 rounded-2xl flex-grow md:flex-grow-0">
@@ -43,18 +42,7 @@ const loadPanelContent = content => {
             </div>
             <div class="flex flex-col">
               <span class="text-xs mb-1.5 md:mb-3">مجموع تیکت ها</span>
-              <span class="text-sm md:text-lg font-DanaMedium">4 تیکت</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-primary rounded-2xl flex-grow md:flex-grow-0">
-            <div class="flex items-center justify-center w-14 h-14 md:w-[68px] md:h-[68px] bg-white/20 rounded-2xl">
-              <svg class="w-8 h-8 md:w-9 md:h-9">
-                <use href="#currency-dollar"></use>
-              </svg>
-            </div>
-            <div class="flex flex-col">
-              <span class="text-xs mb-1.5 md:mb-3">موجودی حساب</span>
-              <span class="text-sm md:text-lg font-DanaMedium">0 تومان</span>
+              <span class="text-sm md:text-lg font-DanaMedium">0 تیکت</span>
             </div>
           </div>
         </div>
@@ -136,7 +124,7 @@ const loadPanelContent = content => {
     `;
   } else if (content == "courses") {
     contentContainer.innerHTML = `
-      <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
+        <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">${name} عزیز؛ خوش اومدی 🙌</p>
         <!-- Tags -->
         <div class="flex flex-wrap items-center justify-start gap-x-5 md:gap-x-8 gap-y-3 md:pt-8">
           <div class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-amber-400 dark:bg-yellow-400 rounded-2xl flex-grow md:flex-grow-0">
@@ -147,7 +135,7 @@ const loadPanelContent = content => {
             </div>
             <div class="flex flex-col">
               <span class="text-xs mb-1.5 md:mb-3">دوره های ثبت نام شده</span>
-              <span class="text-sm md:text-lg font-DanaMedium">17 دوره</span>
+              <span class="text-sm md:text-lg font-DanaMedium">${user.courses.length} دوره</span>
             </div>
           </div>
           <div class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-sky-500 dark:bg-secondary rounded-2xl flex-grow md:flex-grow-0">
@@ -158,7 +146,7 @@ const loadPanelContent = content => {
             </div>
             <div class="flex flex-col">
               <span class="text-xs mb-1.5 md:mb-3">دوره های نقدی</span>
-              <span class="text-sm md:text-lg font-DanaMedium">4 دوره</span>
+              <span id="not-free-courses" class="text-sm md:text-lg font-DanaMedium">0 دوره</span>
             </div>
           </div>
           <div class="flex items-center gap-x-4 md:w-60 text-white p-2 pl-5 md:pl-2 bg-primary rounded-2xl flex-grow md:flex-grow-0">
@@ -169,33 +157,20 @@ const loadPanelContent = content => {
             </div>
             <div class="flex flex-col">
               <span class="text-xs mb-1.5 md:mb-3">دوره های رایگان</span>
-              <span class="text-sm md:text-lg font-DanaMedium">13 دوره</span>
+              <span id="free-courses" class="text-sm md:text-lg font-DanaMedium">0 دوره</span>
             </div>
           </div>
         </div>
         <!-- Courses -->
-        <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-7 mt-10">
-          <div
-            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-light dark:shadow-none dark:border dark:border-gray-700 dark:text-white">
-            <a class="block w-full rounded-2xl overflow-hidden">
-              <img src="/images/course-1.webp" class="h-full w-full object-cover" alt="" />
-            </a>
-            <div class="px-5 py-2.5 flex-grow">
-              <a href="#" class="font-DanaMedium line-clamp-2">آموزش حرفه ای طراحی قالب با Html Css FlexBox از صفر</a>
-              <div class="flex flex-col pb-1 pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
-                <div class="flex justify-between text-xs">
-                  <span>میزان مشاهده</span>
-                  <span>0%</span>
-                </div>
-                <progress value="20" max="100" class="h-1 w-full mt-2 dark:bg-gray-700"></progress>
-              </div>
-            </div>
-          </div>
+        <div id="courses__container" class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-7 mt-10">
+          <div class="loader mx-auto xs:col-span-2 lg:col-span-3"></div>
         </div>
         `;
+
+    myCourses(user);
   } else if (content == "tickets") {
     contentContainer.innerHTML = `
-      <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
+      <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">${name} عزیز؛ خوش اومدی 🙌</p>
       <!-- Tags -->
       <div class="flex flex-wrap items-center justify-start gap-x-5 md:gap-x-8 gap-y-3 md:pt-8">
         <div
@@ -368,7 +343,7 @@ const loadPanelContent = content => {
       `;
   } else if (content == "new-ticket") {
     contentContainer.innerHTML = `
-      <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
+        <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">${name} عزیز؛ خوش اومدی 🙌</p>
         <!-- New Ticket -->
         <div class="bg-white dark:bg-gray-800 p-3.5 md:p-5 rounded-2xl mt-10 md:mt-15">
           <!-- New Ticket Header -->
@@ -424,16 +399,16 @@ const loadPanelContent = content => {
           </form>
         </div>
       `;
-  } else if (content == "user-details") {
+  } else if (content == "user-infos") {
     contentContainer.innerHTML = `
-      <p class="md:hidden font-DanaDemiBold font mb-5 dark:text-white">مرصاد حبیبی عزیز؛ خوش اومدی 🙌</p>
+        <p class="md:hidden font-DanaDemiBold mb-5 dark:text-white">${name} عزیز؛ خوش اومدی 🙌</p>
         <!-- User Details -->
         <div class="user-details grid grid-cols-1 xl:grid-cols-3 gap-10 md:mt-15">
           <div class="xl:col-span-2 bg-white dark:bg-gray-800 p-5 rounded-2xl">
             <div class="pb-5 border-b border-b-gray-200 dark:border-b-slate-500">
               <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">جزییات حساب کاربری</span>
             </div>
-            <form id="edit-account-info" class="p-3.5 pt-8">
+            <form onsubmit="editUserInfo( event ,'${user.id}')" id="edit-account-info" class="p-3.5 pt-8">
               <div class="relative mb-11">
                 <img src="/images/user-profile.png" class="w-32 md:w-44 h-32 md:h-44 rounded-full" />
                 <a
@@ -459,11 +434,11 @@ const loadPanelContent = content => {
                 <div class="hidden md:block"></div>
                 <div>
                   <label for="first_name" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام</label>
-                  <input type="text" class="mt-3.5 md:mt-4" id="first_name" name="first_name" required="" value="مرصاد" />
+                  <input type="text" class="mt-3.5 md:mt-4" id="first_name" name="first_name" required="" value="${user.name ? user.name : ""}" />
                 </div>
                 <div>
                   <label for="last_name" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام خانوادگی</label>
-                  <input type="text" class="mt-3.5 md:mt-4" id="last_name" name="last_name" value="حبیبی" />
+                  <input type="text" class="mt-3.5 md:mt-4" id="last_name" name="last_name" value="${user.family ? user.family : ""}" />
                 </div>
                 <div>
                   <label for="username" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام کاربری</label>
@@ -481,8 +456,9 @@ const loadPanelContent = content => {
                     class="mt-3.5 md:mt-4"
                     id="email"
                     name="email"
+                    disabled=""
                     required=""
-                    value="mersad.up@gmail.com" />
+                    value="${user.email}" />
                 </div>
               </div>
               <input type="hidden" name="nonce" value="8c6668f0dc" />
@@ -533,6 +509,8 @@ const loadPanelContent = content => {
           </div>
         </div>
       `;
+
+    userInfo(user);
   }
 };
 export { loadPanelContent };

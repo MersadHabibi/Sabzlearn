@@ -188,6 +188,7 @@ const setDatas = () => {
   const mobileCourseTeacher = $.querySelector(".mobile-course__teacher");
   const courseDescription = $.querySelector(".course__description");
   const buyBtn = $.querySelector("#buy-btn");
+  const commentFormName = $.querySelector(".new-comment-form__name");
 
   // Buy Btn
 
@@ -277,9 +278,13 @@ const setDatas = () => {
 
   courseTime.innerHTML = `${course.timeForShow} ساعت`;
 
-  // topics All Time 
+  // topics All Time
 
-  topicsAllTimeElem.innerText = course.timeForShow
+  topicsAllTimeElem.innerText = course.timeForShow;
+
+  // Show Name in The New Comment Form
+
+  commentFormName.innerText = user?.username ? user.username : "کاربر";
 };
 
 // Show Topics

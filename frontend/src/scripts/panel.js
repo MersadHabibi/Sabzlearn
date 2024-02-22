@@ -1,8 +1,16 @@
 import "../styles/app.css";
-import "./header.js";
 import "./share.js";
 import { _changeClasses } from "./funcs/utils.js";
-import { loadPanelContent } from "./panel-content.js";
+import { loadPanelContent } from "./userPanel/panel-content.js";
+import { getMe } from "../../services/usersAPIs.js";
+
+const user = await getMe();
+
+console.log(user);
+
+if (!user) location.replace("./index.html");
+
+document.querySelector(".user__name").innerHTML = user.name && user.family ? `${user.name} ${user.family}` : user.username;
 
 // Default Variables
 window.loadPanelContent = loadPanelContent;
@@ -64,7 +72,7 @@ overlay.addEventListener("click", () => {
 const ChangeContentWithMenu = element => {
   console.log("ChangeContentWithMenu");
   const contentName = element.dataset.panelContent;
-  loadPanelContent(contentName);
+  loadPanelContent(contentName, user);
   closeMobileAside();
 
   setMobileMenuTitle(contentName); // set Mobile Menu Title
@@ -84,14 +92,14 @@ panelMenuItem.forEach(btn => {
 
 // Load Content onLoad Window - With Query String
 
-const getParamsAndChangeContent = () => {
+function getParamsAndChangeContent() {
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
   if (params.content) {
-    loadPanelContent(params.content);
+    loadPanelContent(params.content, user);
   } else {
-    loadPanelContent("home");
+    loadPanelContent("home", user);
   }
 
   // Highlight Active Btn
@@ -103,7 +111,7 @@ const getParamsAndChangeContent = () => {
   });
   // set Mobile Menu Title
   setMobileMenuTitle(params.content);
-};
+}
 
 // Mobile Menu Title
 
@@ -116,6 +124,4 @@ const setMobileMenuTitle = contentName => {
   _changeClasses("add", panelMobileMenuTextActive, ["!block"]);
 };
 
-window.addEventListener("load", () => {
-  getParamsAndChangeContent();
-});
+getParamsAndChangeContent();

@@ -246,7 +246,7 @@
                 type="button"
                 href="#"
                 class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg transition-all"
-                data-panel-content="user-details">
+                data-panel-content="user-infos">
                 <svg class="w-6 h-6">
                   <use href="#user"></use>
                 </svg>
@@ -256,7 +256,7 @@
                 type="button"
                 href="#"
                 class="panel-menu__item inline-flex items-center gap-x-2 px-3 py-2 rounded-lg transition-all"
-                data-panel-content="close-acc">
+                data-panel-content="logout">
                 <svg class="w-6 h-6">
                   <use href="#logout"></use>
                 </svg>
@@ -265,7 +265,7 @@
             </ul>
           </aside>
 
-          <section class="w-full bg-gray-100 dark:bg-gray lg:rounded-3xl md:p-10">
+          <section class="w-full bg-gray-100 dark:bg-gray lg:rounded-3xl md:p-10 min-h-dvh lg:min-h-fit">
             <!-- Header -->
             <div class="flex justify-between bg-white dark:bg-transparent md:bg-transparent p-5 md:p-0 dark:border-b md:border-none border-b-gray-700 mb-5">
               <div class="flex items-center">
@@ -280,7 +280,7 @@
                     <span class="hidden panel-mobile-menu-text__item" id="user-details">جزئیات حساب</span>
                   </span>
                 </div>
-                <p class="font-DanaDemiBold text-2xl dark:text-white hidden md:inline-block"><span>مرصاد حبیبی</span> عزیز؛ خوش اومدی 🙌</p>
+                <p class="font-DanaDemiBold text-2xl dark:text-white hidden md:inline-block"><span class="user__name"></span> عزیز؛ خوش اومدی 🙌</p>
               </div>
               <div class="flex gap-x-3 md:gap-x-8">
                 <!-- notif Btn -->
@@ -324,25 +324,25 @@
                           <img src="/images/user-profile.png" alt="" />
                         </div>
                         <div>
-                          <p class="text-lg">مرصاد حبیبی</p>
+                          <p class="profile__name text-lg">مرصاد حبیبی</p>
                           <p class="font-DanaMedium text-sm text-sky-500">موجودی: 0 تومان</p>
                         </div>
                       </div>
                       <ul
                         class="py-2 border-y border-y-gray-200 dark:border-y-slate child:flex child:items-center child:gap-x-2 child:h-12 child:px-2 child:rounded-xl">
-                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="./panel.html">
                           <svg class="w-5 h-5">
                             <use href="#home"></use>
                           </svg>
                           پیشخوان
                         </a>
-                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="./panel.html?content=courses">
                           <svg class="w-5 h-5">
                             <use href="#folder"></use>
                           </svg>
                           دوره های من
                         </a>
-                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                        <a class="hover:bg-gray-100 dark:hover:bg-slate" href="./panel.html?content=tickets">
                           <svg class="w-5 h-5">
                             <use href="#chat-bubble"></use>
                           </svg>
@@ -372,6 +372,12 @@
         </div>
       </div>
     </main>
+
+    <!-- Loader -->
+    <div id="loader__container" class="fixed inset-0 w-full h-full flex items-center justify-center bg-black/30 backdrop-blur-md transition-all z-40">
+      <div class="loader"></div>
+    </div>
+
     <div class="overlay fixed top-0 left-0 w-full h-full bg-black/30 sm:backdrop-blur-md transition-all"></div>
     <script src="scripts/panel.js" type="module"></script>
   </body>
