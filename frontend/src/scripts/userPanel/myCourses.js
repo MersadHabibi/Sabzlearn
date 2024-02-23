@@ -38,13 +38,13 @@ const myCourses = user => {
   });
 
   // Show Free And Not Free Courses Count
-  // const freeCoursesCount = user.courses.reduce((prev, next) => {
-  //   if (next.isFree === false) return 1;
-  //   else return 0;
-  // }, 0);
+  const freeCoursesCount = user.courses.reduce((prev, next) => {
+    if (next.isFree === true) return 1;
+    else return 0;
+  }, 0);
 
-  // document.querySelector("#not-free-courses").innerHTML = `${user.courses.length - freeCoursesCount} دوره`;
-  // document.querySelector("#free-courses").innerHTML = `${freeCoursesCount} دوره`;
+  document.querySelector("#not-free-courses").innerHTML = `${user.courses.length - freeCoursesCount} دوره`;
+  document.querySelector("#free-courses").innerHTML = `${freeCoursesCount} دوره`;
 
   window.courseClickHandler = courseClickHandler;
 };

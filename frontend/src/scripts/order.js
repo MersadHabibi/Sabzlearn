@@ -1,6 +1,5 @@
 import "../styles/app.css";
 import "./share.js";
-import * as Converter from "persian-currency-converter";
 import { BASE_URL, api, fullScreenLoader, getToken, showNotif } from "./funcs/utils";
 import { getCourseById } from "../../services/coursesAPIs.js";
 
@@ -38,8 +37,8 @@ function setDatas() {
 
   titleElem.innerText = course.title;
 
-  mainPriceElem.innerText = Converter.threeDigitSeparator(course.price);
-  payablePriceElem.innerText = Converter.threeDigitSeparator(course.price);
+  mainPriceElem.innerText = Number(course.price).toLocaleString();
+  payablePriceElem.innerText = Number(course.price).toLocaleString();
 }
 
 buyBtn.addEventListener("click", async () => {

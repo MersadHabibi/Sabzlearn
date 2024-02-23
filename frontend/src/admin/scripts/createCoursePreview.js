@@ -1,4 +1,3 @@
-import * as Converter from "persian-currency-converter";
 import { getTeacherName } from "../../scripts/funcs/utils";
 import { getAllCategories } from "../../../services/categoriesAPIs";
 
@@ -62,12 +61,12 @@ const pricePreviewHandler = elem => {
   if (price) {
     pricePreview.innerHTML = isFree
       ? `<div class="">
-          <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> ${Converter.threeDigitSeparator(price)} </del>
+          <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> ${Number(price).toLocaleString()} </del>
           <span class="xs:font-DanaMedium text-lg xs:text-2xl">رایگان!</span>
         </div>`
       : `
         <div class="flex gap-x-1 items-center">
-          <span class="text-lg xs:text-2xl"> ${Converter.threeDigitSeparator(price)} </span>
+          <span class="text-lg xs:text-2xl"> ${Number(price).toLocaleString()} </span>
           <svg class="size-4 xs:size-6">
             <use href="#toman"></use>
           </svg>
@@ -82,12 +81,12 @@ const isFreePreviewHandler = elem => {
   isFree = /^true$/i.test(elem.value);
   pricePreview.innerHTML = isFree
     ? `<div class="">
-          <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> ${Converter.threeDigitSeparator(price)} </del>
+          <del class="block text-zinc-700/70 dark:text-slate-400/70 text-base/3 xs:text-lg/3 mb-1.5"> ${Number(price).toLocaleString()} </del>
           <span class="xs:font-DanaMedium text-lg xs:text-2xl">رایگان!</span>
         </div>`
     : `
         <div class="flex gap-x-1 items-center">
-          <span class="text-lg xs:text-2xl"> ${Converter.threeDigitSeparator(price)} </span>
+          <span class="text-lg xs:text-2xl"> ${Number(price).toLocaleString()} </span>
           <svg class="size-4 xs:size-6">
             <use href="#toman"></use>
           </svg>

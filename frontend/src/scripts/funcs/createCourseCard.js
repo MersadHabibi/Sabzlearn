@@ -134,7 +134,7 @@ const createCourseCard = (
                 : `
               <!-- Normal Price -->
               <div class="flex gap-x-1 items-center">
-                <span class="text-xl"> ${course.price} </span>
+                <span class="text-xl"> ${course.price.toLocaleString()} </span>
                 <svg class="w-4 h-4">
                   <use href="#toman"></use>
                 </svg>

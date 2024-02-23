@@ -122,7 +122,7 @@ async function changeUserRoleApi(id, role, callback) {
 
 async function editUserApi(datas, callback) {
   try {
-    const res = await api.patch(`me`, { ...datas });
+    const res = await api.patch("me", { ...datas });
 
     showNotif("اطلاعات شما با موفقیت ویرایش شد", "success");
 
