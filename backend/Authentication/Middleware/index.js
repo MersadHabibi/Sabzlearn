@@ -1,8 +1,7 @@
-import { config } from "dotenv";
 import jwt from "jsonwebtoken";
 
 function AuthCheckMiddleWare(req, res, next) {
-  console.log(req.headers.authorization);
+  console.log("Here is authorization Header", req.headers.authorization);
   if (req.headers.authorization && req.headers.authorization != undefined) {
     const authHeader = req.headers.authorization;
     const splited_value = authHeader.split(" ");
