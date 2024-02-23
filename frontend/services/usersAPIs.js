@@ -121,8 +121,15 @@ async function changeUserRoleApi(id, role, callback) {
 }
 
 async function editUserApi(datas, callback) {
+  console.log(`token ${getToken()}`, datas);
   try {
-    const res = await api.patch("me", { ...datas });
+    const res = await api.patch("me", datas, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    });
+
+    console.log(res);
 
     showNotif("اطلاعات شما با موفقیت ویرایش شد", "success");
 
@@ -131,6 +138,8 @@ async function editUserApi(datas, callback) {
     };
   } catch (err) {
     showNotif("مشکلی در ویرایش اطلاعات شما به وجود آمده");
+
+    console.log(err);
 
     return {
       status: false,

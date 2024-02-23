@@ -11,14 +11,14 @@ const editUserInfo = async (event, id) => {
   const firstName = document.querySelector("#first_name");
   const lastName = document.querySelector("#last_name");
 
-  const newUserInfos = {
+  const userNewInfos = {
     id,
     name: firstName.value,
     family: lastName.value,
   };
 
   fullScreenLoader("loading");
-  const res = await editUserApi(newUserInfos, () => {
+  const res = await editUserApi(userNewInfos, () => {
     fullScreenLoader("loaded");
   });
 
