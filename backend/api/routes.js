@@ -15,7 +15,10 @@ const router = Router();
 
 router.post("/register", register);
 router.post("/login", login);
-router.route("/me").get(AuthCheckMiddleWare, getMe).patch(updateUser);
+router
+  .route("/me")
+  .get(AuthCheckMiddleWare, getMe)
+  .patch(AuthCheckMiddleWare, updateUser);
 
 router.get("/courses/:id", getCourseById);
 router.get("/courses/category/:id", getCoursesByCategory);
