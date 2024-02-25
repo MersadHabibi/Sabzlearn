@@ -10,6 +10,8 @@ import swaggerUi from "swagger-ui-express";
 
 import serveIndex from "serve-index";
 import adminRoutesMiddleWare from "./middlewares/adminRoutesMiddleWare.js";
+import { VerifyMailServer } from "./utils/connectMailServer.js";
+import redisConnection from "./utils/connectRedis.js";
 
 const options = {
   defenition: {
@@ -403,5 +405,13 @@ const swaggerSpec = swaggerJSDoc({
 });
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.listen(3000, () => {
-  console.log(`Server is Running on 3000 Port`);
+  VerifyMailServer();
+  redisConnection
+    .connect()
+    .then(() => {
+      console.log(`Server is Running on 3000 Port`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
