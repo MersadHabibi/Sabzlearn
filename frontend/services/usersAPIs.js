@@ -150,7 +150,7 @@ async function editUserApi(datas, callback) {
 async function changePasswordApi(datas, callback) {
   console.log(`token ${getToken()}`, datas);
   try {
-    const res = await api.patch("me?change_password=true", datas, {
+    const res = await api.patch("me?changePassword=true", datas, {
       headers: {
         Authorization: "Bearer " + getToken(),
       },
