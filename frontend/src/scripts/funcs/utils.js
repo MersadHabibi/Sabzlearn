@@ -2,7 +2,7 @@ import axios from "axios";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = "http://localhost:3000";
 
 // Change Class
 
@@ -22,7 +22,7 @@ const _changeClasses = (action, element, className) => {
 
 // Timer
 
-const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", haveZero = false) => {
+const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", haveZero = false, callback) => {
   time = time.split(":");
   [dayElem.innerHTML, hourElem.innerHTML, minElem.innerHTML, secElem.innerHTML] = time;
   let interVal = setInterval(() => {
@@ -38,7 +38,11 @@ const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", h
           time[0] = time[0] - 1;
           if (time[0] < 1) {
             clearInterval(interVal);
-            [time[0], time[1], time[2], time[3]] = [0, 0, 0, 0];
+            callback();
+            time[0] = 0;
+            time[1] = 0;
+            time[2] = 0;
+            time[3] = 0;
           }
         }
       }
@@ -120,7 +124,6 @@ const getToken = () => {
   return localStorage.getItem("token");
 };
 
-
 // Loader
 
 const fullScreenLoader = action => {
@@ -161,4 +164,4 @@ function getTeacherName(teacherName) {
     : "یافت نشد";
 }
 
-export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, fullScreenLoader, getTeacherName , BASE_URL };
+export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, fullScreenLoader, getTeacherName, BASE_URL };

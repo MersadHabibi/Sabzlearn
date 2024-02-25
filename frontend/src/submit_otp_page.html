@@ -140,11 +140,21 @@
           </div>
 
           <div class="flex justify-between items-center mt-8 mb-2.5 px-1">
-            <div class="text-primary dark:text-secondary font-DanaMedium cursor-pointer">ارسال دوباره</div>
-            <div class="text-gray-600 dark:text-gray-300">00:00</div>
+            <button type="button" disabled class="timer__reset disabled:opacity-50 text-primary dark:text-secondary font-DanaMedium cursor-pointer">
+              ارسال دوباره
+            </button>
+            <div class="text-gray-600 dark:text-gray-300 font-DanaMedium" dir="ltr">
+              <span class="timer__min">00</span>
+              :
+              <span class="timer__sec">00</span>
+              <span class="timer__hur hidden">0</span>
+              <span class="timer__day hidden">0</span>
+            </div>
           </div>
 
-          <button type="submit" class="h-12 sm:h-14 w-full text-center rounded-xl bg-primary text-white text-xl hover:bg-green-500 transition-colors">
+          <button
+            type="submit"
+            class="submit-btn disabled:opacity-70 h-12 sm:h-14 w-full text-center rounded-xl bg-primary text-white text-xl hover:bg-green-500 transition-colors">
             بررسی
           </button>
         </form>

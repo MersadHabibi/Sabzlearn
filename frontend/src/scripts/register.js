@@ -42,5 +42,5 @@ const register = async () => {
   fullScreenLoader("loading");
   const res = await registerApi(newUser);
   fullScreenLoader("loaded");
-  if (res !== null) location.replace(getAfterPageLink());
+  if (res.status === true) location.replace(`./submit_otp_page.html?email=${emailAddressInput.value}`);
 };

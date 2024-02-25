@@ -40,16 +40,23 @@ async function registerApi(data) {
     })
     .then(res => {
       showNotif("اکانت شما با موفقیت ساخته شد", "success");
-      localStorage.setItem("token", res.data.token);
+      // localStorage.setItem("token", res.data.token);
 
-      return res;
-      // location.href = getAfterPageLink();
+      console.log(res);
+
+      return {
+        status: true,
+      };
     })
     .catch(err => {
       if (err.message == "Request failed with status code 403") showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
       else showNotif("ساخت حساب با مشکل مواجه شد");
 
-      return null;
+      console.log(err);
+
+      return {
+        status: false,
+      };
     });
 }
 
