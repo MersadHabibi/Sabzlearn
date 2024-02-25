@@ -1,4 +1,3 @@
-
 // Redirect Login & Register
 
 import { getMe } from "../../../services/usersAPIs.js";
@@ -6,7 +5,7 @@ import { getMe } from "../../../services/usersAPIs.js";
 const redirectWhenHaveToken = async redirectLink => {
   const user = await getMe();
   if (user !== null) {
-    location.href = redirectLink;
+    location.replace(redirectLink);
   }
 };
 
