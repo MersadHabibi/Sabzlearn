@@ -129,15 +129,44 @@ async function editUserApi(datas, callback) {
       },
     });
 
-    console.log(res);
+    if (res.status === 200) {
+      showNotif("اطلاعات شما با موفقیت ویرایش شد", "success");
 
-    showNotif("اطلاعات شما با موفقیت ویرایش شد", "success");
-
-    return {
-      status: true,
-    };
+      return {
+        status: true,
+      };
+    } else throw new Error("Error in update user");
   } catch (err) {
     showNotif("مشکلی در ویرایش اطلاعات شما به وجود آمده");
+
+    return {
+      status: false,
+    };
+  } finally {
+    callback();
+  }
+}
+
+async function changePasswordApi(datas, callback) {
+  console.log(`token ${getToken()}`, datas);
+  try {
+    const res = await api.patch("me?change_password=true", datas, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    });
+
+    console.log(res);
+
+    if (res.status === 200) {
+      showNotif("رمز شما با موفقیت عوض شد", "success");
+
+      return {
+        status: true,
+      };
+    } else throw new Error("Error in update user");
+  } catch (err) {
+    showNotif("مشکلی در ویرایش رمز شما به وجود آمده");
 
     console.log(err);
 
@@ -149,4 +178,4 @@ async function editUserApi(datas, callback) {
   }
 }
 
-export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi, editUserApi };
+export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi, editUserApi, changePasswordApi };
