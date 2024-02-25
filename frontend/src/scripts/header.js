@@ -94,13 +94,13 @@ const header = $ => {
     const mobileLoginBtn = $.querySelector(".mobile-login-btn");
 
     registerBtn.addEventListener("click", () => {
-      location.replace(`./register.html?after=${location.pathname}`);
+      location.href = `./register.html?after=${location.pathname}`;
     });
     loginBtn.addEventListener("click", () => {
-      location.replace(`./login.html?after=${location.pathname}`);
+      location.href = `./login.html?after=${location.pathname}`;
     });
     mobileLoginBtn.addEventListener("click", () => {
-      location.replace(`./login.html?after=${location.pathname}`);
+      location.href = `./login.html?after=${location.pathname}`;
     });
   };
   setLinkForLoginAndRegisterBtn();

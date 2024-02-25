@@ -473,14 +473,14 @@ const loadPanelContent = (content, user) => {
             <div class="pb-5 border-b border-b-gray-200 dark:border-b-slate-500">
               <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">تغییر رمز عبور</span>
             </div>
-            <form id="edit-account-password" class="p-3.5 pt-8">
+            <form onsubmit="changeUserPassword( event ,'${user.id}')" id="edit-account-password" class="p-3.5 pt-8">
               <div class="space-y-5 md:space-y-6">
                 <div>
-                  <label for="old_pass" class="font-DanaDemiBold text-zinc-700 dark:text-white">رمز عبور فعلی</label>
+                  <label for="current-password" class="font-DanaDemiBold text-zinc-700 dark:text-white">رمز عبور فعلی</label>
                   <input
                     type="password"
-                    id="old_pass"
-                    name="old_pass"
+                    id="current-password"
+                    name="current-password"
                     required=""
                     class="mt-3.5 md:mt-4 mb-3"
                     placeholder="رمز فعلی را وارد کنید" />
@@ -489,12 +489,12 @@ const loadPanelContent = (content, user) => {
                   >
                 </div>
                 <div>
-                  <label for="new_pass" class="font-DanaDemiBold text-zinc-700 dark:text-white">رمز عبور جدید</label>
+                  <label for="new-password" class="font-DanaDemiBold text-zinc-700 dark:text-white">رمز عبور جدید</label>
                   <input
                     type="password"
                     class="mt-3.5 md:mt-4"
-                    id="new_pass"
-                    name="new_pass"
+                    id="new-password"
+                    name="new-password"
                     required=""
                     placeholder="رمز جدید را وارد کنید" />
                 </div>

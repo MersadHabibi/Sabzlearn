@@ -1,8 +1,9 @@
-import { editUserApi } from "../../../services/usersAPIs";
+import { changePasswordApi, editUserApi } from "../../../services/usersAPIs";
 import { fullScreenLoader } from "../funcs/utils";
 
 const userInfo = user => {
   window.editUserInfo = editUserInfo;
+  window.changeUserPassword = changeUserPassword;
 };
 
 const editUserInfo = async (event, id) => {
@@ -23,6 +24,29 @@ const editUserInfo = async (event, id) => {
   });
 
   res.status === true && location.reload;
+};
+
+const changeUserPassword = async (event, id) => {
+  event.preventDefault();
+
+  const currentPasswordInput = document.querySelector("#current-password");
+  const newPasswordInput = document.querySelector("#new-password");
+
+  const newUserPassword = {
+    id,
+    current_password: currentPasswordInput.value,
+    new_password: newPasswordInput.value,
+  };
+
+  fullScreenLoader("loading");
+  const res = await changePasswordApi(newUserPassword, () => {
+    fullScreenLoader("loaded");
+  });
+
+  if (res.status === true) {
+    currentPasswordInput.value = "";
+    newPasswordInput.value = "";
+  }
 };
 
 export default userInfo;

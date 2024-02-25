@@ -518,6 +518,15 @@
   #unblock-user-modal.show {
     @apply visible opacity-100;
   }
+
+  /* Chapters */
+
+  .chapter.chapter--active .chapter__head {
+    @apply text-gray-900 dark:text-white;
+  }
+  .chapter.chapter--active .chapter__lessons {
+    @apply h-auto;
+  }
 }
 @layer utilities {
 }
