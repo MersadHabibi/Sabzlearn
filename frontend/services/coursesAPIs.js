@@ -1,4 +1,4 @@
-import { api, apiAdmin, showNotif } from "../src/scripts/funcs/utils";
+import { api, apiAdmin, getToken, showNotif } from "../src/scripts/funcs/utils";
 
 async function getAllCourses() {
   try {
@@ -108,4 +108,33 @@ async function editCourseApi(id, datas) {
     });
 }
 
-export { getAllCourses, getCourseById, getCoursesByCategoryId, deleteCourseApi, createCourseApi, courseDescriptionApi, editCourseApi };
+async function getEpisodeByIdApi(id) {
+  try {
+    const res = await api.get(`episodes/${id}`, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    });
+
+    return {
+      status: true,
+      data: res.data,
+    };
+  } catch (err) {
+    console.log(err);
+
+    if (err.response.status === 401) {
+      return {
+        status: false,
+        statusCode: 401,
+        message: "not logged in",
+      };
+    }
+
+    return {
+      status: false,
+    };
+  }
+}
+
+export { getAllCourses, getCourseById, getCoursesByCategoryId, deleteCourseApi, createCourseApi, courseDescriptionApi, editCourseApi, getEpisodeByIdApi };

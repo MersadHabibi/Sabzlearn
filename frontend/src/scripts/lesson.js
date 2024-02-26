@@ -3,19 +3,37 @@ import "./share.js";
 import header from "./header.js";
 import videojs from "video.js";
 import "videojs-hotkeys";
-import { getCourseById } from "../../services/coursesAPIs.js";
-import { _changeClasses, getTeacherName } from "./funcs/utils.js";
+import { getCourseById, getEpisodeByIdApi } from "../../services/coursesAPIs.js";
+import { _changeClasses, fullScreenLoader, getTeacherName } from "./funcs/utils.js";
 import { getMe } from "../../services/usersAPIs.js";
 
 // header(document);
 
-let course = null;
+let episode = null;
 let user = null;
+let course = null;
+
+// Get Params
+
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
 
 window.addEventListener("load", async () => {
-  course = await getCourseById(localStorage.getItem("course"));
-  user = await getMe();
-  console.log(course, user);
+  fullScreenLoader("loading");
+  const res = await getEpisodeByIdApi(params.episodeid);
+
+  if (res.statusCode == 401) {
+    console.log("object");
+    location.replace("./login.html");
+  }
+
+  user = await getMe(); // Get User
+
+  fullScreenLoader("loaded");
+
+  episode = res.data.episode;
+  course = res.data.episode.course;
 
   // Show Title
 
