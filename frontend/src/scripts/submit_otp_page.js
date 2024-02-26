@@ -55,7 +55,7 @@ resetTimerBtn.addEventListener("click", () => {
 // Form Submit
 
 const form = document.querySelector("form");
-const codeInputs = document.querySelectorAll("otp__input");
+const codeInputs = document.querySelectorAll(".otp__input");
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
