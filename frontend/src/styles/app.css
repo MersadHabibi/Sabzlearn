@@ -521,11 +521,14 @@
 
   /* Chapters */
 
-  .chapter.chapter--active .chapter__head {
+  .subject.subject--active .subject__head {
     @apply text-gray-900 dark:text-white;
   }
-  .chapter.chapter--active .chapter__lessons {
-    @apply h-auto;
+  .subject.subject--active .episodes__wrapper {
+    @apply !h-auto;
+  }
+  .subject.subject--active svg{
+    @apply rotate-180
   }
 }
 @layer utilities {

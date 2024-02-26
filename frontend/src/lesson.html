@@ -563,7 +563,7 @@
           <div class="col-span-6 lg:col-span-4 bg-white dark:bg-gray-800 px-3.5 pb-3.5 pt-5 md:px-5 md:pb-5 md:pt-7 shadow-light dark:shadow-none rounded-2xl">
             <!-- Course Title -->
             <div class="relative pr-7">
-              <h2 class="font-MorabbaBold text-2xl lg:text-3xl pt-1 dark:text-white">آموزش Next.js بصورت پروژه محور</h2>
+              <h2 class="course__title font-MorabbaBold text-2xl lg:text-3xl pt-1 dark:text-white"></h2>
               <span class="absolute right-0 top-0 bottom-0 bg-secondary h-10 w-2.5 rounded-sm"></span>
             </div>
             <!-- Video Player -->
@@ -602,31 +602,9 @@
               </div>
             </div>
           </div>
-          <!-- Chapters -->
+          <!-- Subjects -->
           <div class="col-span-6 lg:col-span-2 bg-white dark:bg-gray-800 shadow-light dark:shadow-none rounded-2xl overflow-hidden">
-            <div class="chapters__wrapper overflow-y-auto max-h-[448px] lg:max-h-[650px] xl:max-h-[719px]">
-              <div class="chapter chapter--active">
-                <!-- Head -->
-                <div
-                  class="chapter__head flex justify-between items-center px-5 h-14 bg-gray-200 dark:bg-gray-700 text-slate-500 dark:text-slate-400 cursor-pointer">
-                  <p class="text-base md:text-lg font-DanaMedium transition-colors line-clamp-1">احراز هویت کاربر با SMS در نکست</p>
-                  <svg class="size-5">
-                    <use href="#chevron-down"></use>
-                  </svg>
-                </div>
-                <!-- Lessons -->
-                <div class="chapter__lessons h-0 overflow-hidden transition-all">
-                  <div
-                    class="flex justify-between items-center px-5 h-14 text-slate-500 dark:text-slate-400 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors">
-                    <div class="relative pr-5 text-sm md:text-base">
-                      <a href="" class="line-clamp-1"> معرفی دوره + پاسخ به سوالات متداول</a>
-                      <span class="absolute right-0 top-0 bottom-0 m-auto w-2.5 h-2.5 bg-gray-200 dark:bg-gray-700 rounded-sm"></span>
-                    </div>
-                    <span class="text-xs md:text-sm">08:26</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="subjects__wrapper overflow-y-auto max-h-[448px] lg:max-h-[650px] xl:max-h-[719px]"></div>
           </div>
         </div>
         <!-- Questions - Info -->
@@ -646,12 +624,12 @@
               <div class="flex gap-x-2 mb-3">
                 <img class="block w-10 h-10 md:w-14 md:h-14 object-cover rounded-full shrink-0" src="/images/user-profile.png" />
                 <div class="flex flex-col">
-                  <span class="text-zinc-700 dark:text-white font-DanaMedium text-base md:text-xl">mersad</span>
+                  <span class="user__name text-zinc-700 dark:text-white font-DanaMedium text-base md:text-xl"></span>
                   <span class="text-slate-500 dark:text-gray-500 text-sm" id="qa-to" data-newtxt="پرسش جدید">پرسش جدید</span>
                 </div>
               </div>
               <form action="">
-                <textarea name="content" id="editor" class=""> </textarea>
+                <textarea class="w-full bg-gray-100 dark:bg-gray-700 rounded-lg border-none outline-none p-2 dark:text-white" rows="7"> </textarea>
               </form>
             </div>
             <!-- List of questions -->
@@ -662,32 +640,32 @@
           </div>
           <div class="-order-1 lg:order-1 col-span-6 lg:col-span-2 block space-y-5">
             <!-- Mini Box Information like time, status, lessons count -->
-            <div class="block">
-              <div class="flex lg:flex-wrap justify-center xl:justify-between gap-3 md:gap-4">
-                <div class="w-full lg:w-[122px] bg-white py-3 dark:bg-gray-800 text-center shadow-light dark:shadow-none rounded-2xl">
+            <div class="">
+              <div class="flex lg:flex-wrap xxl:flex-nowrap justify-center xl:justify-between gap-3 md:gap-4">
+                <div class="w-full lg:w-[122px] xxl:w-full bg-white py-3 dark:bg-gray-800 text-center shadow-light dark:shadow-none rounded-2xl">
                   <svg class="text-primary size-7 mx-auto">
                     <use xlink:href="#exclamation-circle"></use>
                   </svg>
                   <div class="flex flex-col items-center justify-center mt-2.5">
-                    <span class="font-DanaDemiBold text-lg text-zinc-700 dark:text-white">در حال برگزاری</span>
+                    <span class="course__status font-DanaDemiBold text-lg text-zinc-700 dark:text-white"></span>
                     <p class="text-slate-500 dark:text-gray-500 text-xs">وضعیت دوره</p>
                   </div>
                 </div>
-                <div class="w-full lg:w-[122px] bg-white py-3 dark:bg-gray-800 text-center shadow-light dark:shadow-none rounded-2xl">
+                <div class="w-full lg:w-[122px] xxl:w-full bg-white py-3 dark:bg-gray-800 text-center shadow-light dark:shadow-none rounded-2xl">
                   <svg class="text-primary size-7 mx-auto">
                     <use xlink:href="#clock"></use>
                   </svg>
                   <div class="flex flex-col items-center justify-center mt-2.5">
-                    <span class="font-DanaDemiBold text-lg text-zinc-700 dark:text-white">39:01</span>
+                    <span class="course__time font-DanaDemiBold text-lg text-zinc-700 dark:text-white">39:01</span>
                     <p class="text-slate-500 dark:text-gray-500 text-xs">زمان دوره</p>
                   </div>
                 </div>
-                <div class="w-full lg:w-[122px] bg-white py-3 dark:bg-gray-800 text-center shadow-light dark:shadow-none rounded-2xl">
+                <div class="w-full lg:w-[122px] xxl:w-full bg-white py-3 dark:bg-gray-800 text-center shadow-light dark:shadow-none rounded-2xl">
                   <svg class="text-primary size-7 mx-auto">
                     <use xlink:href="#video-camera"></use>
                   </svg>
                   <div class="flex flex-col items-center justify-center mt-2.5">
-                    <span class="font-DanaDemiBold text-lg text-zinc-700 dark:text-white">297</span>
+                    <span class="course__episodes-count font-DanaDemiBold text-lg text-zinc-700 dark:text-white"></span>
                     <p class="text-slate-500 dark:text-gray-500 text-xs">جلسات دوره</p>
                   </div>
                 </div>
@@ -703,7 +681,7 @@
             <!-- Course Teacher -->
             <div class="block bg-white dark:bg-gray-800 px-5 py-6 shadow-light dark:shadow-none rounded-2xl text-center">
               <img class="block mx-auto mb-5 w-[90px] h-[90px] rounded-full" src="/images/user-profile.png" alt="" />
-              <h4 class="text-zinc-700 dark:text-white text-2xl mb-1">محمدامین سعیدی راد</h4>
+              <h4 class="course__techer text-zinc-700 dark:text-white text-2xl mb-1"></h4>
             </div>
           </div>
         </div>
