@@ -32,7 +32,7 @@ const createCourseCard = (
         }
           <img
             src=${BASE_URL}/${course.image}
-            onerror="this.src = 'http://localhost:8000/images/image-404.png'"
+            onerror="this.src = '/images/image-404.png'"
             class="w-full h-full object-cover rounded-2xl"
             alt="" />
         </a>

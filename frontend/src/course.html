@@ -197,7 +197,7 @@
         <path
           d="M10,7V2.75a.75.75,0,0,0-1.272-.538l-8.5,8.25a.749.749,0,0,0,0,1.076l8.5,8.25A.75.75,0,0,0,10,19.25V15h1.418a12.753,12.753,0,0,1,11.153,6.572l.021.038a.751.751,0,0,0,.658.39.74.74,0,0,0,.186-.023A.75.75,0,0,0,24,21.25,14.267,14.267,0,0,0,10,7Z"
           transform="translate(0 -2)"></path>
-      </symbol>
+      </symbol>     
     </svg>
     <!-- Header -->
     <header class="w-full h-[88px] md:h-32 px-8 md:px-16 lg:px-6 xl:px-12 bg-white dark:bg-gray dark:border-b dark:border-gray-700">
@@ -639,10 +639,10 @@
               </div>
 
               <!-- Price and Buy Btn -->
-              <div class="flex flex-col-reverse sm:flex-row items-center justify-between mt-6 sm:mt-3.5">
+              <div class="buy-btn__wrapper flex flex-col-reverse sm:flex-row items-center justify-between mt-6 sm:mt-3.5">
                 <a
                   id="buy-btn"
-                  href="#"
+                  href="./login.html"
                   class="flex items-center justify-center sm:justify-start gap-x-2 h-[62px] w-full sm:w-auto px-5 rounded-xl bg-primary hover:bg-green-500 text-white font-DanaDemiBold text-2xl transition-colors">
                   <svg class="w-[25px] h-[30px]">
                     <use href="#shield-done"></use>
@@ -658,7 +658,7 @@
           <!-- Header Left - Banner -->
           <div
             class="shrink-0 mb-3 sm:mb-6 lg:mb-0 w-full h-auto md:w-10/12 lg:w-[440px] lg:h-[270px] xl:w-[610px] xl:h-[360px] rounded-2xl sm:rounded-3xl overflow-hidden">
-            <img src="" class="course__image hidden w-full h-full object-cover" alt="" />
+            <img src="" id="course__image" class="course__image hidden w-full h-full object-cover" onerror="this.src = '/images/image-404.png'" alt="" />
           </div>
         </section>
         <!-- Course Main -->
@@ -820,7 +820,7 @@
                 </h3>
                 <span class="topics__all-time mt-1 dark:text-white"></span>
               </div>
-              <div class="topic__container space-y-2.5">
+              <div id="topic__container" class="topic__container space-y-2.5">
                 <p class="text-center text-xl dark:text-white my-4">سر فصلی وجود ندارد</p>
                 <!-- Load From JS -->
               </div>
