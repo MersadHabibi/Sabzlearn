@@ -74,12 +74,12 @@ form.addEventListener("submit", async e => {
     code = code + input.value;
   });
 
-  console.log(code);
+  console.log(code.split("").reverse().join(""));
 
   // Send API
 
   const datas = {
-    code,
+    code: code.split("").reverse().join(""),
     email: params.email,
   };
 
