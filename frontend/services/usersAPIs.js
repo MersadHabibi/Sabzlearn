@@ -184,7 +184,7 @@ async function verifyOTPApi(datas, callback) {
   try {
     const res = await api.post("verify-otp", datas);
 
-    if (res.status === 200) {
+    if (res.response.status === 200) {
       showNotif("حساب شما با موفقیت ساخته شد", "success");
 
       localStorage.setItem("token", res.data.token);
@@ -194,18 +194,39 @@ async function verifyOTPApi(datas, callback) {
       };
     } else throw new Error("Unknown Error");
   } catch (err) {
-    if (err.status === 403) {
+    if (err.response.status === 403) {
       showNotif("زمان وارد کردن کد تموم شده است");
-    } else if (err.status === 401) {
+    } else if (err.response.status === 401) {
       showNotif("کد وارد شده درست نیست");
     }
 
     return {
       status: false,
     };
-  } finally{
-    callback()
+  } finally {
+    callback();
   }
 }
 
-export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi, editUserApi, changePasswordApi, verifyOTPApi };
+async function resendOTPApi(email) {
+  console.log(email);
+  try {
+    const res = await api.post("send-otp", {
+      email,
+    });
+
+    showNotif("کد برای شما ارسال شد", "success");
+
+    return {
+      status: true,
+    };
+  } catch (err) {
+    showNotif("مشکلی در ارسال مجدد کد به وجود آمده");
+
+    return {
+      status: false,
+    };
+  }
+}
+
+export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi, editUserApi, changePasswordApi, verifyOTPApi, resendOTPApi };

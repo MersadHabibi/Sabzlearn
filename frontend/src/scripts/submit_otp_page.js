@@ -1,9 +1,15 @@
-import { verifyOTPApi } from "../../services/usersAPIs";
+import { resendOTPApi, verifyOTPApi } from "../../services/usersAPIs";
 import "../styles/app.css";
 import { redirectWhenHaveToken } from "./funcs/share";
-import { api, createTimer } from "./funcs/utils";
+import { api, createTimer, fullScreenLoader } from "./funcs/utils";
 
 redirectWhenHaveToken("./index.html");
+
+// Get Params
+
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
 
 // Input Events
 
@@ -36,14 +42,20 @@ const dayElem = document.querySelector(".timer__day");
 const submitBtn = document.querySelector(".submit-btn");
 const resetTimerBtn = document.querySelector(".timer__reset");
 
-createTimer(dayElem, hurElem, minElem, secElem, "0:0:1:0", true, () => {
+createTimer(dayElem, hurElem, minElem, secElem, "0:0:0:5", true, () => {
   resetTimerBtn.removeAttribute("disabled");
   submitBtn.setAttribute("disabled", "true");
 });
 
 // Reset Timer
 
-resetTimerBtn.addEventListener("click", () => {
+resetTimerBtn.addEventListener("click", async () => {
+  // Resend Otp code
+
+  const res = await resendCode();
+
+  if (!res) return;
+
   minElem.innerHTML = "01";
   secElem.innerHTML = "00";
 
@@ -59,12 +71,6 @@ const codeInputs = document.querySelectorAll(".otp__input");
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
-
-  // Get Params
-
-  const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
 
   // Get Code From Inputs
 
@@ -83,13 +89,27 @@ form.addEventListener("submit", async e => {
     email: params.email,
   };
 
+  fullScreenLoader("loading");
   const res = await verifyOTPApi(datas, () => {
     codeInputs.forEach(input => {
       input.value = "";
     });
   });
+  fullScreenLoader("loaded");
 
   if (res.status) {
     location.replace("./index.html");
   }
 });
+
+// Resend OTP code
+
+async function resendCode() {
+  fullScreenLoader("loading");
+  const res = await resendOTPApi(params.email);
+  fullScreenLoader("loaded");
+
+  console.log(res);
+
+  return res.status;
+}
