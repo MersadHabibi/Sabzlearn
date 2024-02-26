@@ -36,14 +36,19 @@ function register(req, res) {
             });
             Promise.all([
               redisCli.setEx(`otp-${email}`, 60, otpCode),
-              redisCli.setEx(`data-${email}`, 600, {
-                address,
-                username,
-                password,
-                phoneNumber,
-              }),
+              redisCli.setEx(
+                `data-${email}`,
+                600,
+                JSON.stringify({
+                  address,
+                  username,
+                  password,
+                  phoneNumber,
+                })
+              ),
             ]).then((resultOfredis) => {
-              if (resultOfredis == "OK") {
+              console.log("after set varibales to redis");
+              if (resultOfredis[0] == "OK" && resultOfredis[1] == "OK") {
                 mailer
                   .sendMail({
                     from: "mail@sabzlearn.m-fatehi.ir",
@@ -62,6 +67,11 @@ function register(req, res) {
                   .catch((err) => {
                     console.log("the Error in email sendig", err);
                   });
+              } else {
+                console.log(
+                  "there is an error in setting varibles to redis",
+                  resultOfredis
+                );
               }
             });
           } else {
@@ -107,7 +117,7 @@ async function verifyOtp(req, res) {
                   .status(403)
                   .json({ message: "You have to Do register Proccess Again." });
               }
-              createuser({ ...userData }).then((result) => {
+              createuser(JSON.parse(userData)).then((result) => {
                 return res.status(200).json(result);
               });
             });
