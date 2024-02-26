@@ -15,7 +15,11 @@ const showCategoryCourses = async id => {
   //
   coursesContainer.innerHTML = `<div class="loader mx-auto my-3 sm:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5"></div>`;
 
-  const courses = await getCoursesByCategoryId(id);
+  const courses = (await getCoursesByCategoryId(id)).courses;
+
+  console.log(courses);
+
+  coursesContainer.innerHTML = "";
 
   courses === null &&
     (coursesContainer.innerHTML =
