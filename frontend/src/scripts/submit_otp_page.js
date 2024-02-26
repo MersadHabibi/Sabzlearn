@@ -1,13 +1,29 @@
+import { verifyOTPApi } from "../../services/usersAPIs";
 import "../styles/app.css";
+import { redirectWhenHaveToken } from "./funcs/share";
 import { api, createTimer } from "./funcs/utils";
+
+redirectWhenHaveToken("./index.html");
+
+// Input Events
 
 const otpInputs = document.querySelectorAll(".otp__input");
 
 otpInputs.forEach(input => {
-  input.addEventListener("input", () => {
+  input.addEventListener("input", event => {
     const nextInput = input.previousElementSibling;
 
     if (input.value.length === 1 && nextInput) nextInput.focus();
+  });
+
+  input.addEventListener("keyup", event => {
+    const prevInput = input.nextElementSibling;
+
+    console.log(prevInput, event);
+
+    if (event.keyCode == 8 && prevInput) {
+      prevInput.focus();
+    }
   });
 });
 
@@ -41,7 +57,7 @@ resetTimerBtn.addEventListener("click", () => {
 const form = document.querySelector("form");
 const codeInputs = document.querySelectorAll("otp__input");
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", async e => {
   e.preventDefault();
 
   // Get Params
@@ -52,7 +68,7 @@ form.addEventListener("submit", e => {
 
   // Get Code From Inputs
 
-  const code = "";
+  let code = "";
 
   codeInputs.forEach(input => {
     code = code + input.value;
@@ -62,15 +78,18 @@ form.addEventListener("submit", e => {
 
   // Send API
 
-  api
-    .post("verify-otp", {
-      email: params.email,
-      code,
-    })
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err => {
-      console.log(err);
+  const datas = {
+    code,
+    email: params.email,
+  };
+
+  const res = await verifyOTPApi(datas, () => {
+    codeInputs.forEach(input => {
+      input.value = "";
     });
+  });
+
+  if (res.status) {
+    location.replace("./index.html");
+  }
 });

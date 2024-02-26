@@ -39,10 +39,7 @@ async function registerApi(data) {
       ...data,
     })
     .then(res => {
-      showNotif("اکانت شما با موفقیت ساخته شد", "success");
-      // localStorage.setItem("token", res.data.token);
-
-      console.log(res);
+      // showNotif("اکانت شما با موفقیت ساخته شد", "success");
 
       return {
         status: true,
@@ -51,8 +48,6 @@ async function registerApi(data) {
     .catch(err => {
       if (err.message == "Request failed with status code 403") showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
       else showNotif("ساخت حساب با مشکل مواجه شد");
-
-      console.log(err);
 
       return {
         status: false,
@@ -185,4 +180,32 @@ async function changePasswordApi(datas, callback) {
   }
 }
 
-export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi, editUserApi, changePasswordApi };
+async function verifyOTPApi(datas, callback) {
+  try {
+    const res = await api.post("verify-otp", datas);
+
+    if (res.status === 200) {
+      showNotif("حساب شما با موفقیت ساخته شد", "success");
+
+      localStorage.setItem("token", res.data.token);
+
+      return {
+        status: true,
+      };
+    } else throw new Error("Unknown Error");
+  } catch (err) {
+    if (err.status === 403) {
+      showNotif("زمان وارد کردن کد تموم شده است");
+    } else if (err.status === 401) {
+      showNotif("کد وارد شده درست نیست");
+    }
+
+    return {
+      status: false,
+    };
+  } finally{
+    callback()
+  }
+}
+
+export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi, editUserApi, changePasswordApi, verifyOTPApi };
