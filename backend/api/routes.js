@@ -10,12 +10,14 @@ import updateUser from "../controller/updateUser.js";
 import getCoursesByCategory from "../controller/Admin/getCoursesByCategory.js";
 import buyCourse from "../controller/buyCourse.js";
 import getAllCategories from "../controller/Admin/getAllCategories.js";
+import getEpisodeById from "../controller/getEpisodeById.js";
 
 const router = Router();
 
 router.post("/register", register);
 router.post("/verify-otp", verifyOtp);
 router.post("/login", login);
+
 router
   .route("/me")
   .get(AuthCheckMiddleWare, getMe)
@@ -29,6 +31,7 @@ router.route("/courses").get(getCourses).post(AuthCheckMiddleWare, buyCourse);
 router
   .use(AuthCheckMiddleWare)
   .post("/comments", createComment)
-  .post("/comments/:commentId/reply", createReply);
+  .post("/comments/:commentId/reply", createReply)
+  .get("/episodes/:id", getEpisodeById);
 
 export default router;
