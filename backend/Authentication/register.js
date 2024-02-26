@@ -3,10 +3,8 @@ const prisma = new PrismaClient();
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import mailer from "../utils/connectMailServer.js";
 import redisCli from "../utils/connectRedis.js";
-import otpGenerator from "otp-generator";
-import emailValidator from "node-email-verifier";
+import sendOtp from "../controller/sendOtp.js";
 
 dotenv.config();
 
@@ -25,64 +23,12 @@ function register(req, res) {
   registerSchema
     .validateAsync(req.body)
     .then(({ email, password, username, address, phoneNumber }) => {
-      emailValidator(email)
-        .then((isvalid) => {
-          if (isvalid) {
-            const otpCode = otpGenerator.generate(4, {
-              digits: true,
-              specialChars: false,
-              lowerCaseAlphabets: false,
-              upperCaseAlphabets: false,
-            });
-            Promise.all([
-              redisCli.setEx(`otp-${email}`, 60, otpCode),
-              redisCli.setEx(
-                `data-${email}`,
-                600,
-                JSON.stringify({
-                  address,
-                  username,
-                  password,
-                  phoneNumber,
-                })
-              ),
-            ]).then((resultOfredis) => {
-              console.log("after set varibales to redis");
-              if (resultOfredis[0] == "OK" && resultOfredis[1] == "OK") {
-                mailer
-                  .sendMail({
-                    from: "mail@sabzlearn.m-fatehi.ir",
-                    to: email,
-                    subject: "Verification Email",
-                    html: `
-              <h1>Your Code is ${otpCode}</h1>
-              `,
-                  })
-                  .then((result) => {
-                    console.log("result of sended Email", result);
-                    if (result) {
-                      res.json({ message: "email sended successfully" });
-                    }
-                  })
-                  .catch((err) => {
-                    console.log("the Error in email sendig", err);
-                  });
-              } else {
-                console.log(
-                  "there is an error in setting varibles to redis",
-                  resultOfredis
-                );
-              }
-            });
-          } else {
-            console.log("Your Email Address is Invalid", email);
-            return res
-              .status(403)
-              .json({ message: "Your Email Address is Invalid" });
-          }
+      sendOtp(email, true, address, username, password, phoneNumber)
+        .then((result) => {
+          req.sendOtpInRegister = true
+          return res.json(result);
         })
         .catch((err) => {
-          console.log("err in validating ", err);
           return res.status(403).json(err);
         });
     })
@@ -104,6 +50,7 @@ async function verifyOtp(req, res) {
       redisCli
         .get(`otp-${reqBody.email}`)
         .then((data) => {
+          console.log(data);
           if (data == null) {
             console.log("The key isnot exit");
             return res
@@ -117,9 +64,17 @@ async function verifyOtp(req, res) {
                   .status(403)
                   .json({ message: "You have to Do register Proccess Again." });
               }
-              createuser(JSON.parse(userData)).then((result) => {
-                return res.status(200).json(result);
-              });
+              createuser({
+                ...JSON.parse(userData),
+                email: reqBody.email,
+              })
+                .then((result) => {
+                  return res.status(200).json(result);
+                })
+                .catch((err) => {
+                  console.log(err);
+                  return res.status(403).json(err);
+                });
             });
           } else {
             return res.status(403).json({ message: "Your Otp Code Is wrong." });

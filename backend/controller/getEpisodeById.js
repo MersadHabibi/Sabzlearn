@@ -13,6 +13,9 @@ function getEpisodeById(req, res) {
           where: {
             id,
           },
+          include: {
+            course: true,
+          },
         })
         .then((episode) => {
           return res.json({ message: "success", episode });
