@@ -181,8 +181,11 @@ async function changePasswordApi(datas, callback) {
 }
 
 async function verifyOTPApi(datas, callback) {
+  console.log(datas);
   try {
     const res = await api.post("verify-otp", datas);
+
+    console.log(res);
 
     if (res.response.status === 200) {
       showNotif("حساب شما با موفقیت ساخته شد", "success");
@@ -194,6 +197,7 @@ async function verifyOTPApi(datas, callback) {
       };
     } else throw new Error("Unknown Error");
   } catch (err) {
+    console.log(err);
     if (err.response.status === 403) {
       showNotif("زمان وارد کردن کد تموم شده است");
     } else if (err.response.status === 401) {

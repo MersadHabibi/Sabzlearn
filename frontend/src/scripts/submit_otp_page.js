@@ -42,7 +42,7 @@ const dayElem = document.querySelector(".timer__day");
 const submitBtn = document.querySelector(".submit-btn");
 const resetTimerBtn = document.querySelector(".timer__reset");
 
-createTimer(dayElem, hurElem, minElem, secElem, "0:0:0:5", true, () => {
+createTimer(dayElem, hurElem, minElem, secElem, "0:0:1:0", true, () => {
   resetTimerBtn.removeAttribute("disabled");
   submitBtn.setAttribute("disabled", "true");
 });
