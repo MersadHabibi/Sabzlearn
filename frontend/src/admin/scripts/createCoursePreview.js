@@ -13,7 +13,7 @@ const createCoursePreview = () => {
   window.isFreePreviewHandler = isFreePreviewHandler;
 };
 
-const titlePreviewHandler = elem => {
+const titlePreviewHandler = (elem) => {
   const titlePreview = document.querySelector(".preview__title");
   if (elem.value) {
     titlePreview.innerText = elem.value;
@@ -22,7 +22,7 @@ const titlePreviewHandler = elem => {
   }
 };
 
-const descriptionPreviewHandler = elem => {
+const descriptionPreviewHandler = (elem) => {
   const descriptionPreview = document.querySelector(".preview__description");
   if (elem.value) {
     descriptionPreview.innerText = elem.value;
@@ -31,7 +31,7 @@ const descriptionPreviewHandler = elem => {
   }
 };
 
-const categoryPreviewHandler = async elem => {
+const categoryPreviewHandler = async (elem) => {
   const categoryPreview = document.querySelector(".preview__category");
 
   if (elem.value) {
@@ -39,14 +39,16 @@ const categoryPreviewHandler = async elem => {
 
     const categories = await getAllCategories();
 
-    const categoryTarget = categories.filter(category => category.categoryId == elem.value);
+    const categoryTarget = categories.filter(
+      (category) => category.categoryId == elem.value,
+    );
     categoryPreview.innerText = categoryTarget[0].categoryName;
   } else {
     categoryPreview.innerText = "دسته بندی";
   }
 };
 
-const teacherPreviewHandler = elem => {
+const teacherPreviewHandler = (elem) => {
   const teacherPreview = document.querySelector(".preview__teacher");
   if (elem.value) {
     teacherPreview.innerText = getTeacherName(elem.value);
@@ -55,7 +57,7 @@ const teacherPreviewHandler = elem => {
   }
 };
 
-const pricePreviewHandler = elem => {
+const pricePreviewHandler = (elem) => {
   const pricePreview = document.querySelector(".preview__price");
   price = elem.value ? elem.value : "0000000";
   if (price) {
@@ -76,7 +78,7 @@ const pricePreviewHandler = elem => {
   }
 };
 
-const isFreePreviewHandler = elem => {
+const isFreePreviewHandler = (elem) => {
   const pricePreview = document.querySelector(".preview__price");
   isFree = /^true$/i.test(elem.value);
   pricePreview.innerHTML = isFree
@@ -94,4 +96,11 @@ const isFreePreviewHandler = elem => {
 };
 
 export default createCoursePreview;
-export { titlePreviewHandler, descriptionPreviewHandler, categoryPreviewHandler, teacherPreviewHandler, pricePreviewHandler, isFreePreviewHandler };
+export {
+  titlePreviewHandler,
+  descriptionPreviewHandler,
+  categoryPreviewHandler,
+  teacherPreviewHandler,
+  pricePreviewHandler,
+  isFreePreviewHandler,
+};

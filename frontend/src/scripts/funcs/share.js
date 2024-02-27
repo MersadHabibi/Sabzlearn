@@ -2,7 +2,7 @@
 
 import { getMe } from "../../../services/usersAPIs.js";
 
-const redirectWhenHaveToken = async redirectLink => {
+const redirectWhenHaveToken = async (redirectLink) => {
   const user = await getMe();
   if (user !== null) {
     location.replace(redirectLink);

@@ -8,7 +8,9 @@ async function getAllCourses() {
 
     return courses;
   } catch (err) {
-    showNotif("مشکلی در نشان دادن دوره ها به وجود آمده! کمی بعد دوباره تلاش کنید");
+    showNotif(
+      "مشکلی در نشان دادن دوره ها به وجود آمده! کمی بعد دوباره تلاش کنید",
+    );
     return null;
   }
 }
@@ -34,7 +36,9 @@ async function getCoursesByCategoryId(id) {
 
     return data;
   } catch (err) {
-    showNotif("مشکلی در نشان دادن دوره ها به وجود آمده! کمی بعد دوباره تلاش کنید");
+    showNotif(
+      "مشکلی در نشان دادن دوره ها به وجود آمده! کمی بعد دوباره تلاش کنید",
+    );
     return null;
   }
 }
@@ -42,13 +46,13 @@ async function getCoursesByCategoryId(id) {
 async function deleteCourseApi(id) {
   return await apiAdmin
     .delete(`courses/${id}`)
-    .then(res => {
+    .then((res) => {
       showNotif("دوره با موفقیت حذف شد", "success");
       return {
         status: true,
       };
     })
-    .catch(err => {
+    .catch((err) => {
       showNotif("مشکلی در حذف دوره به وجود آمده ! دوباره امتحان کنید");
 
       return {
@@ -60,7 +64,7 @@ async function deleteCourseApi(id) {
 async function createCourseApi(formData) {
   return await apiAdmin
     .post("courses", formData)
-    .then(res => {
+    .then((res) => {
       console.log(res);
       showNotif("دوره با موفقیت ساخته شد", "success");
 
@@ -68,7 +72,7 @@ async function createCourseApi(formData) {
         status: true,
       };
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       showNotif("مشکلی پیش آمده");
 
@@ -92,14 +96,14 @@ async function courseDescriptionApi(id, description) {
 async function editCourseApi(id, datas) {
   return await apiAdmin
     .patch(`courses/${id}`, datas)
-    .then(res => {
+    .then((res) => {
       showNotif("دوره با موفقیت ویرایش شد", "success");
 
       return {
         status: true,
       };
     })
-    .catch(err => {
+    .catch((err) => {
       showNotif("مشکلی پیش آمده");
 
       return {
@@ -137,4 +141,13 @@ async function getEpisodeByIdApi(id) {
   }
 }
 
-export { getAllCourses, getCourseById, getCoursesByCategoryId, deleteCourseApi, createCourseApi, courseDescriptionApi, editCourseApi, getEpisodeByIdApi };
+export {
+  getAllCourses,
+  getCourseById,
+  getCoursesByCategoryId,
+  deleteCourseApi,
+  createCourseApi,
+  courseDescriptionApi,
+  editCourseApi,
+  getEpisodeByIdApi,
+};

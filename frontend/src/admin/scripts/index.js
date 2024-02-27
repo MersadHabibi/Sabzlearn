@@ -4,7 +4,6 @@ import "ckeditor-tailwind-reset/ckeditor-tailwind-reset.css";
 import { _changeClasses } from "../../scripts/funcs/utils.js";
 import changeContent from "./changeContents.js";
 
-
 const menuItems = document.querySelectorAll(".menu__item");
 const notifBtn = document.querySelector(".notif-btn");
 const overlay = document.querySelector(".overlay");
@@ -12,9 +11,9 @@ const openMobileMenuBtn = document.querySelector(".mobile-menu-open-btn");
 const closeMobileMenuBtn = document.querySelector(".mobile-menu-close-btn");
 const menuContainer = document.querySelector("aside");
 
-// Menu Items 
+// Menu Items
 
-menuItems.forEach(menuItem => {
+menuItems.forEach((menuItem) => {
   menuItem.addEventListener("click", () => {
     menuItemClickHandler(menuItem);
   });
@@ -22,10 +21,12 @@ menuItems.forEach(menuItem => {
 
 // Menu Item Click Handler
 
-const menuItemClickHandler = menuItem => {
+const menuItemClickHandler = (menuItem) => {
   const clickedMenu = menuItem.dataset.content;
 
-  _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
+  _changeClasses("remove", document.querySelector(".menu__item.active"), [
+    "active",
+  ]);
   _changeClasses("add", menuItem, ["active"]);
 
   changeContent(clickedMenu);

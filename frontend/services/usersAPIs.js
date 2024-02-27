@@ -38,15 +38,16 @@ async function registerApi(data) {
     .post("register", {
       ...data,
     })
-    .then(res => {
+    .then((res) => {
       // showNotif("اکانت شما با موفقیت ساخته شد", "success");
 
       return {
         status: true,
       };
     })
-    .catch(err => {
-      if (err.message == "Request failed with status code 403") showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
+    .catch((err) => {
+      if (err.message == "Request failed with status code 403")
+        showNotif("ایمیل یا نام کاربری قبلا استفاده شده است");
       else showNotif("ساخت حساب با مشکل مواجه شد");
 
       return {
@@ -60,7 +61,7 @@ async function loginApi(data) {
     .post("login", {
       ...data,
     })
-    .then(res => {
+    .then((res) => {
       if (!res.data.token) {
         showNotif("ایمیل یا رمز عبور درست نیست");
       } else if (res.data.token) {
@@ -70,7 +71,7 @@ async function loginApi(data) {
         return res;
       }
     })
-    .catch(err => {
+    .catch((err) => {
       showNotif("مشکلی پیش آمده");
       return null;
     });
@@ -81,7 +82,10 @@ async function blockAndUnBlockUserApi(action, id, callback) {
     const res = await apiAdmin.post(`users/${id}`, {
       id,
     });
-    showNotif(`${action === "block" ? `کاربر مسدود شد` : `کاربر رفع انسداد شد`}`, "success");
+    showNotif(
+      `${action === "block" ? `کاربر مسدود شد` : `کاربر رفع انسداد شد`}`,
+      "success",
+    );
 
     return {
       status: true,

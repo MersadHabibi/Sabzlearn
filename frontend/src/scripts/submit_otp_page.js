@@ -15,14 +15,14 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 const otpInputs = document.querySelectorAll(".otp__input");
 
-otpInputs.forEach(input => {
-  input.addEventListener("input", event => {
+otpInputs.forEach((input) => {
+  input.addEventListener("input", (event) => {
     const nextInput = input.previousElementSibling;
 
     if (input.value.length === 1 && nextInput) nextInput.focus();
   });
 
-  input.addEventListener("keyup", event => {
+  input.addEventListener("keyup", (event) => {
     const prevInput = input.nextElementSibling;
 
     console.log(prevInput, event);
@@ -69,14 +69,14 @@ resetTimerBtn.addEventListener("click", async () => {
 const form = document.querySelector("form");
 const codeInputs = document.querySelectorAll(".otp__input");
 
-form.addEventListener("submit", async e => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   // Get Code From Inputs
 
   let code = "";
 
-  codeInputs.forEach(input => {
+  codeInputs.forEach((input) => {
     code = code + input.value;
   });
 
@@ -91,7 +91,7 @@ form.addEventListener("submit", async e => {
 
   fullScreenLoader("loading");
   const res = await verifyOTPApi(datas, () => {
-    codeInputs.forEach(input => {
+    codeInputs.forEach((input) => {
       input.value = "";
     });
   });

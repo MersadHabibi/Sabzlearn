@@ -1,7 +1,15 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { BASE_URL, _changeClasses, api, createTimer, fullScreenLoader, getTeacherName, showNotif } from "./funcs/utils.js";
+import {
+  BASE_URL,
+  _changeClasses,
+  api,
+  createTimer,
+  fullScreenLoader,
+  getTeacherName,
+  showNotif,
+} from "./funcs/utils.js";
 import createNewComment from "./funcs/createComment.js";
 import createReplyComment from "./funcs/replayComment.js";
 import { getCourseById } from "../../services/coursesAPIs.js";
@@ -41,13 +49,19 @@ const preparationNewAndReplayComment = () => {
   const formTextarea = document.querySelector("#comment-textarea");
 
   console.log("prepare");
-  form.addEventListener("submit", async e => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    _changeClasses("add", document.querySelector("#comment-submit-btn"), ["load"]);
+    _changeClasses("add", document.querySelector("#comment-submit-btn"), [
+      "load",
+    ]);
     if (replayOrNewComment == "new") {
       if (user !== null) {
-        let res = await createNewComment(user.id, course.id, formTextarea.value);
+        let res = await createNewComment(
+          user.id,
+          course.id,
+          formTextarea.value,
+        );
         if (res == true) {
           _changeClasses("remove", courseComments, ["show-new-comment-form"]);
           formTextarea.value = "";
@@ -60,7 +74,11 @@ const preparationNewAndReplayComment = () => {
         showNotif("وارد شوید");
       }
     } else {
-      let res = await createReplyComment(user.id, replayOrNewComment, formTextarea.value);
+      let res = await createReplyComment(
+        user.id,
+        replayOrNewComment,
+        formTextarea.value,
+      );
       if (res == true) {
         _changeClasses("remove", courseComments, ["show-new-comment-form"]);
         formTextarea.value = "";
@@ -70,7 +88,9 @@ const preparationNewAndReplayComment = () => {
         ShowComments();
       }
     }
-    _changeClasses("remove", document.querySelector("#comment-submit-btn"), ["load"]);
+    _changeClasses("remove", document.querySelector("#comment-submit-btn"), [
+      "load",
+    ]);
   });
 };
 
@@ -144,8 +164,8 @@ const preparationNewCommentBtn = () => {
 const preparationReplayCommentBtn = () => {
   const replayCommentBtn = $.querySelectorAll(".comment-reply-btn");
 
-  replayCommentBtn.forEach(replayBtn => {
-    replayBtn.addEventListener("click", elem => {
+  replayCommentBtn.forEach((replayBtn) => {
+    replayBtn.addEventListener("click", (elem) => {
       let commentToName = replayBtn.dataset.creator;
       commentTo.innerText = `در پاسخ به ${commentToName}`;
       _changeClasses("add", courseComments, ["show-new-comment-form"]);
@@ -188,7 +208,9 @@ const setDatas = () => {
   const courseOffer = $.querySelector(".course__offer");
   const courseOfferPercent = $.querySelector(".course__offer-percent");
   const courseStudentsCount = $.querySelector(".course__studentsCount");
-  const mobileCourseStudentsCount = $.querySelector(".mobile-course__studentsCount");
+  const mobileCourseStudentsCount = $.querySelector(
+    ".mobile-course__studentsCount",
+  );
   const courseStatus = $.querySelector(".course__status");
   const courseTime = $.querySelector(".course__time");
   const topicsAllTimeElem = $.querySelector(".topics__all-time");
@@ -215,7 +237,7 @@ const setDatas = () => {
       </svg>
       <span> شرکت در دوره </span>
     </a>
-    `
+    `,
     );
   } else if (user) {
     buyBtn.href = `./order.html?courseId=${course.id}`;
@@ -262,7 +284,7 @@ const setDatas = () => {
     </div>
     `
     : course.discount
-    ? `
+      ? `
     <div class="flex items-center gap-x-2">
       <span
         class="relative block text-slate-500 dark:text-slate-400 text-2xl -mb-1 pt-1.5 before:content-[''] before:absolute before:inset-0 before:m-auto before:h-[1px] before:w-full before:bg-slate-500 dark:before:bg-slate-400">
@@ -277,7 +299,7 @@ const setDatas = () => {
       </span>
     </div>
     `
-    : `
+      : `
     <div
       class="flex gap-x-1 items-center font-DanaDemiBold dark:text-white">
       <span class="text-3xl mt-1"> ${course.price} </span>
@@ -299,7 +321,12 @@ const setDatas = () => {
 
   // Status
 
-  courseStatus.innerHTML = course.status == "presell" ? "پیش فروش" : course.status == "completing" ? "در حال تکمیل" : "تکمیل شده";
+  courseStatus.innerHTML =
+    course.status == "presell"
+      ? "پیش فروش"
+      : course.status == "completing"
+        ? "در حال تکمیل"
+        : "تکمیل شده";
 
   // Time
 
@@ -322,7 +349,7 @@ const showTopics = () => {
 
   topics.length > 0 &&
     ((topicContainer.innerHTML = ""),
-    topics.forEach(topic => {
+    topics.forEach((topic) => {
       console.log(topic);
       topicContainer.insertAdjacentHTML(
         "beforeend",
@@ -347,7 +374,11 @@ const showTopics = () => {
                     return `
                   <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
                     <a href="${
-                      episode.isFree || isbuyed ? `./lesson.html?episodeid=${episode.id}` : !user ? "./login.html" : "#course__image"
+                      episode.isFree || isbuyed
+                        ? `./lesson.html?episodeid=${episode.id}`
+                        : !user
+                          ? "./login.html"
+                          : "#course__image"
                     }" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
                       <span
                         class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
@@ -376,7 +407,7 @@ const showTopics = () => {
           }
         </div>
       </div>
-    `
+    `,
       );
     }));
 };
@@ -398,8 +429,8 @@ const ShowComments = () => {
   preparationReplayCommentBtn();
 };
 
-const insertComments = comments => {
-  comments.forEach(comment => {
+const insertComments = (comments) => {
+  comments.forEach((comment) => {
     commentContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -413,10 +444,10 @@ const insertComments = comments => {
               comment.Users.role == "admin"
                 ? "text-white bg-sky-500 dark:text-sky-500 dark:bg-sky-500/10"
                 : comment.Users.role == "user"
-                ? "bg-slate-500 text-white dark:text-slate-400 dark:bg-slate-400/10"
-                : comment.Users.role == "student"
-                ? "text-white bg-primary dark:text-primary dark:bg-primary/10"
-                : ""
+                  ? "bg-slate-500 text-white dark:text-slate-400 dark:bg-slate-400/10"
+                  : comment.Users.role == "student"
+                    ? "text-white bg-primary dark:text-primary dark:bg-primary/10"
+                    : ""
             }"> 
             ${comment.Users.role == "admin" ? "مدیریت" : comment.Users.role == "user" ? "کاربر" : comment.Users.role == "student" ? "دانشجو" : ""}
            </div>
@@ -435,10 +466,10 @@ const insertComments = comments => {
                         comment.Users.role == "admin"
                           ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
                           : comment.Users.role == "user"
-                          ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
-                          : comment.Users.role == "student"
-                          ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
-                          : ""
+                            ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                            : comment.Users.role == "student"
+                              ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                              : ""
                       }">
                       ${comment.Users.role == "admin" ? "ادمین" : comment.Users.role == "user" ? "کاربر" : comment.Users.role == "student" ? "دانشجو" : ""}
                     </div>
@@ -447,8 +478,8 @@ const insertComments = comments => {
                 </div>
               </div>
               <button class="comment-reply-btn w-6 h-5 text-slate-500 dark:text-gray-500" type="button" data-comment-id=${comment.id} data-creator=" ${
-        comment.Users.username
-      }">
+                comment.Users.username
+              }">
                 <svg class="w-6 h-5">
                   <use xlink:href="#reply"></use>
                 </svg>
@@ -464,7 +495,7 @@ const insertComments = comments => {
                 ? `
               <div class="mt-7 space-y-3.5 md:space-y-5">
                 ${comment.replies
-                  .map(reply => {
+                  .map((reply) => {
                     return `
                   <div class="mt-7 p-3.5 md:p-5 bg-gray-200 dark:bg-slate rounded-2xl">
                     <div class="flex gap-x-5 items-start">
@@ -475,13 +506,19 @@ const insertComments = comments => {
                           reply.Users.role == "admin"
                             ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
                             : reply.Users.role == "user"
-                            ? "bg-slate-500 text-white dark:text-slate-400 dark:bg-slate-400/10"
-                            : reply.Users.role == "student"
-                            ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
-                            : ""
+                              ? "bg-slate-500 text-white dark:text-slate-400 dark:bg-slate-400/10"
+                              : reply.Users.role == "student"
+                                ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                                : ""
                         }">${
-                      reply.Users.role == "admin" ? "ادمین" : reply.Users.role == "user" ? "کاربر" : comment.Users.role == "student" ? "دانشجو" : ""
-                    }</div>
+                          reply.Users.role == "admin"
+                            ? "ادمین"
+                            : reply.Users.role == "user"
+                              ? "کاربر"
+                              : comment.Users.role == "student"
+                                ? "دانشجو"
+                                : ""
+                        }</div>
                       </div>
                       <!-- Comment Left Text, author, data, flag -->
                       <div class="w-full">
@@ -496,18 +533,24 @@ const insertComments = comments => {
                                     reply.Users.role == "admin"
                                       ? "text-white dark:text-sky-500 bg-sky-500 dark:bg-sky-500/10"
                                       : reply.Users.role == "user"
-                                      ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
-                                      : reply.Users.role == "student"
-                                      ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
-                                      : ""
+                                        ? "bg-slate-500 text-white dark:bg-slate-400 dark:text-slate-400/10"
+                                        : reply.Users.role == "student"
+                                          ? "text-white dark:text-primary bg-primary dark:bg-primary/10"
+                                          : ""
                                   }">
                                   ${
-                                    reply.Users.role == "admin" ? "ادمین" : reply.Users.role == "user" ? "کاربر" : reply.Users.role == "student" ? "دانشجو" : ""
+                                    reply.Users.role == "admin"
+                                      ? "ادمین"
+                                      : reply.Users.role == "user"
+                                        ? "کاربر"
+                                        : reply.Users.role == "student"
+                                          ? "دانشجو"
+                                          : ""
                                   }
                                 </div>
-                                <span class="font-danaLight text-slate-500 dark:text-white text-xs">${new Date(reply.createdAt).toLocaleDateString(
-                                  "fa-IR"
-                                )}</span>
+                                <span class="font-danaLight text-slate-500 dark:text-white text-xs">${new Date(
+                                  reply.createdAt,
+                                ).toLocaleDateString("fa-IR")}</span>
                               </div>
                             </div>
                           </div>
@@ -527,7 +570,7 @@ const insertComments = comments => {
           </div>
         </div>
       </div>
-    `
+    `,
     );
   });
 };

@@ -1,7 +1,7 @@
 const $ = document;
 const toggleThemeBtns = $.querySelectorAll(".toggle-theme");
 
-toggleThemeBtns.forEach(toggleThemeBtn => {
+toggleThemeBtns.forEach((toggleThemeBtn) => {
   toggleThemeBtn.addEventListener("click", () => {
     if (localStorage.theme === "dark") {
       document.documentElement.classList.remove("dark");

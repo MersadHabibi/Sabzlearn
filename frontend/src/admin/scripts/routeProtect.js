@@ -1,4 +1,3 @@
-
 export default async function routeProtect() {
   // const user = (await getMe()).data;
   // if (user == undefined) {

@@ -1,6 +1,10 @@
 import { getAllCategories } from "../../../services/categoriesAPIs";
 import { editCourseApi, getCourseById } from "../../../services/coursesAPIs";
-import { BASE_URL, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import {
+  BASE_URL,
+  fullScreenLoader,
+  showNotif,
+} from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
 import {
   categoryPreviewHandler,
@@ -13,19 +17,31 @@ import {
 
 let courseId = null;
 
-const preparationEditCourse = async id => {
+const preparationEditCourse = async (id) => {
   courseId = id;
   fullScreenLoader("loading");
 
   const newCourseTitle = document.querySelector("#create-course-form #title");
-  const newCourseDescription = document.querySelector("#create-course-form #description");
+  const newCourseDescription = document.querySelector(
+    "#create-course-form #description",
+  );
   const newCoursePrice = document.querySelector("#create-course-form #price");
-  const newCourseCategory = document.querySelector("#create-course-form #category");
+  const newCourseCategory = document.querySelector(
+    "#create-course-form #category",
+  );
   const newCourseStatus = document.querySelector("#create-course-form #status");
-  const newCourseShortName = document.querySelector("#create-course-form #short-name");
-  const newCourseTeacher = document.querySelector("#create-course-form #teacher");
-  const newCourseCoverElem = document.querySelector("#create-course-form #cover");
-  const newCourseIsFreeElem = document.querySelector("#create-course-form #isFree");
+  const newCourseShortName = document.querySelector(
+    "#create-course-form #short-name",
+  );
+  const newCourseTeacher = document.querySelector(
+    "#create-course-form #teacher",
+  );
+  const newCourseCoverElem = document.querySelector(
+    "#create-course-form #cover",
+  );
+  const newCourseIsFreeElem = document.querySelector(
+    "#create-course-form #isFree",
+  );
 
   const newCoursePreviewImage = document.querySelector(".preview__img");
 
@@ -51,12 +67,12 @@ const preparationEditCourse = async id => {
 
   newCourseCategory.innerHTML = "<option value=''>دسته بندی...</option>";
 
-  categories.forEach(category => {
+  categories.forEach((category) => {
     newCourseCategory.insertAdjacentHTML(
       "beforeend",
       `
         <option value="${category.categoryId}"> ${category.categoryName} </option>
-      `
+      `,
     );
   });
 
@@ -90,17 +106,27 @@ const preparationEditCourse = async id => {
   fullScreenLoader("loaded");
 };
 
-const editCourse = async event => {
+const editCourse = async (event) => {
   event.preventDefault();
 
   const newCourseTitle = document.querySelector("#create-course-form #title");
-  const newCourseDescription = document.querySelector("#create-course-form #description");
+  const newCourseDescription = document.querySelector(
+    "#create-course-form #description",
+  );
   const newCoursePrice = document.querySelector("#create-course-form #price");
-  const newCourseCategory = document.querySelector("#create-course-form #category");
+  const newCourseCategory = document.querySelector(
+    "#create-course-form #category",
+  );
   const newCourseStatus = document.querySelector("#create-course-form #status");
-  const newCourseShortName = document.querySelector("#create-course-form #short-name");
-  const newCourseTeacher = document.querySelector("#create-course-form #teacher");
-  const newCourseIsFreeElem = document.querySelector("#create-course-form #isFree");
+  const newCourseShortName = document.querySelector(
+    "#create-course-form #short-name",
+  );
+  const newCourseTeacher = document.querySelector(
+    "#create-course-form #teacher",
+  );
+  const newCourseIsFreeElem = document.querySelector(
+    "#create-course-form #isFree",
+  );
 
   if (
     !newCourseTitle.value ||

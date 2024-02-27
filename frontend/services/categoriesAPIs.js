@@ -8,7 +8,9 @@ async function getAllCategories() {
 
     return categories;
   } catch (err) {
-    showNotif("مشکلی در نشان دادن دسته بندی ها به وجود آمده! کمی بعد دوباره تلاش کنید");
+    showNotif(
+      "مشکلی در نشان دادن دسته بندی ها به وجود آمده! کمی بعد دوباره تلاش کنید",
+    );
     return null;
   }
 }

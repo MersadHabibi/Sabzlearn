@@ -4,7 +4,7 @@ import changeContent from "./changeContents";
 import ckEditor from "./ckEditorConfig";
 import getAndPostCourseDescription from "./getAndPostCourseDescription";
 
-const preparationEditDescription = async courseId => {
+const preparationEditDescription = async (courseId) => {
   fullScreenLoader("loading");
 
   const editor = await ckEditor();
@@ -25,7 +25,8 @@ const preparationEditDescription = async courseId => {
     changeContent("courses");
   });
 
-  document.querySelector("#course-name").innerHTML = ` اسم دوره : ${course.title} `;
+  document.querySelector("#course-name").innerHTML =
+    ` اسم دوره : ${course.title} `;
 };
 
 export default preparationEditDescription;

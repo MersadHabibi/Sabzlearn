@@ -105,13 +105,13 @@
 /* Sort Modifire */
 
 .sort__value.active {
-  @apply font-DanaMedium text-zinc-700 bg-gray-100 dark:bg-gray-700 dark:text-white;
+  @apply bg-gray-100 font-DanaMedium text-zinc-700 dark:bg-gray-700 dark:text-white;
 }
 
 /* Mobile Sort Modifire */
 
 .mobile-sort__value.active {
-  @apply text-zinc-700 dark:text-white font-DanaMedium;
+  @apply font-DanaMedium text-zinc-700 dark:text-white;
 }
 
 .mobile-sort__value.active svg {
@@ -166,11 +166,15 @@
   @apply rotate-180;
 }
 
-.course-description.show .course-description__btn .course-description__btn-dont-show-text {
+.course-description.show
+  .course-description__btn
+  .course-description__btn-dont-show-text {
   @apply hidden;
 }
 
-.course-description.show .course-description__btn .course-description__btn-show-text {
+.course-description.show
+  .course-description__btn
+  .course-description__btn-show-text {
   @apply inline-block;
 }
 
@@ -259,13 +263,13 @@
     @apply bg-gray-100 dark:bg-gray;
   }
   progress::-webkit-progress-value {
-    @apply bg-primary rounded-full;
+    @apply rounded-full bg-primary;
   }
   progress::-moz-progress-bar {
     @apply bg-gray-100 dark:bg-gray;
   }
   input {
-    @apply w-full text-sm sm:text-base tracking-tight text-zinc-700 dark:text-white  rounded-xl border border-transparent focus:border-gray-300 dark:focus:border-slate placeholder:text-slate-500 dark:placeholder:text-gray-500 transition-all outline-none;
+    @apply w-full rounded-xl border border-transparent text-sm tracking-tight  text-zinc-700 outline-none transition-all placeholder:text-slate-500 focus:border-gray-300 sm:text-base dark:text-white dark:placeholder:text-gray-500 dark:focus:border-slate;
   }
 
   .iziToast {
@@ -299,22 +303,37 @@
     width: 60px;
     aspect-ratio: 2;
     --_g: no-repeat radial-gradient(circle closest-side, #2ed573 90%, #0000);
-    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background:
+      var(--_g) 0% 50%,
+      var(--_g) 50% 50%,
+      var(--_g) 100% 50%;
     background-size: calc(100% / 3) 50%;
     animation: l3 1s infinite linear;
   }
   @keyframes l3 {
     20% {
-      background-position: 0% 0%, 50% 50%, 100% 50%;
+      background-position:
+        0% 0%,
+        50% 50%,
+        100% 50%;
     }
     40% {
-      background-position: 0% 100%, 50% 0%, 100% 50%;
+      background-position:
+        0% 100%,
+        50% 0%,
+        100% 50%;
     }
     60% {
-      background-position: 0% 50%, 50% 100%, 100% 0%;
+      background-position:
+        0% 50%,
+        50% 100%,
+        100% 0%;
     }
     80% {
-      background-position: 0% 50%, 50% 50%, 100% 100%;
+      background-position:
+        0% 50%,
+        50% 50%,
+        100% 100%;
     }
   }
 
@@ -322,7 +341,10 @@
     width: 60px;
     aspect-ratio: 2;
     --_g: no-repeat radial-gradient(circle closest-side, #f5f5f5 90%, #0000);
-    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background:
+      var(--_g) 0% 50%,
+      var(--_g) 50% 50%,
+      var(--_g) 100% 50%;
     background-size: calc(100% / 3) 50%;
     animation: l3 1s infinite linear;
   }
@@ -336,7 +358,7 @@
     @apply inline-block;
   }
   button.load:hover {
-    @apply bg-secondary cursor-progress;
+    @apply cursor-progress bg-secondary;
   }
 
   #loader__container {
@@ -379,7 +401,7 @@
     width: 0;
   }
   .toggle__marker {
-    @apply w-[46px] h-6 bg-gray-200 rounded-full;
+    @apply h-6 w-[46px] rounded-full bg-gray-200;
     position: absolute;
     top: -12px;
     left: 0;
@@ -433,7 +455,7 @@
     width: 0;
   }
   .dont-forget__marker {
-    @apply w-4 h-4 bg-gray-200 rounded-sm;
+    @apply h-4 w-4 rounded-sm bg-gray-200;
     position: absolute;
     top: 1px;
     left: 0;
@@ -457,23 +479,23 @@
   /* Bread Crumb */
 
   .breadcrumb {
-    @apply hidden md:flex items-center w-full h-[50px] bg-white dark:bg-gray-800 shadow-light text-zinc-700/90 dark:text-white rounded-2xl mt-7 overflow-hidden;
+    @apply mt-7 hidden h-[50px] w-full items-center overflow-hidden rounded-2xl bg-white text-zinc-700/90 shadow-light md:flex dark:bg-gray-800 dark:text-white;
   }
 
   .breadcrumb__item {
-    @apply relative flex items-center justify-center pr-8 lg:pr-10 pl-6 h-full text-lg pt-1;
+    @apply relative flex h-full items-center justify-center pl-6 pr-8 pt-1 text-lg lg:pr-10;
   }
   .breadcrumb__item:first-child {
-    @apply pr-8 before:!content-none after:!content-none pt-0;
+    @apply pr-8 pt-0 before:!content-none after:!content-none;
   }
   .breadcrumb__item:last-child {
     @apply font-DanaDemiBold text-zinc-700 dark:text-white;
   }
   .breadcrumb__item::before {
-    @apply content-[''] absolute right-0 -bottom-1 w-[5px] h-2/3 bg-gray-100 dark:bg-gray -rotate-[35deg];
+    @apply absolute -bottom-1 right-0 h-2/3 w-[5px] -rotate-[35deg] bg-gray-100 content-[''] dark:bg-gray;
   }
   .breadcrumb__item::after {
-    @apply content-[''] absolute right-0 -top-1 w-[5px] h-2/3 bg-gray-100 dark:bg-gray rotate-[35deg];
+    @apply absolute -top-1 right-0 h-2/3 w-[5px] rotate-[35deg] bg-gray-100 content-[''] dark:bg-gray;
   }
 
   /* Truncate */
@@ -487,7 +509,7 @@
   /* User Detail Input */
 
   .user-details input {
-    @apply mt-3.5 md:mt-4 p-3 sm:p-5 bg-gray-100 dark:bg-gray-700;
+    @apply mt-3.5 bg-gray-100 p-3 sm:p-5 md:mt-4 dark:bg-gray-700;
   }
 
   /* File Input */
@@ -527,8 +549,8 @@
   .subject.subject--active .episodes__wrapper {
     @apply !h-auto;
   }
-  .subject.subject--active svg{
-    @apply rotate-180
+  .subject.subject--active svg {
+    @apply rotate-180;
   }
 }
 @layer utilities {

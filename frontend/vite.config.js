@@ -4,6 +4,13 @@ import path from "path";
 
 export default defineConfig(() => {
   return {
+    root: "src",
+    publicDir: '../public',
+    resolve: {
+      alias: {
+        $fonts: resolve("./public/fonts"),
+      },
+    },
     build: {
       target: "esnext",
       rollupOptions: {

@@ -13,7 +13,7 @@ const showCategories = async () => {
     categories?.length == 0 || !categories
       ? "<p class='xs:col-span-2 lg:col-span-3 xl:col-span-4 xxl:col-span-5 text-xl dark:text-white text-center py-2'> دسته بندی ای پیدا نشد. </p>"
       : "";
-  categories?.forEach(category => {
+  categories?.forEach((category) => {
     categoriesContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -44,7 +44,7 @@ const showCategories = async () => {
         </button>
       </div>
     </div>
-    `
+    `,
     );
   });
 
@@ -53,7 +53,9 @@ const showCategories = async () => {
 };
 
 const closeViewCoursesModal = () => {
-  _changeClasses("remove", document.querySelector("#view-courses-modal"), ["show"]);
+  _changeClasses("remove", document.querySelector("#view-courses-modal"), [
+    "show",
+  ]);
   _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
 };
 

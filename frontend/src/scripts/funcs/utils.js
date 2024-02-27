@@ -22,9 +22,22 @@ const _changeClasses = (action, element, className) => {
 
 // Timer
 
-const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", haveZero = false, callback) => {
+const createTimer = (
+  dayElem,
+  hourElem,
+  minElem,
+  secElem,
+  time = "2:10:20:30",
+  haveZero = false,
+  callback,
+) => {
   time = time.split(":");
-  [dayElem.innerHTML, hourElem.innerHTML, minElem.innerHTML, secElem.innerHTML] = time;
+  [
+    dayElem.innerHTML,
+    hourElem.innerHTML,
+    minElem.innerHTML,
+    secElem.innerHTML,
+  ] = time;
   let interVal = setInterval(() => {
     time[3] = time[3] - 1;
     if (time[3] < 0) {
@@ -54,7 +67,12 @@ const createTimer = (dayElem, hourElem, minElem, secElem, time = "2:10:20:30", h
       time[3] = time[3].toString().length == 1 ? `0${time[3]}` : time[3];
     }
 
-    [dayElem.innerHTML, hourElem.innerHTML, minElem.innerHTML, secElem.innerHTML] = time;
+    [
+      dayElem.innerHTML,
+      hourElem.innerHTML,
+      minElem.innerHTML,
+      secElem.innerHTML,
+    ] = time;
   }, 1000);
 };
 
@@ -126,12 +144,16 @@ const getToken = () => {
 
 // Loader
 
-const fullScreenLoader = action => {
+const fullScreenLoader = (action) => {
   if (action == "loading") {
-    _changeClasses("add", document.querySelector("#loader__container"), ["load"]);
+    _changeClasses("add", document.querySelector("#loader__container"), [
+      "load",
+    ]);
     _changeClasses("add", document.documentElement, ["overflow-hidden"]);
   } else if (action == "loaded") {
-    _changeClasses("remove", document.querySelector("#loader__container"), ["load"]);
+    _changeClasses("remove", document.querySelector("#loader__container"), [
+      "load",
+    ]);
     _changeClasses("remove", document.documentElement, ["overflow-hidden"]);
   }
 };
@@ -154,14 +176,24 @@ function getTeacherName(teacherName) {
   return teacherName == "SaeidiRad"
     ? "محمد امین سعیدی راد"
     : teacherName == "barati"
-    ? "مهرشاد براتی"
-    : teacherName == "ebadi"
-    ? "حمیدرضا عبادی"
-    : teacherName == "rezaDolati"
-    ? "رضا دولتی"
-    : teacherName == "moghadas"
-    ? "اشکان مقدس"
-    : "یافت نشد";
+      ? "مهرشاد براتی"
+      : teacherName == "ebadi"
+        ? "حمیدرضا عبادی"
+        : teacherName == "rezaDolati"
+          ? "رضا دولتی"
+          : teacherName == "moghadas"
+            ? "اشکان مقدس"
+            : "یافت نشد";
 }
 
-export { api, apiAdmin, _changeClasses, createTimer, showNotif, getToken, fullScreenLoader, getTeacherName, BASE_URL };
+export {
+  api,
+  apiAdmin,
+  _changeClasses,
+  createTimer,
+  showNotif,
+  getToken,
+  fullScreenLoader,
+  getTeacherName,
+  BASE_URL,
+};

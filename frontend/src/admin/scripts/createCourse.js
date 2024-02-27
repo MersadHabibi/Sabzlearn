@@ -14,20 +14,21 @@ const preparationCreateCourse = async () => {
 
   const categories = await getAllCategories();
 
-  if (categories){
+  if (categories) {
     newCourseCategory.innerHTML = "<option value=''>دسته بندی...</option>";
 
-    categories.forEach(category => {
+    categories.forEach((category) => {
       newCourseCategory.insertAdjacentHTML(
         "beforeend",
         `
         <option value="${category.categoryId}"> ${category.categoryName} </option>
-      `
+      `,
       );
     });
   } else {
     console.log("false");
-    newCourseCategory.innerHTML = "<option value=''>دسته بندی پیدا نشد...</option>";
+    newCourseCategory.innerHTML =
+      "<option value=''>دسته بندی پیدا نشد...</option>";
     submitBtn.disabled = true;
   }
 
@@ -39,7 +40,7 @@ const preparationCreateCourse = async () => {
     }
   });
 
-  newCourseform.addEventListener("submit", event => {
+  newCourseform.addEventListener("submit", (event) => {
     event.preventDefault();
     createCourse();
   });
@@ -47,7 +48,9 @@ const preparationCreateCourse = async () => {
 
 const createCourse = () => {
   const newCourseTitle = $.querySelector("#create-course-form #title");
-  const newCourseDescription = $.querySelector("#create-course-form #description");
+  const newCourseDescription = $.querySelector(
+    "#create-course-form #description",
+  );
   const newCoursePrice = $.querySelector("#create-course-form #price");
   const newCourseCategory = $.querySelector("#create-course-form #category");
   const newCourseStatus = $.querySelector("#create-course-form #status");
@@ -70,7 +73,12 @@ const createCourse = () => {
     showNotif("لطفا همه مقادیر را پر کنید");
   } else {
     if (
-      !(newCourseCover.type == "image/jpeg" || newCourseCover.type == "image/png" || newCourseCover.type == "image/jpg" || newCourseCover.type == "image/webp")
+      !(
+        newCourseCover.type == "image/jpeg" ||
+        newCourseCover.type == "image/png" ||
+        newCourseCover.type == "image/jpg" ||
+        newCourseCover.type == "image/webp"
+      )
     ) {
       showNotif("نوع فایل باید jpg , webp یا png باشد");
       return false;
@@ -98,7 +106,7 @@ const createCourse = () => {
   }
 };
 
-const sentCreateCourseApi = async formData => {
+const sentCreateCourseApi = async (formData) => {
   fullScreenLoader("loading");
   await createCourseApi(formData);
   fullScreenLoader("loaded");

@@ -10,17 +10,17 @@ const createCourseCard = (
     hasBorderOnLightMode: false,
     hasShadowOnLightMode: true,
     fixHeight: false,
-  }
+  },
 ) => {
   console.log(course);
   return `
       <div onclick="courseClickHandler('${course.id}')" class="course-card flex flex-col bg-white dark:bg-gray-800 ${
-    props.hasShadowOnLightMode ? "shadow-light" : ""
-  }  dark:shadow-none ${props.hasBorderOnLightMode ? `border-gray-200/80 border` : "dark:border"} dark:border dark:border-gray-700 ${
-    props.fixHeight ? "h-[417px]" : ""
-  } overflow-hidden rounded-2xl">
+        props.hasShadowOnLightMode ? "shadow-light" : ""
+      }  dark:shadow-none ${props.hasBorderOnLightMode ? `border-gray-200/80 border` : "dark:border"} dark:border dark:border-gray-700 ${
+        props.fixHeight ? "h-[417px]" : ""
+      } overflow-hidden rounded-2xl">
         <!-- Course Head -->
-        <a href=http://localhost:8000/src/course.html class="relative block h-42 w-full overflow-hidden">
+        <a href="../course.html" class="relative block h-42 w-full overflow-hidden">
         ${
           course.discount
             ? `
@@ -50,7 +50,7 @@ const createCourseCard = (
         `
             : ""
         }
-          <a href=./course.html class="font-DanaMedium dark:text-white text-lg line-clamp-2 ${props.hasDescription ? "my-2.5" : "my-1"} ">
+          <a href="../course.html" class="font-DanaMedium dark:text-white text-lg line-clamp-2 ${props.hasDescription ? "my-2.5" : "my-1"} ">
             ${course.title}
           </a>
           ${
@@ -115,7 +115,7 @@ const createCourseCard = (
               </div>
             `
                 : course.discount
-                ? `
+                  ? `
               <!-- Offer Price -->
               <div class="">
                 <del
@@ -131,7 +131,7 @@ const createCourseCard = (
                 </span>
               </div>
             `
-                : `
+                  : `
               <!-- Normal Price -->
               <div class="flex gap-x-1 items-center">
                 <span class="text-xl"> ${course.price.toLocaleString()} </span>
@@ -148,12 +148,12 @@ const createCourseCard = (
     `;
 };
 
-const courseClickHandler = id => {
+const courseClickHandler = (id) => {
   console.log(id);
   localStorage.setItem("course", id);
 };
 
-const categoryClickHandler = id => {
+const categoryClickHandler = (id) => {
   localStorage.setItem("category", id);
 };
 

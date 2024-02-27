@@ -15,13 +15,18 @@ const phoneNumberInput = $.querySelector("#form__phone-number");
 const emailAddressInput = $.querySelector("#form__email-address");
 const passwordInput = $.querySelector("#form__password");
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (!usernameInput.value || !phoneNumberInput.value || !emailAddressInput.value || !passwordInput) {
+  if (
+    !usernameInput.value ||
+    !phoneNumberInput.value ||
+    !emailAddressInput.value ||
+    !passwordInput
+  ) {
     showNotif(
       ` لطفا ${!usernameInput.value ? "نام کاربری ," : ""} ${!phoneNumberInput.value ? "شماره موبایل ," : ""} ${!emailAddressInput.value ? "ایمیل ," : ""} ${
         !passwordInput.value ? "رمز عبور " : ""
-      } را به درستی وارد کنید.`
+      } را به درستی وارد کنید.`,
     );
   } else {
     register();
@@ -42,5 +47,6 @@ const register = async () => {
   fullScreenLoader("loading");
   const res = await registerApi(newUser);
   fullScreenLoader("loaded");
-  if (res.status === true) location.replace(`./submit_otp_page.html?email=${emailAddressInput.value}`);
+  if (res.status === true)
+    location.replace(`./submit_otp_page.html?email=${emailAddressInput.value}`);
 };

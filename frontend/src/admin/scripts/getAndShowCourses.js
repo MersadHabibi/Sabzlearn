@@ -1,6 +1,14 @@
 import { deleteCourseApi, getAllCourses } from "../../../services/coursesAPIs";
-import { categoryClickHandler, courseClickHandler } from "../../scripts/funcs/createCourseCard";
-import { BASE_URL, _changeClasses , fullScreenLoader, getTeacherName } from "../../scripts/funcs/utils";
+import {
+  categoryClickHandler,
+  courseClickHandler,
+} from "../../scripts/funcs/createCourseCard";
+import {
+  BASE_URL,
+  _changeClasses,
+  fullScreenLoader,
+  getTeacherName,
+} from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
 let courseIdForDelete = null;
 
@@ -18,7 +26,7 @@ const getAndShowCourses = async () => {
     (coursesContainer.innerHTML =
       "<p class='dark:text-white text-xl text-center py-3 sm:col-span-2 md:col-span-1 lg:col-span-2 xl:col-span-3 xxl:col-span-4'> دوره ای پیدا نشد! </p>");
 
-  courses?.forEach(course => {
+  courses?.forEach((course) => {
     coursesContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -94,7 +102,7 @@ const getAndShowCourses = async () => {
                 </div>
               `
                   : course.discount
-                  ? `
+                    ? `
                 <!-- Offer Price -->
                 <div class="">
                   <del
@@ -110,7 +118,7 @@ const getAndShowCourses = async () => {
                   </span>
                 </div>
               `
-                  : `
+                    : `
                 <!-- Normal Price -->
                 <div class="flex gap-x-1 items-center">
                   <span class="text-xl"> ${course.price} </span>
@@ -140,7 +148,7 @@ const getAndShowCourses = async () => {
           }')" class="delete-course-btn bg-red-500 hover:bg-red-600 text-white font-DanaMedium py-2 rounded-md transition flex-1">حذف</button>
         </div>
       </div>
-    `
+    `,
     );
   });
 
@@ -154,29 +162,33 @@ const getAndShowCourses = async () => {
 
 // Handlers
 
-const editDescriptionHandler = id => {
+const editDescriptionHandler = (id) => {
   changeContent("description", id);
 };
 
-const editTopicHandler = id => {
+const editTopicHandler = (id) => {
   const menuItems = document.querySelectorAll(".panel-menu__item");
 
-  menuItems.forEach(item => {
+  menuItems.forEach((item) => {
     if (item.dataset.content === "topics") {
-      _changeClasses("remove", document.querySelector(".menu__item.active"), ["active"]);
+      _changeClasses("remove", document.querySelector(".menu__item.active"), [
+        "active",
+      ]);
       _changeClasses("add", item, ["active"]);
     }
   });
   changeContent("topics", id);
 };
 
-const editCourseHandler = id => {
+const editCourseHandler = (id) => {
   changeContent("edit-course", id);
 };
 
-const deleteCourseHandler = id => {
+const deleteCourseHandler = (id) => {
   courseIdForDelete = id;
-  _changeClasses("add", document.querySelector("#delete-course-modal"), ["show"]);
+  _changeClasses("add", document.querySelector("#delete-course-modal"), [
+    "show",
+  ]);
   _changeClasses("add", document.querySelector(".overlay"), ["show"]);
 };
 
@@ -191,14 +203,18 @@ const deleteCourse = async () => {
   }
 
   fullScreenLoader("loaded");
-  _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
+  _changeClasses("remove", document.querySelector("#delete-course-modal"), [
+    "show",
+  ]);
   _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
 };
 
 // Close Delete Course Modal
 
 const closeDeleteCourseModal = () => {
-  _changeClasses("remove", document.querySelector("#delete-course-modal"), ["show"]);
+  _changeClasses("remove", document.querySelector("#delete-course-modal"), [
+    "show",
+  ]);
   _changeClasses("remove", document.querySelector(".overlay"), ["show"]);
 };
 

@@ -10,7 +10,8 @@ console.log(user);
 
 if (!user) location.replace("./index.html");
 
-document.querySelector(".user__name").innerHTML = user.name && user.family ? `${user.name} ${user.family}` : user.username;
+document.querySelector(".user__name").innerHTML =
+  user.name && user.family ? `${user.name} ${user.family}` : user.username;
 
 // Default Variables
 window.loadPanelContent = loadPanelContent;
@@ -24,7 +25,9 @@ const mobileAsideContainer = document.querySelector(".panel-menu__container");
 // Panel Menu - Active Default
 const panelMenuItem = document.querySelectorAll(".panel-menu__item");
 
-const panelMobileMenuText = document.querySelectorAll(".panel-mobile-menu-text__item");
+const panelMobileMenuText = document.querySelectorAll(
+  ".panel-mobile-menu-text__item",
+);
 
 // Mobile Aside - open & close
 
@@ -69,7 +72,7 @@ overlay.addEventListener("click", () => {
 
 // Load Content - Click Aside Menu
 
-const ChangeContentWithMenu = element => {
+const ChangeContentWithMenu = (element) => {
   console.log("ChangeContentWithMenu");
   const contentName = element.dataset.panelContent;
   loadPanelContent(contentName, user);
@@ -77,14 +80,22 @@ const ChangeContentWithMenu = element => {
 
   setMobileMenuTitle(contentName); // set Mobile Menu Title
 
-  window.history.pushState("", "", `${location.pathname}?content=${contentName}`);
+  window.history.pushState(
+    "",
+    "",
+    `${location.pathname}?content=${contentName}`,
+  );
 };
 
 // Menu Click - Change Content
 
-panelMenuItem.forEach(btn => {
-  btn.addEventListener("click", event => {
-    _changeClasses("remove", document.querySelector(".panel-menu__item.active"), ["active"]);
+panelMenuItem.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    _changeClasses(
+      "remove",
+      document.querySelector(".panel-menu__item.active"),
+      ["active"],
+    );
     _changeClasses("add", btn, ["active"]);
     ChangeContentWithMenu(btn);
   });
@@ -103,9 +114,13 @@ function getParamsAndChangeContent() {
   }
 
   // Highlight Active Btn
-  panelMenuItem.forEach(btn => {
+  panelMenuItem.forEach((btn) => {
     if (btn.dataset.panelContent == params.content) {
-      _changeClasses("remove", document.querySelector(".panel-menu__item.active"), ["active"]);
+      _changeClasses(
+        "remove",
+        document.querySelector(".panel-menu__item.active"),
+        ["active"],
+      );
       _changeClasses("add", btn, ["active"]);
     }
   });
@@ -115,12 +130,14 @@ function getParamsAndChangeContent() {
 
 // Mobile Menu Title
 
-const setMobileMenuTitle = contentName => {
-  panelMobileMenuText.forEach(e => {
+const setMobileMenuTitle = (contentName) => {
+  panelMobileMenuText.forEach((e) => {
     _changeClasses("remove", e, ["!block"]);
   });
   contentName = contentName == "new-ticket" ? "tickets" : contentName; // check new-ticket
-  const panelMobileMenuTextActive = document.querySelector(`.panel-mobile-menu-text__item#${contentName}`);
+  const panelMobileMenuTextActive = document.querySelector(
+    `.panel-mobile-menu-text__item#${contentName}`,
+  );
   _changeClasses("add", panelMobileMenuTextActive, ["!block"]);
 };
 

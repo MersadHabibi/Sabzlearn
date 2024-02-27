@@ -7,14 +7,13 @@ const getAndShowComments = async () => {
   const courses = await getAllCourses();
 
   if (courses === null) {
-    document.querySelector(
-      ".comments__container"
-    ).innerHTML = `<p class="text-center text-xl mt-5 dark:text-white" > مشکلی به وجود آمده دوباره امتحان کنید </p>`;
+    document.querySelector(".comments__container").innerHTML =
+      `<p class="text-center text-xl mt-5 dark:text-white" > مشکلی به وجود آمده دوباره امتحان کنید </p>`;
     return;
   }
   let comments = [];
-  courses.forEach(course => {
-    course.comments.forEach(comment => {
+  courses.forEach((course) => {
+    course.comments.forEach((comment) => {
       comments.push(comment);
     });
   });
@@ -25,7 +24,7 @@ const getAndShowComments = async () => {
   insertComments(comments);
 };
 
-const insertComments = comments => {
+const insertComments = (comments) => {
   const commentsContainer = document.querySelector(".comments__container");
   commentsContainer.innerHTML = "";
   if (comments.length > 0) {
@@ -61,7 +60,7 @@ const insertComments = comments => {
             } class="comment-delete bg-red-500 text-white w-full py-2 rounded-lg hover:bg-red-600 transition-colors">حذف</button>
           </div>
         </div>
-      `
+      `,
       );
     });
   } else {
@@ -72,7 +71,7 @@ const insertComments = comments => {
 const setEventForCommentDeleteBtn = () => {
   const commentsDeleteBtn = document.querySelectorAll(".comment-delete");
 
-  commentsDeleteBtn.forEach(deleteBtn => {
+  commentsDeleteBtn.forEach((deleteBtn) => {
     deleteBtn.addEventListener("click", async () => {
       const commentId = deleteBtn.dataset.commentId;
       const isSuccess = await deleteComment(commentId);
@@ -81,7 +80,7 @@ const setEventForCommentDeleteBtn = () => {
   });
 };
 
-const deleteComment = async id => {
+const deleteComment = async (id) => {
   fullScreenLoader("loading");
   const res = await deleteCommentApi(id);
   fullScreenLoader("loaded");

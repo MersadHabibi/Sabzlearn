@@ -2,8 +2,14 @@ import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
 import { _changeClasses } from "./funcs/utils.js";
-import createCourseCard, { courseClickHandler, categoryClickHandler } from "./funcs/createCourseCard.js";
-import { getAllCourses, getCoursesByCategoryId } from "../../services/coursesAPIs.js";
+import createCourseCard, {
+  courseClickHandler,
+  categoryClickHandler,
+} from "./funcs/createCourseCard.js";
+import {
+  getAllCourses,
+  getCoursesByCategoryId,
+} from "../../services/coursesAPIs.js";
 import { getAllCategories } from "../../services/categoriesAPIs.js";
 
 window.courseClickHandler = courseClickHandler;
@@ -80,9 +86,9 @@ const courseContainer = $.querySelector(".course__container");
 
 // Change Sort Values
 
-mobileSortValues.forEach(sort => {
+mobileSortValues.forEach((sort) => {
   sort.addEventListener("click", () => {
-    mobileSortValues.forEach(e => {
+    mobileSortValues.forEach((e) => {
       _changeClasses("remove", e, ["active"]);
     });
 
@@ -104,7 +110,10 @@ const getParams = async () => {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
-  category = (await getAllCategories()).find(category => category.categoryId == params.category) || "all";
+  category =
+    (await getAllCategories()).find(
+      (category) => category.categoryId == params.category,
+    ) || "all";
 
   changeCategoryTitle();
 
@@ -116,14 +125,20 @@ const getParams = async () => {
 // Chnage Category Title
 
 const changeCategoryTitle = () => {
-  categoryTitleElem.innerHTML = search ? `جستجو : ${search}` : category === "all" ? "همه دوره ها" : category.categoryName ? category.categoryName : "ارور";
+  categoryTitleElem.innerHTML = search
+    ? `جستجو : ${search}`
+    : category === "all"
+      ? "همه دوره ها"
+      : category.categoryName
+        ? category.categoryName
+        : "ارور";
 };
 
 // Sort Courses
 
-sortValues.forEach(sort => {
-  sort.addEventListener("click", async element => {
-    sortValues.forEach(e => {
+sortValues.forEach((sort) => {
+  sort.addEventListener("click", async (element) => {
+    sortValues.forEach((e) => {
       _changeClasses("remove", e, ["active"]);
     });
     _changeClasses("add", sort, ["active"]);
@@ -136,9 +151,9 @@ sortValues.forEach(sort => {
 
 // Sort Courses Mobile
 
-mobileSortValues.forEach(sort => {
-  sort.addEventListener("click", async element => {
-    sortValues.forEach(e => {
+mobileSortValues.forEach((sort) => {
+  sort.addEventListener("click", async (element) => {
+    sortValues.forEach((e) => {
       _changeClasses("remove", e, ["active"]);
     });
     _changeClasses("add", sort, ["active"]);
@@ -179,8 +194,12 @@ const onlyPresellCourse = () => {
 const mobileFilters = () => {
   const onlyFreeInput = $.querySelector("#mobile-only-free-input");
   const onlyPresellInput = $.querySelector("#mobile-only-presell-input");
-  const mobileFiltersMenuSubmitBtn = $.querySelector(".mobile-filters-menu-submit");
-  const mobileFiltersMenuClearBtn = $.querySelector(".mobile-filters-menu-clear");
+  const mobileFiltersMenuSubmitBtn = $.querySelector(
+    ".mobile-filters-menu-submit",
+  );
+  const mobileFiltersMenuClearBtn = $.querySelector(
+    ".mobile-filters-menu-clear",
+  );
 
   let free = false;
   let presell = false;
@@ -214,7 +233,7 @@ const searchHandler = () => {
   const searchCourseForm = $.querySelector("#search-course-form");
   const searchCourseInput = $.querySelector("#search-course");
 
-  searchCourseForm.addEventListener("submit", async e => {
+  searchCourseForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     search = searchCourseInput.value;
@@ -228,24 +247,27 @@ const searchHandler = () => {
 const loadCourses = async () => {
   // Filter By Category
 
-  let coursesByCategory = category === "all" ? await getAllCourses() : (await getCoursesByCategoryId(category.categoryId)).courses;
+  let coursesByCategory =
+    category === "all"
+      ? await getAllCourses()
+      : (await getCoursesByCategoryId(category.categoryId)).courses;
 
   // Filter By Filters Value
 
   let coursesByFilters =
     onlyFree && onlyPresell
-      ? coursesByCategory.filter(course => {
+      ? coursesByCategory.filter((course) => {
           return course.isFree && course.status == "presell";
         })
       : onlyFree
-      ? coursesByCategory.filter(course => {
-          return course.isFree;
-        })
-      : onlyPresell
-      ? coursesByCategory.filter(course => {
-          return course.status == "presell";
-        })
-      : [...coursesByCategory];
+        ? coursesByCategory.filter((course) => {
+            return course.isFree;
+          })
+        : onlyPresell
+          ? coursesByCategory.filter((course) => {
+              return course.status == "presell";
+            })
+          : [...coursesByCategory];
 
   // Filter By Sort
 
@@ -255,33 +277,35 @@ const loadCourses = async () => {
           .sort((a, b) => {
             return a.price - b.price;
           })
-          .filter(course => {
+          .filter((course) => {
             return !course.isFree;
           })
       : sortBy == "expensive"
-      ? [...coursesByFilters]
-          .sort((a, b) => {
-            return b.price - a.price;
-          })
-          .filter(course => {
-            return !course.isFree;
-          })
-      : sortBy == "popular"
-      ? [...coursesByFilters].sort((a, b) => {
-          return b.studentsCount - a.studentsCount;
-        })
-      : [...coursesByFilters];
+        ? [...coursesByFilters]
+            .sort((a, b) => {
+              return b.price - a.price;
+            })
+            .filter((course) => {
+              return !course.isFree;
+            })
+        : sortBy == "popular"
+          ? [...coursesByFilters].sort((a, b) => {
+              return b.studentsCount - a.studentsCount;
+            })
+          : [...coursesByFilters];
 
   // Filter By Search
 
   let coursesBySearch = search
-    ? coursesBySort.filter(course => {
-        return course.title.includes(search) || course.shortName.includes(search);
+    ? coursesBySort.filter((course) => {
+        return (
+          course.title.includes(search) || course.shortName.includes(search)
+        );
       })
     : [...coursesBySort];
 
   courseContainer.innerHTML = "";
-  coursesBySearch.forEach(course => {
+  coursesBySearch.forEach((course) => {
     courseContainer.insertAdjacentHTML("beforeend", createCourseCard(course));
   });
 };

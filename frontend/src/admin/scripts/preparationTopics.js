@@ -1,6 +1,10 @@
 import { getAllCourses, getCourseById } from "../../../services/coursesAPIs";
 import { addEpisodeApi, createTopicApi } from "../../../services/topicsAPIs";
-import { _changeClasses, fullScreenLoader, showNotif } from "../../scripts/funcs/utils";
+import {
+  _changeClasses,
+  fullScreenLoader,
+  showNotif,
+} from "../../scripts/funcs/utils";
 
 const overlay = document.querySelector(".overlay");
 let course = null;
@@ -12,12 +16,12 @@ const preparationTopics = async (courseId = null) => {
   const courses = await getAllCourses();
 
   seleteCoursesInput.innerHTML = `<option value=""> انتخاب دوره... </option>`;
-  courses.forEach(course => {
+  courses.forEach((course) => {
     seleteCoursesInput.insertAdjacentHTML(
       "beforeend",
       `
       <option value="${course.id}"> ${course.title} </option>
-    `
+    `,
     );
   });
 
@@ -25,8 +29,12 @@ const preparationTopics = async (courseId = null) => {
     if (seleteCoursesInput.value) {
       getCourseAndShowDatas(seleteCoursesInput.value);
     } else {
-      _changeClasses("remove", document.querySelector("#course-topic-cover"), ["hidden"]);
-      _changeClasses("add", document.querySelector("#course-topic-container"), ["hidden"]);
+      _changeClasses("remove", document.querySelector("#course-topic-cover"), [
+        "hidden",
+      ]);
+      _changeClasses("add", document.querySelector("#course-topic-container"), [
+        "hidden",
+      ]);
     }
   });
 
@@ -50,8 +58,9 @@ const preparationTopics = async (courseId = null) => {
   window.closeModals = closeModals;
 };
 
-const getCourseAndShowDatas = async id => {
-  document.querySelector("#topics__container").innerHTML = `<div class="loader mx-auto mt-5"></div>`;
+const getCourseAndShowDatas = async (id) => {
+  document.querySelector("#topics__container").innerHTML =
+    `<div class="loader mx-auto mt-5"></div>`;
 
   course = await getCourseById(id);
 
@@ -62,8 +71,12 @@ const getCourseAndShowDatas = async id => {
     return;
   }
 
-  _changeClasses("add", document.querySelector("#course-topic-cover"), ["hidden"]);
-  _changeClasses("remove", document.querySelector("#course-topic-container"), ["hidden"]);
+  _changeClasses("add", document.querySelector("#course-topic-cover"), [
+    "hidden",
+  ]);
+  _changeClasses("remove", document.querySelector("#course-topic-container"), [
+    "hidden",
+  ]);
 
   showTopics();
 };
@@ -73,7 +86,7 @@ const showTopics = () => {
   topicContainer.innerHTML = "";
 
   if (course.subjects.length > 0) {
-    course.subjects.forEach(topic => {
+    course.subjects.forEach((topic) => {
       topicContainer.insertAdjacentHTML(
         "beforeend",
         `
@@ -102,7 +115,7 @@ const showTopics = () => {
               </button>
             </div>
           </div>
-      `
+      `,
       );
     });
   } else {
@@ -112,43 +125,46 @@ const showTopics = () => {
 
 // Add Episode
 
-const addEpisodeHandler = id => {
+const addEpisodeHandler = (id) => {
   openModal(document.querySelector("#add-episode-modal"));
 
   topicIdForAddEpisode = id;
 };
 
-const addEpisodeModalSubmit = event => {
+const addEpisodeModalSubmit = (event) => {
   event.preventDefault();
   addEpisode(topicIdForAddEpisode);
 };
 
-const addEpisode = async topicId => {
+const addEpisode = async (topicId) => {
   const titleInput = document.querySelector("#add-episode-modal #title");
   const isFreeInput = document.querySelector("#add-episode-modal #is-free");
   const fileInput = document.querySelector("#add-episode-modal #fileInput");
 
-  if (!titleInput.value || !isFreeInput.value || fileInput.files.length == 0 || fileInput.files[0].type != "video/mp4") {
+  if (
+    !titleInput.value ||
+    !isFreeInput.value ||
+    fileInput.files.length == 0 ||
+    fileInput.files[0].type != "video/mp4"
+  ) {
     showNotif(
       `${
         !titleInput.value
           ? "عنوان را وارد کنید"
           : fileInput.files.length == 0
-          ? "ویدیو مورد نظر را انتخاب کنید"
-          : fileInput.files[0]?.type != "video/mp4"
-          ? "فایل ارسالی باید mp4 باشد"
-          : !isFreeInput.value
-          ? "مشخص کنید که دوره رایگان است یا خیر"
-          : ""
-      }`
+            ? "ویدیو مورد نظر را انتخاب کنید"
+            : fileInput.files[0]?.type != "video/mp4"
+              ? "فایل ارسالی باید mp4 باشد"
+              : !isFreeInput.value
+                ? "مشخص کنید که دوره رایگان است یا خیر"
+                : ""
+      }`,
     );
     return false;
   } else {
-
-    let topic = course.subjects.filter(topic => {
+    let topic = course.subjects.filter((topic) => {
       return topic.id == topicId;
     })[0];
-
 
     let newEpisode = {
       title: titleInput.value,
@@ -183,23 +199,23 @@ const addEpisode = async topicId => {
 
 // View Episodes
 
-const viewEpisodesHandler = id => {
+const viewEpisodesHandler = (id) => {
   openModal(document.querySelector("#view-episodes-modal"));
 
-  let targetTopic = course.subjects.filter(topic => {
+  let targetTopic = course.subjects.filter((topic) => {
     return topic.id == id;
   })[0];
 
   showEpisodes(targetTopic);
 };
 
-const showEpisodes = topic => {
+const showEpisodes = (topic) => {
   const episodesContainer = document.querySelector("#episodes__container");
   episodesContainer.innerHTML = "";
 
   document.querySelector("#view-episodes-modal .title").innerHTML = topic.title;
 
-  topic.episodes.forEach(episode => {
+  topic.episodes.forEach((episode) => {
     episodesContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -226,7 +242,7 @@ const showEpisodes = topic => {
         </div>
       </div>
     </div>
-    `
+    `,
     );
   });
 
@@ -235,7 +251,7 @@ const showEpisodes = topic => {
       "beforeend",
       `
       <p class="text-center mt-2 text-xl dark:text-white"> قسمتی وجود ندارد </p>
-    `
+    `,
     );
 };
 
@@ -245,7 +261,7 @@ const addTopicHandler = () => {
   openModal(document.querySelector("#add-topic-modal"));
 };
 
-const addTopicModalSubmit = event => {
+const addTopicModalSubmit = (event) => {
   event.preventDefault();
   createTopic();
 };
@@ -262,7 +278,7 @@ const createTopic = async () => {
         courseId: course.id,
         sortId: course.subjects.length + 1,
       },
-      () => fullScreenLoader("loaded")
+      () => fullScreenLoader("loaded"),
     );
 
     if (res.status === true) {
@@ -285,7 +301,7 @@ const closeModals = () => {
 
 // Preview Episode Video
 
-const previewEpisodeVideo = elem => {
+const previewEpisodeVideo = (elem) => {
   const videoPreviewElem = document.querySelector("#video-preview");
 
   videoPreviewElem.src = URL.createObjectURL(elem.files[0]);
@@ -293,12 +309,12 @@ const previewEpisodeVideo = elem => {
 
 // Helpers
 
-const openModal = modal => {
+const openModal = (modal) => {
   _changeClasses("add", modal, ["show"]);
   _changeClasses("add", overlay, ["show"]);
 };
 
-const closeModal = modal => {
+const closeModal = (modal) => {
   _changeClasses("remove", modal, ["show"]);
   _changeClasses("remove", overlay, ["show"]);
 };

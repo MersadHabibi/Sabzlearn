@@ -1,7 +1,7 @@
 import { getMe } from "../../services/usersAPIs.js";
 import { _changeClasses } from "./funcs/utils.js";
 
-const header = $ => {
+const header = ($) => {
   let openElem = {};
 
   const searchBtn = $.querySelector(".search-btn");
@@ -35,7 +35,7 @@ const header = $ => {
     openElem = openElem == profile ? null : profile;
   };
 
-  const openAndCloseMobileMenuSubmenu = e => {
+  const openAndCloseMobileMenuSubmenu = (e) => {
     let clickedElem = e.target.parentElement.parentElement;
     if (clickedElem.classList.contains("menu__item--active")) {
       _changeClasses("remove", clickedElem, ["menu__item--active"]);
@@ -46,7 +46,7 @@ const header = $ => {
     }
   };
 
-  const openCloseMobileMenu = action => {
+  const openCloseMobileMenu = (action) => {
     if (action == "open") {
       _changeClasses("add", mobileMenu, ["mobile-menu--open"]);
       openCloseoverlay();
@@ -75,7 +75,7 @@ const header = $ => {
     _changeClasses("remove", document.documentElement, ["overflow-hidden"]);
   });
 
-  mobileSubmenuBtns.forEach(btn => {
+  mobileSubmenuBtns.forEach((btn) => {
     btn.addEventListener("click", openAndCloseMobileMenuSubmenu);
   });
 
@@ -120,7 +120,9 @@ const header = $ => {
 
   const checkUserLogin = async () => {
     const profileContainer = $.querySelector(".profile__container");
-    const loginAndRegisterContainer = $.querySelector(".login-register__container");
+    const loginAndRegisterContainer = $.querySelector(
+      ".login-register__container",
+    );
     user = await getMe();
     console.log(user);
 
@@ -135,7 +137,7 @@ const header = $ => {
 
   // Set Profile Submenu Content
 
-  const setContentProfileSubmenu = data => {
+  const setContentProfileSubmenu = (data) => {
     const profileNameElem = $.querySelector(".profile__name");
 
     profileNameElem.innerHTML = data.username;
@@ -143,18 +145,22 @@ const header = $ => {
 
   // Search
 
-  searchBox.addEventListener("click", e => {
+  searchBox.addEventListener("click", (e) => {
     e.stopPropagation();
   });
-  searchBoxForm.addEventListener("submit", e => {
+  searchBoxForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    location.href = searchBoxInput.value ? `./categories.html?s=${searchBoxInput.value}` : location.href;
+    location.href = searchBoxInput.value
+      ? `./categories.html?s=${searchBoxInput.value}`
+      : location.href;
   });
-  mobileSearchBoxForm.addEventListener("submit", e => {
+  mobileSearchBoxForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    location.href = mobileSearchBoxInput.value ? `./categories.html?s=${mobileSearchBoxInput.value}` : location.href;
+    location.href = mobileSearchBoxInput.value
+      ? `./categories.html?s=${mobileSearchBoxInput.value}`
+      : location.href;
   });
 };
 

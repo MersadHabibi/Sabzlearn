@@ -3,8 +3,15 @@ import "./share.js";
 import header from "./header.js";
 import videojs from "video.js";
 import "videojs-hotkeys";
-import { getCourseById, getEpisodeByIdApi } from "../../services/coursesAPIs.js";
-import { _changeClasses, fullScreenLoader, getTeacherName } from "./funcs/utils.js";
+import {
+  getCourseById,
+  getEpisodeByIdApi,
+} from "../../services/coursesAPIs.js";
+import {
+  _changeClasses,
+  fullScreenLoader,
+  getTeacherName,
+} from "./funcs/utils.js";
 import { getMe } from "../../services/usersAPIs.js";
 
 // header(document);
@@ -49,7 +56,7 @@ window.addEventListener("load", async () => {
 function showSubjectsAndEpisodes() {
   const subjectsWrapper = document.querySelector(".subjects__wrapper");
 
-  course.subjects.forEach(subject => {
+  course.subjects.forEach((subject) => {
     subjectsWrapper.insertAdjacentHTML(
       "beforeend",
       `
@@ -66,7 +73,7 @@ function showSubjectsAndEpisodes() {
       <!-- Lessons -->
       <div class="episodes__wrapper h-0 overflow-hidden transition-all">
       ${subject.episodes.map(
-        episode => `
+        (episode) => `
         <div
           class="flex justify-between items-center px-5 h-14 text-slate-500 dark:text-slate-400 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors">
           <div class="relative pr-5 text-sm md:text-base">
@@ -75,12 +82,12 @@ function showSubjectsAndEpisodes() {
           </div>
           <span class="text-xs md:text-sm"> ${episode.timeForShow} </span>
         </div>
-      `
+      `,
       )}
        
       </div>
     </div>
-    `
+    `,
     );
   });
 
@@ -115,16 +122,23 @@ function fillBreadCrumb() {
 function showInfos() {
   const courseStatusElem = document.querySelector(".course__status");
   const courseTimeElem = document.querySelector(".course__time");
-  const courseEpisodesNumberElem = document.querySelector(".course__episodes-count");
+  const courseEpisodesNumberElem = document.querySelector(
+    ".course__episodes-count",
+  );
   const courseTeacherElem = document.querySelector(".course__techer");
 
   let episodesCount = 0;
 
-  course.subjects.forEach(subject => {
+  course.subjects.forEach((subject) => {
     episodesCount += subject.episodes.length;
   });
 
-  courseStatusElem.innerHTML = course.status == "presell" ? "پیش فروش" : course.status == "completing" ? "در حال تکمیل" : "تکمیل شده";
+  courseStatusElem.innerHTML =
+    course.status == "presell"
+      ? "پیش فروش"
+      : course.status == "completing"
+        ? "در حال تکمیل"
+        : "تکمیل شده";
   courseTimeElem.innerHTML = course.timeForShow;
   courseEpisodesNumberElem.innerHTML = episodesCount;
   courseTeacherElem.innerHTML = getTeacherName(course.teacher);
@@ -151,14 +165,18 @@ function questions() {
   usernameElem.innerHTML = user?.username ? user?.username : "کاربر";
 }
 
-let player = videojs(document.querySelector("#my_video_1"), options, function onPlayerReady() {
-  videojs.log("Your player is ready!");
+let player = videojs(
+  document.querySelector("#my_video_1"),
+  options,
+  function onPlayerReady() {
+    videojs.log("Your player is ready!");
 
-  // In this context, `this` is the player that was created by Video.js.
-  this.play();
+    // In this context, `this` is the player that was created by Video.js.
+    this.play();
 
-  // How about an event listener?
-  this.on("ended", function () {
-    videojs.log("Awww...over so soon?!");
-  });
-});
+    // How about an event listener?
+    this.on("ended", function () {
+      videojs.log("Awww...over so soon?!");
+    });
+  },
+);

@@ -3,7 +3,10 @@ import "./share.js";
 import header from "./header.js";
 import "swiper/css";
 import Swiper from "swiper";
-import createCourseCard, { categoryClickHandler, courseClickHandler } from "./funcs/createCourseCard.js";
+import createCourseCard, {
+  categoryClickHandler,
+  courseClickHandler,
+} from "./funcs/createCourseCard.js";
 import { api } from "./funcs/utils.js";
 import { getAllCourses } from "../../services/coursesAPIs.js";
 
@@ -26,8 +29,11 @@ const getAndShowLastCourses = () => {
 
   rndCourses = rndCourses.sort(() => Math.random() - 0.5);
 
-  rndCourses.slice(0, 8).forEach(async course => {
-    lastCoursesContainer.insertAdjacentHTML("beforeend", createCourseCard(course));
+  rndCourses.slice(0, 8).forEach(async (course) => {
+    lastCoursesContainer.insertAdjacentHTML(
+      "beforeend",
+      createCourseCard(course),
+    );
   });
 };
 
@@ -36,7 +42,7 @@ const getAndShowLastCourses = () => {
 const getAndShowNewCourses = () => {
   const newCoursesContainer = $.querySelector(".new-courses__container");
 
-  courses.slice(0, 8).forEach(course => {
+  courses.slice(0, 8).forEach((course) => {
     newCoursesContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -49,7 +55,7 @@ const getAndShowNewCourses = () => {
           fixHeight: true,
         })}
       </div>
-      `
+      `,
     );
   });
 };
@@ -57,13 +63,15 @@ const getAndShowNewCourses = () => {
 // Get And Show New Courses
 
 const getAndShowPresellCourses = () => {
-  const presellCoursesContainer = $.querySelector(".presell-courses__container");
+  const presellCoursesContainer = $.querySelector(
+    ".presell-courses__container",
+  );
 
-  const presellCourses = courses.filter(course => {
+  const presellCourses = courses.filter((course) => {
     return course.status == "presell";
   });
 
-  presellCourses.forEach(course => {
+  presellCourses.forEach((course) => {
     presellCoursesContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -76,7 +84,7 @@ const getAndShowPresellCourses = () => {
           fixHeight: true,
         })}
       </div>
-      `
+      `,
     );
   });
 };
@@ -84,7 +92,9 @@ const getAndShowPresellCourses = () => {
 // Get And Show Popular Courses
 
 const getAndShowPopularCourses = () => {
-  const popularCoursesContainer = $.querySelector(".popular-courses__container");
+  const popularCoursesContainer = $.querySelector(
+    ".popular-courses__container",
+  );
 
   let popularCourses = [...courses];
 
@@ -92,7 +102,7 @@ const getAndShowPopularCourses = () => {
     return b.studentsCount - a.studentsCount;
   });
 
-  popularCourses.slice(0, 8).forEach(course => {
+  popularCourses.slice(0, 8).forEach((course) => {
     popularCoursesContainer.insertAdjacentHTML(
       "beforeend",
       `
@@ -103,7 +113,7 @@ const getAndShowPopularCourses = () => {
             hasShadowOnLightMode: true,
             fixHeight: false,
           })}
-      `
+      `,
     );
   });
 };
@@ -123,8 +133,12 @@ const newCoursesSliderNextBtn = $.querySelector(".new-courses-slider-next");
 
 // Presell Courses
 
-const presellCoursesSliderPrevBtn = $.querySelector(".presell-courses-slider-prev");
-const presellCoursesSliderNextBtn = $.querySelector(".presell-courses-slider-next");
+const presellCoursesSliderPrevBtn = $.querySelector(
+  ".presell-courses-slider-prev",
+);
+const presellCoursesSliderNextBtn = $.querySelector(
+  ".presell-courses-slider-next",
+);
 
 // Slider Config
 
@@ -165,7 +179,10 @@ newCoursesSliderPrevBtn.addEventListener("click", () => {
 
 // Presell Courses Slider
 
-const presellCoursesSlider = new Swiper(".presell-courses .mySwiper", slidersConfig);
+const presellCoursesSlider = new Swiper(
+  ".presell-courses .mySwiper",
+  slidersConfig,
+);
 
 presellCoursesSliderNextBtn.addEventListener("click", () => {
   presellCoursesSlider.slideNext();

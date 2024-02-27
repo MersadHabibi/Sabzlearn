@@ -1,4 +1,8 @@
-import { blockAndUnBlockUserApi, changeUserRoleApi, getAllUsers } from "../../../services/usersAPIs";
+import {
+  blockAndUnBlockUserApi,
+  changeUserRoleApi,
+  getAllUsers,
+} from "../../../services/usersAPIs";
 import { _changeClasses, fullScreenLoader } from "../../scripts/funcs/utils";
 import changeContent from "./changeContents";
 
@@ -16,12 +20,12 @@ const showUsers = async () => {
     return;
   } else {
     usersContainer.innerHTML = "";
-    users.forEach(user => {
+    users.forEach((user) => {
       usersContainer.insertAdjacentHTML(
         "beforeend",
         `
         ${createUserCard(user)}
-      `
+      `,
       );
     });
   }
@@ -38,7 +42,7 @@ const showUsers = async () => {
   window.unBlockUser = unBlockUser;
 };
 
-const createUserCard = user => {
+const createUserCard = (user) => {
   console.log(user);
   return `
     <div
@@ -115,7 +119,7 @@ const createUserCard = user => {
 
 // Change Role => selectAdmin , removeAdmin
 
-const selectAdmin = id => {
+const selectAdmin = (id) => {
   fullScreenLoader("loading");
 
   changeUserRoleApi(id, "admin", () => {
@@ -123,7 +127,7 @@ const selectAdmin = id => {
     showUsers();
   });
 };
-const removeAdmin = id => {
+const removeAdmin = (id) => {
   fullScreenLoader("loading");
 
   changeUserRoleApi(id, "user", () => {
@@ -143,7 +147,7 @@ const blockUser = async () => {
 };
 
 // Show and Hide Block User Modal
-const showBlockUserModal = id => {
+const showBlockUserModal = (id) => {
   _changeClasses("add", document.querySelector("#block-user-modal"), ["show"]);
   _changeClasses("add", overlay, ["show"]);
 
@@ -151,7 +155,9 @@ const showBlockUserModal = id => {
   console.log(userId);
 };
 const hideBlockUserModal = () => {
-  _changeClasses("remove", document.querySelector("#block-user-modal"), ["show"]);
+  _changeClasses("remove", document.querySelector("#block-user-modal"), [
+    "show",
+  ]);
   _changeClasses("remove", overlay, ["show"]);
 };
 
@@ -166,23 +172,27 @@ const unBlockUser = async () => {
 };
 
 // Show and Hide unBlock User Modal
-const showUnBlockUserModal = id => {
-  _changeClasses("add", document.querySelector("#unblock-user-modal"), ["show"]);
+const showUnBlockUserModal = (id) => {
+  _changeClasses("add", document.querySelector("#unblock-user-modal"), [
+    "show",
+  ]);
   _changeClasses("add", overlay, ["show"]);
 
   userId = id;
   console.log(userId);
 };
 const hideUnBlockUserModal = () => {
-  _changeClasses("remove", document.querySelector("#unblock-user-modal"), ["show"]);
+  _changeClasses("remove", document.querySelector("#unblock-user-modal"), [
+    "show",
+  ]);
   _changeClasses("remove", overlay, ["show"]);
 };
 
 // Open and Close Actions
-const openActions = elem => {
+const openActions = (elem) => {
   _changeClasses("add", elem.parentElement.nextElementSibling, ["!bottom-0"]);
 };
-const closeActions = elem => {
+const closeActions = (elem) => {
   _changeClasses("remove", elem.parentElement, ["!bottom-0"]);
 };
 

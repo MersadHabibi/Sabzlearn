@@ -1,6 +1,12 @@
 import "../styles/app.css";
 import "./share.js";
-import { BASE_URL, api, fullScreenLoader, getToken, showNotif } from "./funcs/utils";
+import {
+  BASE_URL,
+  api,
+  fullScreenLoader,
+  getToken,
+  showNotif,
+} from "./funcs/utils";
 import { getCourseById } from "../../services/coursesAPIs.js";
 
 let course = null;
@@ -53,7 +59,7 @@ buyBtn.addEventListener("click", async () => {
         headers: {
           Authorization: "Bearer " + getToken(),
         },
-      }
+      },
     );
 
     location.replace("./success_buy_course.html");

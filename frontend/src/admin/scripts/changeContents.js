@@ -1,5 +1,7 @@
 import preparationCreateCourse from "./createCourse";
-import getAndShowComments, { setEventForCommentDeleteBtn } from "./getAndShowComments";
+import getAndShowComments, {
+  setEventForCommentDeleteBtn,
+} from "./getAndShowComments";
 import getAndShowCourses from "./getAndShowCourses";
 import showUsers from "./showUsers";
 import preparationAddCategory from "./preparationAddCategory";

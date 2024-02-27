@@ -5,7 +5,14 @@ import userInfo from "./userInfo.js";
 const $ = document;
 const contentContainer = $.querySelector(".content");
 
-const contentsName = ["home", "courses", "tickets", "new-ticket", "user-infos", "logout"];
+const contentsName = [
+  "home",
+  "courses",
+  "tickets",
+  "new-ticket",
+  "user-infos",
+  "logout",
+];
 
 const loadPanelContent = (content, user) => {
   // If Content Name Is Not True
@@ -14,7 +21,8 @@ const loadPanelContent = (content, user) => {
     return;
   }
 
-  const name = user.name && user.family ? `${user.name} ${user.family}` : user.username;
+  const name =
+    user.name && user.family ? `${user.name} ${user.family}` : user.username;
 
   if (content == "logout") {
     return false;
@@ -412,7 +420,9 @@ const loadPanelContent = (content, user) => {
               <div class="relative mb-11">
                 <div class="w-32 md:w-44 h-32 md:h-44 rounded-full overflow-hidden">
                   <img src="${
-                    user.imageProfile ? `${BASE_URL}/${user.imageProfile}` : "/images/user-profile.png"
+                    user.imageProfile
+                      ? `${BASE_URL}/${user.imageProfile}`
+                      : "/images/user-profile.png"
                   }" class="user__profile-image h-full w-full object-cover" />
                 </div>
                 <label
