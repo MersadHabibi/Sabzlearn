@@ -1,4 +1,4 @@
-import { _changeClasses } from "../funcs/utils.js";
+import { BASE_URL, _changeClasses } from "../funcs/utils.js";
 import myCourses from "./myCourses.js";
 import userInfo from "./userInfo.js";
 
@@ -410,16 +410,19 @@ const loadPanelContent = (content, user) => {
             </div>
             <form onsubmit="editUserInfo( event ,'${user.id}')" id="edit-account-info" class="p-3.5 pt-8">
               <div class="relative mb-11">
-                <img src="/images/user-profile.png" class="w-32 md:w-44 h-32 md:h-44 rounded-full" />
-                <a
-                  href=""
-                  target="_blank"
-                  title=""
+                <div class="w-32 md:w-44 h-32 md:h-44 rounded-full overflow-hidden">
+                  <img src="${
+                    user.imageProfile ? `${BASE_URL}/${user.imageProfile}` : "/images/user-profile.png"
+                  }" class="user__profile-image h-full w-full object-cover" />
+                </div>
+                <label
+                  for="user__profile-input"
                   class="absolute bottom-0 right-0 flex items-center justify-center w-10 md:w-14 h-10 md:h-14 rounded-full bg-sky-600 dark:bg-secondary dark:hover:bg-blue-600 border-2 md:border-4 border-white dark:border-gray-800 cursor-pointer transition-colors">
                   <svg class="w-5 md:w-6 h-5 md:h-6 text-white">
                     <use href="#arrow-path-rounded-square-mini"></use>
                   </svg>
-                </a>
+                </label>
+                <input type="file" id="user__profile-input" class="hidden" onchange="changeProfileHandler(this , '${user.id}')" accept="image/png, image/jpeg"/>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-6">
                 <div>
@@ -428,17 +431,21 @@ const loadPanelContent = (content, user) => {
                     type="text"
                     id="phone"
                     class="text-ltr mt-3.5 md:mt-4 bg-gray-200 cursor-not-allowed"
-                    value="09148906005"
-                    disabled="" />
+                    disabled
+                    value="${user.phoneNumber}"  />
                 </div>
                 <div class="hidden md:block"></div>
                 <div>
                   <label for="first_name" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام</label>
-                  <input type="text" class="mt-3.5 md:mt-4" id="first_name" name="first_name" required="" value="${user.name ? user.name : ""}" />
+                  <input type="text" class="mt-3.5 md:mt-4" id="first_name" name="first_name" value="${
+                    user.name ? user.name : ""
+                  }" oninput="changeInputsValueHandler()" />
                 </div>
                 <div>
                   <label for="last_name" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام خانوادگی</label>
-                  <input type="text" class="mt-3.5 md:mt-4" id="last_name" name="last_name" value="${user.family ? user.family : ""}" />
+                  <input type="text" class="mt-3.5 md:mt-4" id="last_name" name="last_name" value="${
+                    user.family ? user.family : ""
+                  }" oninput="changeInputsValueHandler()" />
                 </div>
                 <div>
                   <label for="username" class="font-DanaDemiBold text-zinc-700 dark:text-white">نام کاربری</label>
@@ -447,7 +454,7 @@ const loadPanelContent = (content, user) => {
                     class="mt-3.5 md:mt-4 bg-gray-200 cursor-not-allowed"
                     disabled=""
                     id="username"
-                    value="Darcy" />
+                    value="${user.username}" />
                 </div>
                 <div>
                   <label for="email" class="font-DanaDemiBold text-zinc-700 dark:text-white">ایمیل</label>
@@ -484,9 +491,9 @@ const loadPanelContent = (content, user) => {
                     required=""
                     class="mt-3.5 md:mt-4 mb-3"
                     placeholder="رمز فعلی را وارد کنید" />
-                  <a href="" class="text-slate-500 dark:text-slate-400 text-sm"
+                  <!-- <a href="" class="text-slate-500 dark:text-slate-400 text-sm"
                     >رمز عبور را فراموش کرده اید؟</a
-                  >
+                  > -->
                 </div>
                 <div>
                   <label for="new-password" class="font-DanaDemiBold text-zinc-700 dark:text-white">رمز عبور جدید</label>

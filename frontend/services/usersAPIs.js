@@ -122,7 +122,7 @@ async function changeUserRoleApi(id, role, callback) {
   }
 }
 
-async function editUserApi(datas, callback) {
+async function editUserApi(datas) {
   console.log(`token ${getToken()}`, datas);
   try {
     const res = await api.patch("me", datas, {
@@ -144,8 +144,6 @@ async function editUserApi(datas, callback) {
     return {
       status: false,
     };
-  } finally {
-    callback();
   }
 }
 
@@ -233,4 +231,34 @@ async function resendOTPApi(email) {
   }
 }
 
-export { getMe, registerApi, loginApi, getAllUsers, blockAndUnBlockUserApi, changeUserRoleApi, editUserApi, changePasswordApi, verifyOTPApi, resendOTPApi };
+async function changeUserProfileApi(image, type, name, callback) {
+  try {
+    const res = await api.post("upload-profile", {
+      image: {
+        name: name,
+        type: type,
+        data: image,
+      },
+    });
+
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    callback();
+  }
+}
+
+export {
+  getMe,
+  registerApi,
+  loginApi,
+  getAllUsers,
+  blockAndUnBlockUserApi,
+  changeUserRoleApi,
+  editUserApi,
+  changePasswordApi,
+  verifyOTPApi,
+  resendOTPApi,
+  changeUserProfileApi,
+};
