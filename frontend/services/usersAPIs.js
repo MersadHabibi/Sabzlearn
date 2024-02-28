@@ -214,12 +214,9 @@ async function verifyOTPApi(datas, callback) {
   }
 }
 
-async function resendOTPApi(email) {
-  console.log(email);
+async function resendOTPApi(datas) {
   try {
-    const res = await api.post("send-otp", {
-      email,
-    });
+    const res = await api.post("send-otp", datas);
 
     showNotif("کد برای شما ارسال شد", "success");
 

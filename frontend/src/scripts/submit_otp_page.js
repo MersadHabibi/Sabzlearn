@@ -5,6 +5,8 @@ import { api, createTimer, fullScreenLoader } from "./funcs/utils";
 
 redirectWhenHaveToken("./index.html");
 
+const expireTime = "0:0:0:3";
+
 // Get Params
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -25,8 +27,6 @@ otpInputs.forEach((input) => {
   input.addEventListener("keyup", (event) => {
     const prevInput = input.nextElementSibling;
 
-    console.log(prevInput, event);
-
     if (event.keyCode == 8 && prevInput) {
       prevInput.focus();
     }
@@ -42,7 +42,7 @@ const dayElem = document.querySelector(".timer__day");
 const submitBtn = document.querySelector(".submit-btn");
 const resetTimerBtn = document.querySelector(".timer__reset");
 
-createTimer(dayElem, hurElem, minElem, secElem, "0:0:1:0", true, () => {
+createTimer(dayElem, hurElem, minElem, secElem, expireTime, true, () => {
   resetTimerBtn.removeAttribute("disabled");
   submitBtn.setAttribute("disabled", "true");
 });
@@ -59,7 +59,7 @@ resetTimerBtn.addEventListener("click", async () => {
   minElem.innerHTML = "01";
   secElem.innerHTML = "00";
 
-  createTimer(dayElem, hurElem, minElem, secElem, "0:0:01:00", true);
+  createTimer(dayElem, hurElem, minElem, secElem, expireTime, true);
   resetTimerBtn.setAttribute("disabled", "true");
   submitBtn.removeAttribute("disabled");
 });
@@ -80,13 +80,12 @@ form.addEventListener("submit", async (e) => {
     code = code + input.value;
   });
 
-  console.log(code.split("").reverse().join(""));
-
   // Send API
 
   const datas = {
     code: code.split("").reverse().join(""),
-    email: params.email,
+    email: localStorage.getItem("register-email"),
+    username: localStorage.getItem("register-username"),
   };
 
   fullScreenLoader("loading");
@@ -105,11 +104,14 @@ form.addEventListener("submit", async (e) => {
 // Resend OTP code
 
 async function resendCode() {
-  fullScreenLoader("loading");
-  const res = await resendOTPApi(params.email);
-  fullScreenLoader("loaded");
+  const datas = {
+    email: localStorage.getItem("register-email"),
+    username: localStorage.getItem("register-username"),
+  };
 
-  console.log(res);
+  fullScreenLoader("loading");
+  const res = await resendOTPApi(datas);
+  fullScreenLoader("loaded");
 
   return res.status;
 }

@@ -47,6 +47,9 @@ const register = async () => {
   fullScreenLoader("loading");
   const res = await registerApi(newUser);
   fullScreenLoader("loaded");
-  if (res.status === true)
-    location.replace(`./submit_otp_page.html?email=${emailAddressInput.value}`);
+  if (res.status === true) {
+    localStorage.setItem("register-email", emailAddressInput.value);
+    localStorage.setItem("register-username", usernameInput.value);
+    location.replace(`./submit_otp_page.html`);
+  }
 };
