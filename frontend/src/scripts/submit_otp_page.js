@@ -5,7 +5,7 @@ import { api, createTimer, fullScreenLoader } from "./funcs/utils";
 
 redirectWhenHaveToken("./index.html");
 
-const expireTime = "0:0:0:3";
+const expireTime = "0:0:1:0";
 
 // Get Params
 
