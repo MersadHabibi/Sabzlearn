@@ -85,7 +85,6 @@ form.addEventListener("submit", async (e) => {
   const datas = {
     code: code.split("").reverse().join(""),
     email: localStorage.getItem("register-email"),
-    username: localStorage.getItem("register-username"),
   };
 
   fullScreenLoader("loading");
