@@ -14,7 +14,11 @@ function getEpisodeById(req, res) {
             id,
           },
           include: {
-            course: true,
+            Subjects: {
+              select: {
+                Course: true,
+              },
+            },
           },
         })
         .then((episode) => {

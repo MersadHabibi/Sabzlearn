@@ -21,11 +21,12 @@ router.post("/send-otp", (req, res) => {
   console.log("check user in register: ", req.sendOtpInRegister);
   const validationSchema = Joi.object({
     email: Joi.string().email().required().min(1),
+    username: Joi.string().required().min(1),
   });
   validationSchema
     .validateAsync(req.body)
     .then((reqBody) => {
-      sendOtp(reqBody.email, false, null, null, null, null)
+      sendOtp(reqBody.email, false, null, reqBody.username, null, null)
         .then((result) => {
           return res.json(result);
         })
@@ -53,6 +54,7 @@ router.get("/courses/category/:id", getCoursesByCategory);
 router.get("/categories", getAllCategories);
 router.route("/courses").get(getCourses).post(AuthCheckMiddleWare, buyCourse);
 
+// router.get("/episodes/:id", getEpisodeById);
 router
   .use(AuthCheckMiddleWare)
   .post("/comments", createComment)

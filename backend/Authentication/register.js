@@ -25,7 +25,7 @@ function register(req, res) {
     .then(({ email, password, username, address, phoneNumber }) => {
       sendOtp(email, true, address, username, password, phoneNumber)
         .then((result) => {
-          req.sendOtpInRegister = true
+          req.sendOtpInRegister = true;
           return res.json(result);
         })
         .catch((err) => {
@@ -121,6 +121,7 @@ function createuser({ email, password, username, address, phoneNumber }) {
             })
             .catch((err) => {
               if (err.code == "P2002") {
+                console.log(err);
                 return reject({
                   message: `error in creating user with this emailAddress or username.`,
                 });
