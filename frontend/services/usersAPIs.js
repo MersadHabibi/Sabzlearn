@@ -189,22 +189,22 @@ async function verifyOTPApi(datas, callback) {
 
     console.log(res);
 
-    if (res.response.status === 200) {
-      showNotif("حساب شما با موفقیت ساخته شد", "success");
+    // if (res.response.status === 200) {
+    //   showNotif("حساب شما با موفقیت ساخته شد", "success");
 
-      localStorage.setItem("token", res.data.token);
+    //   localStorage.setItem("token", res.data.token);
 
-      return {
-        status: true,
-      };
-    } else throw new Error("Unknown Error");
+    //   return {
+    //     status: true,
+    //   };
+    // } else throw new Error("Unknown Error");
   } catch (err) {
-    console.log(err);
-    if (err.response.status === 403) {
-      showNotif("زمان وارد کردن کد تموم شده است");
-    } else if (err.response.status === 401) {
-      showNotif("کد وارد شده درست نیست");
-    }
+    // console.log(err);
+    // if (err.response.status === 403) {
+    //   showNotif("زمان وارد کردن کد تموم شده است");
+    // } else if (err.response.status === 401) {
+    //   showNotif("کد وارد شده درست نیست");
+    // }
 
     return {
       status: false,
