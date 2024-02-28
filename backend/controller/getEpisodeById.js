@@ -16,7 +16,15 @@ function getEpisodeById(req, res) {
           include: {
             Subjects: {
               select: {
-                Course: true,
+                Course: {
+                  include: {
+                    category: {
+                      select: {
+                        name: true,
+                      },
+                    },
+                  },
+                },
               },
             },
           },
