@@ -189,6 +189,10 @@ async function verifyOTPApi(datas, callback) {
 
     console.log(res);
 
+    return {
+      status : true
+    }
+
     // if (res.response.status === 200) {
     //   showNotif("حساب شما با موفقیت ساخته شد", "success");
 
