@@ -1,8 +1,9 @@
 import mailer from "../utils/connectMailServer.js";
 import redisCli from "../utils/connectRedis.js";
 import otpGenerator from "otp-generator";
-import emailValidator from "node-email-verifier";
 import { verifyEmailDomain } from "email-domain-verifier";
+
+import Joi from "joi";
 
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
@@ -98,4 +99,31 @@ async function sendOtp(
   });
 }
 
+function sendOtpController(req, res) {
+  console.log("check user in register: ", req.sendOtpInRegister);
+  const validationSchema = Joi.object({
+    email: Joi.string().email().required().min(1),
+    username: Joi.string().required().min(1),
+  });
+  validationSchema
+    .validateAsync(req.body)
+    .then((reqBody) => {
+      sendOtp(reqBody.email, false, null, reqBody.username, null, null)
+        .then((result) => {
+          return res.json(result);
+        })
+        .catch((err) => {
+          return res.status(403).json(err);
+        });
+    })
+    .catch((err) => {
+      return res.status(403).json({
+        message: "Your Data Sended is Invalid",
+        err: err.details[0].message,
+      });
+    });
+}
+
 export default sendOtp;
+
+export { sendOtpController };

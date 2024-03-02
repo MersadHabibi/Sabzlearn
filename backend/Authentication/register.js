@@ -9,6 +9,7 @@ import sendOtp from "../controller/sendOtp.js";
 dotenv.config();
 
 import Joi from "joi";
+import genToken from "../utils/genToken.js";
 function register(req, res) {
   const registerSchema = Joi.object({
     username: Joi.string().required().min(1),
@@ -114,10 +115,15 @@ function createuser({ email, password, username, address, phoneNumber }) {
             })
             .then((user) => {
               console.log(user);
-              delete user.hash;
-              delete user.role;
-              const token = jwt.sign(user, process.env.SECRET_KEY);
-              return resolve({ user, token });
+              genToken(user)
+                .then((result, resultOfRedis) => {
+                  if (resultOfRedis) {
+                    return resolve(result);
+                  }
+                })
+                .catch((err) => {
+                  reject(err);
+                });
             })
             .catch((err) => {
               if (err.code == "P2002") {

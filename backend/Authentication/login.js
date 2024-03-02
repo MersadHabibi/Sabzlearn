@@ -5,6 +5,8 @@ import bcrypt from "bcrypt";
 import Joi from "joi";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import redisCli from "../utils/connectRedis.js";
+import genToken from "../utils/genToken.js";
 dotenv.config();
 function login(req, res) {
   const loginSchema = Joi.object({
@@ -25,16 +27,41 @@ function login(req, res) {
             return res.status(403).json({ err: "email or password is wrong." });
           else if (user.blocked)
             return res.status(403).json({ err: "your account is blocked." });
-          bcrypt.compare(password, user.hash).then((result) => {
-            if (result) {
-              delete user.hash;
-              delete user.role;
-              const token = jwt.sign(user, process.env.SECRET_KEY, {
-                expiresIn: "20m",
+
+          redisCli.get(`${email}-isLoggedIn`).then((resultOfRedis) => {
+            if (resultOfRedis != null) {
+              return res
+                .status(403)
+                .json({ err: "you are already logged in." });
+            } else {
+              bcrypt.compare(password, user.hash).then((result) => {
+                if (result) {
+                  redisCli
+                    .setEx(`${user.email}-isLoggedIn`, 1200, "true")
+                    .then((userLoggedIn) => {
+                      console.log(userLoggedIn);
+                      genToken(user)
+                        .then((result, resultOfRedis) => {
+                          if (resultOfRedis) {
+                            return res.json(result);
+                          } else {
+                            return res
+                              .status(500)
+                              .json({ message: "Server Error" });
+                          }
+                        })
+                        .catch((err) => {
+                          return res.status(403).json(err);
+                        });
+                    })
+                    .catch((err) => {
+                      console.log("err in set IsLoggedIn", err);
+                      return res.status(500).json({ err: "server Error" });
+                    });
+                }
+                return res.json({ err: "email or  password is  wrong" });
               });
-              return res.json({ token, decodeToken: jwt.decode(token) });
             }
-            return res.json({ err: "email or  password is  wrong" });
           });
         });
     })

@@ -33,6 +33,8 @@
     "fluent-ffmpeg": "^2.1.2",
     "get-video-duration": "^4.1.0",
     "node-email-verifier": "^1.0.1",
-    "otp-generator": "^4.0.1"
+    "otp-generator": "^4.0.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
   }
 }
