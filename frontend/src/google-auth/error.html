@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fa-IR" dir="rtl" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/icon.png" type="image/png" />
+    <title>ورود ناموفق</title>
+  </head>
+  <body class="relative bg-gray-100 dark:bg-gray">
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <svg class="hidden"></svg>
+
+    <div
+      class="relative flex min-h-screen items-center justify-center overflow-hidden"
+    >
+      <div
+        class="mx-4 flex w-[400px] flex-col items-center rounded-2xl bg-white px-5 pb-5 shadow-light dark:bg-gray-800 dark:shadow-none"
+      >
+        <img class="mt-2 size-25" src="/images/svgs/error.svg" alt="success" />
+        <p
+          class="mb-6 mt-5 max-w-[282px] text-center font-DanaMedium text-xl text-zinc-700 dark:text-white"
+        >
+          ورود موفق نبود
+        </p>
+        <a
+          href="./../register.html"
+          class="w-full rounded-lg bg-secondary py-3 text-center font-DanaMedium text-lg text-white"
+        >
+          بازگشت
+        </a>
+      </div>
+    </div>
+
+    <script src="scripts/error.js" type="module"></script>
+  </body>
+</html>
