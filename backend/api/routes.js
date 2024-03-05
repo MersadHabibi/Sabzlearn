@@ -12,9 +12,11 @@ import buyCourse from "../controller/buyCourse.js";
 import getAllCategories from "../controller/Admin/getAllCategories.js";
 import getEpisodeById from "../controller/getEpisodeById.js";
 import { sendOtpController } from "../controller/sendOtp.js";
-import genToken from "../utils/genToken.js";
+// import genToken from "../utils/genToken.js";
 import passport from "passport";
 import "../config/google.js";
+import logout from "../Authentication/logout.js";
+import googleAuth from "../Authentication/googleAuth.js";
 
 const router = Router();
 
@@ -22,6 +24,7 @@ router.post("/register", register);
 router.post("/send-otp", sendOtpController);
 router.post("/verify-otp", verifyOtp);
 router.post("/login", login);
+router.get("/logout", AuthCheckMiddleWare, logout);
 
 router.get(
   "/auth/google",
@@ -29,35 +32,7 @@ router.get(
     scope: ["profile", "email"],
   })
 );
-router.get("/google/callback", function (req, res, next) {
-  passport.authenticate(
-    "google",
-    { session: false },
-    function (err, user, info, status) {
-      if (err) {
-        console.log(err);
-        return res
-          .status(400)
-          .json({ message: "There is AN error in Sign In, please try Again." });
-      }
-      if (!user) {
-        return res.json(info);
-      } else {
-        genToken(user)
-          .then((result, resultOfRedis) => {
-            console.log("resultOfRedis in setEx in googleAuth", resultOfRedis);
-            if (resultOfRedis) {
-              return res.redirect(`/profile?token=${result.token}`);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-            return res.status(403).json(err);
-          });
-      }
-    }
-  )(req, res, next);
-});
+router.get("/google/callback", googleAuth);
 
 router
   .route("/me")

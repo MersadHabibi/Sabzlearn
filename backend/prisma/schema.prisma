@@ -26,6 +26,7 @@ model Users {
   replies      Reply[]    @relation("user to reply")
   blocked      Boolean    @default(false)
   courses      Course[]   @relation("user to courses")
+  provider     String?    @default("local")
 }
 
 // مدل یک دوره

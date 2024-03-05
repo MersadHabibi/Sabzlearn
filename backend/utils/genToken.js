@@ -13,7 +13,7 @@ function genToken(user) {
         .setEx(`${user.email}-isLoggedIn`, 1200, "true")
         .then((resultOfRedis) => {
           console.log("result of redis in genToken", resultOfRedis);
-          resolve({ user: jwt.decode(token), token }, resultOfRedis);
+          resolve({ user: jwt.decode(token), token, ok: resultOfRedis });
         });
     } else {
       reject({ err: " There is an Error in Login" });

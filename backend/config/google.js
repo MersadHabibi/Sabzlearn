@@ -13,6 +13,7 @@ passport.use(
       clientSecret: process.env.CLIENT_SECRET,
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
       const email = profile.emails[0].value;
       const firstName = profile.name.givenName;
       const lastName = profile.name.familyName;
@@ -27,36 +28,53 @@ passport.use(
         .then((currentUser) => {
           console.log("currentUser", currentUser);
           if (!currentUser) {
-            prisma.users.create({
-              email,
-              firstName,
-              lastName,
-              data: {
-                email,
-                firstName,
-                lastName,
-                imageProfile: profilePhoto,
-                hash: "",
-              },
-            });
+            prisma.users
+              .create({
+                data: {
+                  email,
+                  name: firstName,
+                  family: lastName,
+                  imageProfile: profilePhoto,
+                  hash: "",
+                  username: email,
+                  phoneNumber: "",
+                  address: "",
+                  comments: {},
+                  replies: {},
+                },
+              })
+              .then((newUser) => {
+                delete newUser.blocked;
+                delete newUser.role;
+                delete newUser.hash;
 
-            return done(null, newUser, null, 201);
+                return done(null, newUser, { status: 201 }, 201);
+              });
           } else {
-            redisCli.get(`${email}-isLoggedIn`).then((resultOfRedis) => {
-              if (resultOfRedis != null) {
-                console.log("resultOfRedis,", resultOfRedis);
-                return done(
-                  null,
-                  false,
-                  {
-                    message: `You have previously signed up with a different signin method`,
-                  },
-                  400
-                );
-              } else {
-                return done(null, currentUser, null, 200);
-              }
-            });
+            console.log("in elseBLock");
+            redisCli
+              .get(`${email}-isLoggedIn`)
+              .then((resultOfRedis) => {
+                if (resultOfRedis != null) {
+                  console.log("resultOfRedis,", resultOfRedis);
+                  return done(
+                    null,
+                    false,
+                    {
+                      message: `You have previously signed up with a different signin method`,
+                      ok: false,
+                      status: 400,
+                    },
+                    400
+                  );
+                } else {
+                  console.log("User not Log in");
+                  return done(null, currentUser, { status: 200 }, 200);
+                }
+              })
+              .catch((err) => {
+                console.log("err in get emailIsLoggedIn", err);
+              });
           }
         });
     }
