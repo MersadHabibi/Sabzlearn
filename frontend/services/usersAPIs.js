@@ -56,25 +56,57 @@ async function registerApi(data) {
     });
 }
 
-async function loginApi(data) {
-  return await api
-    .post("login", {
-      ...data,
-    })
-    .then((res) => {
-      if (!res.data.token) {
-        showNotif("ایمیل یا رمز عبور درست نیست");
-      } else if (res.data.token) {
-        showNotif("با موفقیت وارد شدید", "success");
-        localStorage.setItem("token", res.data.token);
+async function loginApi(datas) {
+  try {
+    const res = await api.post("login", datas);
 
-        return res;
-      }
-    })
-    .catch((err) => {
-      showNotif("مشکلی پیش آمده");
-      return null;
-    });
+    console.log(res);
+
+    if (!res.data.token) {
+      showNotif("ایمیل یا رمز عبور درست نیست");
+
+      return {
+        status: false,
+      };
+    } else if (res.data.token) {
+      showNotif("با موفقیت وارد شدید", "success");
+      localStorage.setItem("token", res.data.token);
+
+      return {
+        status: true,
+      };
+    }
+  } catch (err) {
+    if (err.status) {
+      showNotif("ایمیل یا رمز عبور درست نیست");
+    } else {
+      showNotif("مشکلی به وجود آمده!");
+    }
+    console.log(err);
+
+    return {
+      status: false,
+    };
+  }
+
+  // return await api
+  //   .post("login", {
+  //     ...data,
+  //   })
+  //   .then((res) => {
+  //     if (!res.data.token) {
+  //       showNotif("ایمیل یا رمز عبور درست نیست");
+  //     } else if (res.data.token) {
+  //       showNotif("با موفقیت وارد شدید", "success");
+  //       localStorage.setItem("token", res.data.token);
+
+  //       return res;
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     showNotif("مشکلی پیش آمده");
+  //     return null;
+  //   });
 }
 
 async function blockAndUnBlockUserApi(action, id, callback) {
@@ -190,8 +222,8 @@ async function verifyOTPApi(datas, callback) {
     console.log(res);
 
     return {
-      status : true
-    }
+      status: true,
+    };
 
     // if (res.response.status === 200) {
     //   showNotif("حساب شما با موفقیت ساخته شد", "success");
@@ -224,11 +256,15 @@ async function resendOTPApi(datas) {
 
     showNotif("کد برای شما ارسال شد", "success");
 
+    console.log(res);
+
     return {
       status: true,
     };
   } catch (err) {
     showNotif("مشکلی در ارسال مجدد کد به وجود آمده");
+
+    console.log(err);
 
     return {
       status: false,
@@ -254,6 +290,29 @@ async function changeUserProfileApi(image, type, name, callback) {
   }
 }
 
+async function logoutApi() {
+  try {
+    const res = await api.get("logout", {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    });
+
+    showNotif("با موفقیت خارج شدید", "success");
+
+    return {
+      status: true,
+    };
+  } catch (err) {
+    console.log(err);
+    showNotif("خروج ناموفق بود");
+
+    return {
+      status: false,
+    };
+  }
+}
+
 export {
   getMe,
   registerApi,
@@ -266,4 +325,5 @@ export {
   verifyOTPApi,
   resendOTPApi,
   changeUserProfileApi,
+  logoutApi,
 };

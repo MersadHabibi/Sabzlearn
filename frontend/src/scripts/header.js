@@ -1,4 +1,4 @@
-import { getMe } from "../../services/usersAPIs.js";
+import { getMe, logoutApi } from "../../services/usersAPIs.js";
 import { _changeClasses } from "./funcs/utils.js";
 
 const header = ($) => {
@@ -105,15 +105,6 @@ const header = ($) => {
   };
   setLinkForLoginAndRegisterBtn();
 
-  // Logout Btn
-
-  const logoutBtn = $.querySelector(".logout-btn");
-
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("token");
-    location.reload();
-  });
-
   // Check User Login
 
   let user = null;
@@ -161,6 +152,19 @@ const header = ($) => {
     location.href = mobileSearchBoxInput.value
       ? `./categories.html?s=${mobileSearchBoxInput.value}`
       : location.href;
+  });
+
+  // Logout Btn
+
+  const logoutBtn = $.querySelector(".logout-btn");
+
+  logoutBtn.addEventListener("click", async () => {
+    const res = await logoutApi();
+
+    if (res.status) {
+      localStorage.removeItem("token");
+      location.reload();
+    }
   });
 };
 

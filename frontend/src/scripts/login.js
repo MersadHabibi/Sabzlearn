@@ -25,6 +25,7 @@ const login = async () => {
     email: emailAddressInput.value,
     password: passwordInput.value,
   });
+  fullScreenLoader("loaded");
 
-  if (res !== null) location.replace(getAfterPageLink());
+  if (res.status === true) location.replace(getAfterPageLink());
 };

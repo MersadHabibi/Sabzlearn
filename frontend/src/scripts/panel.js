@@ -6,7 +6,7 @@ import { getMe } from "../../services/usersAPIs.js";
 
 const user = await getMe();
 
-console.log(user);
+console.log("user", user);
 
 if (!user) location.replace("./index.html");
 
@@ -51,6 +51,14 @@ profileBtn.addEventListener("click", () => {
   _changeClasses("add", profileBtn, ["open"]);
   _changeClasses("add", overlay, ["show"]);
 });
+
+const profileName = document.querySelector(".profile__name");
+profileName.innerHTML =
+  user.name && user.family
+    ? `${user.name} ${user.family}`
+    : user.name
+      ? user.name
+      : user.username;
 
 // Notif
 
@@ -140,5 +148,18 @@ const setMobileMenuTitle = (contentName) => {
   );
   _changeClasses("add", panelMobileMenuTextActive, ["!block"]);
 };
+
+// Logout Btn Handler
+
+const logoutBtn = document.querySelector(".logout-btn");
+
+logoutBtn.addEventListener("click", async () => {
+  const res = await logoutApi();
+
+  if (res.status) {
+    localStorage.removeItem("token");
+    location.replace("./index.html");
+  }
+});
 
 getParamsAndChangeContent();
