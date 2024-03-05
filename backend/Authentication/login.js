@@ -29,6 +29,10 @@ function login(req, res) {
             return res.status(403).json({ err: "your account is blocked." });
 
           redisCli.get(`${email}-isLoggedIn`).then((resultOfRedis) => {
+            console.log(
+              "result of isloggedIn user in Login Page",
+              resultOfRedis
+            );
             if (resultOfRedis != null) {
               return res
                 .status(403)
@@ -36,30 +40,33 @@ function login(req, res) {
             } else {
               bcrypt.compare(password, user.hash).then((result) => {
                 if (result) {
-                  redisCli
-                    .setEx(`${user.email}-isLoggedIn`, 1200, "true")
-                    .then((userLoggedIn) => {
-                      console.log(userLoggedIn);
-                      genToken(user)
-                        .then((result, resultOfRedis) => {
-                          if (resultOfRedis) {
-                            return res.json(result);
-                          } else {
-                            return res
-                              .status(500)
-                              .json({ message: "Server Error" });
-                          }
-                        })
-                        .catch((err) => {
-                          return res.status(403).json(err);
-                        });
+                  // redisCli
+                  //   .setEx(`${user.email}-isLoggedIn`, 1200, "true")
+                  //   .then((userLoggedIn) => {
+                  // console.log(userLoggedIn);
+                  genToken(user)
+                    .then((result) => {
+                      if (result.ok) {
+                        return res.json(result);
+                      } else {
+                        return res
+                          .status(500)
+                          .json({ message: "Server Error" });
+                      }
+                      // })
+                      // .catch((err) => {
+                      //   return res.status(403).json(err);
+                      // });
                     })
                     .catch((err) => {
                       console.log("err in set IsLoggedIn", err);
                       return res.status(500).json({ err: "server Error" });
                     });
+                } else {
+                  return res
+                    .staus(403)
+                    .json({ err: "email or  password is  wrong" });
                 }
-                return res.json({ err: "email or  password is  wrong" });
               });
             }
           });
