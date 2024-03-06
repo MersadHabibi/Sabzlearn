@@ -17,6 +17,9 @@ import passport from "passport";
 import "../config/google.js";
 import logout from "../Authentication/logout.js";
 import googleAuth from "../Authentication/googleAuth.js";
+import forgetPassword from "../Authentication/forgetPassword.js";
+import resetPassword from "../Authentication/resetPassword.js";
+import changeUserProfile from "../controller/changeUserProfile.js";
 
 const router = Router();
 
@@ -25,6 +28,12 @@ router.post("/send-otp", sendOtpController);
 router.post("/verify-otp", verifyOtp);
 router.post("/login", login);
 router.get("/logout", AuthCheckMiddleWare, logout);
+
+router.get("/reset-password/:userId/:token", (req, res) => {
+  res.render("reset_password");
+});
+router.post("/forget-password", forgetPassword);
+router.post("/reset-password/:userId/:token", resetPassword);
 
 router.get(
   "/auth/google",
@@ -37,7 +46,8 @@ router.get("/google/callback", googleAuth);
 router
   .route("/me")
   .get(AuthCheckMiddleWare, getMe)
-  .patch(AuthCheckMiddleWare, updateUser);
+  .patch(AuthCheckMiddleWare, updateUser)
+  .post(AuthCheckMiddleWare, changeUserProfile);
 
 router.get("/courses/:id", getCourseById);
 router.get("/courses/category/:id", getCoursesByCategory);

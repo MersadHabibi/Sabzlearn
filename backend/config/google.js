@@ -35,7 +35,7 @@ passport.use(
                   name: firstName,
                   family: lastName,
                   imageProfile: profilePhoto,
-                  hash: "",
+                  hash: profile.id,
                   username: email,
                   phoneNumber: "",
                   address: "",

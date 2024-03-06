@@ -29,9 +29,12 @@
     "swagger-ui-express": "^5.0.0"
   },
   "dependencies": {
+    "ejs": "^3.1.9",
     "email-domain-verifier": "^1.0.6",
+    "file-type": "^19.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "get-video-duration": "^4.1.0",
+    "image-size": "^1.1.1",
     "node-email-verifier": "^1.0.1",
     "otp-generator": "^4.0.1",
     "passport": "^0.7.0",
