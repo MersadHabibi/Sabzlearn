@@ -1,6 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import Joi from "joi";
 import Jwt from "jsonwebtoken";
+const prisma = new PrismaClient();
+
+import mailer from "../utils/connectMailServer.js";
 
 function forgetPassword(req, res) {
   const validateSchema = Joi.object({
@@ -25,20 +28,21 @@ function forgetPassword(req, res) {
               },
               secret,
               {
-                expiresIn: "2m",
+                expiresIn: "20m",
               }
             );
 
-            const link = `http://localhost:8000/reset-password/${user.id}/${token}`;
+            const link = `http://localhost:3000/api/reset-password/${user.id}/${token}`;
             mailer
               .sendMail({
                 from: "mail@sabzlearn.m-fatehi.ir",
                 to: user.email,
+
                 subject: "Reset Password Link",
                 html: `
                   <h1>Your Link is:</h1>
                   <br/>
-                  <a href=${link}>Click Here</a>
+                  <a href=${link} target="_blank">Click Here</a>
                   `,
               })
               .then((result) => {
@@ -61,6 +65,7 @@ function forgetPassword(req, res) {
         });
     })
     .catch((err) => {
+      console.log("err in validating forgetpassword", err);
       return res.status(403).json({
         message: "Your sended Data Is Invalid.",
         err: err?.details[0]?.message,

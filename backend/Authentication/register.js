@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+
 import dotenv from "dotenv";
 import redisCli from "../utils/connectRedis.js";
 import sendOtp from "../controller/sendOtp.js";
@@ -10,6 +9,7 @@ dotenv.config();
 
 import Joi from "joi";
 import genToken from "../utils/genToken.js";
+import createHash from "../utils/createHash.js";
 function register(req, res) {
   const registerSchema = Joi.object({
     username: Joi.string().required().min(1),
@@ -96,51 +96,50 @@ async function verifyOtp(req, res) {
 
 function createuser({ email, password, username, address, phoneNumber }) {
   return new Promise((resolve, reject) => {
-    bcrypt
-      .genSalt(8)
-      .then((salt) => {
-        bcrypt.hash(password, salt).then((hash) => {
-          console.log(hash);
-          prisma.users
-            .create({
-              data: {
-                email,
-                username,
-                address,
-                phoneNumber,
-                hash,
-                comments: {},
-                replies: {},
-              },
-            })
-            .then((user) => {
-              console.log(user);
-              genToken(user)
-                .then((result, resultOfRedis) => {
-                  if (resultOfRedis) {
-                    return resolve(result);
-                  }
-                })
-                .catch((err) => {
-                  reject(err);
-                });
-            })
-            .catch((err) => {
-              if (err.code == "P2002") {
-                console.log(err);
-                return reject({
-                  message: `error in creating user with this emailAddress or username.`,
-                });
-              } else {
-                console.log(err);
-              }
-            });
-        });
+    createHash(password)
+      .then((hash) => {
+        console.log(hash);
+        prisma.users
+          .create({
+            data: {
+              email,
+              username,
+              address,
+              phoneNumber,
+              hash,
+              comments: {},
+              replies: {},
+            },
+          })
+          .then((user) => {
+            console.log(user);
+            genToken(user)
+              .then((result, resultOfRedis) => {
+                if (resultOfRedis) {
+                  return resolve(result);
+                }
+              })
+              .catch((err) => {
+                reject(err);
+              });
+          })
+          .catch((err) => {
+            if (err.code == "P2002") {
+              console.log(err);
+              return reject({
+                message: `error in creating user with this emailAddress or username.`,
+              });
+            } else {
+              console.log(err);
+            }
+          });
       })
       .catch((err) => {
-        // console.log(");
         return reject({ message: `err in creating hash, ${err}` });
       });
+  }).catch((err) => {
+    // console.log(");
+    return reject({ message: `err in creating hash, ${err}` });
   });
 }
 
