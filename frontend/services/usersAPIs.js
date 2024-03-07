@@ -322,13 +322,19 @@ async function forgetPasswordApi(email) {
 
     console.log("forgetPasswordApi=>", res);
 
-    showNotif("لینک بازنشانی رمز به ایمیل شما ارسال شد");
+    if (res.status == 200) {
+      showNotif("لینک بازنشانی رمز به ایمیل شما ارسال شد");
+    }
 
     return {
       status: true,
     };
   } catch (err) {
     console.log("forgetPasswordApi =>", err);
+    if (err.response.status == 403) {
+      showNotif("کاربری با این ایمیل وجود ندارد", "error");
+      return;
+    }
     showNotif("مشکلی در بازنشانی رمز عبور به وجود آمده", "error");
 
     return {
