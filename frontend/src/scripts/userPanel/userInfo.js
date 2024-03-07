@@ -1,10 +1,14 @@
-import { changePasswordApi, changeUserProfileApi, editUserApi } from "../../../services/usersAPIs";
+import {
+  changePasswordApi,
+  changeUserProfileApi,
+  editUserApi,
+} from "../../../services/usersAPIs";
 import { fullScreenLoader } from "../funcs/utils";
 
 let isProfileChanged = false;
 let isInfosChanged = false; // Name , Family , Number
 
-const userInfo = user => {
+const userInfo = (user) => {
   window.editUserInfo = editUserInfo;
   window.changeUserPassword = changeUserPassword;
   window.changeProfileHandler = changeProfileHandler;
@@ -17,22 +21,22 @@ const editUserInfo = async (event, id) => {
   fullScreenLoader("loading");
 
   // Change Profile
-  
+
   if (isProfileChanged) {
     const userProfileInput = document.querySelector("#user__profile-input");
 
     const file = userProfileInput.files[0];
-    console.log(file);
+    // console.log(file);
     const reader = new FileReader();
     reader.onloadend = () => {
       const image = reader.result.split(",")[1];
-      changeUserProfileApi(image, file.type, file.name);
+      changeUserProfileApi(image);
     };
     reader.readAsDataURL(file);
   }
 
   // Change Infos => Name , Family , Number
-  
+
   if (isInfosChanged) {
     const firstName = document.querySelector("#first_name");
     const lastName = document.querySelector("#last_name");

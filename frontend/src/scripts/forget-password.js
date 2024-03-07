@@ -6,7 +6,7 @@ const form = document.querySelector("form");
 
 const emailInput = document.querySelector("#form__email-address");
 
-const submitBtn = document.querySelector("submit-btn");
+const submitBtn = document.querySelector(".submit-btn");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -23,6 +23,12 @@ form.addEventListener("submit", async (event) => {
 
   if (res.status) {
     submitBtn.setAttribute("disabled", "true");
-    submitBtn.innerHTML = "ارسال شد"
+    submitBtn.innerHTML = "ارسال شد";
+    emailInput.value = "";
+
+    emailInput.addEventListener("input", () => {
+      submitBtn.removeAttribute("disabled");
+      submitBtn.innerHTML = "بازنشانی";
+    });
   }
 });

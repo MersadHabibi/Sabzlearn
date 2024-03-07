@@ -272,21 +272,34 @@ async function resendOTPApi(datas) {
   }
 }
 
-async function changeUserProfileApi(image, type, name, callback) {
+async function changeUserProfileApi(image) {
   try {
-    const res = await api.post("upload-profile", {
-      image: {
-        name: name,
-        type: type,
-        data: image,
+    const res = await api.post(
+      "me",
+      {
+        image,
       },
-    });
+      {
+        headers: {
+          Authorization: "Bearer " + getToken(),
+        },
+      },
+    );
 
-    console.log(res);
+    console.log("changeUserProfileApi =>", res);
+
+    showNotif("پروفایل با موفقیت عوض شد", "success");
+
+    return {
+      status: true,
+    };
   } catch (err) {
-    console.log(err);
-  } finally {
-    callback();
+    showNotif("تغیید پروفایل موفق نبود");
+    console.log("changeUserProfileApi =>", err);
+
+    return {
+      status: false,
+    };
   }
 }
 
@@ -323,7 +336,7 @@ async function forgetPasswordApi(email) {
     console.log("forgetPasswordApi=>", res);
 
     if (res.status == 200) {
-      showNotif("لینک بازنشانی رمز به ایمیل شما ارسال شد");
+      showNotif("لینک بازنشانی رمز به ایمیل شما ارسال شد", "success");
     }
 
     return {
@@ -332,10 +345,10 @@ async function forgetPasswordApi(email) {
   } catch (err) {
     console.log("forgetPasswordApi =>", err);
     if (err.response.status == 403) {
-      showNotif("کاربری با این ایمیل وجود ندارد", "error");
+      showNotif("کاربری با این ایمیل وجود ندارد");
       return;
     }
-    showNotif("مشکلی در بازنشانی رمز عبور به وجود آمده", "error");
+    showNotif("مشکلی در بازنشانی رمز عبور به وجود آمده");
 
     return {
       status: false,
