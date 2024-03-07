@@ -346,7 +346,10 @@ async function forgetPasswordApi(email) {
     console.log("forgetPasswordApi =>", err);
     if (err.response.status == 403) {
       showNotif("کاربری با این ایمیل وجود ندارد");
-      return;
+
+      return {
+        status: false,
+      };
     }
     showNotif("مشکلی در بازنشانی رمز عبور به وجود آمده");
 
