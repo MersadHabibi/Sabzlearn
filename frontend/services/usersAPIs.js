@@ -314,10 +314,13 @@ async function logoutApi() {
 }
 
 async function forgetPasswordApi(email) {
+  console.log("forgetPasswordApi email: " + email);
   try {
-    const res = await api.post("forgetpass", {
+    const res = await api.post("forget-password", {
       email,
     });
+
+    console.log("forgetPasswordApi=>", res);
 
     showNotif("لینک بازنشانی رمز به ایمیل شما ارسال شد");
 
@@ -325,6 +328,7 @@ async function forgetPasswordApi(email) {
       status: true,
     };
   } catch (err) {
+    console.log("forgetPasswordApi =>", err);
     showNotif("مشکلی در بازنشانی رمز عبور به وجود آمده", "error");
 
     return {
