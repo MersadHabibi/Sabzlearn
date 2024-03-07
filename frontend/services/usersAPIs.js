@@ -313,6 +313,26 @@ async function logoutApi() {
   }
 }
 
+async function forgetPasswordApi(email) {
+  try {
+    const res = await api.post("forgetpass", {
+      email,
+    });
+
+    showNotif("لینک بازنشانی رمز به ایمیل شما ارسال شد");
+
+    return {
+      status: true,
+    };
+  } catch (err) {
+    showNotif("مشکلی در بازنشانی رمز عبور به وجود آمده", "error");
+
+    return {
+      status: false,
+    };
+  }
+}
+
 export {
   getMe,
   registerApi,
@@ -326,4 +346,5 @@ export {
   resendOTPApi,
   changeUserProfileApi,
   logoutApi,
+  forgetPasswordApi,
 };

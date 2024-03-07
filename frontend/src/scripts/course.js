@@ -185,6 +185,8 @@ const getCourse = async () => {
   const targetCourseId = localStorage.getItem("course");
 
   course = await getCourseById(targetCourseId);
+
+  console.log("course => ", course);
 };
 
 // BreadCrumb
@@ -378,7 +380,7 @@ const showTopics = () => {
                         ? `./lesson.html?episodeid=${episode.id}`
                         : !user
                           ? "./login.html"
-                          : "#course__image"
+                          : ""
                     }" class="flex items-center gap-x-1.5 md:gap-x-2.5 shrink-0 w-[85%]">
                       <span
                         class="flex items-center justify-center shrink-0 w-5 h-5 md:w-7 md:h-7 bg-white font-danaDemiBold text-xs md:text-base text-zinc-700 dark:text-white dark:bg-gray-800 group-hover:bg-primary group-hover:text-white rounded-md transition-colors mt-0.5"
