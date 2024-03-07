@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import Joi from "joi";
+import Jwt from "jsonwebtoken";
 
 function forgetPassword(req, res) {
   const validateSchema = Joi.object({
@@ -17,8 +18,41 @@ function forgetPassword(req, res) {
         })
         .then((user) => {
           if (user) {
-            
+            const secret = process.env.SECRET_KEY + "-" + user.hash;
+            const token = Jwt.sign(
+              {
+                email: user.email,
+              },
+              secret,
+              {
+                expiresIn: "2m",
+              }
+            );
 
+            const link = `http://localhost:8000/reset-password/${user.id}/${token}`;
+            mailer
+              .sendMail({
+                from: "mail@sabzlearn.m-fatehi.ir",
+                to: user.email,
+                subject: "Reset Password Link",
+                html: `
+                  <h1>Your Link is:</h1>
+                  <br/>
+                  <a href=${link}>Click Here</a>
+                  `,
+              })
+              .then((result) => {
+                console.log("result of sended Email", result);
+                if (result) {
+                  res.json({ message: "email sended successfully" });
+                }
+              })
+              .catch((err) => {
+                console.log("the Error in email sendig", err);
+                return res
+                  .status(500)
+                  .json({ message: "server Error in sendig link" });
+              });
           } else {
             return res
               .status(403)

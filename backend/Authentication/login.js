@@ -64,7 +64,7 @@ function login(req, res) {
                     });
                 } else {
                   return res
-                    .staus(403)
+                    .status(403)
                     .json({ err: "email or  password is  wrong" });
                 }
               });
