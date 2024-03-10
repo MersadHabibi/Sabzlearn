@@ -377,7 +377,7 @@ const showTopics = () => {
                   <div class="md:flex items-center gap-2.5 flex-wrap space-y-3.5 md:space-y-0 py-4 md:py-6 px-3.5 md:px-5 group">
                     <a href="${
                       episode.isFree || isbuyed
-                        ? `./lesson.html?episodeid=${episode.id}`
+                        ? `./lesson.html?episodeId=${episode.id}&courseId=${course.id}`
                         : !user
                           ? "./login.html"
                           : ""

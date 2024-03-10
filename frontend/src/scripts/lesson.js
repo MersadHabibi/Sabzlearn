@@ -8,17 +8,18 @@ import {
   getEpisodeByIdApi,
 } from "../../services/coursesAPIs.js";
 import {
+  BASE_URL,
   _changeClasses,
   fullScreenLoader,
   getTeacherName,
 } from "./funcs/utils.js";
 import { getMe } from "../../services/usersAPIs.js";
 
-// header(document);
+header(document);
 
-let episode = null;
 let user = null;
 let course = null;
+let episode = null;
 
 // Get Params
 
@@ -28,19 +29,27 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 window.addEventListener("load", async () => {
   fullScreenLoader("loading");
-  const res = await getEpisodeByIdApi(params.episodeid);
 
-  if (res.statusCode == 401) {
+  course = await getCourseById(params.courseId);
+
+  console.log(course);
+
+  if (!course) {
     console.log("object");
     location.replace("./login.html");
   }
 
   user = await getMe(); // Get User
 
-  fullScreenLoader("loaded");
+  course.subjects.forEach((subject) => {
+    subject.episodes.forEach((epi) => {
+      if (epi.id == params.episodeId) {
+        episode = epi;
+      }
+    });
+  });
 
-  episode = res.data.episode;
-  course = res.data.episode.course;
+  fullScreenLoader("loaded");
 
   // Show Title
 
@@ -50,8 +59,26 @@ window.addEventListener("load", async () => {
   showSubjectsAndEpisodes();
   showInfos();
 
+  loadVideo();
+
   questions(); // not complete
 });
+
+// Video
+
+function loadVideo() {
+  const videoElem = document.querySelector("video");
+  const sourceElem = document.querySelector("source");
+  const episodeNameElem = document.querySelector(".episode__name");
+
+  episodeNameElem.innerHTML = episode.title;
+
+  videoElem.poster = `${BASE_URL}/${course.image}`;
+
+  sourceElem.src = `${BASE_URL}/${episode.link}`;
+}
+
+// Subjects
 
 function showSubjectsAndEpisodes() {
   const subjectsWrapper = document.querySelector(".subjects__wrapper");

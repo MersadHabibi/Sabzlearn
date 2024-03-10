@@ -120,6 +120,8 @@ async function getEpisodeByIdApi(id) {
       },
     });
 
+    console.log(res);
+
     return {
       status: true,
       data: res.data,
