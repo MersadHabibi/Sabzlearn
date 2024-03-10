@@ -1,3 +1,4 @@
+import { logoutApi } from "../../../services/usersAPIs.js";
 import { BASE_URL, _changeClasses } from "../funcs/utils.js";
 import myCourses from "./myCourses.js";
 import userInfo from "./userInfo.js";
@@ -14,7 +15,7 @@ const contentsName = [
   "logout",
 ];
 
-const loadPanelContent = (content, user) => {
+const loadPanelContent = async (content, user) => {
   // If Content Name Is Not True
   if (!contentsName.includes(content)) {
     location.replace("./panel.html");
@@ -25,6 +26,13 @@ const loadPanelContent = (content, user) => {
     user.name && user.family ? `${user.name} ${user.family}` : user.username;
 
   if (content == "logout") {
+    const res = await logoutApi();
+
+    if (res.status) {
+      localStorage.removeItem("token");
+      location.replace("./index.html");
+    }
+
     return false;
   } else if (content == "home") {
     contentContainer.innerHTML = `
@@ -72,6 +80,7 @@ const loadPanelContent = (content, user) => {
             </div>
             <!-- tickets Body -->
             <div class="flex flex-col">
+              <!--
               <div class="flex items-start justify-between flex-col gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
                 <a href="https://sabzlearn.ir/my-account/view_ticket?id=8529" class="text-zinc-700 dark:text-white w-full sm:max-w-sm sm:truncate"
                   >استوری آقای سعیدی راد در مورد next js</a
@@ -81,6 +90,7 @@ const loadPanelContent = (content, user) => {
                   <span class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded">بسته شده</span>
                 </div>
               </div>
+              -->
             </div>
           </div>
           <!-- Questions -->
@@ -99,6 +109,7 @@ const loadPanelContent = (content, user) => {
             </div>
             <!-- Questions Body -->
             <div class="flex flex-col">
+              <!-- 
               <div class="flex items-start justify-between flex-col gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
                 <a href="https://sabzlearn.ir/lesson/34-24560/#q-3267" class="text-zinc-700 dark:text-white w-full sm:max-w-sm sm:truncate"
                   >پروژه های تخصصی با جاوا اسکریپت برای بازار کار - نمایش دوره‌ها بر اساس دسته بندی</a
@@ -108,24 +119,7 @@ const loadPanelContent = (content, user) => {
                   <span class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded">بسته شده</span>
                 </div>
               </div>
-              <div class="flex items-start justify-between flex-col gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
-                <a href="https://sabzlearn.ir/lesson/34-24560/#q-3267" class="text-zinc-700 dark:text-white w-full sm:max-w-sm sm:truncate"
-                  >پروژه های تخصصی با جاوا اسکریپت برای بازار کار - نمایش دوره‌ها بر اساس دسته بندی</a
-                >
-                <div class="flex items-center gap-3">
-                  <span class="text-xs text-slate-500 dark:text-slate-400">1402/08/15</span>
-                  <span class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded">بسته شده</span>
-                </div>
-              </div>
-              <div class="flex items-start justify-between flex-col gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
-                <a href="https://sabzlearn.ir/lesson/34-24560/#q-3267" class="text-zinc-700 dark:text-white w-full sm:max-w-sm sm:truncate"
-                  >پروژه های تخصصی با جاوا اسکریپت برای بازار کار - نمایش دوره‌ها بر اساس دسته بندی</a
-                >
-                <div class="flex items-center gap-3">
-                  <span class="text-xs text-slate-500 dark:text-slate-400">1402/08/15</span>
-                  <span class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded">بسته شده</span>
-                </div>
-              </div>
+              -->
             </div>
           </div>
         </div>
@@ -236,8 +230,8 @@ const loadPanelContent = (content, user) => {
           <span class="font-DanaMedium md:text-xl text-zinc-700 dark:text-white">تیکت ها</span>
         </div>
         <div>
-          <div
-            class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
+          <!-- 
+          <div class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
             <div class="flex items-center">
               <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
               <a
@@ -257,94 +251,8 @@ const loadPanelContent = (content, user) => {
                 >بسته شده</span
               >
             </div>
-          </div>
-          <div
-            class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
-            <div class="flex items-center">
-              <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
-              <a
-                href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
-                class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
-                >استوری آقای سعیدی راد در مورد next js</a
-              >
-            </div>
-            <div class="flex items-center gap-5">
-              <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
-              <span
-                class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
-                >پشتیبانی</span
-              >
-              <span
-                class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
-                >بسته شده</span
-              >
-            </div>
-          </div>
-          <div
-            class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
-            <div class="flex items-center">
-              <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
-              <a
-                href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
-                class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
-                >استوری آقای سعیدی راد در مورد next js</a
-              >
-            </div>
-            <div class="flex items-center gap-5">
-              <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
-              <span
-                class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
-                >پشتیبانی</span
-              >
-              <span
-                class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
-                >بسته شده</span
-              >
-            </div>
-          </div>
-          <div
-            class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
-            <div class="flex items-center">
-              <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
-              <a
-                href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
-                class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
-                >استوری آقای سعیدی راد در مورد next js</a
-              >
-            </div>
-            <div class="flex items-center gap-5">
-              <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
-              <span
-                class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
-                >پشتیبانی</span
-              >
-              <span
-                class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
-                >بسته شده</span
-              >
-            </div>
-          </div>
-          <div
-            class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">
-            <div class="flex items-center">
-              <span class="block w-20 text-right font-DanaMedium text-black">#8529</span>
-              <a
-                href="https://sabzlearn.ir/my-account/view_ticket?id=8529"
-                class="text-zinc-700 dark:text-white w-full font-danaMedium sm:max-w-md md:truncate"
-                >استوری آقای سعیدی راد در مورد next js</a
-              >
-            </div>
-            <div class="flex items-center gap-5">
-              <span class="text-xs text-slate-500 dark:text-slate-400" dir="ltr">1402/08/26 (23:41)</span>
-              <span
-                class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
-                >پشتیبانی</span
-              >
-              <span
-                class="text-xs py-1 px-1.5 text-slate-500 dark:text-yellow-400 bg-slate-500/10 dark:bg-yellow-400/10 rounded"
-                >بسته شده</span
-              >
-            </div>
+           -->
+           <p class="text-center text-lg dark:text-white pb-2"> تیکتی وجود ندارد </p>
           </div>
         </div>
       </div>

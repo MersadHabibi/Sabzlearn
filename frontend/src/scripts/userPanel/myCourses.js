@@ -1,7 +1,7 @@
 import { courseClickHandler } from "../funcs/createCourseCard";
 import { BASE_URL } from "../funcs/utils";
 
-const myCourses = user => {
+const myCourses = (user) => {
   const coursesContainer = document.querySelector("#courses__container");
 
   // if User Not Have Course
@@ -13,15 +13,15 @@ const myCourses = user => {
   // if User Have Course
   coursesContainer.innerHTML = "";
 
-  user.courses.forEach(course => {
+  user.courses.forEach((course) => {
     coursesContainer.insertAdjacentHTML(
       "beforeend",
       `
     <div onclick="courseClickHandler('${course.id}')"
       class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-light dark:shadow-none dark:border dark:border-gray-700 dark:text-white">
       <a href="../course.html" class="block w-full rounded-2xl overflow-hidden">
-        <img src="${BASE_URL}/${course.image}" class="h-full w-full object-cover" alt="" />
-      </a>
+        <img src="${BASE_URL}/${course.image}" class="h-full w-full object-cover" alt="" onerror="this.src = '/images/image-404.png'" />
+      </a> 
       <div class="px-5 py-2.5 flex-grow">
         <a href="../course.html" class="font-DanaMedium line-clamp-2"> ${course.title} </a>
         <div class="flex flex-col pb-1 pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
@@ -33,7 +33,7 @@ const myCourses = user => {
         </div>
       </div>
     </div>  
-    `
+    `,
     );
   });
 
@@ -43,8 +43,10 @@ const myCourses = user => {
     else return 0;
   }, 0);
 
-  document.querySelector("#not-free-courses").innerHTML = `${user.courses.length - freeCoursesCount} دوره`;
-  document.querySelector("#free-courses").innerHTML = `${freeCoursesCount} دوره`;
+  document.querySelector("#not-free-courses").innerHTML =
+    `${user.courses.length - freeCoursesCount} دوره`;
+  document.querySelector("#free-courses").innerHTML =
+    `${freeCoursesCount} دوره`;
 
   window.courseClickHandler = courseClickHandler;
 };

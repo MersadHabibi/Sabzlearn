@@ -2,7 +2,7 @@ import "../styles/app.css";
 import "./share.js";
 import { _changeClasses } from "./funcs/utils.js";
 import { loadPanelContent } from "./userPanel/panel-content.js";
-import { getMe } from "../../services/usersAPIs.js";
+import { getMe, logoutApi } from "../../services/usersAPIs.js";
 
 const user = await getMe();
 
