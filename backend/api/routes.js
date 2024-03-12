@@ -20,6 +20,7 @@ import googleAuth from "../Authentication/googleAuth.js";
 import forgetPassword from "../Authentication/forgetPassword.js";
 import resetPassword from "../Authentication/resetPassword.js";
 import changeUserProfile from "../controller/changeUserProfile.js";
+import getMenues from "../controller/getMenues.js";
 
 const router = Router();
 
@@ -53,7 +54,7 @@ router.get("/courses/:id", getCourseById);
 router.get("/courses/category/:id", getCoursesByCategory);
 router.get("/categories", getAllCategories);
 router.route("/courses").get(getCourses).post(AuthCheckMiddleWare, buyCourse);
-
+router.get("/menues", getMenues);
 // router.get("/episodes/:id", getEpisodeById);
 router
   .use(AuthCheckMiddleWare)
