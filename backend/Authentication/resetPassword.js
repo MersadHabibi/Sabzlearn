@@ -41,7 +41,7 @@ function resetPassword(req, res) {
                       },
                     })
                     .then((updatedUser) => {
-                      res.json(updatedUser);
+                      res.json({ status: 200, message: "Success" });
                     })
                     .catch((err) => {
                       console.log(err);
