@@ -50,6 +50,14 @@ app.use(
     extensions: [".png", ".jpg", ".jpeg"],
   })
 );
+
+app.use(
+  "/public/videos/",
+  express.static("public/videos", {
+    extensions: [".mp4", ".wav"],
+  })
+);
+
 // Define your routes
 /**
  * @swagger
