@@ -1,8 +1,11 @@
 import { getMe, logoutApi } from "../../services/usersAPIs.js";
+import menus from "./funcs/menus.js";
 import { _changeClasses } from "./funcs/utils.js";
 
 const header = ($) => {
   let openElem = {};
+
+  menus();
 
   const searchBtn = $.querySelector(".search-btn");
   const searchBox = $.querySelector(".search-box");

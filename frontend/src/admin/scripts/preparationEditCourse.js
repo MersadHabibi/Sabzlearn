@@ -1,7 +1,7 @@
 import { getAllCategories } from "../../../services/categoriesAPIs";
 import { editCourseApi, getCourseById } from "../../../services/coursesAPIs";
 import {
-  BASE_URL,
+  API_URL,
   fullScreenLoader,
   showNotif,
 } from "../../scripts/funcs/utils";
@@ -90,7 +90,7 @@ const preparationEditCourse = async (id) => {
   newCourseShortName.value = course.shortName;
   newCourseTeacher.value = course.teacher;
   teacherPreviewHandler(newCourseTeacher);
-  newCoursePreviewImage.src = `${BASE_URL}/${course.image}`;
+  newCoursePreviewImage.src = `${API_URL}/${course.image}`;
   newCourseIsFreeElem.value = course.isFree;
   isFreePreviewHandler(newCourseIsFreeElem);
 

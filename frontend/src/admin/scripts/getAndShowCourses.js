@@ -4,7 +4,7 @@ import {
   courseClickHandler,
 } from "../../scripts/funcs/createCourseCard";
 import {
-  BASE_URL,
+  API_URL,
   _changeClasses,
   fullScreenLoader,
   getTeacherName,
@@ -36,7 +36,7 @@ const getAndShowCourses = async () => {
           class="course-card flex flex-col bg-gray-100/50 dark:bg-gray-700 border !border-b-transparent border-gray-300/80  dark:border-gray-600 dark:shadow-none overflow-hidden rounded-t-xl flex-1">
           <!-- Course Head -->
           <a href="../course.html" class="relative block h-42 w-full overflow-hidden">
-            <img src=${BASE_URL}/${course.image} class="w-full h-full object-cover rounded-xl" alt="" />
+            <img src=${API_URL}/${course.image} class="w-full h-full object-cover rounded-xl" alt="" />
           </a>
           <!-- Course Body -->
           <div class="px-5 pt-3.5 flex-grow">

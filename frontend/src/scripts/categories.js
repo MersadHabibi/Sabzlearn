@@ -1,7 +1,7 @@
 import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
-import { _changeClasses } from "./funcs/utils.js";
+import { _changeClasses, showNotif } from "./funcs/utils.js";
 import createCourseCard, {
   courseClickHandler,
   categoryClickHandler,
@@ -111,13 +111,13 @@ const getParams = async () => {
   });
 
   category =
-    (await getAllCategories()).find(
+    (await getAllCategories())?.find(
       (category) => category.categoryId == params.category,
     ) || "all";
 
-  changeCategoryTitle();
-
   search = params.s ? params.s : null;
+
+  changeCategoryTitle();
 
   await loadCourses();
 };
@@ -250,7 +250,12 @@ const loadCourses = async () => {
   let coursesByCategory =
     category === "all"
       ? await getAllCourses()
-      : (await getCoursesByCategoryId(category.categoryId)).courses;
+      : (await getCoursesByCategoryId(category.categoryId))?.courses;
+
+  if (!coursesByCategory) {
+    showNotif("دوره ای برای این دسته بندی وجود ندارد");
+    return;
+  }
 
   // Filter By Filters Value
 

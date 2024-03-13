@@ -2,7 +2,8 @@ import axios from "axios";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:8000";
+const API_URL = "http://localhost:3000";
 
 // Change Class
 
@@ -161,10 +162,10 @@ const fullScreenLoader = (action) => {
 // Create APIs - Axios
 
 const api = axios.create({
-  baseURL: `${BASE_URL}/api/`,
+  baseURL: `${API_URL}/api/`,
 });
 const apiAdmin = axios.create({
-  baseURL: `${BASE_URL}/api/admin/`,
+  baseURL: `${API_URL}/api/admin/`,
   headers: {
     Authorization: "Bearer " + getToken(),
   },
@@ -195,5 +196,6 @@ export {
   getToken,
   fullScreenLoader,
   getTeacherName,
+  API_URL,
   BASE_URL,
 };

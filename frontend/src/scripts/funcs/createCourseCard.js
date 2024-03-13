@@ -1,6 +1,6 @@
 // Create Course Card
 
-import { BASE_URL, getTeacherName } from "./utils";
+import { API_URL, getTeacherName } from "./utils";
 
 const createCourseCard = (
   course,
@@ -12,7 +12,7 @@ const createCourseCard = (
     fixHeight: false,
   },
 ) => {
-  console.log(course);
+  // console.log(course);
   return `
       <div onclick="courseClickHandler('${course.id}')" class="course-card flex flex-col bg-white dark:bg-gray-800 ${
         props.hasShadowOnLightMode ? "shadow-light" : ""
@@ -31,7 +31,7 @@ const createCourseCard = (
             : ""
         }
           <img
-            src=${BASE_URL}/${course.image}
+            src=${API_URL}/${course.image}
             onerror="this.src = '/images/image-404.png'"
             class="w-full h-full object-cover rounded-2xl"
             alt="" />

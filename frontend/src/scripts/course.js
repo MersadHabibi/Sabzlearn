@@ -2,7 +2,7 @@ import "../styles/app.css";
 import "./share.js";
 import header from "./header.js";
 import {
-  BASE_URL,
+  API_URL,
   _changeClasses,
   api,
   createTimer,
@@ -251,7 +251,7 @@ const setDatas = () => {
 
   // Image
 
-  courseImage.src = `${BASE_URL}/${course.image}`;
+  courseImage.src = `${API_URL}/${course.image}`;
   courseImage.alt = course.title;
   _changeClasses("remove", courseImage, ["hidden"]);
 

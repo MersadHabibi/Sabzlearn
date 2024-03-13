@@ -1,7 +1,7 @@
 import "../styles/app.css";
 import "./share.js";
 import {
-  BASE_URL,
+  API_URL,
   api,
   fullScreenLoader,
   getToken,
@@ -39,7 +39,7 @@ function setDatas() {
   const mainPriceElem = document.querySelector("#course__main-price");
   const payablePriceElem = document.querySelector("#course__payable-price");
 
-  imageElem.src = `${BASE_URL}/${course.image}`;
+  imageElem.src = `${API_URL}/${course.image}`;
 
   titleElem.innerText = course.title;
 

@@ -8,7 +8,7 @@ import {
   getEpisodeByIdApi,
 } from "../../services/coursesAPIs.js";
 import {
-  BASE_URL,
+  API_URL,
   _changeClasses,
   fullScreenLoader,
   getTeacherName,
@@ -93,17 +93,17 @@ function loadVideo() {
 
   episodeNameElem.innerHTML = episode.title;
 
-  videoElem.innerHTML = `<source src=${BASE_URL}/${episode.link} type="video/mp4" />`;
+  videoElem.innerHTML = `<source src=${API_URL}/${episode.link} type="video/mp4" />`;
   player.reset();
 
   player.src({
     type: "video/mp4",
-    src: `${BASE_URL}/${episode.link}`,
+    src: `${API_URL}/${episode.link}`,
   });
   player.playbackRates([0.5, 1, 1.25, 1.5, 1.75, 2]);
   player.load();
 
-  player.poster(`${BASE_URL}/${course.image}`);
+  player.poster(`${API_URL}/${course.image}`);
 }
 
 // Subjects

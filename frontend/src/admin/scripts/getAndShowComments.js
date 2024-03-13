@@ -12,6 +12,7 @@ const getAndShowComments = async () => {
     return;
   }
   let comments = [];
+  console.log(courses);
   courses.forEach((course) => {
     course.comments.forEach((comment) => {
       comments.push(comment);

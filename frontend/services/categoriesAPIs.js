@@ -35,4 +35,19 @@ async function createCategoryApi(name) {
   }
 }
 
-export { getAllCategories, createCategoryApi };
+async function getMenus() {
+  try {
+    const res = await api.get("menus");
+
+    return {
+      data: res.data,
+      status: true,
+    };
+  } catch (err) {
+    return {
+      status: false,
+    };
+  }
+}
+
+export { getAllCategories, createCategoryApi, getMenus };

@@ -1,5 +1,5 @@
 import { courseClickHandler } from "../funcs/createCourseCard";
-import { BASE_URL } from "../funcs/utils";
+import { API_URL } from "../funcs/utils";
 
 const myCourses = (user) => {
   const coursesContainer = document.querySelector("#courses__container");
@@ -20,7 +20,7 @@ const myCourses = (user) => {
     <div onclick="courseClickHandler('${course.id}')"
       class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-light dark:shadow-none dark:border dark:border-gray-700 dark:text-white">
       <a href="../course.html" class="block w-full rounded-2xl overflow-hidden">
-        <img src="${BASE_URL}/${course.image}" class="h-full w-full object-cover" alt="" onerror="this.src = '/images/image-404.png'" />
+        <img src="${API_URL}/${course.image}" class="h-full w-full object-cover" alt="" onerror="this.src = '/images/image-404.png'" />
       </a> 
       <div class="px-5 py-2.5 flex-grow">
         <a href="../course.html" class="font-DanaMedium line-clamp-2"> ${course.title} </a>

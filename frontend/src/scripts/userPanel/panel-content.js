@@ -1,5 +1,5 @@
 import { logoutApi } from "../../../services/usersAPIs.js";
-import { BASE_URL, _changeClasses } from "../funcs/utils.js";
+import { API_URL, _changeClasses } from "../funcs/utils.js";
 import myCourses from "./myCourses.js";
 import userInfo from "./userInfo.js";
 
@@ -91,6 +91,8 @@ const loadPanelContent = async (content, user) => {
                 </div>
               </div>
               -->
+
+              <p class="text-center dark:text-white"> تیکتی وجود ندارد </p>
             </div>
           </div>
           <!-- Questions -->
@@ -120,6 +122,7 @@ const loadPanelContent = async (content, user) => {
                 </div>
               </div>
               -->
+              <p class="text-center dark:text-white"> پرسشی انجام نشده است </p>
             </div>
           </div>
         </div>
@@ -329,7 +332,7 @@ const loadPanelContent = async (content, user) => {
                 <div class="w-32 md:w-44 h-32 md:h-44 rounded-full overflow-hidden">
                   <img src="${
                     user.imageProfile
-                      ? `${BASE_URL}/${user.imageProfile}`
+                      ? `${API_URL}/${user.imageProfile}`
                       : "/images/user-profile.png"
                   }" class="user__profile-image h-full w-full object-cover" />
                 </div>

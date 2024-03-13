@@ -1,8 +1,9 @@
 import "../../styles/app.css";
 import "../../scripts/share.js";
 import "ckeditor-tailwind-reset/ckeditor-tailwind-reset.css";
-import { _changeClasses } from "../../scripts/funcs/utils.js";
+import { _changeClasses, api } from "../../scripts/funcs/utils.js";
 import changeContent from "./changeContents.js";
+import { getMe } from "../../../services/usersAPIs.js";
 
 const menuItems = document.querySelectorAll(".menu__item");
 const notifBtn = document.querySelector(".notif-btn");
@@ -64,4 +65,15 @@ overlay.addEventListener("click", () => {
   _changeClasses("remove", menuContainer, ["show"]);
 });
 
-// ck editor
+// show username
+
+const username = document.querySelector(".username");
+
+const user = await getMe();
+
+username.innerHTML =
+  user.name && user.family
+    ? `${user.name} ${user.family}`
+    : user.name
+      ? user.name
+      : user.username;
