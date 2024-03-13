@@ -29,7 +29,7 @@ To run SabzLearn locally, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/SabzLearn.git
+git clone https://github.com/MersadHabibi/Sabzlearn.git
 ```
 
 2. Navigate to the project directory:
