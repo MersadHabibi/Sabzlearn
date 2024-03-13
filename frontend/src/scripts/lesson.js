@@ -21,6 +21,27 @@ let user = null;
 let course = null;
 let episode = null;
 
+// Video Player Options
+
+let options = {
+  plugins: {
+    hotkeys: {
+      volumeStep: 0.1,
+      seekStep: 5,
+      enableModifiersForNumbers: false,
+      // fullscreenKey: "F",
+    },
+  },
+};
+
+let player = videojs(
+  document.querySelector("#my_video_1"),
+  options,
+  function onPlayerReady() {
+    videojs.log("Your player is ready!");
+  },
+);
+
 // Get Params
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -68,14 +89,21 @@ window.addEventListener("load", async () => {
 
 function loadVideo() {
   const videoElem = document.querySelector("video");
-  const sourceElem = document.querySelector("source");
   const episodeNameElem = document.querySelector(".episode__name");
 
   episodeNameElem.innerHTML = episode.title;
 
-  videoElem.poster = `${BASE_URL}/${course.image}`;
+  videoElem.innerHTML = `<source src=${BASE_URL}/${episode.link} type="video/mp4" />`;
+  player.reset();
 
-  sourceElem.src = `${BASE_URL}/${episode.link}`;
+  player.src({
+    type: "video/mp4",
+    src: `${BASE_URL}/${episode.link}`,
+  });
+  player.playbackRates([0.5, 1, 1.25, 1.5, 1.75, 2]);
+  player.load();
+
+  player.poster(`${BASE_URL}/${course.image}`);
 }
 
 // Subjects
@@ -171,19 +199,6 @@ function showInfos() {
   courseTeacherElem.innerHTML = getTeacherName(course.teacher);
 }
 
-// Video Player
-
-let options = {
-  plugins: {
-    hotkeys: {
-      volumeStep: 0.1,
-      seekStep: 5,
-      enableModifiersForNumbers: false,
-      // fullscreenKey: "F",
-    },
-  },
-};
-
 // questions
 
 function questions() {
@@ -191,19 +206,3 @@ function questions() {
 
   usernameElem.innerHTML = user?.username ? user?.username : "کاربر";
 }
-
-let player = videojs(
-  document.querySelector("#my_video_1"),
-  options,
-  function onPlayerReady() {
-    videojs.log("Your player is ready!");
-
-    // In this context, `this` is the player that was created by Video.js.
-    this.play();
-
-    // How about an event listener?
-    this.on("ended", function () {
-      videojs.log("Awww...over so soon?!");
-    });
-  },
-);
