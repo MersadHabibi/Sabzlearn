@@ -487,14 +487,22 @@
                   <div class="profile relative h-full w-12 md:w-14">
                     <div
                       class="h-12 w-12 overflow-hidden rounded-full md:h-14 md:w-14">
-                      <img src="/images/user-profile.png" alt="" />
+                      <img
+                        class="header__profile h-full w-full object-cover"
+                        onerror="this.src = '/images/user-profile.png' "
+                        src="/images/user-profile.png"
+                        alt="" />
                     </div>
                     <!-- SubMenu Profile -->
                     <div
                       class="profile__menu absolute left-0 top-16 z-20 w-[278px] rounded-2xl bg-white p-5 dark:bg-[#32334D] dark:text-white">
                       <div class="mb-5 flex items-center gap-3">
                         <div class="h-14 w-14 overflow-hidden rounded-full">
-                          <img src="/images/user-profile.png" alt="" />
+                          <img
+                            class="header__profile h-full w-full object-cover"
+                            onerror="this.src = '' "
+                            src="/images/user-profile.png"
+                            alt="" />
                         </div>
                         <div>
                           <p class="profile__name text-lg">name</p>

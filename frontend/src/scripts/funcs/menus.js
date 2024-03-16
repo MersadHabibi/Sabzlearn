@@ -1,5 +1,5 @@
 import { getMenus } from "../../../services/categoriesAPIs";
-import { showNotif } from "./utils";
+import { _changeClasses, showNotif } from "./utils";
 
 const menus = async () => {
   const res = await getMenus();
@@ -15,6 +15,7 @@ const menus = async () => {
   console.log(menus);
 
   const menusWrapper = document.querySelector(".menus__wrapper");
+  const mobileMenusWrapper = document.querySelector(".mobile-menus-wrapper");
 
   menus.forEach((menu) => {
     menusWrapper.insertAdjacentHTML(
@@ -43,7 +44,44 @@ const menus = async () => {
     </li>
     `,
     );
+    // Mobile Menu
+
+    mobileMenusWrapper.insertAdjacentHTML(
+      "beforeend",
+      `
+      <li class="menu__item w-full">
+        <div class="flex h-7 w-full items-center justify-between">
+          <a href="./categories.html?category=${menu.id}">  ${menu.name} </a>
+          <svg onclick="mobileMenuItemsClickHandler(this)" class="mobile__submenu-btn h-4 w-4 rotate-0 transition-all">
+            <use href="#chevron-down"></use>
+          </svg>
+        </div>
+        <ul
+          class="submenu flex-col space-y-3 pr-2 pt-3 text-sm font-extralight child:inline-block child-hover:text-primary">
+          
+          ${menu.Course.map((course) => {
+            return `
+            <a href="./course.html" onclick=courseClickHandler('${course.id}')> ${course.title} </a>
+            `;
+          }).join("")}
+        </ul>
+      </li>
+    `,
+    );
   });
+
+  window.mobileMenuItemsClickHandler = mobileMenuItemsClickHandler;
 };
+
+function mobileMenuItemsClickHandler(elem) {
+  let clickedElem = elem.parentElement.parentElement;
+  if (clickedElem.classList.contains("menu__item--active")) {
+    _changeClasses("remove", clickedElem, ["menu__item--active"]);
+  } else {
+    const activeElem = document.querySelector(".menu__item--active");
+    _changeClasses("remove", activeElem, ["menu__item--active"]);
+    _changeClasses("add", clickedElem, ["menu__item--active"]);
+  }
+}
 
 export default menus;

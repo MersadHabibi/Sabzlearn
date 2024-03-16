@@ -2,7 +2,7 @@ import { getMe, logoutApi } from "../../services/usersAPIs.js";
 import menus from "./funcs/menus.js";
 import { _changeClasses } from "./funcs/utils.js";
 
-const header = ($) => {
+const header = async ($) => {
   let openElem = {};
 
   menus();
@@ -38,17 +38,6 @@ const header = ($) => {
     openElem = openElem == profile ? null : profile;
   };
 
-  const openAndCloseMobileMenuSubmenu = (e) => {
-    let clickedElem = e.target.parentElement.parentElement;
-    if (clickedElem.classList.contains("menu__item--active")) {
-      _changeClasses("remove", clickedElem, ["menu__item--active"]);
-    } else {
-      const activeElem = $.querySelector(".menu__item--active");
-      _changeClasses("remove", activeElem, ["menu__item--active"]);
-      _changeClasses("add", clickedElem, ["menu__item--active"]);
-    }
-  };
-
   const openCloseMobileMenu = (action) => {
     if (action == "open") {
       _changeClasses("add", mobileMenu, ["mobile-menu--open"]);
@@ -76,10 +65,6 @@ const header = ($) => {
       openCloseMobileMenu("close");
     }
     _changeClasses("remove", document.documentElement, ["overflow-hidden"]);
-  });
-
-  mobileSubmenuBtns.forEach((btn) => {
-    btn.addEventListener("click", openAndCloseMobileMenuSubmenu);
   });
 
   mobileMenuCloseBtn.addEventListener("click", () => {
@@ -127,15 +112,15 @@ const header = ($) => {
     _changeClasses("remove", profileContainer, ["hidden"]);
     setContentProfileSubmenu(user);
   };
-  checkUserLogin();
+  await checkUserLogin();
 
   // Set Profile Submenu Content
 
-  const setContentProfileSubmenu = (data) => {
+  function setContentProfileSubmenu(data) {
     const profileNameElem = $.querySelector(".profile__name");
 
     profileNameElem.innerHTML = data.username;
-  };
+  }
 
   // Search
 
@@ -168,6 +153,14 @@ const header = ($) => {
       localStorage.removeItem("token");
       location.reload();
     }
+  });
+
+  // Show profile
+
+  const profileElems = document.querySelectorAll(".header__profile");
+
+  profileElems.forEach((elem) => {
+    elem.src = user?.imageProfile;
   });
 };
 

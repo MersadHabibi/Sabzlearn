@@ -14,6 +14,7 @@ async function getAllUsers() {
 
 async function getMe() {
   let token = getToken();
+  // console.log(token);
   if (!token) {
     return null;
   }
@@ -25,10 +26,13 @@ async function getMe() {
       },
     });
 
+    console.log(res);
+
     const user = res.data;
 
     return user;
   } catch (err) {
+    console.log(err);
     return null;
   }
 }
@@ -273,6 +277,7 @@ async function resendOTPApi(datas) {
 }
 
 async function changeUserProfileApi(image) {
+  // console.log(image);
   try {
     const res = await api.post(
       "me",
@@ -294,7 +299,7 @@ async function changeUserProfileApi(image) {
       status: true,
     };
   } catch (err) {
-    showNotif("تغیید پروفایل موفق نبود");
+    showNotif("تغییر پروفایل موفق نبود");
     console.log("changeUserProfileApi =>", err);
 
     return {
@@ -310,6 +315,8 @@ async function logoutApi() {
         Authorization: "Bearer " + getToken(),
       },
     });
+
+    console.log(res);
 
     showNotif("با موفقیت خارج شدید", "success");
 

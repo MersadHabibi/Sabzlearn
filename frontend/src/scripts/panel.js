@@ -134,6 +134,12 @@ function getParamsAndChangeContent() {
   });
   // set Mobile Menu Title
   setMobileMenuTitle(params.content);
+
+  const profileElems = document.querySelectorAll(".header__profile");
+
+  profileElems.forEach((elem) => {
+    elem.src = user.imageProfile;
+  });
 }
 
 // Mobile Menu Title

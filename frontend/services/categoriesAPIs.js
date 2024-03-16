@@ -37,7 +37,7 @@ async function createCategoryApi(name) {
 
 async function getMenus() {
   try {
-    const res = await api.get("menus");
+    const res = await api.get("menues");
 
     return {
       data: res.data,

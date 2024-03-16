@@ -332,7 +332,7 @@ const loadPanelContent = async (content, user) => {
                 <div class="w-32 md:w-44 h-32 md:h-44 rounded-full overflow-hidden">
                   <img src="${
                     user.imageProfile
-                      ? `${API_URL}/${user.imageProfile}`
+                      ? user.imageProfile
                       : "/images/user-profile.png"
                   }" class="user__profile-image h-full w-full object-cover" />
                 </div>

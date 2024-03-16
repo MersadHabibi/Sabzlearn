@@ -9,6 +9,10 @@ let isProfileChanged = false;
 let isInfosChanged = false; // Name , Family , Number
 
 const userInfo = (user) => {
+
+  
+
+
   window.editUserInfo = editUserInfo;
   window.changeUserPassword = changeUserPassword;
   window.changeProfileHandler = changeProfileHandler;
@@ -29,7 +33,7 @@ const editUserInfo = async (event, id) => {
     // console.log(file);
     const reader = new FileReader();
     reader.onloadend = () => {
-      const image = reader.result.split(",")[1];
+      const image = reader.result;
       changeUserProfileApi(image);
     };
     reader.readAsDataURL(file);

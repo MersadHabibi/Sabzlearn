@@ -441,7 +441,7 @@ const insertComments = (comments) => {
         <div class="flex gap-x-5 items-start">
           <!-- Comment Right User Picture & flag (desktop version) -->
           <div class="hidden md:flex flex-col gap-y-2 shrink-0">
-            <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" src="/images/user-profile.png" />
+            <img class="block w-10 h-10 md:w-15 md:h-15 object-cover rounded-full" onerror="this.src = '/images/user-profile.png'" src="${comment.Users.imageProfile ? comment.Users.imageProfile : "/images/user-profile.png"}" />
             <div class="text-xs w-full rounded-md text-center py-0.5 ${
               comment.Users.role == "admin"
                 ? "text-white bg-sky-500 dark:text-sky-500 dark:bg-sky-500/10"
