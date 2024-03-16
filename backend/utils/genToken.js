@@ -5,6 +5,7 @@ function genToken(user) {
     delete user.hash;
     delete user.role;
     delete user.blocked;
+    delete user.imageProfile;
     const token = jwt.sign(user, process.env.SECRET_KEY, {
       expiresIn: "20m",
     });
