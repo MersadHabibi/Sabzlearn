@@ -5,14 +5,16 @@ import path from "path";
 export default defineConfig(() => {
   return {
     root: "src",
-    publicDir: '../public',
+    publicDir: "../public",
     resolve: {
       alias: {
         $fonts: resolve("./public/fonts"),
       },
     },
+
     build: {
       target: "esnext",
+      outDir: "../dist",
       rollupOptions: {
         input: {
           main: resolve(__dirname, "./src/index.html"),
