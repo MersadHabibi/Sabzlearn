@@ -1,0 +1,1495 @@
+<!doctype html>
+<html lang="fa-IR" dir="rtl" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/images/icon.png" type="image/png" />
+    <title>سبز لرن</title>
+    <script type="module" crossorigin src="/assets/main-akK3HZaf.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/app-ukoE8fgy.js">
+    <link rel="modulepreload" crossorigin href="/assets/share-zDZSOXv8.js">
+    <link rel="modulepreload" crossorigin href="/assets/utils-UJ-EUY8v.js">
+    <link rel="modulepreload" crossorigin href="/assets/usersAPIs-AQb3Emfp.js">
+    <link rel="modulepreload" crossorigin href="/assets/categoriesAPIs-G_R3qbDg.js">
+    <link rel="modulepreload" crossorigin href="/assets/header-vDKGLy6I.js">
+    <link rel="modulepreload" crossorigin href="/assets/createCourseCard-fANfw4NU.js">
+    <link rel="modulepreload" crossorigin href="/assets/coursesAPIs-1jxUDFuP.js">
+    <link rel="stylesheet" crossorigin href="/assets/app-ozUcKwM3.css">
+    <link rel="stylesheet" crossorigin href="/assets/utils-aLEkTlma.css">
+    <link rel="stylesheet" crossorigin href="/assets/main-0GErbj_-.css">
+  </head>
+  <body class="relative bg-gray-100 dark:bg-gray">
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <svg class="hidden">
+      <symbol
+        id="chevron-down"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+      </symbol>
+      <symbol
+        id="magnifying-glass"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+      </symbol>
+      <symbol
+        id="moon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+      </symbol>
+      <symbol
+        id="sun"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+      </symbol>
+      <symbol
+        id="home"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </symbol>
+      <symbol
+        id="folder"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+      </symbol>
+      <symbol
+        id="chat-bubble"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+      </symbol>
+      <symbol
+        id="logout"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+      </symbol>
+      <symbol
+        id="menu"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </symbol>
+      <symbol
+        id="logo-type"
+        xmlns="http://www.w3.org/2000/svg"
+        class="fill-[#3a3a3a] dark:fill-white"
+        viewBox="0 0 739 344.219">
+        <g transform="translate(-168 -159)">
+          <path
+            d="M4277,469l-35,10-.038,46.04s-.644,12.671-15.155,12.671c-15.7,0-14.92-12.671-14.92-12.671V479.118h-35.858V525.04s1.019,12.876-14.45,12.876-14.7-12.876-14.7-12.876V479.118H4111.02V525.04s.318,13.109-24.273,13.109c-25.855,0-25.813-13.109-25.813-13.109V469.17h-37.015v55.87s-.108,6.226-3.954,9.523-11.431,3.664-11.431,3.664h-84.325l-20.014,20.015V469.17h-36.2V587.985l-19.33,19.33,25.895,25.895,29.638-29.638V572.779h104.34s10.642-.012,19.315-3.575,15.378-10.68,15.378-10.68a34.648,34.648,0,0,0,16.578,11.905c10.88,3.564,14.468,2.334,26.941,2.571,12.614-.157,12.813.615,23.288-2.571a56.489,56.489,0,0,0,18.612-10.392,42.57,42.57,0,0,0,14.609,9.982c8.453,3.186,19.2,2.761,19.2,2.761s9.581.2,17.634-2.761a49.155,49.155,0,0,0,14.577-9.092,42.813,42.813,0,0,0,14.28,9.092c8.253,2.963,9.02,2.828,18.731,2.761s18.2,1.883,34.005-13.452a49.579,49.579,0,0,0,15.2-34.287Z"
+            transform="translate(-3370 -250)"></path>
+          <rect width="36" height="36" transform="translate(498 159)"></rect>
+          <rect width="36" height="36" transform="translate(618 347)"></rect>
+          <path
+            d="M3841,409.025h-35.98l-.031,114.023s1.207,7.253-7,11.716c-5.884,3.316-16.336,3.525-16.336,3.525l-34.175-.07-20.047,20.031.016-89.078H3691.26L3691.229,588l-19.344,19.313,25.922,25.906,29.625-29.625.016-30.812h65.361s17.6-.51,33.153-15.884c15.486-16,14.91-33.867,14.91-33.867Z"
+            transform="translate(-3367.004 -250.009)"></path>
+          <path
+            d="M3657.909,469.262l-36.659-.106-.031,115.991s-.755,6.012-4.126,9.292-8.788,3.771-8.788,3.771H3579.61s-6.907-.491-10.559-3.771-3.821-9.3-3.821-9.3L3565.5,529H3529l.022,52.672a54.781,54.781,0,0,0,15.336,36.476,49.256,49.256,0,0,0,35.255,14.816h27.845s18.5,1.476,34.513-14.57a53.928,53.928,0,0,0,15.943-35.173Z"
+            transform="translate(-3357.698 -250)"></path>
+          <rect width="36" height="36" transform="translate(208 219)"></rect>
+          <g
+            class="fill-[#5f5f5f] dark:fill-white"
+            transform="translate(20.991 638.909)">
+            <path
+              d="M483.775-189.183c-.663.751-.707,2.827-.618,24.692l.133,23.941,1.1,1.06c1.988,1.988,8.084,3.4,15.46,3.666,9.674.353,14.489-1.1,18.6-5.477,3.048-3.269,4.02-6.184,4.285-13.031.4-11.4-2.871-17.978-10.16-20.54a25.178,25.178,0,0,0-11.971-.4c-3.49.8-8,3.313-9.365,5.257-.618.839-.663,0-.663-8.79,0-8.879-.088-9.806-.8-10.469C488.59-190.331,484.791-190.287,483.775-189.183Zm26.238,21.291c3.578,1.944,5.3,5.919,5.3,12.1,0,5.168-.928,7.907-3.49,10.425a10.721,10.721,0,0,1-4.285,2.65c-2.871.839-8.834.707-13.3-.265l-3.666-.8v-17.713l1.193-1.679a17.3,17.3,0,0,1,7.333-5.477C502.063-169.614,507.629-169.217,510.014-167.892Z"
+              transform="translate(-187.644 0)"></path>
+            <path
+              d="M1660.079-188.9a4.454,4.454,0,0,0-.221,5.654c1.678,2.12,6.626,1.944,8.172-.265a4.58,4.58,0,0,0-.442-5.389c-.883-.928-1.5-1.1-3.755-1.1S1660.962-189.823,1660.079-188.9Z"
+              transform="translate(-844.083 -0.022)"></path>
+            <path
+              d="M159.55-180.517c-4.2.618-6.847,1.767-9.011,3.931-2.3,2.341-3.092,4.417-3.092,8.26,0,4.771,1.634,8,5.257,10.292,2.915,1.9,4.771,2.474,14.4,4.461,4.682.972,9.188,2.032,9.983,2.385,3.49,1.458,5.257,3.8,5.257,6.891a5.652,5.652,0,0,1-3.534,5.433c-1.9.928-2.518.972-16.432,1.1-16.255.133-15.681,0-15.2,3.4.53,3.445.309,3.4,16.7,3.225,13.208-.177,14.489-.265,17.227-1.148,3.71-1.237,7.023-4.064,8.172-7.068a19.882,19.882,0,0,0,.177-10.425,11.966,11.966,0,0,0-2.164-3.445c-3-3.357-6.8-4.859-17.051-6.758-8.26-1.59-11.4-2.606-13.252-4.329a5.426,5.426,0,0,1,1.06-8.923c1.458-.839,2.429-.883,13.914-1.016,6.8-.044,12.81-.221,13.384-.309.839-.221.972-.53.972-2.429,0-1.634-.221-2.429-.883-3.092-.839-.839-1.414-.883-12.236-.839C166.927-180.87,160.787-180.694,159.55-180.517Z"
+              transform="translate(0 -5.088)"></path>
+            <path
+              d="M801.6-180.372l-1.1.574v18.95c0,14.93.132,19.436.618,21.114a12.488,12.488,0,0,0,7.023,7.421c2.341.928,3.357,1.016,14.8,1.193,14.135.177,14.179.177,14.709-3.225.486-3.357.663-3.313-11.529-3.313-11.485,0-13.914-.353-15.946-2.253-2.164-2.032-2.385-4.02-2.385-22.528v-17.139l-.972-.663A5.964,5.964,0,0,0,801.6-180.372Z"
+              transform="translate(-364.828 -5.1)"></path>
+            <path
+              d="M327.357-157.351c-3.666.883-5.522,1.811-7.863,4.02-4.064,3.8-5.61,8.7-5.257,16.83.353,9.32,2.739,14.091,8.437,17.006,3,1.546,3.092,1.546,8.614,1.546,6.758-.044,9.365-.883,13.031-4.241,2.562-2.341,2.915-2.253,2.915.751,0,2.827,3.18,4.285,5.654,2.562l.972-.663v-33.394l-1.06-.972C349.8-156.732,333.851-158.9,327.357-157.351Zm14.886,6.67c5.036,1.06,4.55.088,4.55,9.63,0,9.365-.044,9.585-3.18,12.545-3.092,3-5.212,3.843-10.071,4.064-3.931.177-4.329.088-6.626-1.1a6.971,6.971,0,0,1-3.755-3.843c-1.148-2.3-1.325-3.136-1.458-7.112-.309-7.6,1.5-11.529,6.317-13.738,1.855-.883,2.915-1.06,6.714-1.06A45.15,45.15,0,0,1,342.244-150.681Z"
+              transform="translate(-93.333 -17.962)"></path>
+            <path
+              d="M960.92-157.131c-9.144,2.385-13.208,9.1-12.678,20.849.4,9.276,3.931,14.356,11.794,16.83,2.385.8,4.329.972,11.794,1.193,10.2.221,10.866.088,11.308-2.827.53-3.18.265-3.269-7.554-3.269-10.734,0-14.356-.883-17.183-4.152-1.325-1.5-2.65-4.506-2.209-4.991.133-.133,6.493-1.016,14.091-1.944,7.6-.972,14.268-1.9,14.8-2.164,1.369-.574,1.678-2.253,1.1-6.449-1.016-7.73-4.594-11.662-11.971-13.252A34.434,34.434,0,0,0,960.92-157.131Zm11.043,5.875a8.952,8.952,0,0,1,6.228,4.506c1.148,2.606,1.1,4.2-.133,4.461-1.281.265-21.2,2.915-22,2.915-.839,0-.265-4.02,1.016-6.8a8.738,8.738,0,0,1,5.742-4.947A21.871,21.871,0,0,1,971.963-151.257Z"
+              transform="translate(-447.283 -17.96)"></path>
+            <path
+              d="M1117.357-157.351c-3.666.883-5.522,1.811-7.863,4.02-4.064,3.8-5.61,8.7-5.256,16.83.353,9.32,2.739,14.091,8.437,17.006,3,1.546,3.092,1.546,8.614,1.546,6.758-.044,9.365-.883,13.031-4.241,2.562-2.341,2.915-2.253,2.915.751,0,2.827,3.18,4.285,5.654,2.562l.972-.663v-33.394l-1.06-.972C1139.8-156.732,1123.851-158.9,1117.357-157.351Zm14.886,6.67c5.036,1.06,4.55.088,4.55,9.63,0,9.365-.044,9.585-3.18,12.545-3.092,3-5.213,3.843-10.071,4.064-3.931.177-4.329.088-6.626-1.1a6.971,6.971,0,0,1-3.755-3.843c-1.148-2.3-1.325-3.136-1.458-7.112-.309-7.6,1.5-11.529,6.317-13.738,1.855-.883,2.915-1.06,6.714-1.06A45.152,45.152,0,0,1,1132.244-150.681Z"
+              transform="translate(-534.371 -17.962)"></path>
+            <path
+              d="M1292.507-157.344a14.828,14.828,0,0,0-9.144,4.2c-2.385,2.164-2.739,2.076-2.739-.839a4.2,4.2,0,0,0-.574-2.164c-.707-.972-3.269-1.413-4.815-.8l-1.237.486V-138c0,21.026-.177,19.966,3.622,19.966,3.49,0,3.445.088,3.445-13.3v-11.662l1.679-2.209c3.269-4.329,7.024-5.963,13.693-5.963,3.931,0,4.505-.353,4.505-2.695C1300.943-157.256,1298.779-158.139,1292.507-157.344Z"
+              transform="translate(-629.17 -18.101)"></path>
+            <path
+              d="M1421.563-157.3a16.329,16.329,0,0,0-7.465,3.843c-2.076,1.855-2.474,1.723-2.474-.883a2.98,2.98,0,0,0-.8-1.944c-.972-.883-4.505-1.016-5.3-.221-.4.4-.53,5.168-.53,18.685,0,20.673-.177,19.657,3.622,19.657,3.49,0,3.446.133,3.446-13.782V-144.1l2.164-2.253c3.269-3.4,6.052-4.638,10.866-4.859,3.49-.133,4.2-.044,5.963.883,3.666,1.9,3.711,2.164,3.975,17.492.221,12.633.265,13.428,1.06,14.047,1.325.928,4.506.8,5.566-.265.839-.839.883-1.458.883-12.943,0-6.582-.221-13.3-.486-14.886-.884-5.61-3.887-9.055-9.011-10.38A28.728,28.728,0,0,0,1421.563-157.3Z"
+              transform="translate(-702.304 -17.963)"></path>
+            <path
+              d="M1777.507-157.344a14.828,14.828,0,0,0-9.144,4.2c-2.385,2.164-2.739,2.076-2.739-.839a4.2,4.2,0,0,0-.574-2.164c-.707-.972-3.269-1.413-4.815-.8l-1.237.486V-138c0,21.026-.177,19.966,3.622,19.966,3.49,0,3.445.088,3.445-13.3v-11.662l1.679-2.209c3.269-4.329,7.024-5.963,13.693-5.963,3.931,0,4.505-.353,4.505-2.695C1785.943-157.256,1783.779-158.139,1777.507-157.344Z"
+              transform="translate(-899.934 -18.101)"></path>
+            <path
+              d="M644.706-155.382a5.028,5.028,0,0,0-.4,2.783l.132,2.12,12.28.221c11.529.221,12.368.265,12.943,1.06,1.767,2.429.265,3.578-12.236,9.674-14.224,6.891-15.681,8.26-15.372,14.533.221,3.71.928,4.991,3.711,6.626,1.723,1.016,2.076,1.016,15.637,1.148,7.642.088,14.356.044,14.886-.088,1.369-.353,2.3-3.313,1.59-4.9l-.53-1.1H664.186c-11.176,0-13.3-.088-14.135-.707a2.8,2.8,0,0,1-.044-4.2c.53-.53,5.831-3.313,11.75-6.184,11.617-5.654,14.312-7.553,15.151-10.513,1.193-4.329-.221-8.437-3.534-10.115-1.9-.928-2.341-.972-15.063-.972C647.533-156,645.1-155.867,644.706-155.382Z"
+              transform="translate(-276.353 -19.003)"></path>
+            <path
+              d="M1662.528-155.47c-.4.4-.53,5.168-.53,18.685,0,20.673-.177,19.657,3.622,19.657,3.578,0,3.446.883,3.446-19.7,0-13.517-.132-18.243-.53-18.641a6.072,6.072,0,0,0-3-.53A6.073,6.073,0,0,0,1662.528-155.47Z"
+              transform="translate(-845.781 -19.003)"></path>
+            <path
+              d="M1566.943-85.315c-1.59.707-1.944,1.414-1.944,4.02s1.414,3.755,4.638,3.755c3.269,0,4.638-1.148,4.638-3.8,0-2.562-.53-3.49-2.253-4.108A6.722,6.722,0,0,0,1566.943-85.315Z"
+              transform="translate(-791.63 -58.15)"></path>
+          </g>
+        </g>
+      </symbol>
+      <symbol
+        id="close"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12" />
+      </symbol>
+      <symbol
+        id="play"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+          clip-rule="evenodd" />
+      </symbol>
+      <symbol
+        id="user"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+      </symbol>
+      <symbol
+        id="clock"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </symbol>
+      <symbol
+        id="star"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+          clip-rule="evenodd" />
+      </symbol>
+      <symbol
+        id="users"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+      </symbol>
+      <symbol
+        id="toman"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke-width="4"
+        stroke="currentColor"
+        viewBox="0 0 57.988 55.588">
+        <g transform="translate(-4013.907 176.406)">
+          <path
+            d="M4068.117-146.108s3,8.61,1.066,11.035-4.839,1.921-11.736,1.921-10.552.731-12.355-1.6-2.288-7.952,2.547-9.55,7.877,3.5,7.877,9.231.668,5.874-.732,8.36c-1.858,2.6-10.917,3.915-10.917,3.915"></path>
+          <path
+            d="M4069.56-152.461v3.969"
+            transform="translate(0 -1.945)"></path>
+          <path
+            d="M4069.56-152.461v3.969"
+            transform="translate(-7 -1.945)"></path>
+          <path
+            d="M4069.56-152.461v3.969"
+            transform="translate(-7 -1.945)"></path>
+          <path
+            d="M4027.592-128.435s5.376,4.632,8.167,3.124a5.918,5.918,0,0,0,3.034-6.158c-.446-4.24-4.144-5.625-6.783-4.418s-4.016,5.866-4.016,5.866-1.857,4.934-6.114,4.934-4.928-2.6-5-4.934-.98-19.76-.98-19.76"></path>
+          <path
+            d="M4069.56-152.461v3.969"
+            transform="translate(-44 -23.945)"></path>
+          <path
+            d="M4017.55-171.009s-3.525,12.094,2.454,15.619c5.623,3.035,12.585-.714,12.585-.714s3.473-2.1,3.436-4.864c-.089-3.883-1.651-12.986-1.651-12.986"></path>
+        </g>
+      </symbol>
+      <symbol
+        id="arrow-small-left"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+      </symbol>
+      <symbol
+        id="calendar"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+      </symbol>
+      <symbol
+        id="arrow-left-circle"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-4.28 9.22a.75.75 0 000 1.06l3 3a.75.75 0 101.06-1.06l-1.72-1.72h5.69a.75.75 0 000-1.5h-5.69l1.72-1.72a.75.75 0 00-1.06-1.06l-3 3z"
+          clip-rule="evenodd" />
+      </symbol>
+      <symbol
+        id="instagram"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 512 512">
+        <path
+          d="M349.33 69.33a93.62 93.62 0 0193.34 93.34v186.66a93.62 93.62 0 01-93.34 93.34H162.67a93.62 93.62 0 01-93.34-93.34V162.67a93.62 93.62 0 0193.34-93.34h186.66m0-37.33H162.67C90.8 32 32 90.8 32 162.67v186.66C32 421.2 90.8 480 162.67 480h186.66C421.2 480 480 421.2 480 349.33V162.67C480 90.8 421.2 32 349.33 32z" />
+        <path
+          d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z" />
+      </symbol>
+
+      <symbol
+        id="telegram"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 30 30">
+        <path
+          d="M 25.154297 3.984375 C 24.829241 3.998716 24.526384 4.0933979 24.259766 4.2011719 C 24.010014 4.3016357 23.055766 4.7109106 21.552734 5.3554688 C 20.048394 6.0005882 18.056479 6.855779 15.931641 7.7695312 C 11.681964 9.5970359 6.9042108 11.654169 4.4570312 12.707031 C 4.3650097 12.746607 4.0439208 12.849183 3.703125 13.115234 C 3.3623292 13.381286 3 13.932585 3 14.546875 C 3 15.042215 3.2360676 15.534319 3.5332031 15.828125 C 3.8303386 16.121931 4.144747 16.267067 4.4140625 16.376953 C 5.3912284 16.775666 8.4218473 18.015862 8.9941406 18.25 C 9.195546 18.866983 10.29249 22.222526 10.546875 23.044922 C 10.714568 23.587626 10.874198 23.927519 11.082031 24.197266 C 11.185948 24.332139 11.306743 24.45034 11.453125 24.542969 C 11.511635 24.579989 11.575789 24.608506 11.640625 24.634766 L 11.644531 24.636719 C 11.659471 24.642719 11.67235 24.652903 11.6875 24.658203 C 11.716082 24.668202 11.735202 24.669403 11.773438 24.677734 C 11.925762 24.726927 12.079549 24.757812 12.216797 24.757812 C 12.80196 24.757814 13.160156 24.435547 13.160156 24.435547 L 13.181641 24.419922 L 16.191406 21.816406 L 19.841797 25.269531 C 19.893193 25.342209 20.372542 26 21.429688 26 C 22.057386 26 22.555319 25.685026 22.875 25.349609 C 23.194681 25.014192 23.393848 24.661807 23.478516 24.21875 L 23.478516 24.216797 C 23.557706 23.798129 26.921875 6.5273437 26.921875 6.5273438 L 26.916016 6.5507812 C 27.014496 6.1012683 27.040303 5.6826405 26.931641 5.2695312 C 26.822973 4.8564222 26.536648 4.4608905 26.181641 4.2480469 C 25.826669 4.0352506 25.479353 3.9700339 25.154297 3.984375 z M 24.966797 6.0742188 C 24.961997 6.1034038 24.970391 6.0887279 24.962891 6.1230469 L 24.960938 6.1347656 L 24.958984 6.1464844 C 24.958984 6.1464844 21.636486 23.196371 21.513672 23.845703 C 21.522658 23.796665 21.481573 23.894167 21.439453 23.953125 C 21.379901 23.91208 21.257812 23.859375 21.257812 23.859375 L 21.238281 23.837891 L 16.251953 19.121094 L 12.726562 22.167969 L 13.775391 17.96875 C 13.775391 17.96875 20.331562 11.182109 20.726562 10.787109 C 21.044563 10.471109 21.111328 10.360953 21.111328 10.251953 C 21.111328 10.105953 21.035234 10 20.865234 10 C 20.712234 10 20.506484 10.14875 20.396484 10.21875 C 18.963383 11.132295 12.671823 14.799141 9.8515625 16.439453 C 9.4033769 16.256034 6.2896636 14.981472 5.234375 14.550781 C 5.242365 14.547281 5.2397349 14.548522 5.2480469 14.544922 C 7.6958673 13.491784 12.47163 11.434667 16.720703 9.6074219 C 18.84524 8.6937992 20.838669 7.8379587 22.341797 7.1933594 C 23.821781 6.5586849 24.850125 6.1218894 24.966797 6.0742188 z" />
+      </symbol>
+    </svg>
+    <!-- Header -->
+    <header
+      class="h-[88px] w-full bg-white px-8 md:h-32 md:px-16 lg:px-6 xl:px-12 dark:border-b dark:border-gray-700 dark:bg-gray">
+      <div
+        class="mx-auto flex h-full w-full max-w-[1720px] items-center justify-between">
+        <!-- Mobile Menu Btn -->
+        <div class="mobile-menu__open-btn lg:hidden">
+          <svg class="h-9 w-9 dark:text-gray-500">
+            <use href="#menu"></use>
+          </svg>
+        </div>
+        <!-- Header Right -->
+        <div class="flex">
+          <div
+            class="border-gray-100 lg:ml-5 lg:border-l lg:pl-5 dark:border-gray-700">
+            <a href="#">
+              <img
+                src="/images/logo.webp"
+                class="w-20 md:w-[104px]"
+                alt="logo" />
+            </a>
+          </div>
+          <!-- Menu -->
+          <ul
+            class="menus__wrapper hidden items-center gap-x-5 text-zinc-700 child:transition-all child-hover:text-primary lg:flex dark:text-white"></ul>
+        </div>
+        <!-- Header Left -->
+        <div
+          class="flex gap-x-5 child:flex child:items-center child:justify-center">
+          <!-- Search Btn -->
+          <div
+            class="search-btn relative !hidden h-14 w-14 cursor-pointer rounded-full bg-gray-100 transition-all hover:bg-gray-200 lg:!flex dark:border dark:border-gray-700 dark:bg-gray dark:hover:border-gray-500 dark:hover:bg-transparent">
+            <svg class="h-7 w-7 text-slate-500">
+              <use href="#magnifying-glass"></use>
+            </svg>
+            <!-- Search Box -->
+            <div
+              class="search-box absolute left-0 top-[70px] z-20 h-14 w-60 overflow-hidden rounded-full bg-gray-100 transition-all dark:bg-gray-700">
+              <form class="search-box-form relative h-full w-full">
+                <input
+                  type="text"
+                  class="search-box-input h-full w-full rounded-full bg-transparent pl-12 pr-4 outline-none"
+                  placeholder="جستجو در بین دوره ها" />
+                <button>
+                  <svg
+                    type="submit"
+                    class="absolute bottom-0 left-4 top-0 m-auto h-6 w-6 text-slate-500">
+                    <use href="#magnifying-glass"></use>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Change Theme -->
+          <div
+            class="toggle-theme change-theme-btn !hidden h-14 w-14 cursor-pointer rounded-full bg-gray-100 transition-all hover:bg-gray-200 lg:!flex dark:border dark:border-gray-700 dark:bg-gray dark:hover:border-gray-500 dark:hover:bg-transparent">
+            <svg class="inline-block h-7 w-7 text-slate-500 dark:hidden">
+              <use href="#moon"></use>
+            </svg>
+            <svg class="hidden h-7 w-7 text-slate-500 dark:inline-block">
+              <use href="#sun"></use>
+            </svg>
+          </div>
+          <!-- Profile -->
+          <div class="h-12 w-auto cursor-pointer rounded-full md:h-14">
+            <!-- Login & Register -->
+            <div
+              class="login-register__container h-12 w-12 lg:h-full lg:w-[155px]">
+              <div
+                class="relative hidden h-full w-[155px] items-center justify-between text-white child:flex child:h-full child:w-25 child:items-center child:rounded-full lg:flex">
+                <div
+                  class="login-btn absolute right-0 block bg-sky-300 pr-4 transition-colors hover:bg-sky-400 dark:bg-[#30457C] dark:hover:bg-secondary/60">
+                  ورود
+                </div>
+                <div
+                  class="register-btn absolute left-0 block justify-center bg-sky-500 transition-colors hover:bg-sky-600">
+                  عضویت
+                </div>
+              </div>
+              <div
+                class="mobile-login-btn flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-slate-500 lg:hidden dark:bg-gray-800 dark:text-gray-500">
+                <svg class="h-6 w-6">
+                  <use xlink:href="#user"></use>
+                </svg>
+              </div>
+            </div>
+            <!-- Profile Photo -->
+            <div class="profile__container profile relative hidden h-full w-14">
+              <div
+                class="h-12 w-12 overflow-hidden rounded-full md:h-14 md:w-14">
+                <img
+                  class="header__profile h-full w-full object-cover"
+                  src="/images/user-profile.png"
+                  onerror="this.src = '/images/user-profile.png'"
+                  alt="" />
+              </div>
+              <!-- SubMenu Profile -->
+              <div
+                class="profile__menu absolute left-0 top-16 z-20 w-[278px] rounded-2xl bg-white p-5 dark:bg-[#32334D] dark:text-white">
+                <div class="mb-5 flex items-center gap-3">
+                  <div class="h-14 w-14 overflow-hidden rounded-full">
+                    <img
+                      class="header__profile h-full w-full object-cover"
+                      src="/images/user-profile.png"
+                      onerror="this.src = '/images/user-profile.png'"
+                      alt="" />
+                  </div>
+                  <div>
+                    <p class="profile__name text-lg">مرصاد حبیبی</p>
+                    <p class="font-DanaMedium text-sm text-sky-500">
+                      موجودی: 0 تومان
+                    </p>
+                  </div>
+                </div>
+                <ul
+                  class="border-y border-y-gray-200 py-2 child:flex child:h-12 child:items-center child:gap-x-2 child:rounded-xl child:px-2 dark:border-y-slate">
+                  <a
+                    class="hover:bg-gray-100 dark:hover:bg-slate"
+                    href="./panel.html">
+                    <svg class="h-5 w-5">
+                      <use href="#home"></use>
+                    </svg>
+                    پیشخوان
+                  </a>
+                  <a
+                    class="hover:bg-gray-100 dark:hover:bg-slate"
+                    href="./panel.html?content=courses">
+                    <svg class="h-5 w-5">
+                      <use href="#folder"></use>
+                    </svg>
+                    دوره های من
+                  </a>
+                  <a class="hover:bg-gray-100 dark:hover:bg-slate" href="#">
+                    <svg class="h-5 w-5">
+                      <use href="#chat-bubble"></use>
+                    </svg>
+                    تیکت های پشتیبانی
+                  </a>
+                </ul>
+                <div
+                  class="pt-2 child:flex child:h-12 child:items-center child:gap-x-2 child:rounded-xl child:px-2">
+                  <button
+                    class="logout-btn w-full hover:bg-gray-100 dark:hover:bg-slate"
+                    href="#">
+                    <svg class="h-5 w-5">
+                      <use href="#logout"></use>
+                    </svg>
+                    خروج
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Mobile Menu -->
+    <div
+      class="mobile-menu fixed top-0 z-30 h-dvh w-64 overflow-y-auto bg-white px-7 pb-20 text-slate-500 shadow-light transition-all dark:bg-[#32334D]">
+      <!-- Top -->
+      <div class="mt-5 flex items-center justify-between pb-5">
+        <div class="flex items-center gap-x-2">
+          <img src="/images/logo.webp" class="w-[62px]" alt="logo" />
+          <svg class="h-[37px] w-[81px] text-white dark:text-slate-600">
+            <use href="#logo-type"></use>
+          </svg>
+        </div>
+        <div class="mobile__close-btn">
+          <svg class="h-7 w-7 text-slate-500">
+            <use href="#close"></use>
+          </svg>
+        </div>
+      </div>
+      <!-- Mid -->
+      <div class="border-y border-gray-200 pb-5 pt-7 dark:border-slate">
+        <form
+          class="mobile-search-box-form relative mb-5 h-12 w-full rounded-xl bg-gray-100 dark:bg-gray-800">
+          <input
+            class="mobile-search-box-input h-full w-full bg-transparent pl-12 pr-5 outline-none"
+            type="text"
+            placeholder="جستجو" />
+          <button type="submit">
+            <svg class="absolute bottom-0 left-4 top-0 m-auto h-6 w-6">
+              <use href="#magnifying-glass"></use>
+            </svg>
+          </button>
+        </form>
+        <ul class="mobile-menus-wrapper space-y-4 dark:text-slate-400"></ul>
+      </div>
+      <!-- bottom -->
+      <div
+        class="toggle-theme mt-4 flex items-center gap-x-3 dark:text-slate-400">
+        <div
+          class="flex h-[38px] w-[38px] items-center justify-center rounded-xl bg-gray-100 dark:border dark:border-slate dark:bg-transparent">
+          <svg
+            class="inline-block h-6 w-6 text-slate-500 dark:hidden dark:text-inherit">
+            <use href="#moon"></use>
+          </svg>
+          <svg
+            class="hidden h-6 w-6 text-slate-500 dark:inline-block dark:text-inherit">
+            <use href="#sun"></use>
+          </svg>
+        </div>
+        <p>
+          <span class="inline-block dark:hidden">تم تیره</span>
+          <span class="hidden dark:inline-block">تم روشن</span>
+        </p>
+      </div>
+    </div>
+    <!-- Main -->
+    <main class="overflow-x-hidden overflow-y-visible pb-14">
+      <!-- land section -->
+      <section class="relative pt-10 lg:pt-25">
+        <div class="container">
+          <div
+            class="flex flex-col-reverse items-center justify-between gap-y-10 lg:flex-row lg:gap-0">
+            <div class="text-center lg:text-right xl:w-1/2 dark:text-white">
+              <h1 class="font-MorabbaBold text-5xl/[80px] lg:text-6xl/[96px]">
+                ما به هر قیمتی <br />
+                دوره تولید نمی کنیم!
+              </h1>
+              <h2 class="mb-10 mt-8 max-w-[500px] text-xl lg:text-2xl">
+                با آکادمی خصوصی سبزلرن، علم برنامه نویسی رو با خیال راحت یاد
+                بگیر و پیشرفت کن
+              </h2>
+              <div
+                class="flex flex-wrap items-center justify-center gap-x-7 gap-y-5 text-base sm:text-xl lg:justify-start">
+                <a
+                  href="#"
+                  class="flex h-10 w-36 items-center justify-center rounded-full bg-sky-500 text-white transition-all hover:bg-sky-600 sm:h-14 sm:w-48 dark:bg-secondary dark:hover:bg-sky-700"
+                  >از اینجا شورع کن</a
+                >
+                <a href="#" class="flex items-center justify-center gap-x-3">
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-green-400 transition-all hover:bg-green-500 sm:h-14 sm:w-14">
+                    <svg class="h-6 w-6 text-white sm:h-8 sm:w-8">
+                      <use href="#play"></use>
+                    </svg>
+                  </div>
+                  <span class="text-slate-500 dark:text-slate-400"
+                    >ما کی هستیم؟</span
+                  >
+                </a>
+              </div>
+            </div>
+            <div class="max-w-[443px] lg:h-[490px] lg:max-w-none xl:h-[560px]">
+              <img
+                src="/images/svgs/boy-dark.svg"
+                class="hidden w-full lg:h-full lg:w-auto dark:block"
+                alt="boy-dark" />
+              <img
+                src="/images/svgs/boy-light.svg"
+                class="block w-full lg:h-full lg:w-auto dark:hidden"
+                alt="boy-light" />
+            </div>
+          </div>
+          <!-- Background Circle -->
+          <div
+            class="absolute -left-[320px] top-6 -z-10 hidden h-[500px] w-[500px] rounded-full bg-primary opacity-20 blur-2xl md:block lg:-left-[400px] lg:h-[630px] lg:w-[630px] dark:hidden"></div>
+          <div
+            class="absolute -bottom-2/3 -right-[320px] -z-10 hidden h-[500px] w-[500px] rounded-full bg-sky-500 opacity-20 blur-2xl md:block lg:-right-[400px] lg:h-[630px] lg:w-[630px] dark:hidden"></div>
+        </div>
+      </section>
+      <!-- Last Courses -->
+      <section class="relative mt-22 sm:mt-40">
+        <div class="container">
+          <!-- Section Header -->
+          <div
+            class="mb-10 flex flex-col justify-between gap-y-4 sm:flex-row sm:items-center">
+            <div>
+              <h3
+                class="before:content-[' '] relative mb-2 pr-6 font-DanaDemiBold text-2xl before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-3.5 before:w-3.5 before:rounded-sm before:bg-amber-400 sm:pr-7 sm:text-3xl dark:text-white before:dark:bg-yellow-400">
+                آخرین دوره ها
+              </h3>
+              <h4 class="text-slate-500 sm:text-xl dark:text-slate-400">
+                سکوی پرتاپ شما به سمت موفقیت
+              </h4>
+            </div>
+            <a
+              href="./categories.html"
+              class="flex h-10 w-44 items-center justify-center gap-x-0.5 self-end rounded-xl font-DanaMedium text-sky-500 transition-all hover:bg-sky-500/10 sm:self-auto dark:text-secondary dark:hover:bg-secondary/10">
+              <span class="mt-1"> مشاهده همه دوره ها </span>
+              <svg class="h-5 w-5">
+                <use href="#arrow-small-left"></use>
+              </svg>
+            </a>
+          </div>
+          <!-- Section Content -->
+          <div
+            class="last-courses__container grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <!-- Load From JS -->
+          </div>
+          <!-- Background Circle -->
+          <div
+            class="absolute -left-[320px] top-64 -z-10 hidden h-[500px] w-[500px] rounded-full bg-amber-400 opacity-20 blur-2xl md:block lg:-left-[400px] lg:h-[630px] lg:w-[630px] dark:hidden"></div>
+          <div
+            class="absolute -bottom-2/3 -right-[320px] -z-10 hidden h-[500px] w-[500px] rounded-full bg-fuchsia-500 opacity-20 blur-2xl md:block lg:-right-[400px] lg:h-[630px] lg:w-[630px] dark:hidden"></div>
+        </div>
+      </section>
+      <!-- Roadmap Section -->
+      <section class="mt-25">
+        <div class="container">
+          <!-- Section Header -->
+          <div
+            class="mb-10 flex flex-col justify-between gap-y-4 sm:flex-row sm:items-center">
+            <div>
+              <h3
+                class="before:content-[' '] relative mb-2 pr-6 font-DanaDemiBold text-2xl before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-3.5 before:w-3.5 before:rounded-sm before:bg-amber-400 sm:pr-7 sm:text-3xl dark:text-white before:dark:bg-yellow-400">
+                نقشه راه ها
+              </h3>
+              <h4 class="text-slate-500 sm:text-xl dark:text-slate-400">
+                نقشه های راه برای شروع اصولی یادگیری
+              </h4>
+            </div>
+          </div>
+          <!-- Section Content -->
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="h-40 w-full overflow-hidden rounded-2xl text-white">
+              <a
+                href="./categories.html?category=frontend"
+                class="relative flex h-full w-full flex-col items-center justify-center gap-y-3 bg-gradient-to-r from-[#ffb535] to-[#f2295b]">
+                <svg
+                  id="front-end"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="45"
+                  height="45"
+                  x="0"
+                  y="0"
+                  viewBox="0 0 66 66">
+                  <path
+                    d="m58.08 10.05c1.31 0 2.37-1.06 2.37-2.37s-1.06-2.37-2.37-2.37-2.37 1.06-2.37 2.37 1.07 2.37 2.37 2.37zm0-3.05c.38 0 .69.31.69.69s-.31.69-.69.69c-.39 0-.69-.3-.69-.69s.31-.69.69-.69z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                    class=""></path>
+                  <path
+                    d="m60.71 1.48h-48.72c-1.85 0-3.36 1.51-3.36 3.36v5.13h-3.34c-1.85 0-3.36 1.51-3.36 3.36v42.13c0 1.85 1.51 3.36 3.36 3.36h22.33v4.86c0 .46.38.84.84.84h15.78c.46 0 .84-.38.84-.84v-4.86h8.93c1.85 0 3.36-1.51 3.36-3.36v-5.13h3.34c1.85 0 3.36-1.51 3.36-3.36v-42.13c0-1.85-1.51-3.36-3.36-3.36zm-50.4 3.36c0-.93.76-1.68 1.68-1.68h48.72c.93 0 1.68.76 1.68 1.68v7.37h-31.88l-3.75-3.89c-.29-.3-.69-.47-1.1-.47h-8.26c-.84 0-1.53.69-1.53 1.53v2.83h-5.56zm-5.02 52.31c-.93 0-1.68-.76-1.68-1.68v-42.14c0-.93.76-1.68 1.68-1.68h3.34v35.33c0 1.85 1.51 3.36 3.36 3.36h18.24c.33.64.48 1.36.42 2.1h-1.3c-.96 0-1.73.78-1.73 1.73v2.98zm30.23-17.59c.17-.3.48-.49.83-.49.52 0 .94.42.94.94 0 .34-.18.65-.47.82-.32.19-.7.17-1.09-.05-.05-.03-.1-.07-.12-.12-.32-.51-.19-.91-.09-1.1zm-.01-2.01c-.61.21-1.13.62-1.45 1.2-.48.86-.42 1.91.14 2.81.18.28.42.51.71.68.46.26.96.4 1.45.4.46 0 .91-.12 1.31-.35.8-.47 1.3-1.34 1.3-2.27 0-1.15-.75-2.12-1.78-2.47v-4.32l7.43 13.41c-.01.01-.02.03-.05.04-2.63.68-4.35 3.14-4.21 5.76h-8.01c.15-2.63-1.58-5.09-4.26-5.84l7.42-13.37zm7.89 25.29h-14.1l.05-8.73h14c.03 0 .05.02.05.05zm12.29-7.38c0 .93-.76 1.68-1.68 1.68h-8.93v-2.98c0-.96-.78-1.73-1.73-1.73h-1.3c-.06-.74.1-1.46.42-2.1h13.22zm5.02-6.8h-16.61c.27-.15.56-.28.88-.36.53-.14.96-.51 1.18-1.01.21-.49.18-1.04-.08-1.51l-8.6-15.49c-.22-.41-.65-.67-1.12-.67-.48.01-.91.25-1.14.66l-8.61 15.5c-.26.47-.28 1.03-.07 1.52.21.5.64.86 1.17 1 .32.08.6.21.88.36h-16.6c-.93 0-1.68-.76-1.68-1.68v-33.09h5.7c.84 0 1.53-.69 1.53-1.53v-2.83h8.05l3.75 3.89c.29.3.69.47 1.1.47h31.95v33.08c0 .93-.75 1.69-1.68 1.69z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                    class=""></path>
+                  <path
+                    d="m52.36 10.05c1.31 0 2.37-1.06 2.37-2.37s-1.06-2.37-2.37-2.37-2.37 1.06-2.37 2.37 1.06 2.37 2.37 2.37zm0-3.05c.38 0 .69.31.69.69s-.31.69-.69.69c-.39 0-.69-.3-.69-.69s.31-.69.69-.69z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                    class=""></path>
+                  <path
+                    d="m46.63 10.05c1.31 0 2.37-1.06 2.37-2.37s-1.06-2.37-2.37-2.37-2.37 1.06-2.37 2.37 1.06 2.37 2.37 2.37zm0-3.05c.38 0 .69.31.69.69s-.31.69-.69.69c-.39 0-.69-.3-.69-.69s.31-.69.69-.69z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                    class=""></path>
+                  <path
+                    d="m52.54 21.21c-.49.49-.8 1.11-.92 1.77h-11.75v-1.32c0-.9-.73-1.63-1.63-1.63h-3.79c-.9 0-1.63.73-1.63 1.63v1.32h-11.74c-.11-.65-.42-1.27-.92-1.78-1.27-1.25-3.44-1.23-4.68.01-.63.63-.97 1.46-.97 2.34 0 .89.35 1.73.97 2.34.63.65 1.47.98 2.34.98.55 0 1.11-.13 1.64-.4.57-.29 1.04-.77 1.32-1.36.07-.15.13-.3.18-.45h8.15c-4.43 2.16-7.77 6.22-8.93 11.12h-1.3c-.9 0-1.63.73-1.63 1.63v3.79c0 .9.73 1.63 1.63 1.63h3.79c.9 0 1.63-.73 1.63-1.63v-3.79c0-.9-.73-1.63-1.63-1.63h-.76c1.4-5.28 5.63-9.42 10.94-10.7v.36c0 .9.73 1.63 1.63 1.63h3.79c.9 0 1.63-.73 1.63-1.63v-.36c5.3 1.28 9.53 5.42 10.94 10.7h-.69c-.9 0-1.63.73-1.63 1.63v3.79c0 .9.73 1.63 1.63 1.63h3.79c.9 0 1.63-.73 1.63-1.63v-3.79c0-.9-.73-1.63-1.63-1.63h-1.37c-1.17-4.9-4.51-8.97-8.93-11.12h8.17c.16.46.42.88.77 1.23.63.65 1.47.98 2.34.98.55 0 1.11-.13 1.64-.4.57-.29 1.04-.77 1.32-1.36.65-1.37.42-2.86-.61-3.91-1.31-1.24-3.48-1.23-4.73.01zm-33.29 3.19c-.12.24-.32.45-.56.57-.87.44-1.62.16-2.03-.27-.31-.3-.48-.71-.48-1.15 0-.43.17-.84.48-1.16.31-.31.72-.48 1.16-.48.43 0 .85.17 1.15.47.52.54.62 1.29.28 2.02zm3.4 16.75-3.74.05-.05-3.74h3.74zm31.26 0-3.74.05-.05-3.74h3.74zm-19.4-15.7-.02-1.26c.02-.09.02-.18.01-.28v-.01c0-.03.02-.05.02-.08 0-.05-.02-.09-.03-.13l-.03-1.97h3.74l.03 1.97c-.01.05-.03.09-.03.14 0 .03.01.05.02.08v.01c-.02.13-.01.25.02.36l.02 1.13zm21.81-1.05c-.12.24-.32.45-.56.57-.87.44-1.62.16-2.03-.27-.31-.3-.48-.71-.48-1.15 0-.43.17-.84.48-1.16.31-.31.72-.48 1.16-.48.43 0 .85.17 1.15.47.52.54.62 1.29.28 2.02z"
+                    fill="#ffffff"
+                    data-original="#000000"></path>
+                </svg>
+                <span class="font-DanaDemiBold text-2xl">فرانت اند</span>
+                <span
+                  class="absolute left-2.5 top-2.5 h-6 w-6 rounded-full bg-white pt-[1px] text-center font-DanaMedium leading-[26px] text-zinc-700 dark:bg-gray-800 dark:text-white"
+                  >30</span
+                >
+              </a>
+            </div>
+            <div class="h-40 w-full overflow-hidden rounded-2xl text-white">
+              <a
+                href="./categories.html?category=security"
+                class="relative flex h-full w-full flex-col items-center justify-center gap-y-3 bg-gradient-to-r from-[#30c4e5] to-[#27e55c]">
+                <svg
+                  id="security"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="45"
+                  height="45"
+                  x="0"
+                  y="0"
+                  viewBox="0 0 512.001 512.001">
+                  <path
+                    d="M466.395,88.411C395.95,69.109,325.091,39.054,261.478,1.496c-3.379-1.995-7.572-1.995-10.95,0
+                          C185.08,40.133,118.05,68.562,45.605,88.411c-4.68,1.281-7.924,5.535-7.924,10.388v110.046
+                          c0,113.323,52.279,188.335,96.137,231.306c47.216,46.265,102.216,71.85,122.185,71.85c19.967,0,74.967-25.585,122.183-71.85
+                          c43.857-42.97,96.133-117.982,96.133-231.306V98.798C474.319,93.946,471.075,89.692,466.395,88.411z M452.779,208.844
+                          c0,105.843-48.761,175.838-89.669,215.92c-46.431,45.495-96.074,65.695-107.107,65.695c-11.033,0-60.679-20.2-107.111-65.695
+                          c-40.907-40.083-89.67-110.077-89.67-215.92V106.974C128.5,87.304,193.018,59.853,256.005,23.25
+                          c61.414,35.632,129.151,64.448,196.774,83.72V208.844z"
+                    fill="#ffffff"
+                    data-original="#000000"></path>
+                  <path
+                    d="M160.538,105.769c-2.18-5.535-8.433-8.254-13.969-6.073c-19.24,7.581-38.988,14.559-58.695,20.741
+                          c-4.491,1.41-7.547,5.57-7.547,10.276v41.591c0,5.948,4.823,10.77,10.77,10.77s10.77-4.822,10.77-10.77v-33.72
+                          c17.679-5.72,35.339-12.047,52.598-18.848C160,117.557,162.719,111.304,160.538,105.769z"
+                    fill="#ffffff"
+                    data-original="#000000"></path>
+                  <path
+                    d="M180.997,107.812c1.445,0,2.912-0.291,4.319-0.905l0.198-0.086c5.449-2.388,7.903-8.731,5.515-14.178
+                          c-2.39-5.449-8.769-7.914-14.212-5.528l-0.174,0.075c-5.452,2.381-7.914,8.719-5.533,14.169
+                          C172.877,105.405,176.842,107.812,180.997,107.812z"
+                    fill="#ffffff"
+                    data-original="#000000"></path>
+                  <path
+                    d="M384.322,347.283c-4.977-3.253-11.651-1.854-14.908,3.125c-8.875,13.584-19.287,26.592-30.951,38.659
+                          c-9.592,9.922-19.986,19.17-30.893,27.485c-4.729,3.606-5.639,10.364-2.034,15.095c2.121,2.779,5.328,4.241,8.572,4.241
+                          c2.278,0,4.573-0.719,6.523-2.207c11.765-8.971,22.975-18.944,33.317-29.642c12.611-13.044,23.881-27.124,33.499-41.849
+                          C390.702,357.21,389.301,350.536,384.322,347.283z"
+                    fill="#ffffff"
+                    data-original="#000000"></path>
+                  <path
+                    d="M282.558,433.443l-0.618,0.364c-5.147,2.981-6.906,9.569-3.926,14.716c1.997,3.45,5.612,5.376,9.331,5.376
+                          c1.83,0,3.688-0.467,5.385-1.452l0.713-0.419c5.133-3.006,6.857-9.603,3.851-14.736
+                          C294.286,432.161,287.688,430.44,282.558,433.443z"
+                    fill="#ffffff"
+                    data-original="#000000"></path>
+                  <path
+                    d="M182.589,234.019c-6.613-6.614-15.408-10.254-24.762-10.254s-18.15,3.641-24.766,10.254
+                          c-13.653,13.656-13.653,35.876,0,49.531l63.596,63.594c6.614,6.612,15.409,10.253,24.764,10.253s18.15-3.641,24.765-10.255
+                          L378.947,214.38c13.652-13.659,13.652-35.876-0.002-49.527c-6.614-6.614-15.409-10.254-24.765-10.254
+                          c-9.355,0-18.15,3.641-24.765,10.254L221.42,272.848L182.589,234.019z M344.647,180.085c2.545-2.545,5.932-3.946,9.534-3.946
+                          c3.604,0,6.988,1.401,9.535,3.946c5.255,5.255,5.255,13.809-0.002,19.066l-132.759,132.76c-2.545,2.545-5.932,3.946-9.534,3.946
+                          s-6.989-1.401-9.535-3.946l-63.594-63.592c-5.257-5.257-5.257-13.811-0.002-19.066c2.546-2.545,5.933-3.948,9.536-3.948
+                          s6.988,1.401,9.533,3.946l46.445,46.446c2.021,2.019,4.759,3.154,7.616,3.154s5.595-1.134,7.614-3.154L344.647,180.085z"
+                    fill="#ffffff"
+                    data-original="#000000"></path>
+                </svg>
+                <span class="font-DanaDemiBold text-2xl">امنیت</span>
+                <span
+                  class="absolute left-2.5 top-2.5 h-6 w-6 rounded-full bg-white pt-[1px] text-center font-DanaMedium leading-[26px] text-zinc-700 dark:bg-gray-800 dark:text-white"
+                  >7</span
+                >
+              </a>
+            </div>
+            <div class="h-40 w-full overflow-hidden rounded-2xl text-white">
+              <a
+                href="./categories.html?category=python"
+                class="relative flex h-full w-full flex-col items-center justify-center gap-y-3 bg-gradient-to-r from-[#9c33f7] to-[#2b9fff]">
+                <svg
+                  id="python"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="45"
+                  height="45"
+                  x="0"
+                  y="0"
+                  viewBox="0 0 64 64">
+                  <circle
+                    cx="29"
+                    cy="14"
+                    r="2"
+                    fill="#ffffff"
+                    data-original="#000000"></circle>
+                  <path
+                    d="m52 21h-6v-9c0-2.757-2.243-5-5-5h-14c-2.757 0-5 2.243-5 5v7h-10c-2.757 0-5 2.243-5 5v14c0 2.757 2.243 5 5 5h6v9c0 2.757 2.243 5 5 5h14c2.757 0 5-2.243 5-5v-7h10c2.757 0 5-2.243 5-5v-14c0-2.757-2.243-5-5-5zm-43 17v-14c0-1.654 1.346-3 3-3h22c1.323 0 1.324-2 0-2h-10v-7c0-1.654 1.346-3 3-3h14c1.654 0 3 1.346 3 3v16c0 1.654-1.346 3-3 3h-18c-2.757 0-5 2.243-5 5v5h-6c-1.654 0-3-1.346-3-3zm46 2c0 1.654-1.346 3-3 3h-22c-1.323 0-1.324 2 0 2h10v7c0 1.654-1.346 3-3 3h-14c-1.654 0-3-1.346-3-3v-10-6c0-1.654 1.346-3 3-3h18c2.757 0 5-2.243 5-5v-5h6c1.654 0 3 1.346 3 3z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                    class=""></path>
+                  <circle
+                    cx="35"
+                    cy="50"
+                    r="2"
+                    fill="#ffffff"
+                    data-original="#000000"></circle>
+                </svg>
+                <span class="font-DanaDemiBold text-2xl">پایتون</span>
+                <span
+                  class="absolute left-2.5 top-2.5 h-6 w-6 rounded-full bg-white pt-[1px] text-center font-DanaMedium leading-[26px] text-zinc-700 dark:bg-gray-800 dark:text-white"
+                  >6</span
+                >
+              </a>
+            </div>
+            <div class="h-40 w-full overflow-hidden rounded-2xl text-white">
+              <a
+                href="./categories.html?category=softskills"
+                class="relative flex h-full w-full flex-col items-center justify-center gap-y-3 bg-gradient-to-r from-[#ff3571] to-[#870075]">
+                <svg
+                  id="puzzle"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="45"
+                  height="45"
+                  x="0"
+                  y="0"
+                  viewBox="0 0 511.999 511.999">
+                  <path
+                    d="M502.044,227.555l-62.141-62.141c13.191-3.238,25.727-9.909,36.022-20.211c15.054-15.047,22.615-34.848,22.61-54.566
+                              c0.007-19.719-7.556-39.524-22.603-54.566c-15.048-15.061-34.854-22.615-54.573-22.609c-19.724-0.007-39.524,7.556-54.566,22.609
+                              c-10.3,10.288-16.973,22.824-20.216,36.01L284.448,9.953c-6.639-6.634-15.42-9.96-24.099-9.953
+                              c-8.685-0.007-17.477,3.32-24.106,9.953l-91.383,91.402c-3.699,3.699-3.699,9.682,0,13.381l10.945,10.951
+                              c2.241,2.241,5.435,3.213,8.546,2.594c2.96-0.588,5.965-0.884,8.976-0.884c11.778,0.013,23.461,4.463,32.474,13.45
+                              c8.976,8.981,13.425,20.666,13.438,32.443c-0.012,11.796-4.463,23.506-13.45,32.499c-8.988,8.981-20.684,13.438-32.475,13.444
+                              c-11.784-0.007-23.486-4.463-32.468-13.444c-8.994-9.001-13.444-20.684-13.45-32.468c-0.007-3.017,0.29-6.016,0.883-8.956
+                              c0.618-3.105-0.359-6.318-2.588-8.553l-10.957-10.951c-3.698-3.693-9.689-3.693-13.388,0.007L9.957,236.26
+                              c-6.634,6.627-9.96,15.413-9.948,24.099c-0.013,8.679,3.314,17.472,9.953,24.099l62.127,62.127
+                              c-13.191,3.245-25.721,9.916-36.022,20.223c-15.047,15.034-22.61,34.841-22.596,54.56c-0.013,19.712,7.542,39.524,22.603,54.573
+                              c15.047,15.054,34.854,22.609,54.578,22.596c19.712,0.012,39.512-7.556,54.548-22.603c10.3-10.3,16.978-22.836,20.216-36.022
+                              l62.127,62.134c6.641,6.634,15.42,9.96,24.106,9.953c8.685,0.007,17.465-3.32,24.092-9.948l91.39-91.39
+                              c3.693-3.698,3.693-9.689,0-13.388l-10.945-10.951c-2.234-2.234-5.428-3.206-8.54-2.594c-2.96,0.593-5.971,0.883-8.988,0.883
+                              c-11.784-0.012-23.474-4.456-32.462-13.438c-8.988-8.994-13.438-20.684-13.444-32.474c0.007-11.784,4.463-23.486,13.444-32.481
+                              c8.988-8.981,20.684-13.432,32.481-13.444c11.784,0.012,23.481,4.469,32.475,13.45c8.981,8.994,13.432,20.684,13.438,32.468
+                              c0.007,3.004-0.297,6.016-0.884,9.001c-0.606,3.105,0.36,6.274,2.601,8.514l10.945,10.951c1.755,1.761,4.198,2.771,6.697,2.771
+                              c2.493,0,4.929-1.009,6.697-2.771l91.395-91.402c6.641-6.634,9.96-15.42,9.948-24.099
+                              C511.997,242.968,508.671,234.183,502.044,227.555z M488.649,262.372l-84.693,84.687l-0.903-0.903
+                              c0.284-2.48,0.48-4.973,0.48-7.48c0.007-16.562-6.35-33.213-18.993-45.855s-29.3-19.005-45.862-18.998
+                              c-16.569-0.007-33.225,6.35-45.868,18.993c-12.649,12.649-19.005,29.306-18.998,45.875c-0.007,16.562,6.35,33.22,18.998,45.862
+                              c12.637,12.643,29.293,18.998,45.85,18.986c2.5,0,4.993-0.183,7.485-0.473l0.903,0.903l-84.693,84.687
+                              c-2.941,2.941-6.772,4.393-10.705,4.406c-3.939-0.013-7.77-1.464-10.718-4.406l-75.989-75.995
+                              c-2.733-2.733-6.823-3.534-10.383-2.026c-3.553,1.496-5.832,4.993-5.782,8.849c0.013,0.733,0.025,1.376,0.025,1.912
+                              c-0.012,14.946-5.624,29.767-16.998,41.153c-11.393,11.387-26.232,17.049-41.153,17.054c-14.946-0.007-29.798-5.655-41.192-17.049
+                              c-11.399-11.399-17.042-26.245-17.054-41.178c0.012-14.934,5.669-29.78,17.049-41.166c11.387-11.387,26.2-16.985,41.153-16.998
+                              c0.588,0,1.181,0.012,1.767,0.032c3.882,0.113,7.436-2.146,8.976-5.713c1.54-3.567,0.745-7.701-1.995-10.446l-76.001-75.995
+                              c-2.941-2.948-4.393-6.779-4.406-10.711c0.012-3.939,1.464-7.77,4.399-10.711l84.699-84.693l0.896,0.896
+                              c-0.284,2.493-0.48,4.987-0.48,7.485c-0.007,16.562,6.356,33.213,18.998,45.855c12.637,12.643,29.293,19.005,45.862,18.993
+                              c16.569,0.012,33.225-6.35,45.862-18.993c12.655-12.655,19.011-29.325,18.998-45.894c0.012-16.562-6.356-33.2-18.986-45.83
+                              c-12.655-12.649-29.306-19.011-45.862-18.998c-2.5,0-4.993,0.189-7.485,0.48l-0.903-0.903l84.699-84.699
+                              c2.941-2.935,6.772-4.393,10.711-4.406c3.927,0.012,7.763,1.464,10.711,4.412l75.995,75.995c2.751,2.752,6.943,3.541,10.497,1.976
+                              c3.56-1.559,5.819-5.169,5.662-9.057c-0.025-0.511-0.037-1.067-0.037-1.666c0.019-14.94,5.624-29.76,16.998-41.147
+                              c11.393-11.387,26.239-17.049,41.172-17.054c14.928,0.007,29.78,5.655,41.172,17.054s17.049,26.239,17.054,41.172
+                              c-0.007,14.928-5.662,29.78-17.054,41.172c-11.393,11.375-26.207,16.973-41.153,16.985c-0.593,0-1.181-0.007-1.761-0.025
+                              c-3.882-0.113-7.436,2.146-8.976,5.713c-1.54,3.567-0.751,7.701,1.995,10.446l76.001,76.001c2.941,2.941,4.399,6.772,4.412,10.711
+                              C493.049,255.593,491.591,259.424,488.649,262.372z"
+                    fill="#ffffff"
+                    data-original="#000000"></path>
+                </svg>
+                <span class="font-DanaDemiBold text-2xl">مهارت‌ های نرم</span>
+                <span
+                  class="absolute left-2.5 top-2.5 h-6 w-6 rounded-full bg-white pt-[1px] text-center font-DanaMedium leading-[26px] text-zinc-700 dark:bg-gray-800 dark:text-white"
+                  >5</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Why Us -->
+      <section class="mt-25">
+        <div class="container">
+          <!-- Section Header -->
+          <div
+            class="mb-10 flex flex-col justify-between gap-y-4 sm:flex-row sm:items-center">
+            <div>
+              <h3
+                class="before:content-[' '] relative mb-2 pr-6 font-DanaDemiBold text-2xl before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-3.5 before:w-3.5 before:rounded-sm before:bg-amber-400 sm:pr-7 sm:text-3xl dark:text-white before:dark:bg-yellow-400">
+                ما چه کمکی بهتون میکنیم؟
+              </h3>
+              <h4 class="text-slate-500 sm:text-xl dark:text-slate-400">
+                از اونجایی که آکادمی آموزشی سبزلرن یک آکادمی خصوصی هست
+              </h4>
+            </div>
+          </div>
+          <!-- Section Content -->
+          <div class="grid grid-rows-2 gap-5 md:grid-cols-2">
+            <div
+              class="flex flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border-gray-700 bg-white p-5 text-center shadow-light xs:flex-row xs:text-right dark:border dark:bg-gray-800 dark:shadow-none">
+              <div
+                class="to-secondary-dark h-20 w-20 shrink-0 rotate-45 rounded-full bg-conic-gradient from-sky-500/30 to-sky-500 dark:from-secondary"></div>
+              <div class="space-y-2.5">
+                <h5
+                  class="font-DanaDemiBold text-xl text-zinc-700 dark:text-white">
+                  دوره های اختصاصی
+                </h5>
+                <p class="text-slate-500 dark:text-slate-400">
+                  با پشتیبانی و کیفیت بالا ارائه میده. چون خوش نام بودن نام برند
+                  و منافع مشتری و حفظ شان دیگر همکارانش براش مهمه
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border-gray-700 bg-white p-5 text-center shadow-light xs:flex-row xs:text-right dark:border dark:bg-gray-800 dark:shadow-none">
+              <div
+                class="h-20 w-20 shrink-0 rotate-[255deg] rounded-full bg-conic-gradient from-primary/30 to-primary"></div>
+              <div class="space-y-2.5">
+                <h5
+                  class="font-DanaDemiBold text-xl text-zinc-700 dark:text-white">
+                  اجازه تدریس
+                </h5>
+                <p class="text-slate-500 dark:text-slate-400">
+                  به هر مدرسی رو نمیده و فقط فقط با مدرسای سینیور و مید لول وارد
+                  همکاری میشه چون کیفیت براش مهمه
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border-gray-700 bg-white p-5 text-center shadow-light xs:flex-row xs:text-right dark:border dark:bg-gray-800 dark:shadow-none">
+              <div
+                class="h-20 w-20 shrink-0 -rotate-[255deg] rounded-full bg-conic-gradient from-amber-400/30 to-amber-400 dark:from-yellow-500/30 dark:to-yellow-500"></div>
+              <div class="space-y-2.5">
+                <h5
+                  class="font-DanaDemiBold text-xl text-zinc-700 dark:text-white">
+                  دوره پولی یا رایگان
+                </h5>
+                <p class="text-slate-500 dark:text-slate-400">
+                  براش مهم نیست. به مدرسینش بهترین مزایا و دستمزد رو میده تا
+                  نهایت کیفیت رو در پشتیبانی و اپدیت دوره ارائه بده
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border-gray-700 bg-white p-5 text-center shadow-light xs:flex-row xs:text-right dark:border dark:bg-gray-800 dark:shadow-none">
+              <div
+                class="h-20 w-20 shrink-0 -rotate-45 rounded-full bg-conic-gradient from-pink-500/30 to-pink-500 dark:from-rose-500/30 dark:to-rose-500"></div>
+              <div class="space-y-2.5">
+                <h5
+                  class="font-DanaDemiBold text-xl text-zinc-700 dark:text-white">
+                  اولویت بندی به ترتیب منافع
+                </h5>
+                <p class="text-slate-500 dark:text-slate-400">
+                  در سبزلرن اولویت اول با مدرس هست چون اون قراره دل بسوزونه.
+                  اولویت دوم با کاربره چون باید کمکش کرد و درنهایت اولویت آخر با
+                  سبزلرنه
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- New Courses -->
+      <section class="new-courses relative mt-25">
+        <div class="container">
+          <!-- Section Header -->
+          <div
+            class="mb-10 flex flex-col justify-between gap-y-4 sm:flex-row sm:items-center">
+            <div>
+              <h3
+                class="before:content-[' '] relative mb-2 pr-6 font-DanaDemiBold text-2xl before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-3.5 before:w-3.5 before:rounded-sm before:bg-amber-400 sm:pr-7 sm:text-3xl dark:text-white before:dark:bg-yellow-400">
+                جدیدترین دوره ها
+              </h3>
+              <h4 class="text-slate-500 sm:text-xl dark:text-slate-400">
+                یادگیری و رشد توسعه فردی
+              </h4>
+            </div>
+            <div class="hidden items-center justify-center gap-x-4 sm:flex">
+              <div
+                class="new-courses-slider-prev flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-gray-200 text-slate-500 shadow-light transition-all hover:bg-white hover:text-black dark:bg-gray-700 dark:shadow-none dark:hover:bg-slate dark:hover:text-white">
+                <svg class="h-7 w-7 -rotate-90">
+                  <use href="#chevron-down"></use>
+                </svg>
+              </div>
+              <div
+                class="new-courses-slider-next flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-gray-200 text-slate-500 shadow-light transition-all hover:bg-white hover:text-black dark:bg-gray-700 dark:shadow-none dark:hover:bg-slate dark:hover:text-white">
+                <svg class="h-7 w-7 rotate-90">
+                  <use href="#chevron-down"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- Section Content -->
+          <div>
+            <div class="swiper mySwiper">
+              <div class="new-courses__container swiper-wrapper">
+                <!-- Load From JS -->
+              </div>
+            </div>
+          </div>
+          <!-- Background Circle -->
+          <div
+            class="absolute -left-[320px] top-6 -z-10 hidden h-[500px] w-[500px] rounded-full bg-primary opacity-20 blur-2xl md:block lg:-left-[400px] lg:h-[630px] lg:w-[630px] dark:hidden"></div>
+        </div>
+      </section>
+      <!-- Blogs Section -->
+      <section class="relative mt-25">
+        <div class="container">
+          <!-- Section Header -->
+          <div
+            class="mb-10 flex flex-col justify-between gap-y-4 sm:flex-row sm:items-center">
+            <div>
+              <h3
+                class="before:content-[' '] relative mb-2 pr-6 font-DanaDemiBold text-2xl before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-3.5 before:w-3.5 before:rounded-sm before:bg-amber-400 sm:pr-7 sm:text-3xl dark:text-white before:dark:bg-yellow-400">
+                آخرین مقالات
+              </h3>
+              <h4 class="text-slate-500 sm:text-xl dark:text-slate-400">
+                مقالات بروز برنامه نویسی
+              </h4>
+            </div>
+            <a
+              href="#"
+              class="flex h-10 w-44 items-center justify-center gap-x-0.5 self-end rounded-xl font-DanaMedium text-sky-500 transition-all hover:bg-sky-500/10 sm:self-auto dark:text-secondary dark:hover:bg-secondary/10">
+              <span class="mt-1"> مشاهده همه مقالات</span>
+              <svg class="h-5 w-5">
+                <use href="#arrow-small-left"></use>
+              </svg>
+            </a>
+          </div>
+          <!-- Section Content -->
+          <div
+            class="grid grid-rows-4 gap-5 sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 xl:grid-cols-4 xl:grid-rows-1">
+            <div
+              class="flex flex-col overflow-hidden rounded-2xl border-gray-700 bg-white shadow-light dark:border dark:bg-gray-800 dark:shadow-none">
+              <!-- Blog Head -->
+              <div class="relative h-[217px] w-full overflow-hidden">
+                <img
+                  src="/images/Blog1.webp"
+                  class="h-full w-full object-cover"
+                  alt="" />
+                <div
+                  class="absolute inset-0 -bottom-1 h-full w-full bg-gradient-to-t from-white to-transparent dark:from-gray-800 dark:via-gray-800/70 dark:to-transparent"></div>
+              </div>
+              <!-- Blog Body -->
+              <div class="flex-grow px-5 pb-9">
+                <h4 class="my-2.5 line-clamp-2 font-DanaMedium dark:text-white">
+                  <a href="#">
+                    محاسبات دقیق با قدر مطلق در پایتون – راهنمای عملی برای
+                    برنامه‌نویسان</a
+                  >
+                </h4>
+                <p
+                  class="line-clamp-4 text-sm font-light text-slate-500/90 dark:text-slate-400/90">
+                  یکی از نکات مهم برای افزایش تسلط در برنامه نویسی پایتون و
+                  همینطور بالا بردن سرعت کدنویسی، آشنا شدن با توابع مختلف پایتون
+                  مثل قدر مطلق پایتون هست که به شما کمک میکنه برای انجام هرکاری،
+                  از ابزارهای از قبل پیشبینی شده استفاده کنید و نیازی به کدنویسی
+                  همه چیز از صفر نداشته باشید.
+                </p>
+              </div>
+              <!-- Blog Footer -->
+              <div class="px-5 pb-2">
+                <!-- Course Info -->
+                <div
+                  class="flex justify-between border-b border-b-gray-100 pb-3 text-xs dark:border-b-gray-700">
+                  <div class="flex gap-x-2 text-slate-500 dark:text-slate-400">
+                    <a
+                      href="#"
+                      class="flex items-center gap-x-1 transition-colors hover:text-primary">
+                      <svg class="h-4 w-4">
+                        <use href="#user"></use>
+                      </svg>
+                      <span class="mt-1"> ارمیا مزرعه</span>
+                    </a>
+                    <span class="flex items-center gap-x-1">
+                      <svg class="h-4 w-4">
+                        <use href="#calendar"></use>
+                      </svg>
+                      <span class="mt-1">1402/08/16</span>
+                    </span>
+                  </div>
+                </div>
+                <!-- Course Bottom -->
+                <div class="mt-3.5 flex items-center justify-center">
+                  <a
+                    href="#"
+                    class="flex items-center gap-x-1 font-DanaMedium text-zinc-700 transition-colors hover:text-primary dark:text-white dark:hover:text-primary">
+                    <span class="mt-0.5"> مطالعه مقاله </span>
+                    <svg class="h-6 w-6">
+                      <use href="#arrow-left-circle"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex flex-col overflow-hidden rounded-2xl border-gray-700 bg-white shadow-light dark:border dark:bg-gray-800 dark:shadow-none">
+              <!-- Blog Head -->
+              <div class="relative h-[217px] w-full overflow-hidden">
+                <img
+                  src="/images/Blog1.webp"
+                  class="h-full w-full object-cover"
+                  alt="" />
+                <div
+                  class="absolute inset-0 -bottom-1 h-full w-full bg-gradient-to-t from-white to-transparent dark:from-gray-800 dark:via-gray-800/70 dark:to-transparent"></div>
+              </div>
+              <!-- Blog Body -->
+              <div class="flex-grow px-5 pb-9">
+                <h4 class="my-2.5 line-clamp-2 font-DanaMedium dark:text-white">
+                  <a href="#">
+                    محاسبات دقیق با قدر مطلق در پایتون – راهنمای عملی برای
+                    برنامه‌نویسان</a
+                  >
+                </h4>
+                <p
+                  class="line-clamp-4 text-sm font-light text-slate-500/90 dark:text-slate-400/90">
+                  یکی از نکات مهم برای افزایش تسلط در برنامه نویسی پایتون و
+                  همینطور بالا بردن سرعت کدنویسی، آشنا شدن با توابع مختلف پایتون
+                  مثل قدر مطلق پایتون هست که به شما کمک میکنه برای انجام هرکاری،
+                  از ابزارهای از قبل پیشبینی شده استفاده کنید و نیازی به کدنویسی
+                  همه چیز از صفر نداشته باشید.
+                </p>
+              </div>
+              <!-- Blog Footer -->
+              <div class="px-5 pb-2">
+                <!-- Course Info -->
+                <div
+                  class="flex justify-between border-b border-b-gray-100 pb-3 text-xs dark:border-b-gray-700">
+                  <div class="flex gap-x-2 text-slate-500 dark:text-slate-400">
+                    <a
+                      href="#"
+                      class="flex items-center gap-x-1 transition-colors hover:text-primary">
+                      <svg class="h-4 w-4">
+                        <use href="#user"></use>
+                      </svg>
+                      <span class="mt-1"> ارمیا مزرعه</span>
+                    </a>
+                    <span class="flex items-center gap-x-1">
+                      <svg class="h-4 w-4">
+                        <use href="#calendar"></use>
+                      </svg>
+                      <span class="mt-1">1402/08/16</span>
+                    </span>
+                  </div>
+                </div>
+                <!-- Course Bottom -->
+                <div class="mt-3.5 flex items-center justify-center">
+                  <a
+                    href="#"
+                    class="flex items-center gap-x-1 font-DanaMedium text-zinc-700 transition-colors hover:text-primary dark:text-white dark:hover:text-primary">
+                    <span class="mt-0.5"> مطالعه مقاله </span>
+                    <svg class="h-6 w-6">
+                      <use href="#arrow-left-circle"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex flex-col overflow-hidden rounded-2xl border-gray-700 bg-white shadow-light dark:border dark:bg-gray-800 dark:shadow-none">
+              <!-- Blog Head -->
+              <div class="relative h-[217px] w-full overflow-hidden">
+                <img
+                  src="/images/Blog1.webp"
+                  class="h-full w-full object-cover"
+                  alt="" />
+                <div
+                  class="absolute inset-0 -bottom-1 h-full w-full bg-gradient-to-t from-white to-transparent dark:from-gray-800 dark:via-gray-800/70 dark:to-transparent"></div>
+              </div>
+              <!-- Blog Body -->
+              <div class="flex-grow px-5 pb-9">
+                <h4 class="my-2.5 line-clamp-2 font-DanaMedium dark:text-white">
+                  <a href="#">
+                    محاسبات دقیق با قدر مطلق در پایتون – راهنمای عملی برای
+                    برنامه‌نویسان</a
+                  >
+                </h4>
+                <p
+                  class="line-clamp-4 text-sm font-light text-slate-500/90 dark:text-slate-400/90">
+                  یکی از نکات مهم برای افزایش تسلط در برنامه نویسی پایتون و
+                  همینطور بالا بردن سرعت کدنویسی، آشنا شدن با توابع مختلف پایتون
+                  مثل قدر مطلق پایتون هست که به شما کمک میکنه برای انجام هرکاری،
+                  از ابزارهای از قبل پیشبینی شده استفاده کنید و نیازی به کدنویسی
+                  همه چیز از صفر نداشته باشید.
+                </p>
+              </div>
+              <!-- Blog Footer -->
+              <div class="px-5 pb-2">
+                <!-- Course Info -->
+                <div
+                  class="flex justify-between border-b border-b-gray-100 pb-3 text-xs dark:border-b-gray-700">
+                  <div class="flex gap-x-2 text-slate-500 dark:text-slate-400">
+                    <a
+                      href="#"
+                      class="flex items-center gap-x-1 transition-colors hover:text-primary">
+                      <svg class="h-4 w-4">
+                        <use href="#user"></use>
+                      </svg>
+                      <span class="mt-1"> ارمیا مزرعه</span>
+                    </a>
+                    <span class="flex items-center gap-x-1">
+                      <svg class="h-4 w-4">
+                        <use href="#calendar"></use>
+                      </svg>
+                      <span class="mt-1">1402/08/16</span>
+                    </span>
+                  </div>
+                </div>
+                <!-- Course Bottom -->
+                <div class="mt-3.5 flex items-center justify-center">
+                  <a
+                    href="#"
+                    class="flex items-center gap-x-1 font-DanaMedium text-zinc-700 transition-colors hover:text-primary dark:text-white dark:hover:text-primary">
+                    <span class="mt-0.5"> مطالعه مقاله </span>
+                    <svg class="h-6 w-6">
+                      <use href="#arrow-left-circle"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex flex-col overflow-hidden rounded-2xl border-gray-700 bg-white shadow-light dark:border dark:bg-gray-800 dark:shadow-none">
+              <!-- Blog Head -->
+              <div class="relative h-[217px] w-full overflow-hidden">
+                <img
+                  src="/images/Blog1.webp"
+                  class="h-full w-full object-cover"
+                  alt="" />
+                <div
+                  class="absolute inset-0 -bottom-1 h-full w-full bg-gradient-to-t from-white to-transparent dark:from-gray-800 dark:via-gray-800/70 dark:to-transparent"></div>
+              </div>
+              <!-- Blog Body -->
+              <div class="flex-grow px-5 pb-9">
+                <h4 class="my-2.5 line-clamp-2 font-DanaMedium dark:text-white">
+                  <a href="#">
+                    محاسبات دقیق با قدر مطلق در پایتون – راهنمای عملی برای
+                    برنامه‌نویسان</a
+                  >
+                </h4>
+                <p
+                  class="line-clamp-4 text-sm font-light text-slate-500/90 dark:text-slate-400/90">
+                  یکی از نکات مهم برای افزایش تسلط در برنامه نویسی پایتون و
+                  همینطور بالا بردن سرعت کدنویسی، آشنا شدن با توابع مختلف پایتون
+                  مثل قدر مطلق پایتون هست که به شما کمک میکنه برای انجام هرکاری،
+                  از ابزارهای از قبل پیشبینی شده استفاده کنید و نیازی به کدنویسی
+                  همه چیز از صفر نداشته باشید.
+                </p>
+              </div>
+              <!-- Blog Footer -->
+              <div class="px-5 pb-2">
+                <!-- Course Info -->
+                <div
+                  class="flex justify-between border-b border-b-gray-100 pb-3 text-xs dark:border-b-gray-700">
+                  <div class="flex gap-x-2 text-slate-500 dark:text-slate-400">
+                    <a
+                      href="#"
+                      class="flex items-center gap-x-1 transition-colors hover:text-primary">
+                      <svg class="h-4 w-4">
+                        <use href="#user"></use>
+                      </svg>
+                      <span class="mt-1"> ارمیا مزرعه</span>
+                    </a>
+                    <span class="flex items-center gap-x-1">
+                      <svg class="h-4 w-4">
+                        <use href="#calendar"></use>
+                      </svg>
+                      <span class="mt-1">1402/08/16</span>
+                    </span>
+                  </div>
+                </div>
+                <!-- Course Bottom -->
+                <div class="mt-3.5 flex items-center justify-center">
+                  <a
+                    href="#"
+                    class="flex items-center gap-x-1 font-DanaMedium text-zinc-700 transition-colors hover:text-primary dark:text-white dark:hover:text-primary">
+                    <span class="mt-0.5"> مطالعه مقاله </span>
+                    <svg class="h-6 w-6">
+                      <use href="#arrow-left-circle"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Background Circle -->
+          <div
+            class="absolute -right-[320px] top-0 -z-10 hidden h-[500px] w-[500px] rounded-full bg-pink-500 opacity-20 blur-2xl md:block lg:-right-[400px] lg:h-[630px] lg:w-[630px] dark:hidden"></div>
+        </div>
+      </section>
+      <!-- Instagram Section -->
+      <section class="mt-25">
+        <div class="container">
+          <div
+            class="flex flex-col items-center justify-between gap-y-4 rounded-2xl bg-instagram-section-br p-8 text-center sm:bg-instagram-section md:h-40 md:flex-row md:text-right lg:h-36 lg:px-14">
+            <div class="space-y-4 text-white">
+              <h5 class="font-MorabbaBold text-4xl leading-[58px]">
+                پیج اینستاگرام آکادمی سبزلرن
+              </h5>
+              <p class="text-lg">
+                اطلاع رسانی تخفیف ها، آموزش های رایگان و نکات کاربردی و لایو های
+                هفتگی
+              </p>
+            </div>
+            <a
+              href="#"
+              class="flex h-12 shrink-0 items-center justify-center rounded-xl border border-transparent bg-white/30 px-4 font-DanaMedium text-white transition-all hover:border-white hover:bg-transparent hover:text-white sm:bg-white sm:text-[#502ED6]">
+              <span class="mt-0.5">دیدن پست ها</span>
+              <svg class="h-5 w-5 rotate-90">
+                <use href="#chevron-down"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- Presell Courses -->
+      <section class="presell-courses mt-25">
+        <div class="container">
+          <!-- Section Header -->
+          <div
+            class="mb-10 flex flex-col justify-between gap-y-4 sm:flex-row sm:items-center">
+            <div>
+              <h3
+                class="before:content-[' '] relative mb-2 pr-6 font-DanaDemiBold text-2xl before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-3.5 before:w-3.5 before:rounded-sm before:bg-amber-400 sm:pr-7 sm:text-3xl dark:text-white before:dark:bg-yellow-400">
+                در حال پیش فروش
+              </h3>
+              <h4 class="text-slate-500 sm:text-xl dark:text-slate-400">
+                دوره هایی که قراره برگزار بشن
+              </h4>
+            </div>
+            <div class="hidden items-center justify-center gap-x-4 sm:flex">
+              <div
+                class="presell-courses-slider-prev flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-gray-200 text-slate-500 shadow-light transition-all hover:bg-white hover:text-black dark:bg-gray-700 dark:shadow-none dark:hover:bg-slate dark:hover:text-white">
+                <svg class="h-7 w-7 -rotate-90">
+                  <use href="#chevron-down"></use>
+                </svg>
+              </div>
+              <div
+                class="presell-courses-slider-next flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-gray-200 text-slate-500 shadow-light transition-all hover:bg-white hover:text-black dark:bg-gray-700 dark:shadow-none dark:hover:bg-slate dark:hover:text-white">
+                <svg class="h-7 w-7 rotate-90">
+                  <use href="#chevron-down"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <!-- Section Content -->
+          <div>
+            <div class="swiper mySwiper">
+              <div class="presell-courses__container swiper-wrapper">
+                <!-- Load From JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Popular Courses -->
+      <section class="mt-25">
+        <div class="container">
+          <!-- Section Header -->
+          <div
+            class="mb-10 flex flex-col justify-between gap-y-4 sm:flex-row sm:items-center">
+            <div>
+              <h3
+                class="before:content-[' '] relative mb-2 pr-6 font-DanaDemiBold text-2xl before:absolute before:bottom-0 before:right-0 before:top-0 before:m-auto before:h-3.5 before:w-3.5 before:rounded-sm before:bg-amber-400 sm:pr-7 sm:text-3xl dark:text-white before:dark:bg-yellow-400">
+                محبوب ترین دوره ها
+              </h3>
+              <h4 class="text-slate-500 sm:text-xl dark:text-slate-400">
+                پرمخاطب ترین و بهترین دوره های سبزلرن
+              </h4>
+            </div>
+            <a
+              href="./categories.html"
+              class="flex h-10 w-44 items-center justify-center gap-x-0.5 self-end rounded-xl font-DanaMedium text-sky-500 transition-all hover:bg-sky-500/10 sm:self-auto dark:text-secondary dark:hover:bg-secondary/10">
+              <span class="mt-1"> مشاهده همه دوره ها </span>
+              <svg class="h-5 w-5">
+                <use href="#arrow-small-left"></use>
+              </svg>
+            </a>
+          </div>
+          <!-- Section Content -->
+          <div
+            class="popular-courses__container grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <!-- Load From JS -->
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="mt-10 w-full bg-white pt-8 lg:pt-16 dark:border-t dark:border-gray-700 dark:bg-transparent">
+      <div class="container">
+        <!-- Footer Top -->
+        <div class="flex flex-wrap justify-between gap-x-4 gap-y-5">
+          <div class="flex-grow text-center sm:text-right">
+            <h5
+              class="mb-5 font-DanaMedium text-2xl text-zinc-700 dark:text-white">
+              درباره ما
+            </h5>
+            <p
+              class="text-base text-slate-500/90 sm:max-w-xs xl:text-lg dark:text-slate-400/90">
+              سبزلرن یک اکادمی خصوصی آموزش برنامه نویسی هست که با هدف تحویل
+              نیروی متخصص بر پایه تولید محتوای غیرسطحی فعالیت میکند
+            </p>
+          </div>
+          <div class="flex-grow">
+            <h5
+              class="mb-5 font-DanaMedium text-2xl text-zinc-700 dark:text-white">
+              دسترسی سریع
+            </h5>
+            <ul
+              class="flex flex-col space-y-3 text-base text-slate-500/90 xl:text-lg dark:text-slate-400/90">
+              <a href="#" class="transition-colors hover:text-primary"
+                >قوانین و مقررات</a
+              >
+              <a href="#" class="transition-colors hover:text-primary"
+                >ارسال تیکت</a
+              >
+              <a href="#" class="transition-colors hover:text-primary"
+                >همه دوره ها</a
+              >
+            </ul>
+          </div>
+          <div class="flex-grow">
+            <h5
+              class="mb-5 font-DanaMedium text-2xl text-zinc-700 dark:text-white">
+              لینک های مفید
+            </h5>
+            <ul
+              class="flex flex-col space-y-3 text-base text-slate-500/90 xl:text-lg dark:text-slate-400/90">
+              <a href="#" class="transition-colors hover:text-primary"
+                >آموزش جاوااسکریپت</a
+              >
+              <a href="#" class="transition-colors hover:text-primary"
+                >آموزش پایتون</a
+              >
+              <a href="#" class="transition-colors hover:text-primary"
+                >آموزش HTML</a
+              >
+              <a href="#" class="transition-colors hover:text-primary"
+                >آموزش CSS</a
+              >
+            </ul>
+          </div>
+          <div class="flex-grow">
+            <h5
+              class="mb-5 font-DanaMedium text-2xl text-zinc-700 dark:text-white">
+              شبکه های اجتماعی
+            </h5>
+            <ul
+              class="flex flex-col space-y-3 text-base text-slate-500/90 xl:text-lg dark:text-slate-400/90">
+              <li class="flex items-center gap-x-4 transition-colors">
+                <div
+                  class="flex h-8 w-8 items-center justify-center rounded-full bg-orange-600 bg-gradient-to-tr from-[#FEDC15] via-[#F71F87] to-[#9000DC] text-white">
+                  <svg class="h-5 w-5">
+                    <use href="#instagram"></use>
+                  </svg>
+                </div>
+                <a
+                  href="#"
+                  class="font-DanaDemiBold hover:text-primary"
+                  dir="ltr"
+                  >@sabzlearn_</a
+                >
+              </li>
+              <li class="flex items-center gap-x-4 transition-colors">
+                <div
+                  class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 bg-gradient-to-b from-blue-400 to-blue-600 text-white">
+                  <svg class="h-5 w-5">
+                    <use xlink:href="#telegram"></use>
+                  </svg>
+                </div>
+                <a
+                  href="#"
+                  class="font-DanaDemiBold hover:text-primary"
+                  dir="ltr"
+                  >@sabzlearn</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Footer Bottom -->
+        <div
+          class="mt-5 flex flex-col justify-between gap-y-3 border-t py-5 text-center font-thin text-slate-500 xs:text-right sm:flex-row dark:border-gray-700 dark:text-slate-400">
+          <p>ساخته شده با ❤️ در سبزلرن</p>
+          <p class="self-end" dir="ltr">
+            Copyright © 2019-2023 Sabzlearn. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      class="overlay fixed left-0 top-0 h-full w-full bg-black/30 transition-all sm:backdrop-blur-md"></div>
+  </body>
+</html>
