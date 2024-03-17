@@ -2,8 +2,8 @@ import axios from "axios";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-const BASE_URL = "http://localhost:8000";
-const API_URL = "http://localhost:3000";
+const BASE_URL = "https://sabzlearn-front.vercel.app";
+const API_URL = "https://sabzlearn-back.vercel.app";
 
 // Change Class
 
