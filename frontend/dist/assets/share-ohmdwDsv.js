@@ -1,1 +1,0 @@
-import{g as a}from"./usersAPIs-Q3VVH7n2.js";const o=async e=>{await a()!==null&&location.replace(e)},s=()=>{const e=new Proxy(new URLSearchParams(window.location.search),{get:(r,t)=>r.get(t)});return e.after?e.after:"./index.html"};export{s as g,o as r};

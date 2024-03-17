@@ -1,4 +1,4 @@
-import{A as t,g as a}from"./utils-CiWJl2H0.js";const l=(e,s={hasDescription:!0,hasCategory:!0,hasBorderOnLightMode:!1,hasShadowOnLightMode:!0,fixHeight:!1})=>`
+import{A as t,g as a}from"./utils-PZo8WXxC.js";const l=(e,s={hasDescription:!0,hasCategory:!0,hasBorderOnLightMode:!1,hasShadowOnLightMode:!0,fixHeight:!1})=>`
       <div onclick="courseClickHandler('${e.id}')" class="course-card flex flex-col bg-white dark:bg-gray-800 ${s.hasShadowOnLightMode?"shadow-light":""}  dark:shadow-none ${s.hasBorderOnLightMode?"border-gray-200/80 border":"dark:border"} dark:border dark:border-gray-700 ${s.fixHeight?"h-[417px]":""} overflow-hidden rounded-2xl">
         <!-- Course Head -->
         <a href="../course.html" class="relative block h-42 w-full overflow-hidden">

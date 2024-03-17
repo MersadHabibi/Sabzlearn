@@ -1,4 +1,4 @@
-import{d as x,g as q}from"./usersAPIs-Q3VVH7n2.js";import{a as E}from"./categoriesAPIs-8lepWyj_.js";import{s as L,_ as n}from"./utils-CiWJl2H0.js";const w=async()=>{const e=await E();let t=null;if(!e.status)return L("اینترنت خود را بررسی کنید"),!1;t=e.data,console.log(t);const l=document.querySelector(".menus__wrapper"),m=document.querySelector(".mobile-menus-wrapper");t.forEach(r=>{l.insertAdjacentHTML("beforeend",`
+import{d as x,g as q}from"./usersAPIs-f3Y-Bvie.js";import{a as E}from"./categoriesAPIs-GHuyfHKv.js";import{s as L,_ as n}from"./utils-PZo8WXxC.js";const w=async()=>{const e=await E();let t=null;if(!e.status)return L("اینترنت خود را بررسی کنید"),!1;t=e.data,console.log(t);const l=document.querySelector(".menus__wrapper"),m=document.querySelector(".mobile-menus-wrapper");t.forEach(r=>{l.insertAdjacentHTML("beforeend",`
     <li class="group relative">
       <a
         href="./categories.html?category=${r.id}"
