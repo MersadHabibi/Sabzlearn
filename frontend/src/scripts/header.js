@@ -106,10 +106,9 @@ const header = async ($) => {
     console.log(user);
 
     if (user === null) {
-      // _changeClasses("remove", loginAndRegisterContainer, ["hidden"]);
+      _changeClasses("remove", loginAndRegisterContainer, ["hidden"]);
       return;
     }
-    _changeClasses("add", loginAndRegisterContainer, ["hidden"]);
     _changeClasses("remove", profileContainer, ["hidden"]);
     setContentProfileSubmenu(user);
   };

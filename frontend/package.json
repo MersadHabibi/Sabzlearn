@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev --port 8000",
     "build": "vite build",
-    "preview": "vite preview --port 8000"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",

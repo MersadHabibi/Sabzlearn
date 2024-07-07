@@ -230,14 +230,15 @@ const setDatas = () => {
     buyBtnWrapper.insertAdjacentHTML(
       "afterbegin",
       `
-    <span
+    <a
       id="buy-btn"
+      href="#topic__container"
       class="flex items-center justify-center sm:justify-start gap-x-2 h-[62px] w-full sm:w-auto px-5 rounded-xl bg-secondary hover:bg-sky-500 text-white font-DanaDemiBold text-2xl transition-colors">
       <svg class="size-9">
         <use href="#play-circle"></use>
       </svg>
-      <span> مشترک هستید </span>
-    </span>
+      <span> شرکت در دوره </span>
+    </a>
     `,
     );
   } else if (user) {
