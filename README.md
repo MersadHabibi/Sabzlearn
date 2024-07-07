@@ -50,13 +50,35 @@ cd ../backend
 npm install
 ```
 
-4. Start the frontend server:
+4. Add .env file to /backend:
+
+```bash
+DATABASE_URL=""
+SALT=""
+SECRET_KEY=""
+
+REDIS_URL=""
+
+# SmTp Mail Server Configs
+SMTP_HOST=""
+SMTP_PORT=""
+SMTP_USERNAME=""
+SMTP_PASSWORD=""
+
+# Google Auth Configs
+
+CALLBACK_URL="http://localhost:3000/api/google/callback"
+CLIENT_ID=""
+CLIENT_SECRET=""
+```
+
+5. Start the frontend server:
 
 ```bash
 # From the frontend directory
-npm start
+npm run dev
 # From the backend directory
-npm start
+npm run dev
 ```
 
 5. Open your web browser and visit http://localhost:8000 to access SabzLearn frontend.
