@@ -20,7 +20,7 @@ const _changeClasses = (action, element, className) => {
     }
   }
 };
-
+ 
 // Timer
 
 const createTimer = (
